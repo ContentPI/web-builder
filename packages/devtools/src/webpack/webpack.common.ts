@@ -62,7 +62,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
   const copyPlugin: WebpackPluginInstance = new CopyWebpackPlugin({
     patterns: [
       { from: `src/websites/${process.env.WEB_CONFIG}/static/`, to: './' },
-      { from: `src/static/`, to: './' }
+      { from: 'src/static/', to: './' }
     ]
   })
 
@@ -127,7 +127,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
   // Rules
   const include: Record<string, string[]> = {
     'design-system': [
-      path.resolve(__dirname, `../../../design-system/src/components/Spinner/loaders`)
+      path.resolve(__dirname, '../../../design-system/src/components/Spinner/loaders')
     ]
   }
 

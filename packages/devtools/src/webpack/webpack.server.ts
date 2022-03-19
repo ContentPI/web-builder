@@ -10,7 +10,7 @@ const analyzerPort = 9000
 const hotPoll = 300
 
 const getWebpackServerConfig = (args: ModeArgs): Configuration => {
-  const { mode, isAnalyze, color = '#2EA1F8', packageName } = args
+  const { mode, isAnalyze, color = '#2EA1F8' } = args
   const isDevelopment = mode === 'development'
 
   const limitChunkCountPlugin: WebpackPluginInstance = new optimize.LimitChunkCountPlugin({

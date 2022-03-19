@@ -1,4 +1,4 @@
-import Theme from '../types'
+import { Theme } from '../types'
 import palette from './palette'
 import typography from './typography'
 import { generateThemeVars, generateVarNames, getRootVars } from './utils'

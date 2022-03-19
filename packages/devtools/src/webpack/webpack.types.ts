@@ -1,7 +1,7 @@
-// Types
 export type WebpackMode = 'production' | 'development'
 export type ConfigType = 'web' | 'package'
 export type Preset = 'client' | 'server'
+export type Package = 'design-system' | 'frontend'
 export type ConfigArgs = {
   mode: WebpackMode
   preset?: Preset
@@ -23,4 +23,3 @@ export type ModeArgs = {
     template: string
   }
 }
-export type Package = 'design-system' | 'frontend'

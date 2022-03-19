@@ -1,5 +1,3 @@
-import { css, CSSObject } from 'styled-components'
-
 import { CalcType, Color, Theme } from '../types'
 
 type CommonProps = {
@@ -64,7 +62,7 @@ export const generateThemeVars = (themes: Record<string, any>) => {
   const themeNames = Object.keys(themes)
   let allCss = ''
 
-  themeNames.forEach(name => {
+  themeNames.forEach((name) => {
     const themeCssVars = getStyleVars(name, themes[name])
     allCss += themeCssVars
   })
@@ -72,7 +70,7 @@ export const generateThemeVars = (themes: Record<string, any>) => {
   return allCss
 }
 
-const _calc = (number: number | string) => `calc(4px * ${Number(number)})`
+const calculate = (number: number | string) => `calc(4px * ${Number(number)})`
 
 export const calc = (type: CalcType, data: number | number[]) => {
   let calcData = ''
@@ -80,7 +78,7 @@ export const calc = (type: CalcType, data: number | number[]) => {
   switch (type) {
     case CalcType.spacing:
       if (typeof data === 'number') {
-        calcData = _calc(data)
+        calcData = calculate(data)
       }
       break
 
@@ -93,10 +91,10 @@ export const calc = (type: CalcType, data: number | number[]) => {
         const bottom = data[2]
         const left = data[3]
 
-        if (top === 0 || top) padding.push(_calc(top))
-        if (right === 0 || right) padding.push(_calc(right))
-        if (bottom === 0 || bottom) padding.push(_calc(bottom))
-        if (left === 0 || left) padding.push(_calc(left))
+        if (top === 0 || top) padding.push(calculate(top))
+        if (right === 0 || right) padding.push(calculate(right))
+        if (bottom === 0 || bottom) padding.push(calculate(bottom))
+        if (left === 0 || left) padding.push(calculate(left))
 
         calcData = padding.join(' ')
       }

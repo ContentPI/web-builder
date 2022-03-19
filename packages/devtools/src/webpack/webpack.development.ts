@@ -1,4 +1,3 @@
-import { resolve } from 'path'
 import {
   Configuration as WebpackConfiguration,
   HotModuleReplacementPlugin,
@@ -6,15 +5,11 @@ import {
 } from 'webpack'
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
 
-import { ModeArgs } from './webpack.types'
-
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration
 }
 
-const getWebpackDevelopmentConfig = (args: ModeArgs): Configuration => {
-  const { configType, packageName, sandbox, devServer } = args
-
+const getWebpackDevelopmentConfig = (): Configuration => {
   const webpackConfig: Configuration = {
     mode: 'development',
     devtool: 'source-map',

@@ -20,9 +20,9 @@ const Table: FC<IProps> = ({ data }) => (
   <TableBase>
     <TableHeader>
       <TableRow>
-        {data.columns.map(header => {
-          return <TableHeaderCol key={`header-${header}`}>{header}</TableHeaderCol>
-        })}
+        {data.columns.map((header) => (
+          <TableHeaderCol key={`header-${header}`}>{header}</TableHeaderCol>
+        ))}
       </TableRow>
     </TableHeader>
     <TableBody>

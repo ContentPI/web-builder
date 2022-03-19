@@ -13,7 +13,7 @@ interface Props {
 export function cxGenerator({ ccn, data, className }: Props): string {
   const classList = [ccn]
 
-  data.forEach(key => {
+  data.forEach((key: string) => {
     if (key !== '') {
       classList.push(`${ccn}-${key}`)
     }
@@ -67,7 +67,9 @@ const ButtonComponent: FC<IProps> = ({
   if (isLoading) {
     buttonText = (
       <>
-        <Spinner style={{ width: '18px' }} /> &nbsp;&nbsp;&nbsp; {loadingText}
+        <Spinner style={{ width: '18px' }} />
+        &nbsp;&nbsp;&nbsp;
+        {loadingText}
       </>
     )
   }
