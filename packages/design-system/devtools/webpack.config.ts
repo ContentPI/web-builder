@@ -1,3 +1,4 @@
+import cliColor from 'cli-color'
 import { Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
 
@@ -40,11 +41,16 @@ const webpackConfig: (args: ConfigArgs) => Promise<Configuration> = async (
   }
 ) => {
   const commonConfiguration = getWebpackCommonConfig({ configType: type, packageName })
-  const presetConfig = type === 'web' && preset ? getPresetConfig[preset]({ mode }) : {}
+  const presetConfig =
+    type === 'web' && preset ? getPresetConfig[preset]({ mode, packageName }) : {}
   const modeConfiguration = mode && type ? modeConfig({ mode, preset, type }) : {}
 
   const webpackConfiguration = merge(commonConfiguration, modeConfiguration, presetConfig)
-  console.log('webpackConfiguration', webpackConfiguration)
+
+  console.log(cliColor.bgCyan.whiteBright.bold('<<< START WEBPACK CONFIGURATION:'))
+  console.log(cliColor.blue(JSON.stringify(webpackConfiguration, null, 2)))
+  console.log(cliColor.bgCyan.whiteBright.bold('END WEBPACK CONFIGURATION >>>'))
+
   return webpackConfiguration
 }
 
