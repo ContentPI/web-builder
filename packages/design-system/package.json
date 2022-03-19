@@ -8,12 +8,12 @@
   ],
   "scripts": {
     "build": "NODE_ENV=production npm-run-all clean compile build:production",
-    "build:production": "webpack --config=devtools/webpack.config.ts --env mode=production --env type=package",
-    "build:dev": "NODE_ENV=development npm-run-all clean webpack --config=devtools/webpack.config.ts --env mode=development",
+    "build:production": "webpack --config=webpack.config.ts --env mode=production --env type=package",
+    "build:dev": "NODE_ENV=development npm-run-all clean webpack --config=webpack.config.ts --env mode=development",
     "compile": "tsc",
     "clean": "rm -rf ./dist",
     "prepublishOnly": "npm run lint && npm run build",
-    "preview": "webpack serve --config devtools/webpack.config.ts --env mode=development",
+    "preview": "webpack serve --config=webpack.config.ts --env mode=development",
     "test": "jest",
     "versioning": "./scripts/versioning.sh"
   },

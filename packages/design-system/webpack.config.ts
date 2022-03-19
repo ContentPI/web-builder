@@ -1,4 +1,3 @@
-import cliColor from 'cli-color'
 import { Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
 
@@ -8,7 +7,8 @@ import {
   getWebpackCommonConfig,
   getWebpackDevelopmentConfig,
   getWebpackProductionConfig,
-  getWebpackServerConfig
+  getWebpackServerConfig,
+  log
 } from '@web-builder/devtools'
 
 // Package Name
@@ -47,9 +47,7 @@ const webpackConfig: (args: ConfigArgs) => Promise<Configuration> = async (
 
   const webpackConfiguration = merge(commonConfiguration, modeConfiguration, presetConfig)
 
-  console.log(cliColor.bgCyan.whiteBright.bold('<<< START WEBPACK CONFIGURATION:'))
-  console.log(cliColor.blue(JSON.stringify(webpackConfiguration, null, 2)))
-  console.log(cliColor.bgCyan.whiteBright.bold('END WEBPACK CONFIGURATION >>>'))
+  log({ tag: 'Webpack Configuration', json: webpackConfiguration, type: 'warning' })
 
   return webpackConfiguration
 }
