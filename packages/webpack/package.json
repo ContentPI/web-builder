@@ -1,0 +1,27 @@
+{
+  "name": "@web-builder/webpack",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Carlos Santana",
+  "license": "MIT",
+  "dependencies": {
+    "copy-webpack-plugin": "^10.2.4",
+    "run-script-webpack-plugin": "^0.0.11",
+    "ts-loader": "^9.2.8",
+    "typescript-plugin-styled-components": "^2.0.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-node-externals": "^3.0.0",
+    "webpackbar": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/webpack-bundle-analyzer": "^4.4.1",
+    "@types/webpack-node-externals": "^2.5.3"
+  }
+}

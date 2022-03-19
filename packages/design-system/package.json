@@ -1,0 +1,25 @@
+{
+  "name": "@web-builder/design-system",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "NODE_ENV=production npm-run-all clean compile build:production",
+    "build:production": "webpack --config=devtools/webpack/webpack.config.ts --env mode=production --env type=package",
+    "build:dev": "NODE_ENV=development npm-run-all clean webpack --config=devtools/webpack/webpack.config.ts --env mode=development",
+    "compile": "tsc",
+    "clean": "rm -rf ./dist",
+    "prepublishOnly": "npm run lint && npm run build",
+    "preview": "webpack serve --config devtools/webpack/webpack.config.ts --env mode=development",
+    "test": "jest",
+    "versioning": "./scripts/versioning.sh"
+  },
+  "author": "Carlos Santana",
+  "license": "MIT",
+  "dependencies": {
+    "@web-builder/webpack": "1.0.0"
+  }
+}

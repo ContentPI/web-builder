@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.common.json",
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+      "@web-builder/design-system": ["design-system/src"],
+      "@web-builder/frontend": ["frontend/src"],
+      "@web-builder/webpack": ["webpack/src"],
+      "@web-builder/*": ["*/src"]
+    }
+  }
+}

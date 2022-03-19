@@ -1,0 +1,13 @@
+{
+  "name": "@web-builder/frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carlos Santana",
+  "license": "MIT",
+  "dependencies": {
+    "@web-builder/design-system": "1.0.0"
+  }
+}

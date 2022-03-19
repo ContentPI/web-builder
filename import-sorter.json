@@ -1,0 +1,45 @@
+{
+  "importSorter": {
+    "generalConfiguration": {
+      "exclude": ["./packages/design-system/preview/App.tsx"]
+    },
+    "importStringConfiguration": {
+      "hasSemicolon": false
+    },
+    "sortConfiguration": {
+      "customOrderingRules": {
+        "rules": [
+          {
+            "type": "importMember",
+            "regex": "^$",
+            "orderLevel": 10,
+            "disableSort": true
+          },
+          {
+            "regex": "^[@]",
+            "orderLevel": 20
+          },
+          {
+            "regex": "^[~]",
+            "orderLevel": 40
+          },
+          {
+            "regex": "^[.]",
+            "orderLevel": 40
+          }
+        ]
+      }
+    }
+  },
+  "generalConfiguration": {
+    "sortOnBeforeSave": true
+  },
+  "importStringConfiguration": {
+    "maximumNumberOfImportExpressionsPerLine": {
+      "type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne",
+      "count": 100
+    },
+    "tabSize": 2,
+    "quoteMark": "single"
+  }
+}
