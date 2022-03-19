@@ -20,6 +20,6 @@
   "author": "Carlos Santana",
   "license": "MIT",
   "dependencies": {
-    "@web-builder/webpack": "1.0.0"
+    "@web-builder/devtools": "1.0.0"
   }
 }

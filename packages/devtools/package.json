@@ -1,5 +1,5 @@
 {
-  "name": "@web-builder/webpack",
+  "name": "@web-builder/devtools",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

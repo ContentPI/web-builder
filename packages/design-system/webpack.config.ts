@@ -9,7 +9,7 @@ import {
   getWebpackDevelopmentConfig,
   getWebpackProductionConfig,
   getWebpackServerConfig
-} from '@web-builder/webpack'
+} from '@web-builder/devtools'
 
 // Package Name
 const packageName = 'design-system'
