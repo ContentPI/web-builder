@@ -1,10 +1,18 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import path from 'path'
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components'
 import webpack, { Configuration, WebpackPluginInstance } from 'webpack'
 
-import { ConfigType } from './webpack.types'
+import { ConfigType, Package } from './webpack.types'
 
-const getWebpackCommonConfig = (configType: ConfigType): Configuration => {
+type Args = {
+  configType: ConfigType
+  packageName: Package
+}
+
+const getWebpackCommonConfig = (args: Args): Configuration => {
+  const { configType, packageName } = args
+
   // Entry
   const entry = configType === 'package' ? './src/index.ts' : './src/index.tsx'
 
@@ -63,6 +71,10 @@ const getWebpackCommonConfig = (configType: ConfigType): Configuration => {
       : {}
 
   // Rules
+  const include: Record<string, string[]> = {
+    'design-system': [path.resolve(__dirname, `../../design-system/src/components/Spinner/loaders`)]
+  }
+
   const rules = [
     {
       test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
@@ -99,8 +111,21 @@ const getWebpackCommonConfig = (configType: ConfigType): Configuration => {
     {
       test: /\.css$/,
       use: ['style-loader', 'css-loader']
+    },
+    {
+      test: /\.svg$/,
+      oneOf: [
+        {
+          use: 'svg-url-loader',
+          include: configType === 'package' ? include[packageName] ?? [] : []
+        }
+      ]
     }
   ]
+
+  if (configType === 'package') {
+    rules.push()
+  }
 
   const webpackConfig = {
     entry,

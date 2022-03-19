@@ -3,10 +3,11 @@ import { Configuration, WebpackPluginInstance } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import WebpackBar from 'webpackbar'
 
-import { WebpackMode } from './webpack.types'
+import { Package, WebpackMode } from './webpack.types'
 
 type Args = {
   mode: WebpackMode
+  packageName: Package
   isAnalyze?: boolean
   port?: number
   analyzerPort?: number
@@ -14,7 +15,7 @@ type Args = {
 }
 
 const getWebpackClientConfig = (args: Args): Configuration => {
-  const { isAnalyze, port = 3000, mode, analyzerPort = 9001, color = '#2EA1F8' } = args
+  const { isAnalyze, port = 3000, mode, analyzerPort = 9001, color = '#2EA1F8', packageName } = args
   const devServerPort = port + 1
   const isProductionMode = mode === 'production'
 

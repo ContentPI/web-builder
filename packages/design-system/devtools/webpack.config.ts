@@ -10,11 +10,16 @@ import {
   getWebpackServerConfig
 } from '@web-builder/webpack'
 
+// Package Name
+const packageName = 'design-system'
+
+// Preset Config
 const getPresetConfig = {
   client: getWebpackClientConfig,
   server: getWebpackServerConfig
 }
 
+// Mode Config
 const getModeConfig = {
   development: getWebpackDevelopmentConfig,
   production: getWebpackProductionConfig
@@ -23,7 +28,7 @@ const getModeConfig = {
 // Mode Configuration (development/production)
 const modeConfig: (args: ConfigArgs) => Configuration = ({ mode, type }) => {
   const getWebpackConfiguration = getModeConfig[mode]
-  return getWebpackConfiguration({ configType: type, packageName: 'design-system' })
+  return getWebpackConfiguration({ configType: type, packageName })
 }
 
 // Merging all configurations
@@ -34,10 +39,7 @@ const webpackConfig: (args: ConfigArgs) => Promise<Configuration> = async (
     type: 'web'
   }
 ) => {
-  console.log('MODE=====', mode)
-  console.log('PRESET====', preset)
-  console.log('TYPE===', type)
-  const commonConfiguration = getWebpackCommonConfig(type)
+  const commonConfiguration = getWebpackCommonConfig({ configType: type, packageName })
   const presetConfig = type === 'web' && preset ? getPresetConfig[preset]({ mode }) : {}
   const modeConfiguration = mode && type ? modeConfig({ mode, preset, type }) : {}
 

@@ -4,10 +4,11 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import nodeExternals from 'webpack-node-externals'
 import WebpackBar from 'webpackbar'
 
-import { WebpackMode } from './webpack.types'
+import { Package, WebpackMode } from './webpack.types'
 
 type Args = {
   mode: WebpackMode
+  packageName: Package
   isAnalyze?: boolean
   color?: string
 }
@@ -16,7 +17,7 @@ const analyzerPort = 9000
 const hotPoll = 300
 
 const getWebpackServerConfig = (args: Args): Configuration => {
-  const { mode, isAnalyze, color = '#2EA1F8' } = args
+  const { mode, isAnalyze, color = '#2EA1F8', packageName } = args
   const isDevelopment = mode === 'development'
 
   const limitChunkCountPlugin: WebpackPluginInstance = new optimize.LimitChunkCountPlugin({
