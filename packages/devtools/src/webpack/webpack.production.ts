@@ -1,35 +1,9 @@
-import { resolve } from 'path'
 import { Configuration } from 'webpack'
 
-import { ConfigType, Package } from './webpack.types'
+import { ModeArgs } from './webpack.types'
 
-type Args = {
-  configType: ConfigType
-  packageName: Package
-}
-
-const getWebpackProductionConfig = (args: Args): Configuration => {
-  const { configType, packageName } = args
-
-  if (!packageName) {
-    throw 'You need to specify the package name'
-  }
-
-  // Output
-  const output =
-    configType === 'package'
-      ? {
-          path: resolve(__dirname, `../../${packageName}/dist`),
-          filename: 'index.js',
-          libraryTarget: 'umd',
-          library: 'lib',
-          umdNamedDefine: true,
-          globalObject: 'this'
-        }
-      : {
-          path: resolve(__dirname, `../../${packageName}/dist`),
-          filename: '[name].[contenthash].js'
-        }
+const getWebpackProductionConfig = (args: ModeArgs): Configuration => {
+  const { configType } = args
 
   // Externals
   const externals =
@@ -54,7 +28,6 @@ const getWebpackProductionConfig = (args: Args): Configuration => {
   const webpackConfig = {
     mode: 'production',
     devtool: false,
-    output,
     externals
   }
 

@@ -1,22 +1,23 @@
-import { Configuration, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin } from 'webpack'
+import { resolve } from 'path'
+import {
+  Configuration as WebpackConfiguration,
+  HotModuleReplacementPlugin,
+  NoEmitOnErrorsPlugin
+} from 'webpack'
+import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
 
-import { ConfigType, Package } from './webpack.types'
+import { ModeArgs } from './webpack.types'
 
-type Args = {
-  configType: ConfigType
-  packageName: Package
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration
 }
 
-const getWebpackDevelopmentConfig = (args: Args): Configuration => {
-  const { configType, packageName } = args
+const getWebpackDevelopmentConfig = (args: ModeArgs): Configuration => {
+  const { configType, packageName, sandbox, devServer } = args
+
   const webpackConfig: Configuration = {
     mode: 'development',
     devtool: 'source-map',
-    ...(configType === 'web' && {
-      output: {
-        filename: '[name].js'
-      }
-    }),
     plugins: [new HotModuleReplacementPlugin(), new NoEmitOnErrorsPlugin()]
   }
 

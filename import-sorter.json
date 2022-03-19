@@ -1,45 +1,29 @@
 {
-  "importSorter": {
-    "generalConfiguration": {
-      "exclude": ["./packages/design-system/preview/App.tsx"]
+  "importSorter.generalConfiguration.exclude": ["./packages/design-system/sandbox/App.tsx"],
+  "generalConfiguration.sortOnBeforeSave": true,
+  "importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne",
+  "importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 100,
+  "importStringConfiguration.tabSize": 2,
+  "importStringConfiguration.quoteMark": "single",
+  "importSorter.importStringConfiguration.hasSemicolon": false,
+  "importSorter.sortConfiguration.customOrderingRules.rules": [
+    {
+      "type": "importMember",
+      "regex": "^$",
+      "orderLevel": 10,
+      "disableSort": true
     },
-    "importStringConfiguration": {
-      "hasSemicolon": false
+    {
+      "regex": "^[@]",
+      "orderLevel": 20
     },
-    "sortConfiguration": {
-      "customOrderingRules": {
-        "rules": [
-          {
-            "type": "importMember",
-            "regex": "^$",
-            "orderLevel": 10,
-            "disableSort": true
-          },
-          {
-            "regex": "^[@]",
-            "orderLevel": 20
-          },
-          {
-            "regex": "^[~]",
-            "orderLevel": 40
-          },
-          {
-            "regex": "^[.]",
-            "orderLevel": 40
-          }
-        ]
-      }
+    {
+      "regex": "^[~]",
+      "orderLevel": 40
+    },
+    {
+      "regex": "^[.]",
+      "orderLevel": 40
     }
-  },
-  "generalConfiguration": {
-    "sortOnBeforeSave": true
-  },
-  "importStringConfiguration": {
-    "maximumNumberOfImportExpressionsPerLine": {
-      "type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne",
-      "count": 100
-    },
-    "tabSize": 2,
-    "quoteMark": "single"
-  }
+  ]
 }

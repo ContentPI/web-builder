@@ -4,19 +4,12 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import nodeExternals from 'webpack-node-externals'
 import WebpackBar from 'webpackbar'
 
-import { Package, WebpackMode } from './webpack.types'
-
-type Args = {
-  mode: WebpackMode
-  packageName: Package
-  isAnalyze?: boolean
-  color?: string
-}
+import { ModeArgs } from './webpack.types'
 
 const analyzerPort = 9000
 const hotPoll = 300
 
-const getWebpackServerConfig = (args: Args): Configuration => {
+const getWebpackServerConfig = (args: ModeArgs): Configuration => {
   const { mode, isAnalyze, color = '#2EA1F8', packageName } = args
   const isDevelopment = mode === 'development'
 

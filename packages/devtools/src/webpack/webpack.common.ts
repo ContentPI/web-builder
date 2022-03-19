@@ -1,20 +1,35 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import HtmlWebPackPlugin from 'html-webpack-plugin'
+import { address } from 'ip'
 import path from 'path'
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components'
 import webpack, { Configuration, WebpackPluginInstance } from 'webpack'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import WebpackBar from 'webpackbar'
 
-import { ConfigType, Package } from './webpack.types'
+import { ModeArgs } from './webpack.types'
 
-type Args = {
-  configType: ConfigType
-  packageName: Package
-}
+const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
+  const {
+    configType,
+    isAnalyze,
+    port = 3000,
+    mode,
+    analyzerPort = 9001,
+    color = '#2EA1F8',
+    packageName,
+    htmlOptions,
+    sandbox,
+    devServer
+  } = args
 
-const getWebpackCommonConfig = (args: Args): Configuration => {
-  const { configType, packageName } = args
+  const devServerPort = sandbox && devServer ? 8080 : port + 1
 
   // Entry
-  const entry = configType === 'package' ? './src/index.ts' : './src/index.tsx'
+  const entry =
+    configType === 'package'
+      ? path.resolve(__dirname, `../../../${packageName}/src/index.ts`)
+      : path.resolve(__dirname, `../../../${packageName}/src/index.tsx`)
 
   // Resolve
   const resolve = {
@@ -24,6 +39,21 @@ const getWebpackCommonConfig = (args: Args): Configuration => {
       crypto: false,
       stream: false
     }
+  }
+
+  // Output
+  const output = {
+    path: path.resolve(__dirname, `../../../${packageName}/dist`),
+    filename: mode === 'development' ? '[name].js' : '[name].[contenthash].js',
+    chunkFilename: mode === 'development' ? '[name].js' : '[name].[contenthash].js',
+    publicPath: mode === 'development' ? `http://${address()}:${devServerPort}/` : '/',
+    ...(configType === 'package' && {
+      filename: 'index.js',
+      libraryTarget: 'umd',
+      library: 'lib',
+      umdNamedDefine: true,
+      globalObject: 'this'
+    })
   }
 
   // Plugins
@@ -47,8 +77,32 @@ const getWebpackCommonConfig = (args: Args): Configuration => {
     }
   })
 
+  // WebpackBar
+  const webpackBarPlugin: WebpackPluginInstance = new WebpackBar({
+    name: 'client',
+    color
+  })
+
+  if (isAnalyze) {
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        analyzerPort
+      })
+    )
+  }
+
   if (configType === 'web') {
-    plugins.push(copyPlugin, definePlugin)
+    plugins.push(copyPlugin, definePlugin, webpackBarPlugin)
+  }
+
+  if (htmlOptions?.title && htmlOptions.template) {
+    plugins.push(
+      new HtmlWebPackPlugin({
+        title: htmlOptions.title,
+        template: path.resolve(__dirname, `../../../${packageName}/${htmlOptions.template}`),
+        filename: './index.html'
+      })
+    )
   }
 
   // Optimization
@@ -72,7 +126,9 @@ const getWebpackCommonConfig = (args: Args): Configuration => {
 
   // Rules
   const include: Record<string, string[]> = {
-    'design-system': [path.resolve(__dirname, `../../design-system/src/components/Spinner/loaders`)]
+    'design-system': [
+      path.resolve(__dirname, `../../../design-system/src/components/Spinner/loaders`)
+    ]
   }
 
   const rules = [
@@ -123,12 +179,21 @@ const getWebpackCommonConfig = (args: Args): Configuration => {
     }
   ]
 
-  if (configType === 'package') {
-    rules.push()
-  }
-
   const webpackConfig = {
     entry,
+    ...(configType === 'package' &&
+      sandbox && {
+        entry: path.resolve(__dirname, `../../../${packageName}/sandbox/index.tsx`)
+      }),
+    ...(devServer && {
+      devServer: {
+        historyApiFallback: true,
+        static: output.path,
+        compress: true,
+        port: devServerPort
+      }
+    }),
+    output,
     resolve,
     optimization,
     plugins,
