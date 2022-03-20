@@ -1,6 +1,5 @@
 import { resolve, resolve } from 'path'
 import { loadEnvVariables } from '@web-builder/devtools'
-import webpack from 'webpack'
 
 // Loading env variables
 loadEnvVariables('frontend')
