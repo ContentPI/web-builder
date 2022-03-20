@@ -1,6 +1,6 @@
-import { resolve } from 'path'
+import { resolve, resolve } from 'path'
 import { loadEnvVariables } from '@web-builder/devtools'
-import { resolve } from 'path'
+import webpack from 'webpack'
 
 // Loading env variables
 loadEnvVariables('frontend')
@@ -18,13 +18,8 @@ export default {
       }
     }
 
-    // Environment Variables
-    config.plugins.push(new webpack.EnvironmentPlugin(dotEnv))
-
     // Aliases
-    const dir = __dirname
-
-    config.resolve.alias['~'] = resolve(dir, './src')
+    config.resolve.alias['~'] = resolve(__dirname, './src')
 
     return config
   }

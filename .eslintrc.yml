@@ -20,6 +20,8 @@ parserOptions:
     jsx: true
   ecmaVersion: latest
   sourceType: module
+  project:
+    - 'packages/*/tsconfig.json'
 
 # ⭐ Plugins
 plugins:
@@ -40,11 +42,11 @@ rules:
   # ⭐ Imports & Files extensions
   import/no-import-module-exports: 'off'
   # Avoid .ts and .tsx import extensions
-  import/extensions: [error, ignorePackages, { ts: never, tsx: never }]
+  import/extensions: 'off'
   # Avoid extraneous dependencies (devDependencies)
   import/no-extraneous-dependencies: [error, { devDependencies: true }]
   # Turn on errors for missing imports
-  import/no-unresolved: error
+  import/no-unresolved: 'off'
   # Warning .tsx import extensions on React
   react/jsx-filename-extension: [warn, { extensions: [.tsx] }]
   # We like to export single constants and functions

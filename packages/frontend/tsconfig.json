@@ -5,17 +5,13 @@
     "baseUrl": ".",
     "isolatedModules": true,
     "noEmit": false,
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
-    },
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }

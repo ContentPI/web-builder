@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 
 import BlogIndex from '../sites/blog/pages/index'
 import SanPanchoIndex from '../sites/san-pancho/pages/index'
+import { Site } from '../types'
 
 type PageProps = {
   site: string
@@ -9,9 +10,9 @@ type PageProps = {
 
 const IndexPage: FC<PageProps> = ({ site }) => {
   switch (site) {
-    case 'san-pancho':
+    case Site.SanPancho:
       return <SanPanchoIndex />
-    case 'blog':
+    case Site.Blog:
       return <BlogIndex />
     default:
       return <h1>Index</h1>

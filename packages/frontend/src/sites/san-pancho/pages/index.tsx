@@ -1,3 +1,5 @@
 import React from 'react'
 
-export default () => <h1>San Pancho Index Page</h1>
+import Landing from '../components/Landing'
+
+export default () => <Landing />
