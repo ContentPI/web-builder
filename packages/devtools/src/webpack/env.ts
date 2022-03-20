@@ -1,11 +1,14 @@
 import DotEnv from 'dotenv'
 import { resolve } from 'path'
 
-const serverRequiredEnvVariables = ['WEB', 'NODE_ENV']
-export const clientRequiredEnvVariables = ['NODE_ENV', 'WEB_CONFIG']
+const serverRequiredEnvVariables = ['SITE', 'NODE_ENV']
+const clientRequiredEnvVariables = ['NODE_ENV', 'WEB_CONFIG']
 
 export function loadEnvVariables(packageName = ''): void {
-  const web = process.env.WEB
+  const site = process.env.SITE ?? ''
+  const hasSuffix = site.includes('-production') || site.includes('-dev')
+  const suffix = hasSuffix ? '' : process.env.NODE_ENV === 'production' ? '-production' : '-dev'
+  const web = process.env.SITE + suffix
 
   if (!web || web === '') {
     process.stderr.write(
@@ -26,9 +29,15 @@ export function loadEnvVariables(packageName = ''): void {
     process.exit(2)
   }
 
-  const missingEnvVariables: Array<string> = []
+  const missingEnvVariables = []
 
   for (const requiredVariable of serverRequiredEnvVariables) {
+    if (!process.env[requiredVariable]) {
+      missingEnvVariables.push(requiredVariable)
+    }
+  }
+
+  for (const requiredVariable of clientRequiredEnvVariables) {
     if (!process.env[requiredVariable]) {
       missingEnvVariables.push(requiredVariable)
     }

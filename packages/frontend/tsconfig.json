@@ -3,9 +3,19 @@
   "compilerOptions": {
     "outDir": "./dist",
     "baseUrl": ".",
+    "isolatedModules": true,
+    "noEmit": false,
     "paths": {
-      "~/*": ["./src/*"]
-    }
+      "~/*": [
+        "./src/*"
+      ]
+    },
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "jsx": "preserve"
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }

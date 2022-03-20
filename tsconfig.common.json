@@ -8,7 +8,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "jsx": "react-jsx",
-    "lib": ["DOM"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmit": false,

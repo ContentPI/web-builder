@@ -20,8 +20,6 @@ parserOptions:
     jsx: true
   ecmaVersion: latest
   sourceType: module
-  project:
-    - 'packages/*/tsconfig.json'
 
 # ⭐ Plugins
 plugins:
@@ -36,7 +34,6 @@ settings:
   import/resolver:
     typescript:
       alwaysTryTypes: true
-      project: 'packages/*/tsconfig.json'
 
 # ⭐ Rules
 rules:
@@ -84,6 +81,8 @@ rules:
   no-restricted-syntax: 'off'
   # We like arrow parenthesis
   prettier/prettier: [error, { arrowParens: always }]
+  # We like nested ternaries
+  no-nested-ternary: 'off'
 
   # ⭐ TypeScript rules
   # We don't like comma-dangle

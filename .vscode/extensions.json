@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "DavidAnson.vscode-markdownlint",
+    "redhat.vscode-yaml",
+    "GraphQL.vscode-graphql",
+    "aaron-bond.better-comments",
+    "mike-co.import-sorter"
+  ]
+}

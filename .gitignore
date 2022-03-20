@@ -49,3 +49,6 @@ secrets.env
 
 # Yalc
 .yalc
+
+# Next
+.next
