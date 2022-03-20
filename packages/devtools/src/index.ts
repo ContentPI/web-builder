@@ -7,3 +7,4 @@ export { default as getWebpackDevelopmentConfig } from './webpack/webpack.develo
 export { default as getWebpackProductionConfig } from './webpack/webpack.production'
 export { default as getWebpackServerConfig } from './webpack/webpack.server'
 export * from './webpack/webpack.types'
+export * from './webpack/env'

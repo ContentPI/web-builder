@@ -20,6 +20,7 @@
     "cli-color": "^2.0.1",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",
+    "dotenv": "^16.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "run-script-webpack-plugin": "^0.0.11",

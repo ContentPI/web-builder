@@ -18,6 +18,7 @@ export type ModeArgs = {
   port?: number
   analyzerPort?: number
   color?: string
+  preset?: Preset
   htmlOptions?: {
     title: string
     template: string

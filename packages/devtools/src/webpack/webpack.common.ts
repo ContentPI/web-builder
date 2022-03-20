@@ -7,6 +7,7 @@ import webpack, { Configuration, WebpackPluginInstance } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import WebpackBar from 'webpackbar'
 
+import { loadEnvVariables } from './env'
 import { ModeArgs } from './webpack.types'
 
 const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
@@ -20,12 +21,18 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
     packageName,
     htmlOptions,
     sandbox,
-    devServer
+    devServer,
+    preset
   } = args
 
   const devServerPort = sandbox && devServer ? 8080 : port + 1
 
-  // Entry
+  if (packageName === 'frontend') {
+    // Loading .env vars
+    loadEnvVariables(packageName)
+  }
+
+  // Client Entry
   const entry =
     configType === 'package'
       ? path.resolve(__dirname, `../../../${packageName}/src/index.ts`)
@@ -34,6 +41,9 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
   // Resolve
   const resolve = {
     extensions: ['*', '.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      '~': path.resolve(__dirname, `../../../${packageName}/src`)
+    },
     fallback: {
       buffer: false,
       crypto: false,
@@ -45,14 +55,17 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
   const output = {
     path: path.resolve(__dirname, `../../../${packageName}/dist`),
     filename: mode === 'development' ? '[name].js' : '[name].[contenthash].js',
-    chunkFilename: mode === 'development' ? '[name].js' : '[name].[contenthash].js',
-    publicPath: mode === 'development' ? `http://${address()}:${devServerPort}/` : '/',
+    publicPath: '',
     ...(configType === 'package' && {
       filename: 'index.js',
       libraryTarget: 'umd',
       library: 'lib',
       umdNamedDefine: true,
       globalObject: 'this'
+    }),
+    ...(preset === 'client' && {
+      chunkFilename: mode === 'development' ? '[name].js' : '[name].[contenthash].js',
+      publicPath: mode === 'development' ? `http://${address()}:${devServerPort}/` : '/'
     })
   }
 
@@ -95,7 +108,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
     plugins.push(copyPlugin, definePlugin, webpackBarPlugin)
   }
 
-  if (htmlOptions?.title && htmlOptions.template) {
+  if (htmlOptions?.title && htmlOptions.template && preset === 'client') {
     plugins.push(
       new HtmlWebPackPlugin({
         title: htmlOptions.title,
@@ -107,17 +120,15 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
 
   // Optimization
   const optimization =
-    configType === 'web'
+    configType === 'web' && preset === 'client'
       ? {
-          optimization: {
-            splitChunks: {
-              cacheGroups: {
-                default: false,
-                commons: {
-                  test: /node_modules/,
-                  name: 'vendor',
-                  chunks: 'all'
-                }
+          splitChunks: {
+            cacheGroups: {
+              default: false,
+              commons: {
+                test: /node_modules/,
+                name: 'vendor',
+                chunks: 'all'
               }
             }
           }
@@ -185,14 +196,14 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
       sandbox && {
         entry: path.resolve(__dirname, `../../../${packageName}/sandbox/index.tsx`)
       }),
-    ...(devServer && {
-      devServer: {
-        historyApiFallback: true,
-        static: output.path,
-        compress: true,
-        port: devServerPort
-      }
-    }),
+    ...(devServer &&
+      preset === 'client' && {
+        devServer: {
+          historyApiFallback: true,
+          static: output.path,
+          port: devServerPort
+        }
+      }),
     output,
     resolve,
     optimization,

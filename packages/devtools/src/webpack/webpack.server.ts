@@ -1,16 +1,15 @@
+import { resolve } from 'path'
 import { RunScriptWebpackPlugin } from 'run-script-webpack-plugin'
 import { Configuration, IgnorePlugin, optimize, WebpackPluginInstance } from 'webpack'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import nodeExternals from 'webpack-node-externals'
 import WebpackBar from 'webpackbar'
 
 import { ModeArgs } from './webpack.types'
 
-const analyzerPort = 9000
 const hotPoll = 300
 
 const getWebpackServerConfig = (args: ModeArgs): Configuration => {
-  const { mode, isAnalyze, color = '#2EA1F8' } = args
+  const { mode, color = '#2EA1F8', packageName } = args
   const isDevelopment = mode === 'development'
 
   const limitChunkCountPlugin: WebpackPluginInstance = new optimize.LimitChunkCountPlugin({
@@ -30,8 +29,16 @@ const getWebpackServerConfig = (args: ModeArgs): Configuration => {
 
   const webpackConfig: Configuration = {
     target: 'node',
-    externals: [nodeExternals()],
-    plugins: [limitChunkCountPlugin, ignorePlugin, webpackBarPlugin]
+    mode,
+    externals: [{ express: 'commonjs express' }, nodeExternals()],
+    plugins: [limitChunkCountPlugin, ignorePlugin, webpackBarPlugin],
+    entry: resolve(__dirname, `../../../${packageName}/src/server/index.tsx`),
+    output: {
+      libraryTarget: 'commonjs2',
+      filename: 'server.js',
+      path: resolve(__dirname, `../../../${packageName}/dist`),
+      publicPath: '/'
+    }
   }
 
   if (isDevelopment) {
@@ -51,17 +58,9 @@ const getWebpackServerConfig = (args: ModeArgs): Configuration => {
     }
 
     webpackConfig.externals = [
+      { express: 'commonjs express' },
       nodeExternals({
         allowlist: [`webpack/hot/poll?${hotPoll}`]
-      })
-    ]
-  }
-
-  if (isAnalyze) {
-    webpackConfig.plugins = [
-      ...(webpackConfig.plugins || []),
-      new BundleAnalyzerPlugin({
-        analyzerPort
       })
     ]
   }
