@@ -7,10 +7,9 @@ import GlobalStyle from '~/components/GlobalStyles/GlobalStyles'
 const App: FC<AppProps> = ({ Component, pageProps }) => (
   <>
     <Head>
-      <GlobalStyle />
       <title>San Pancho</title>
     </Head>
-
+    <GlobalStyle />
     <Component {...pageProps} />
   </>
 )
