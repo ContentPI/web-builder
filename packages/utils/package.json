@@ -1,0 +1,19 @@
+{
+  "name": "@web-builder/utils",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "npm run --prefix ../../ lint",
+    "lint:fix": "npm run --prefix ../../ lint:fix"
+  },
+  "author": "Carlos Santana",
+  "license": "MIT",
+  "dependencies": {
+    "slug": "^5.3.0"
+  }
+}
