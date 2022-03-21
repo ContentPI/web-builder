@@ -1,23 +1,13 @@
 import React, { FC } from 'react'
 
-import CodeJobsIndex from '../sites/codejobs/pages/index'
-import SanPanchoIndex from '../sites/san-pancho/pages/index'
 import { Site } from '../types'
+import Switcher from './switcher'
 
-type PageProps = {
-  site: string
+type Props = {
+  site: Site
 }
 
-const IndexPage: FC<PageProps> = ({ site }) => {
-  switch (site) {
-    case Site.SanPancho:
-      return <SanPanchoIndex />
-    case Site.CodeJobs:
-      return <CodeJobsIndex />
-    default:
-      return <h1>Index</h1>
-  }
-}
+const Page: FC<Props> = ({ site }) => <Switcher site={site} page="index" />
 
 export const getServerSideProps = async () => ({
   props: {
@@ -25,4 +15,4 @@ export const getServerSideProps = async () => ({
   }
 })
 
-export default IndexPage
+export default Page
