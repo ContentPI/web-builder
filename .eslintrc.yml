@@ -85,6 +85,8 @@ rules:
   prettier/prettier: [error, { arrowParens: always }]
   # We like nested ternaries
   no-nested-ternary: 'off'
+  # Conflicting with prettier
+  react/jsx-wrap-multilines: 'off'
 
   # ⭐ TypeScript rules
   # We don't like comma-dangle

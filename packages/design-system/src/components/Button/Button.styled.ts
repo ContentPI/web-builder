@@ -94,11 +94,24 @@ const sizeStyles: CSSObject = {
 // Button Styles
 const buttonStyles: CSSObject = {
   [`&.${BASE_CLASS_NAME}`]: {
-    border: '1px solid transparent',
-    fontWeight: FontWeight.normal,
+    minWidth: '6.875rem',
+    marginRight: '0.25rem',
+    marginBottom: '0.5rem',
+    padding: '0.75rem 1.5rem',
+    borderRadius: '0.8rem',
+    fontWeight: 400,
+    fontSize: '1rem',
+    display: 'inline-block',
+    lineHeight: 1.5,
     textAlign: 'center',
+    textDecoration: 'none',
+    verticalAlign: 'middle',
+    cursor: 'pointer',
     userSelect: 'none',
-    verticalAlign: 'middle'
+    backgroundColor: 'transparent',
+    border: '1px solid transparent',
+    transition:
+      'color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out'
   },
   [`&.${BASE_CLASS_NAME}-disabled`]: {
     pointerEvents: 'none',
@@ -129,10 +142,10 @@ export const Button = styled.button({
   position: 'relative',
   img: {
     position: 'absolute',
-    left: '11px',
-    top: '7px',
+    left: '15px',
+    top: '15px',
     "*[dir='rtl'] &": {
-      right: '14px'
+      right: '15px'
     }
   },
   ...shapeStyles,
@@ -151,8 +164,8 @@ export const LinkButton = styled.span({
     textDecoration: 'none',
     img: {
       position: 'absolute',
-      top: '-1px',
-      left: '-6px',
+      top: '3px',
+      left: '-10px',
       "*[dir='rtl'] &": {
         right: '-6px'
       }

@@ -8,8 +8,9 @@ export enum Blue {
   V050 = '#DBEDFF',
   V100 = '#C9E3FF',
   V150 = '#4AA3FF',
-  V200 = '#3F8BD9',
-  V250 = '#2C6299'
+  V200 = '#009ED6',
+  V250 = '#007BC5',
+  V300 = '#004481'
 }
 
 export enum Gray {
@@ -46,6 +47,6 @@ export enum Yellow {
   V050 = '#FEF1D5',
   V100 = '#FEEAC0',
   V150 = '#FCB92C',
-  V200 = '#D69D25',
+  V200 = '#FB9F44',
   V250 = '#976f1a'
 }

@@ -19,14 +19,14 @@ type Palette = {
 
 export const PrimaryPalette: Palette = {
   alert: {
-    main: Green.V050,
-    dark: Green.V150,
-    contrastText: Green.V500
+    main: Blue.V050,
+    dark: Blue.V150,
+    contrastText: Green.V300
   },
   common: {
-    main: Green.V250,
-    light: Green.V200,
-    dark: Green.V300,
+    main: Blue.V250,
+    light: Blue.V200,
+    dark: Blue.V300,
     contrastText: Base.WHITE
   }
 }
