@@ -3,7 +3,7 @@ import Prism from 'prismjs'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'prismjs/components/prism-jsx.min'
 
-import GlobalStyles from '../src/components/GlobalStyles'
+import GlobalStyles from './GlobalStyles'
 import { BodyStyles, StyledApp, StyledWrapper } from './App.styled'
 import Content from './Content'
 import Sidebar from './Sidebar'

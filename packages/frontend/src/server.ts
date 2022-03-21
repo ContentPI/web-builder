@@ -13,8 +13,8 @@ nextApp.prepare().then(() => {
   const app: Application = express()
 
   // Sites static directories
-  app.use(express.static(path.join(__dirname, './sites/blog/static')))
-  app.use(express.static(path.join(__dirname, './sites/san-pancho/static')))
+  app.use(express.static(path.join(__dirname, '../public')))
+  app.use(express.static(path.join(__dirname, `./sites/${process.env.SITE}/static`)))
 
   // Traffic handling
   app.all('*', (req: Request, res: Response) => {

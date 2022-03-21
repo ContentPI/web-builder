@@ -1,7 +1,7 @@
 import { ValueOf } from './utils'
 
 export const Site = {
-  Blog: 'blog',
+  CodeJobs: 'codejobs',
   SanPancho: 'san-pancho'
 } as const
 

@@ -1,14 +1,12 @@
-import WorkSansRegularWoff from '../../fonts/worksans/worksans-regular.woff'
-import WorkSansRegularWoff2 from '../../fonts/worksans/worksans-regular.woff2'
 import { customThemesCssVars, themeRootVars } from '../../theme'
+import workSans from './fonts/workSans'
 
 const fontStyles = `
   @font-face {
-    font-family: 'WorkSans';
+    font-family: WorkSans;
     font-style: normal;
     font-weight: 400;
-    src: url('${WorkSansRegularWoff}') format('woff'),
-      url('${WorkSansRegularWoff2}') format('woff2');
+    src: url(${workSans});
   }
 `
 
@@ -17,7 +15,7 @@ const htmlReset = `
     outline: none;
   }
   body {
-    font-family: 'WorkSans';
+    font-family: WorkSans;
     margin: 0;
     padding: 0;
   }

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import BlogIndex from '../sites/blog/pages/index'
+import CodeJobsIndex from '../sites/codejobs/pages/index'
 import SanPanchoIndex from '../sites/san-pancho/pages/index'
 import { Site } from '../types'
 
@@ -12,8 +12,8 @@ const IndexPage: FC<PageProps> = ({ site }) => {
   switch (site) {
     case Site.SanPancho:
       return <SanPanchoIndex />
-    case Site.Blog:
-      return <BlogIndex />
+    case Site.CodeJobs:
+      return <CodeJobsIndex />
     default:
       return <h1>Index</h1>
   }
