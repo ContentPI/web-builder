@@ -1,10 +1,8 @@
 export type WebpackMode = 'production' | 'development'
 export type ConfigType = 'web' | 'package'
-export type Preset = 'client' | 'server'
 export type Package = 'design-system' | 'frontend'
 export type ConfigArgs = {
   mode: WebpackMode
-  preset?: Preset
   type: ConfigType
   sandbox?: 'true' | 'false'
 }
@@ -18,7 +16,6 @@ export type ModeArgs = {
   port?: number
   analyzerPort?: number
   color?: string
-  preset?: Preset
   htmlOptions?: {
     title: string
     template: string
