@@ -1,21 +1,21 @@
-import { cxGenerator } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { FC } from 'react'
 
 import { Color, Shape } from '../../types'
 import { Avatar, BASE_CLASS_NAME } from './Avatar.styled'
 
-interface IProps {
+type Props = {
   color?: Color
   shape?: Shape
 }
 
-const AvatarComponent: FC<IProps> = ({
+const AvatarComponent: FC<Props> = ({
   children,
   color = Color.primary,
   shape = Shape.round,
   ...restProps
 }) => {
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: [color, shape]
   })

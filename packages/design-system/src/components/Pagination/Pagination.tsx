@@ -1,4 +1,4 @@
-import { cxGenerator } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { FC, ReactElement, ReactNode } from 'react'
 import { LinkProps } from 'react-router-dom'
 
@@ -6,7 +6,7 @@ import { Color } from '../../types'
 import Icon from '../Icon'
 import { BASE_CLASS_NAME, Li, SpanLink, Ul } from './Pagination.styled'
 
-export interface IProps {
+export type Props = {
   color?: Color
   page: number
   total: number
@@ -15,15 +15,15 @@ export interface IProps {
   Link?: LinkProps | any
 }
 
-const Pagination: FC<IProps> = ({
+const Pagination: FC<Props> = ({
   Link,
   href,
   rowsPerPage,
   page,
-  total,
+  total: count,
   color = Color.primary
 }) => {
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: [color]
   })
@@ -139,8 +139,8 @@ const Pagination: FC<IProps> = ({
     return null
   }
 
-  const getPaginationStart = (page: number): number => {
-    const paginationPage = page > 0 ? page : 0
+  const getPaginationStart = (pg: number): number => {
+    const paginationPage = pg > 0 ? pg : 0
     return paginationPage > 0 ? paginationPage * maxElementsPerPage - maxElementsPerPage : 0
   }
 
@@ -194,7 +194,7 @@ const Pagination: FC<IProps> = ({
       pageNext = getPageNext(currentPage, pages)
       pagePrevious = getPagePrevious(start, currentPage)
     }
-    console.log('classNames', classNames)
+
     return (
       <Ul className={classNames}>
         {pagePrevious}
@@ -206,8 +206,8 @@ const Pagination: FC<IProps> = ({
 
   const start = getPaginationStart(page)
 
-  if (total > maxElementsPerPage) {
-    return buildPagination(total, maxElementsPerPage, start)
+  if (count > maxElementsPerPage) {
+    return buildPagination(count, maxElementsPerPage, start)
   }
 
   return null

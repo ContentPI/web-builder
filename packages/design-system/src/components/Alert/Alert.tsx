@@ -1,17 +1,17 @@
-import { cxGenerator } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { FC } from 'react'
 
 import { Alignment, Color, Shape } from '../../types'
 import { Alert, BASE_CLASS_NAME } from './Alert.styled'
 
-interface IProps {
+type Props = {
   alignment?: Alignment
   color?: Color
   shape?: Shape
   fullWidth?: boolean
 }
 
-const AlertComponent: FC<IProps> = ({
+const AlertComponent: FC<Props> = ({
   alignment = Alignment.left,
   color = Color.primary,
   children,
@@ -20,7 +20,7 @@ const AlertComponent: FC<IProps> = ({
 }) => {
   const classes = [alignment, shape, color]
 
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: classes
   })

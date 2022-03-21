@@ -1,7 +1,7 @@
-import { cx } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { FC, ReactElement } from 'react'
 
-interface Props {
+type Props = {
   children?: ReactElement | string
   className?: string
   type?: string
@@ -15,23 +15,22 @@ interface Props {
   onClick?(): void
 }
 
-const Icon: FC<Props> = (props) => {
-  const { type, className = '', children, library = 'fontawesome', width = 24 } = props
-  const height = props.height !== width ? width : 24
-  const iconProps = { ...props }
-
-  delete iconProps.type
-  delete iconProps.className
-  delete iconProps.library
+const Icon: FC<Props> = ({
+  height,
+  type,
+  className = '',
+  children,
+  library = 'fontawesome',
+  width = 24,
+  onClick,
+  ...props
+}) => {
+  const h = height !== width ? width : 24
+  const iconProps: any = { ...props }
 
   let style = {}
 
-  if (library === 'fontawesome') {
-    delete iconProps.width
-    delete iconProps.height
-  }
-
-  if (props.onClick) {
+  if (onClick) {
     style = {
       cursor: 'pointer'
     }
@@ -40,20 +39,20 @@ const Icon: FC<Props> = (props) => {
   if (library !== 'fontawesome') {
     const CustomIcon = require(`./icons/${library}/${type}.svg`).default
     iconProps.width = width
-    iconProps.height = height
+    iconProps.height = h
 
     return <CustomIcon {...iconProps} />
   }
 
   if (children) {
     return (
-      <i style={style} {...iconProps} className={cx('Icon', className)}>
+      <i style={style} {...iconProps} className={cx.join('Icon', className)}>
         {children}
       </i>
     )
   }
 
-  return <i style={style} {...iconProps} className={cx('Icon', `${type} ${className}`)} />
+  return <i style={style} {...iconProps} className={cx.join('Icon', `${type} ${className}`)} />
 }
 
 export default Icon

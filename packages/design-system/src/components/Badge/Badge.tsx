@@ -1,4 +1,4 @@
-import { cxGenerator } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { FC } from 'react'
 
 import { Color, Shape } from '../../types'
@@ -12,7 +12,7 @@ interface IProps {
 const BadgeComponent: FC<IProps> = ({ children, color = Color.primary, shape = Shape.regular }) => {
   const classes = [shape, color]
 
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: classes
   })

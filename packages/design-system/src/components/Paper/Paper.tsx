@@ -1,4 +1,4 @@
-import { cxGenerator } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { FC } from 'react'
 
 import { BASE_CLASS_NAME, PaperBase } from './Paper.styled'
@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const Paper: FC<IProps> = ({ children, className }) => {
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: [],
     className

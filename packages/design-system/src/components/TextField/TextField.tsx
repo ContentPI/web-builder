@@ -1,7 +1,7 @@
-import { cxGenerator } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { FC, useState } from 'react'
 
-import Input, { IProps as InputProps } from '../Input'
+import Input, { Props as InputProps } from '../Input'
 import Text from '../Text'
 import TextArea, { ITextAreaProps } from '../TextArea'
 import { BASE_CLASS_NAME, TextFieldBase, TextFieldHelpersWrapper } from './TextField.styled'
@@ -14,10 +14,12 @@ interface ITextFieldBaseProps {
   textArea?: boolean
   minLength?: number
   maxLength?: number
+  type?: string
+  value?: string
 }
 
-interface TextFieldInputProps extends ITextFieldBaseProps, InputProps {}
-interface TextFieldAreaProps extends ITextFieldBaseProps, ITextAreaProps {}
+// interface TextFieldInputProps extends ITextFieldBaseProps, InputProps {}
+// interface TextFieldAreaProps extends ITextFieldBaseProps, ITextAreaProps {}
 
 type ILength = {
   min?: number | undefined
@@ -47,7 +49,7 @@ const ValidateLength = ({ length, value }: IValidateLength): string | null => {
   return null
 }
 
-const TextField: FC<TextFieldInputProps & TextFieldAreaProps> = (props) => {
+const TextField: FC<any> = (props) => {
   const {
     label,
     helperText,
@@ -73,7 +75,7 @@ const TextField: FC<TextFieldInputProps & TextFieldAreaProps> = (props) => {
     value: formatValue
   })
 
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: [fullWidthClass, helperTextClass]
   })
@@ -90,7 +92,7 @@ const TextField: FC<TextFieldInputProps & TextFieldAreaProps> = (props) => {
           {...restProps}
         />
       ) : (
-        <TextArea status={status} fullWidth={fullWidth} {...restProps} />
+        <TextArea fullWidth={fullWidth} {...restProps} />
       )}
 
       {(maxLength || errorMsg || helperText) && (

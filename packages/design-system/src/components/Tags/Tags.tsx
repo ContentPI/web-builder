@@ -1,5 +1,5 @@
+import { slug } from '@web-builder/utils'
 import React, { FC, useEffect, useState } from 'react'
-import slug from 'slug'
 
 import Icon from '../Icon'
 import { Tags } from './Tags.styled'
@@ -34,7 +34,7 @@ const TagsComponent: FC<IProps> = (props) => {
       const tagIndex = findTagIndex(newTag)
 
       if (tagIndex === -1 && newTag.trim() !== '') {
-        const newVal = slug(newTag, { lower: true })
+        const newVal = slug(newTag)
         const newTags = [...tagsArr, { option: newTag, value: newVal }]
 
         setTags(newTags)

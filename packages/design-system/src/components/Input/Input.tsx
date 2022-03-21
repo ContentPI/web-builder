@@ -1,18 +1,18 @@
-import { cxGenerator } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { ComponentPropsWithoutRef, ElementType, FC, useState } from 'react'
 
 import { Color } from '../../types'
 import Icon from '../Icon'
 import { BASE_CLASS_NAME, InputBase, InputIcon, InputWrapper } from './Input.styled'
 
-export interface IProps extends ComponentPropsWithoutRef<'input'> {
+export interface Props extends ComponentPropsWithoutRef<'input'> {
   fullWidth?: boolean
   leftIcon?: ElementType
   rightIcon?: ElementType
   status?: Color
 }
 
-const Input: FC<IProps> = ({
+const Input: FC<Props> = ({
   status = '',
   type = 'text',
   leftIcon,
@@ -29,7 +29,7 @@ const Input: FC<IProps> = ({
   const focusClass = hasFocus ? 'focus' : ''
   const fullWidthClass = fullWidth ? 'full-width' : ''
 
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: [status, focusClass, fullWidthClass]
   })

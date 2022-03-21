@@ -2,8 +2,7 @@ import React, { FC, ReactElement } from 'react'
 
 import { Close, Container, Content, Dialog, GlobalStyle, Img } from './Dialog.styled'
 
-// Interfaces
-interface iProps {
+type Props = {
   open: boolean
   onOpen?(): void
   handleClose?(): void
@@ -16,7 +15,7 @@ interface iProps {
   }
 }
 
-const DialogComponent: FC<iProps> = ({
+const DialogComponent: FC<Props> = ({
   children,
   open,
   onOpen,

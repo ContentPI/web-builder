@@ -1,4 +1,4 @@
-import { cxGenerator } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { FC } from 'react'
 
 import { Color, TextAlign, Typography } from '../../types'
@@ -19,7 +19,7 @@ const TextComponent: FC<TextProps> = ({
   component = undefined,
   ...restProps
 }) => {
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: [align],
     className

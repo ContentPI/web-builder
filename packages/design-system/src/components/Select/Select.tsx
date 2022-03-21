@@ -1,4 +1,4 @@
-import { cxGenerator } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { FC, MutableRefObject, ReactElement, useEffect, useRef, useState } from 'react'
 import { CSSObject } from 'styled-components'
 
@@ -12,7 +12,7 @@ type Option = {
   selected?: boolean
 }
 
-interface IProps {
+type Props = {
   children?: ReactElement
   className?: string
   color?: Color
@@ -27,7 +27,7 @@ interface IProps {
   size?: Size
 }
 
-const SelectComponent: FC<IProps> = ({
+const SelectComponent: FC<Props> = ({
   className = '',
   color = Color.primary,
   label = '',
@@ -38,7 +38,7 @@ const SelectComponent: FC<IProps> = ({
 }) => {
   const classes = [color]
 
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: classes
   })

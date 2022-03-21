@@ -1,24 +1,24 @@
-import { cxGenerator } from '@contentpi/lib'
+import { cx } from '@web-builder/utils'
 import React, { FC, Fragment } from 'react'
 import { LinkProps } from 'react-router-dom'
 
 import Text from '../Text'
 import { BASE_CLASS_NAME, Breadcrumb, BreadcrumbDivider } from './Breadcrumb.styled'
 
-type labelBody = {
+type LabelBody = {
   title: string
   link?: string
 }
 
-interface IProps {
-  labels: Array<labelBody>
+type Props = {
+  labels: Array<LabelBody>
   Link?: LinkProps | any
 }
 
-const BreadcrumbComponent: FC<IProps> = (props) => {
+const BreadcrumbComponent: FC<Props> = (props) => {
   const { labels, Link } = props
 
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: []
   })

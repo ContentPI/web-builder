@@ -1,32 +1,11 @@
+import { cx } from '@web-builder/utils'
 import React, { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
 
 import { ButtonVariant, Color, Shape, Size, Variant } from '../../types'
 import Spinner from '../Spinner'
 import { BASE_CLASS_NAME, Button, LinkButton } from './Button.styled'
 
-interface Props {
-  ccn: string
-  data: string[]
-  className?: string
-}
-
-export function cxGenerator({ ccn, data, className }: Props): string {
-  const classList = [ccn]
-
-  data.forEach((key: string) => {
-    if (key !== '') {
-      classList.push(`${ccn}-${key}`)
-    }
-  })
-
-  if (className) {
-    classList.push(className)
-  }
-
-  return classList.join(' ')
-}
-
-interface IProps extends ComponentPropsWithoutRef<'button'> {
+interface Props extends ComponentPropsWithoutRef<'button'> {
   color?: Color
   fullWidth?: boolean
   size?: Size
@@ -38,7 +17,7 @@ interface IProps extends ComponentPropsWithoutRef<'button'> {
   loadingText?: string
 }
 
-const ButtonComponent: FC<IProps> = ({
+const ButtonComponent: FC<Props> = ({
   color = Color.primary,
   children,
   href = undefined,
@@ -59,7 +38,7 @@ const ButtonComponent: FC<IProps> = ({
     classes.push('disabled')
   }
 
-  const classNames = cxGenerator({
+  const classNames = cx.generate({
     ccn: BASE_CLASS_NAME,
     data: classes
   })
