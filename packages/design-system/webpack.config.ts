@@ -3,7 +3,6 @@ import {
   getWebpackCommonConfig,
   getWebpackDevelopmentConfig,
   getWebpackProductionConfig,
-  getWebpackServerConfig,
   log
 } from '@web-builder/devtools'
 import { Configuration } from 'webpack'
@@ -11,11 +10,6 @@ import { merge } from 'webpack-merge'
 
 // Package Name
 const packageName = 'design-system'
-
-// Preset Config
-const getPresetConfig = {
-  server: getWebpackServerConfig
-}
 
 // Mode Config
 const getModeConfig = {
@@ -48,17 +42,11 @@ const webpackConfig: (args: ConfigArgs) => Promise<Configuration> = async (
     devServer: isSandbox
   })
 
-  // Server Configuration
-  const serverConfig =
-    type === 'web' && preset === 'server'
-      ? getPresetConfig[preset]({ mode, packageName, configType: type })
-      : {}
-
   // Mode Configuration
   const modeConfiguration = mode && type ? modeConfig({ mode, type }) : {}
 
   // Merging all configurations
-  const webpackConfiguration = merge(commonConfiguration, modeConfiguration, serverConfig)
+  const webpackConfiguration = merge(commonConfiguration, modeConfiguration)
 
   // Logging Webpack Configuration
   log({ tag: 'Webpack Configuration', json: webpackConfiguration, type: 'warning' })
