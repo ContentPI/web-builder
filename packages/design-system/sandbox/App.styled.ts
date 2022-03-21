@@ -1,8 +1,10 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
+import bgImage from './bg.png'
+
 export const BodyStyles = createGlobalStyle`
   body {
-    background-image: url("http://learntechsystems.com/wp-content/uploads/2021/06/bg.png") !important;
+    background-image: url("${bgImage}") !important;
     background-position: left;
     background-repeat: repeat-y;
     background-color: #fff !important;

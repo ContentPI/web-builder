@@ -1,12 +1,14 @@
+// Dependencies
 import React, { FC, ReactElement } from 'react'
 
+// Styled
 import {
   TableBase,
-  TableBody,
-  TableCol,
   TableHeader,
+  TableBody,
+  TableRow,
   TableHeaderCol,
-  TableRow
+  TableCol,
 } from './Table.styled'
 
 interface IProps {
@@ -20,9 +22,9 @@ const Table: FC<IProps> = ({ data }) => (
   <TableBase>
     <TableHeader>
       <TableRow>
-        {data.columns.map((header) => (
-          <TableHeaderCol key={`header-${header}`}>{header}</TableHeaderCol>
-        ))}
+        {data.columns.map(header => {
+          return <TableHeaderCol key={`header-${header}`}>{header}</TableHeaderCol>
+        })}
       </TableRow>
     </TableHeader>
     <TableBody>

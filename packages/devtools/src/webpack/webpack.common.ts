@@ -1,6 +1,4 @@
-import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlWebPackPlugin from 'html-webpack-plugin'
-import { address } from 'ip'
 import path from 'path'
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components'
 import { Configuration, WebpackPluginInstance } from 'webpack'
@@ -108,10 +106,16 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
       : {}
 
   // Rules
-  const include: Record<string, string[]> = {
+  const svgUrlLoaderInclude: Record<string, string[]> = {
     'design-system': [
-      path.resolve(__dirname, '../../../design-system/src/components/Spinner/loaders')
+      path.resolve(__dirname, '../../../design-system/src/components/Spinner/loaders'),
+      path.resolve(__dirname, '../../../design-system/src/components/Dialog/icons'),
+      path.resolve(__dirname, '../../../design-system/src/icons')
     ]
+  }
+
+  const svgrWebpackInclude: Record<string, string[]> = {
+    'design-system': [path.resolve(__dirname, '../../../design-system/src/components/Icon/icons')]
   }
 
   const rules = [
@@ -156,11 +160,22 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
       oneOf: [
         {
           use: 'svg-url-loader',
-          include: configType === 'package' ? include[packageName] ?? [] : []
+          include: configType === 'package' ? svgUrlLoaderInclude[packageName] ?? [] : []
+        },
+        {
+          use: '@svgr/webpack',
+          include: configType === 'package' ? svgrWebpackInclude[packageName] ?? [] : []
         }
       ]
     }
   ]
+
+  if (configType === 'package' && sandbox) {
+    rules.push({
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      use: ['file-loader']
+    })
+  }
 
   const webpackConfig = {
     entry,
