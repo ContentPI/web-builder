@@ -25,9 +25,8 @@ const modeConfig: (args: ConfigArgs) => Configuration = ({ mode, type }) => {
 
 // Merging all configurations
 const webpackConfig: (args: ConfigArgs) => Promise<Configuration> = async (
-  { mode, preset, type, sandbox } = {
+  { mode, type, sandbox } = {
     mode: 'production',
-    preset: 'client',
     type: 'web',
     sandbox: 'false'
   }

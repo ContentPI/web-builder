@@ -14,7 +14,7 @@
     "lint": "npm run --prefix ../../ lint",
     "lint:fix": "npm run --prefix ../../ lint:fix",
     "prepublishOnly": "npm run lint && npm run build",
-    "sandbox": "webpack serve --config=webpack.config.ts --env mode=development --env type=package --env sandbox=true",
+    "sandbox": "webpack serve --open --config=webpack.config.ts --env mode=development --env type=package --env sandbox=true",
     "test": "jest",
     "versioning": "./scripts/versioning.sh",
     "webpack:development": "webpack --config=webpack.config.ts --env mode=development --env type=package",
@@ -27,6 +27,7 @@
     "prismjs": "^1.27.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.2",
     "slug": "^5.3.0",
     "webpack": "^5.70.0",
     "webpack-merge": "^5.8.0"
