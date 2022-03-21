@@ -49,7 +49,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
     path: path.resolve(__dirname, `../../../${packageName}/dist`),
     filename: mode === 'development' ? '[name].js' : '[name].[contenthash].js',
     chunkFilename: mode === 'development' ? '[name].js' : '[name].[contenthash].js',
-    publicPath: mode === 'development' ? `http://${address()}:${devServerPort}/` : '/',
+    publicPath: '/',
     ...(configType === 'package' && {
       filename: 'index.js',
       libraryTarget: 'umd',
