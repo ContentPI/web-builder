@@ -1,11 +1,7 @@
-// Dependencies
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import slug from 'slug'
 
-// Components
 import Icon from '../Icon'
-
-// Styles
 import { Tags } from './Tags.styled'
 
 type Tag = {
@@ -19,7 +15,7 @@ interface IProps {
   getTags(tags: Tag[]): void
 }
 
-const TagsComponent: FC<IProps> = props => {
+const TagsComponent: FC<IProps> = (props) => {
   const { tags = [], getTags, label = 'Add new tag' } = props
   const [tagsArr, setTags] = useState(tags)
   const [newTag, setTag] = useState('')
@@ -31,7 +27,7 @@ const TagsComponent: FC<IProps> = props => {
     }
   })
 
-  const findTagIndex = (tagValue: string): number => tagsArr.findIndex(t => t.value === tagValue)
+  const findTagIndex = (tagValue: string): number => tagsArr.findIndex((t) => t.value === tagValue)
 
   const onKeyPressed = ({ key }: { key: string }): void => {
     if (key === 'Enter') {

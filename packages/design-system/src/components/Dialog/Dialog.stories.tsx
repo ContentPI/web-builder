@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import Button from '../Button'
 import TextField from '../TextField'
 import Dialog from './index'
@@ -10,14 +11,14 @@ const stories = {
       name: 'children',
       type: 'Node',
       default: '',
-      description: 'The content of the component',
+      description: 'The content of the component'
     },
     {
       name: 'color',
       type: 'StatusColor',
       default: 'primary',
-      description: 'The color of the Dialog',
-    },
+      description: 'The color of the Dialog'
+    }
   ],
   stories: [
     {
@@ -85,9 +86,9 @@ const stories = {
           </Dialog>
         </>
        )
-     `,
-    },
-  ],
+     `
+    }
+  ]
 }
 
 export default stories

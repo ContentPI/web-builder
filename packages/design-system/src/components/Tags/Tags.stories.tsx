@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Tags from './index'
 
 const stories = {
@@ -31,7 +32,7 @@ const stories = {
       render: (
         <Tags
           label="Agrega aqui"
-          getTags={tags => console.log(tags)}
+          getTags={(tags) => console.log(tags)}
           tags={[{ option: 'opcion1', value: 'hola' }]}
         />
       ),

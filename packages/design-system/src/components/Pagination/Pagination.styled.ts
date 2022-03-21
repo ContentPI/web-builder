@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-// Types
-import { mapColorStyles, themeCssVars, Gray } from '../../theme'
+import { Gray, mapColorStyles, themeCssVars } from '../../theme'
 import { Colors } from '../../types'
 
 // Base Class Name
@@ -11,12 +10,12 @@ export const BASE_CLASS_NAME = 'pagination'
 const colorStyles = mapColorStyles(Colors, BASE_CLASS_NAME, themeCssVars, {
   '& > li > a > span.active': {
     color: 'contrastText',
-    backgroundColor: 'main',
+    backgroundColor: 'main'
   },
   '& > li > a > span:hover': {
     color: 'contrastText',
-    backgroundColor: 'main',
-  },
+    backgroundColor: 'main'
+  }
 })
 
 export const Ul = styled.ul({
@@ -28,15 +27,15 @@ export const Ul = styled.ul({
   marginTop: '90px',
   marginBottom: '50px',
   width: '100%',
-  ...colorStyles,
+  ...colorStyles
 })
 
 export const Li = styled.li({
   margin: '5px',
   a: {
     color: Gray.V250,
-    textDecoration: 'none',
-  },
+    textDecoration: 'none'
+  }
 })
 
 export const SpanLink = styled.span({
@@ -44,7 +43,7 @@ export const SpanLink = styled.span({
   borderRadius: '5px',
   i: {
     '*[dir="rtl"] &': {
-      transform: 'rotateY(180deg)',
-    },
-  },
+      transform: 'rotateY(180deg)'
+    }
+  }
 })

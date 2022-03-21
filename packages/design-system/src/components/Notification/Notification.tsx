@@ -1,12 +1,8 @@
-// Dependencies
 import React, { FC, useEffect } from 'react'
-import { ToastProvider, useToasts, AppearanceTypes, Placement } from 'react-toast-notifications'
+import { AppearanceTypes, Placement, ToastProvider, useToasts } from 'react-toast-notifications'
 
-// Custom Notification
-import CustomNotification from './CustomNotification'
-
-// Hooks
 import usePrevious from '../../usePrevious'
+import CustomNotification from './CustomNotification'
 
 type Props = {
   notification: {
@@ -22,7 +18,8 @@ type Props = {
 const NotificationWrapper: FC<Props> = ({ notification, type, maxNotifications = 5 }) => {
   const { addToast } = useToasts()
   const prevProps: any = usePrevious({ notification })
-  const notifications = document.querySelectorAll('.notification') || []
+  const notifications =
+    (typeof window !== 'undefined' && document.querySelectorAll('.notification')) || []
 
   useEffect(() => {
     if (
@@ -43,7 +40,7 @@ const Notification: FC<Props> = ({
   type,
   position = 'top-right',
   duration = 0,
-  maxNotifications,
+  maxNotifications
 }) => (
   <ToastProvider
     components={{ Toast: CustomNotification }}

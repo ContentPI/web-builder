@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Badge from './index'
 
 const stories = {
@@ -8,14 +9,14 @@ const stories = {
       name: 'children',
       type: 'Node',
       default: '',
-      description: 'The content of the component',
+      description: 'The content of the component'
     },
     {
       name: 'color',
       type: 'StatusColor',
       default: 'primary',
-      description: 'The color of the badge',
-    },
+      description: 'The color of the badge'
+    }
   ],
   stories: [
     {
@@ -25,7 +26,7 @@ const stories = {
       prop: false,
       code: `
       <Badge />
-      `,
+      `
     },
     {
       name: 'Badge with color',
@@ -45,9 +46,9 @@ const stories = {
       <Badge color="success">Foo</Badge>
       <Badge color="danger">Foo</Badge>
       <Badge color="warning">Foo</Badge>
-      `,
-    },
-  ],
+      `
+    }
+  ]
 }
 
 export default stories

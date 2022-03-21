@@ -1,10 +1,6 @@
-// Dependencies
 import styled from 'styled-components'
 
-// Theme
-import { calc, themeCssVars, mapColorStyles, Base } from '../../theme'
-
-// Types
+import { Base, calc, mapColorStyles, themeCssVars } from '../../theme'
 import { CalcType, Colors, FontSize } from '../../types'
 
 // Base Class Name
@@ -14,8 +10,8 @@ export const BASE_CLASS_NAME = 'textarea'
 const colorStyles = mapColorStyles(Colors, BASE_CLASS_NAME, themeCssVars, {
   borderColor: 'main',
   '&:hover': {
-    borderColor: 'main',
-  },
+    borderColor: 'main'
+  }
 })
 
 export const TextAreaWrapper = styled.div({
@@ -29,20 +25,20 @@ export const TextAreaWrapper = styled.div({
   width: '250px',
   '&::placeholder': {
     color: Base.WHITE,
-    opacity: 1,
+    opacity: 1
   },
   '&:hover': {
-    borderColor: themeCssVars.palette.primary.common.main,
+    borderColor: themeCssVars.palette.primary.common.main
   },
   [`&.${BASE_CLASS_NAME}-focus`]: {
-    borderColor: themeCssVars.palette.primary.common.main,
+    borderColor: themeCssVars.palette.primary.common.main
   },
   [`&.${BASE_CLASS_NAME}-full-width`]: {
-    width: '100%',
+    width: '100%'
   },
   display: 'flex',
   alignItems: 'center',
-  ...colorStyles,
+  ...colorStyles
 })
 
 export const TextArea = styled.textarea({
@@ -54,5 +50,5 @@ export const TextArea = styled.textarea({
   lineHeight: '20px',
   outline: 'none',
   resize: 'none',
-  ...colorStyles,
+  ...colorStyles
 })

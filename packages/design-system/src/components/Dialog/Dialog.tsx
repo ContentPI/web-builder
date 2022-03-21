@@ -1,8 +1,6 @@
-// Dependencies
 import React, { FC, ReactElement } from 'react'
 
-// Styles
-import { GlobalStyle, Dialog, Img, Content, Container, Close } from './Dialog.styled'
+import { Close, Container, Content, Dialog, GlobalStyle, Img } from './Dialog.styled'
 
 // Interfaces
 interface iProps {
@@ -24,7 +22,7 @@ const DialogComponent: FC<iProps> = ({
   onOpen,
   handleClose,
   title,
-  options = {},
+  options = {}
 }) => {
   let width = '500px'
   let height = ''

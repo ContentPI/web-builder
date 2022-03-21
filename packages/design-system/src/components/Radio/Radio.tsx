@@ -1,12 +1,8 @@
-// Dependencies
-import React, { FC, ComponentPropsWithoutRef } from 'react'
-import { cxGenerator, cx } from '@contentpi/lib'
+import { cx, cxGenerator } from '@contentpi/lib'
+import React, { ComponentPropsWithoutRef, FC } from 'react'
 
-// Types
 import { Color, Shape } from '../../types'
-
-// Styles
-import { Radio, RadioWrapper, RadioChild, RadioText, BASE_CLASS_NAME } from './Radio.styled'
+import { BASE_CLASS_NAME, Radio, RadioChild, RadioText, RadioWrapper } from './Radio.styled'
 
 interface IProps extends ComponentPropsWithoutRef<'input'> {
   color?: Color
@@ -27,7 +23,7 @@ const RadioComponent: FC<IProps> = ({
 }) => {
   const classNames = cxGenerator({
     ccn: BASE_CLASS_NAME,
-    data: [color, shape],
+    data: [color, shape]
   })
 
   return (

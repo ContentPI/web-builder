@@ -1,10 +1,6 @@
-// Dependencies
 import styled from 'styled-components'
 
-// Theme
-import { calc, Base } from '../../theme'
-
-// Types
+import { Base, calc } from '../../theme'
 import { CalcType } from '../../types'
 
 // Base Class Name
@@ -14,5 +10,5 @@ export const PaperBase = styled.div({
   width: 'max-content',
   padding: calc(CalcType.spacing, 6),
   borderRadius: calc(CalcType.spacing, 2),
-  backgroundColor: Base.WHITE,
+  backgroundColor: Base.WHITE
 })

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Notification from './index'
 
 const stories = {
@@ -8,14 +9,14 @@ const stories = {
       name: 'children',
       type: 'Node',
       default: '',
-      description: 'The content of the component',
+      description: 'The content of the component'
     },
     {
       name: 'color',
       type: 'Color',
       default: 'primary',
-      description: 'The color of the badge',
-    },
+      description: 'The color of the badge'
+    }
   ],
   stories: [
     {
@@ -64,9 +65,9 @@ const stories = {
       prop: false,
       code: `
       <Checkbox color="primary" /> Foo
-      `,
-    },
-  ],
+      `
+    }
+  ]
 }
 
 export default stories

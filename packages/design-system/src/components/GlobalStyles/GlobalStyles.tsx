@@ -1,10 +1,8 @@
-import { createGlobalStyle, css } from 'styled-components'
-
 import WorkSansRegularWoff from '../../fonts/worksans/worksans-regular.woff'
 import WorkSansRegularWoff2 from '../../fonts/worksans/worksans-regular.woff2'
 import { customThemesCssVars, themeRootVars } from '../../theme'
 
-const fontStyles = css`
+const fontStyles = `
   @font-face {
     font-family: 'WorkSans';
     font-style: normal;
@@ -14,7 +12,7 @@ const fontStyles = css`
   }
 `
 
-const htmlReset = css`
+const htmlReset = `
   * {
     outline: none;
   }
@@ -35,7 +33,7 @@ const htmlReset = css`
   }
 `
 
-const GlobalStyles = createGlobalStyle`
+const GlobalStyles = `
   ${htmlReset}
   ${fontStyles}
   ${themeRootVars}

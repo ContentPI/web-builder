@@ -1,11 +1,7 @@
-// Dependencies
 import styled, { CSSObject } from 'styled-components'
 
-// Utils
-import { getClass, themeCssVars, mapColorStyles } from '../../theme'
-
-// Types
-import { Colors, Shape, FontWeight } from '../../types'
+import { getClass, mapColorStyles, themeCssVars } from '../../theme'
+import { Colors, FontWeight, Shape } from '../../types'
 
 // Base Class Name
 export const BASE_CLASS_NAME = 'badge'
@@ -14,18 +10,18 @@ export const BASE_CLASS_NAME = 'badge'
 const colorStyles = mapColorStyles(Colors, BASE_CLASS_NAME, themeCssVars, {
   backgroundColor: 'main',
   borderColor: 'dark',
-  color: 'contrastText',
+  color: 'contrastText'
 })
 
 // Shape
 const shapeStyles: CSSObject = {
   borderRadius: '0.25rem',
   [`&.${getClass(BASE_CLASS_NAME, Shape.round)}`]: {
-    borderRadius: '2rem',
+    borderRadius: '2rem'
   },
   [`&.${getClass(BASE_CLASS_NAME, Shape.square)}`]: {
-    borderRadius: 0,
-  },
+    borderRadius: 0
+  }
 }
 
 // Styles
@@ -41,5 +37,5 @@ export const Badge = styled.span({
   textAlign: 'center',
   whiteSpace: 'nowrap',
   ...colorStyles,
-  ...shapeStyles,
+  ...shapeStyles
 })

@@ -1,15 +1,13 @@
-// Dependencies
-import React, { FC, ComponentPropsWithoutRef, useState } from 'react'
 import { cxGenerator } from '@contentpi/lib'
+import React, { ComponentPropsWithoutRef, FC, useState } from 'react'
 
-// Styles
-import { TextArea, TextAreaWrapper, BASE_CLASS_NAME } from './TextArea.styled'
+import { BASE_CLASS_NAME, TextArea, TextAreaWrapper } from './TextArea.styled'
 
 export interface IProps extends ComponentPropsWithoutRef<'textarea'> {
   fullWidth?: boolean
 }
 
-const TextAreaComponent: FC<IProps> = props => {
+const TextAreaComponent: FC<IProps> = (props) => {
   const { fullWidth = false, ...restProps } = props
 
   const [hasFocus, setHasFocus] = useState(false)
@@ -19,7 +17,7 @@ const TextAreaComponent: FC<IProps> = props => {
 
   const classNames = cxGenerator({
     ccn: BASE_CLASS_NAME,
-    data: [focusClass, fullWidthClass],
+    data: [focusClass, fullWidthClass]
   })
 
   return (

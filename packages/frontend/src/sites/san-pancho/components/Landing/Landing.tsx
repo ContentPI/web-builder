@@ -1,3 +1,4 @@
+import { Button } from '@web-builder/design-system'
 import React from 'react'
 import { FaDownload, FaFacebookSquare, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 
@@ -14,7 +15,7 @@ const Landing = () => {
       <CSSLogo src="/images/black-logo.png" />
 
       <CSSReservationText href={docsUrl} target="_blank">
-        <FaDownload /> Reservas e Información
+        <FaDownload /> Reservas e Información <Button>Jpña</Button>
       </CSSReservationText>
 
       <div>

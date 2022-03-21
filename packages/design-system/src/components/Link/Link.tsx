@@ -1,7 +1,6 @@
-// Dependencies
+import { getCurrentLanguage } from '@contentpi/lib'
 import React, { FC, ReactElement } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import { getCurrentLanguage } from '@contentpi/lib'
 import styled from 'styled-components'
 
 type Props = {
@@ -40,14 +39,14 @@ const Link: FC<Props> = ({
   title = '',
   target = undefined,
   external = false,
-  withLanguage = false,
+  withLanguage = false
 }) => {
   const currentLanguage = getCurrentLanguage()
   let href = to
   const linkProps: LinkProps = {
     onClick,
     className,
-    target,
+    target
   }
 
   if (withLanguage) {

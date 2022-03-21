@@ -1,13 +1,9 @@
-// Dependencies
-import React, { FC, Fragment } from 'react'
 import { cxGenerator } from '@contentpi/lib'
+import React, { FC, Fragment } from 'react'
 import { LinkProps } from 'react-router-dom'
 
-// Components
 import Text from '../Text'
-
-// Styles
-import { Breadcrumb, BreadcrumbDivider, BASE_CLASS_NAME } from './Breadcrumb.styled'
+import { BASE_CLASS_NAME, Breadcrumb, BreadcrumbDivider } from './Breadcrumb.styled'
 
 type labelBody = {
   title: string
@@ -19,12 +15,12 @@ interface IProps {
   Link?: LinkProps | any
 }
 
-const BreadcrumbComponent: FC<IProps> = props => {
+const BreadcrumbComponent: FC<IProps> = (props) => {
   const { labels, Link } = props
 
   const classNames = cxGenerator({
     ccn: BASE_CLASS_NAME,
-    data: [],
+    data: []
   })
 
   const items = labels.map((item, index) => {

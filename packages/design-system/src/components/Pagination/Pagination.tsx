@@ -1,16 +1,10 @@
-// Dependencies
-import React, { FC, ReactNode, ReactElement } from 'react'
 import { cxGenerator } from '@contentpi/lib'
+import React, { FC, ReactElement, ReactNode } from 'react'
 import { LinkProps } from 'react-router-dom'
 
-// Components
-import Icon from '../Icon'
-
-// Types
 import { Color } from '../../types'
-
-// Styles
-import { Ul, Li, SpanLink, BASE_CLASS_NAME } from './Pagination.styled'
+import Icon from '../Icon'
+import { BASE_CLASS_NAME, Li, SpanLink, Ul } from './Pagination.styled'
 
 export interface IProps {
   color?: Color
@@ -27,11 +21,11 @@ const Pagination: FC<IProps> = ({
   rowsPerPage,
   page,
   total,
-  color = Color.primary,
+  color = Color.primary
 }) => {
   const classNames = cxGenerator({
     ccn: BASE_CLASS_NAME,
-    data: [color],
+    data: [color]
   })
   const maxElementsPerPage = rowsPerPage || 10
   const increment = 5
@@ -42,7 +36,7 @@ const Pagination: FC<IProps> = ({
     firstPage: number,
     lastPage: number,
     start: number,
-    end: number,
+    end: number
   ): ReactNode[] => {
     const pageNav: ReactElement[] = []
 
@@ -57,7 +51,7 @@ const Pagination: FC<IProps> = ({
               <a href="#">
                 <SpanLink className="active">{pge}</SpanLink>
               </a>
-            </Li>,
+            </Li>
           )
         } else {
           pageNav.push(
@@ -65,7 +59,7 @@ const Pagination: FC<IProps> = ({
               <a href="#">
                 <SpanLink className="active">{pge}</SpanLink>
               </a>
-            </Li>,
+            </Li>
           )
         }
       } else if (Link) {
@@ -74,7 +68,7 @@ const Pagination: FC<IProps> = ({
             <Link to={`${href}${pge}`}>
               <SpanLink>{pge}</SpanLink>
             </Link>
-          </Li>,
+          </Li>
         )
       } else {
         pageNav.push(
@@ -82,7 +76,7 @@ const Pagination: FC<IProps> = ({
             <a href={`${href}${pge}`}>
               <SpanLink>{pge}</SpanLink>
             </a>
-          </Li>,
+          </Li>
         )
       }
     }
@@ -102,17 +96,16 @@ const Pagination: FC<IProps> = ({
             </Link>
           </Li>
         )
-      } else {
-        return (
-          <Li>
-            <a href={`${href}${currentPage + 1}`}>
-              <SpanLink className="next">
-                <Icon type="fas fa-chevron-right" />
-              </SpanLink>
-            </a>
-          </Li>
-        )
       }
+      return (
+        <Li>
+          <a href={`${href}${currentPage + 1}`}>
+            <SpanLink className="next">
+              <Icon type="fas fa-chevron-right" />
+            </SpanLink>
+          </a>
+        </Li>
+      )
     }
 
     return null
@@ -155,7 +148,7 @@ const Pagination: FC<IProps> = ({
     total: number,
     end: number,
     start: number,
-    elementsPerPage?: number,
+    elementsPerPage?: number
   ): ReactElement => {
     const limit = elementsPerPage || maxElementsPerPage
 

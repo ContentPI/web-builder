@@ -1,11 +1,7 @@
-// Dependencies
-import React, { FC } from 'react'
 import { cxGenerator } from '@contentpi/lib'
+import React, { FC } from 'react'
 
-// Types
 import { Alignment, Color, Shape } from '../../types'
-
-// Styles
 import { Alert, BASE_CLASS_NAME } from './Alert.styled'
 
 interface IProps {
@@ -26,7 +22,7 @@ const AlertComponent: FC<IProps> = ({
 
   const classNames = cxGenerator({
     ccn: BASE_CLASS_NAME,
-    data: classes,
+    data: classes
   })
 
   return (

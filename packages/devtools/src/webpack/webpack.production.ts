@@ -28,7 +28,10 @@ const getWebpackProductionConfig = (args: ModeArgs): Configuration => {
   const webpackConfig = {
     mode: 'production',
     devtool: false,
-    externals
+    externals,
+    ...(configType === 'package' && {
+      target: 'node'
+    })
   }
 
   return webpackConfig as Configuration

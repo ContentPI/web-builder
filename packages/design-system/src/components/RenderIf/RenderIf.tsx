@@ -1,4 +1,3 @@
-// Dependencies
 import React, { FC, ReactElement } from 'react'
 
 interface IProps {
@@ -8,7 +7,7 @@ interface IProps {
 
 const RenderIf: FC<IProps> = ({ children, isTrue }) => {
   if (isTrue) {
-    return <>{children}</>
+    return <div>{children}</div>
   }
 
   return null

@@ -45,9 +45,11 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
   // Output
   const output = {
     path: path.resolve(__dirname, `../../../${packageName}/dist`),
-    filename: mode === 'development' ? '[name].js' : '[name].[contenthash].js',
-    chunkFilename: mode === 'development' ? '[name].js' : '[name].[contenthash].js',
-    publicPath: '/',
+    filename: '[name].js',
+    ...(sandbox && {
+      publicPath: '/',
+      chunkFilename: '[name].js'
+    }),
     ...(configType === 'package' && {
       filename: 'index.js',
       libraryTarget: 'umd',
@@ -78,7 +80,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
     plugins.push(webpackBarPlugin)
   }
 
-  if (htmlOptions?.title && htmlOptions.template) {
+  if (mode === 'development' && htmlOptions?.title && htmlOptions.template) {
     plugins.push(
       new HtmlWebPackPlugin({
         title: htmlOptions.title,
@@ -152,10 +154,6 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
       }
     },
     {
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader']
-    },
-    {
       test: /\.svg$/,
       oneOf: [
         {
@@ -173,7 +171,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
   if (configType === 'package' && sandbox) {
     rules.push({
       test: /\.(jpe?g|png|gif|svg)$/i,
-      use: ['file-loader']
+      use: [{ loader: 'file-loader', options: {} }]
     })
   }
 

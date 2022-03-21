@@ -1,18 +1,10 @@
-// Dependencies
-import React, { FC, useState } from 'react'
 import { cxGenerator } from '@contentpi/lib'
+import React, { FC, useState } from 'react'
 
-// Components
-import Input from '../Input'
-import TextArea from '../TextArea'
+import Input, { IProps as InputProps } from '../Input'
 import Text from '../Text'
-
-// Types
-import { IProps as InputProps } from '../Input'
-import { ITextAreaProps } from '../TextArea'
-
-// Styles
-import { TextFieldBase, TextFieldHelpersWrapper, BASE_CLASS_NAME } from './TextField.styled'
+import TextArea, { ITextAreaProps } from '../TextArea'
+import { BASE_CLASS_NAME, TextFieldBase, TextFieldHelpersWrapper } from './TextField.styled'
 
 interface ITextFieldBaseProps {
   label?: string
@@ -55,7 +47,7 @@ const ValidateLength = ({ length, value }: IValidateLength): string | null => {
   return null
 }
 
-const TextField: FC<TextFieldInputProps & TextFieldAreaProps> = props => {
+const TextField: FC<TextFieldInputProps & TextFieldAreaProps> = (props) => {
   const {
     label,
     helperText,
@@ -76,14 +68,14 @@ const TextField: FC<TextFieldInputProps & TextFieldAreaProps> = props => {
   const errorMsg = ValidateLength({
     length: {
       min: minLength,
-      max: maxLength,
+      max: maxLength
     },
-    value: formatValue,
+    value: formatValue
   })
 
   const classNames = cxGenerator({
     ccn: BASE_CLASS_NAME,
-    data: [fullWidthClass, helperTextClass],
+    data: [fullWidthClass, helperTextClass]
   })
 
   return (
@@ -94,7 +86,7 @@ const TextField: FC<TextFieldInputProps & TextFieldAreaProps> = props => {
         <Input
           fullWidth={fullWidth}
           type={type}
-          onChange={e => setInputValue(e.target.value)}
+          onChange={(e) => setInputValue(e.target.value)}
           {...restProps}
         />
       ) : (

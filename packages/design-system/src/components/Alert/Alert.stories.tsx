@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Alert from './index'
 
 const stories = {
@@ -8,20 +9,20 @@ const stories = {
       name: 'children',
       type: 'Node',
       default: 'null',
-      description: 'The content of the component',
+      description: 'The content of the component'
     },
     {
       name: 'color',
       type: 'Color',
       default: 'primary',
-      description: 'The color of the button',
+      description: 'The color of the button'
     },
     {
       name: 'fullWidth',
       type: 'boolean',
       default: 'false',
-      description: 'Enables the full width of the alert',
-    },
+      description: 'Enables the full width of the alert'
+    }
   ],
   stories: [
     {
@@ -58,7 +59,7 @@ const stories = {
       prop: false,
       code: `
       <Alert>This is a primary alert</Alert>
-      `,
+      `
     },
     {
       name: 'Alert',
@@ -67,7 +68,7 @@ const stories = {
       prop: false,
       code: `
       <Alert>This is a primary alert</Alert>
-      `,
+      `
     },
     {
       name: 'Alert',
@@ -76,9 +77,9 @@ const stories = {
       prop: false,
       code: `
       <Alert>This is a primary alert</Alert>
-      `,
-    },
-  ],
+      `
+    }
+  ]
 }
 
 export default stories

@@ -1,12 +1,8 @@
-// Dependencies
-import React, { FC } from 'react'
 import { cxGenerator } from '@contentpi/lib'
+import React, { FC } from 'react'
 
-// Types
-import { Color, Typography, TextAlign } from '../../types'
-
-// Styles
-import { Text, BASE_CLASS_NAME } from './Text.styled'
+import { Color, TextAlign, Typography } from '../../types'
+import { BASE_CLASS_NAME, Text } from './Text.styled'
 
 export interface TextProps {
   align?: TextAlign
@@ -26,7 +22,7 @@ const TextComponent: FC<TextProps> = ({
   const classNames = cxGenerator({
     ccn: BASE_CLASS_NAME,
     data: [align],
-    className,
+    className
   })
 
   const cpmTag = component

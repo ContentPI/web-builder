@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Breadcrumb from './index'
 
 const stories = {
@@ -8,14 +9,14 @@ const stories = {
       name: 'Labels',
       type: 'Array<labelBody>',
       default: ' ',
-      description: 'The text and the link of each label of the Breadcrumb',
+      description: 'The text and the link of each label of the Breadcrumb'
     },
     {
       name: 'Link',
       type: 'any',
       default: ' ',
-      description: 'The reference ot the Breadcrumb',
-    },
+      description: 'The reference ot the Breadcrumb'
+    }
   ],
   stories: [
     {
@@ -26,7 +27,7 @@ const stories = {
           labels={[
             { title: 'item1', link: '#item1' },
             { title: 'item2', link: '#item2' },
-            { title: 'item3', link: '#item3' },
+            { title: 'item3', link: '#item3' }
           ]}
         >
           Foo
@@ -41,9 +42,9 @@ const stories = {
           { title: 'item3', link: '#' }
         ]}
       >
-      `,
-    },
-  ],
+      `
+    }
+  ]
 }
 
 export default stories

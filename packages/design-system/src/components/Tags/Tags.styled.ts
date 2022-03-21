@@ -1,10 +1,6 @@
-// Dependencies
 import styled from 'styled-components'
 
-// Theme
 import { Gray } from '../../theme'
-
-// Types
 import { FontSize } from '../../types'
 
 export const Tags = styled.div({
@@ -21,7 +17,7 @@ export const Tags = styled.div({
     fontSize: FontSize.regular,
     marginBottom: '5px',
     marginTop: '-15px',
-    paddingLeft: '5px',
+    paddingLeft: '5px'
   },
   'div.tag': {
     background: Gray.V050,
@@ -36,17 +32,17 @@ export const Tags = styled.div({
     paddingLeft: '15px',
     paddingRight: '10px',
     '&:hover': {
-      background: Gray.V100,
+      background: Gray.V100
     },
     i: {
       fontSize: FontSize.regular,
       color: Gray.V200,
-      marginLeft: '10px',
-    },
+      marginLeft: '10px'
+    }
   },
   input: {
     marginLeft: '10px',
     border: 'none',
-    outline: 'none',
-  },
+    outline: 'none'
+  }
 })

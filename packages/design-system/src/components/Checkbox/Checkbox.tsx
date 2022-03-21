@@ -1,17 +1,13 @@
-// Dependencies
-import React, { FC, ComponentPropsWithoutRef, MouseEvent } from 'react'
-import { cxGenerator, cx } from '@contentpi/lib'
+import { cx, cxGenerator } from '@contentpi/lib'
+import React, { ComponentPropsWithoutRef, FC, MouseEvent } from 'react'
 
-// Types
 import { Color, Shape } from '../../types'
-
-// Styles
 import {
+  BASE_CLASS_NAME,
   Checkbox,
-  CheckboxWrapper,
   CheckboxChild,
   CheckboxText,
-  BASE_CLASS_NAME,
+  CheckboxWrapper
 } from './Checkbox.styled'
 
 interface IProps extends ComponentPropsWithoutRef<'input'> {
@@ -33,7 +29,7 @@ const CheckboxComponent: FC<IProps> = ({
 }) => {
   const classNames = cxGenerator({
     ccn: BASE_CLASS_NAME,
-    data: [color, shape],
+    data: [color, shape]
   })
 
   return (

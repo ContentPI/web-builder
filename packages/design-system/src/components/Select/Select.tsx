@@ -1,13 +1,9 @@
 import { cxGenerator } from '@contentpi/lib'
-// Dependencies
 import React, { FC, MutableRefObject, ReactElement, useEffect, useRef, useState } from 'react'
 import { CSSObject } from 'styled-components'
 
-// Types
 import { Color, Size } from '../../types'
-// Components
 import Icon from '../Icon'
-// Styles
 import { BASE_CLASS_NAME, Select } from './Select.styled'
 
 type Option = {
@@ -131,14 +127,16 @@ const SelectComponent: FC<IProps> = ({
   }
 
   useEffect(() => {
-    if (open) {
+    if (open && typeof window !== 'undefined') {
       document.addEventListener('mousedown', handleClickOutside)
-    } else {
+    } else if (typeof window !== 'undefined') {
       document.removeEventListener('mousedown', handleClickOutside)
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
+      if (typeof window !== 'undefined') {
+        document.removeEventListener('mousedown', handleClickOutside)
+      }
     }
   }, [open])
 

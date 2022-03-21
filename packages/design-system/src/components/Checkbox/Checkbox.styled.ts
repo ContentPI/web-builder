@@ -1,8 +1,6 @@
-// Dependencies
 import styled from 'styled-components'
 
-// Types
-import { themeCssVars, mapColorStyles, Gray } from '../../theme'
+import { Gray, mapColorStyles, themeCssVars } from '../../theme'
 import { Colors, Shape } from '../../types'
 
 // Base Class Name
@@ -10,7 +8,7 @@ export const BASE_CLASS_NAME = 'checkbox'
 
 // Color
 const colorStyles = mapColorStyles(Colors, BASE_CLASS_NAME, themeCssVars, {
-  backgroundColor: 'main',
+  backgroundColor: 'main'
 })
 
 export const CheckboxWrapper = styled.label({
@@ -20,7 +18,7 @@ export const CheckboxWrapper = styled.label({
   marginBottom: '12px',
   paddingLeft: '35px',
   position: 'relative',
-  width: 'fit-content',
+  width: 'fit-content'
 })
 
 export const Checkbox = styled.input({
@@ -30,11 +28,11 @@ export const Checkbox = styled.input({
   height: 0,
   width: 0,
   '&:checked ~ .checkmark': {
-    ...colorStyles,
+    ...colorStyles
   },
   '&:checked ~ .checkmark:after': {
-    display: 'block',
-  },
+    display: 'block'
+  }
 })
 
 export const CheckboxChild = styled.div({
@@ -48,18 +46,18 @@ export const CheckboxChild = styled.div({
   '&:after': {
     content: '',
     position: 'absolute',
-    display: 'none',
+    display: 'none'
   },
   [`&.${BASE_CLASS_NAME}-${Shape.round}`]: {
-    borderRadius: '50%',
+    borderRadius: '50%'
   },
   [`&.${BASE_CLASS_NAME}-${Shape.square}`]: {
-    borderRadius: 0,
-  },
+    borderRadius: 0
+  }
 })
 
 export const CheckboxText = styled.span({
   height: '22px',
   display: 'inline-block',
-  lineHeight: '22px',
+  lineHeight: '22px'
 })

@@ -1,6 +1,5 @@
-// Dependencies
-import React, { FC, ReactElement } from 'react'
 import { cx } from '@contentpi/lib'
+import React, { FC, ReactElement } from 'react'
 
 interface Props {
   children?: ReactElement | string
@@ -16,7 +15,7 @@ interface Props {
   onClick?(): void
 }
 
-const Icon: FC<Props> = props => {
+const Icon: FC<Props> = (props) => {
   const { type, className = '', children, library = 'fontawesome', width = 24 } = props
   const height = props.height !== width ? width : 24
   const iconProps = { ...props }

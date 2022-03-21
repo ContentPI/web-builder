@@ -1,7 +1,7 @@
 import styled, { CSSObject } from 'styled-components'
 
 import { getClass, mapColorStyles, themeCssVars } from '../../theme'
-import { ButtonVariant, Colors, FontSize, FontWeight, Shape, Size } from '../../types'
+import { ButtonVariant, Colors, FontSize, Shape, Size } from '../../types'
 
 // Base Class Name
 export const BASE_CLASS_NAME = 'btn'

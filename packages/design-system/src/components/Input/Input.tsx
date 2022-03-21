@@ -1,14 +1,9 @@
-// Dependencies
-import React, { FC, ComponentPropsWithoutRef, useState, ElementType } from 'react'
 import { cxGenerator } from '@contentpi/lib'
+import React, { ComponentPropsWithoutRef, ElementType, FC, useState } from 'react'
 
-import Icon from '../Icon'
-
-// Types
 import { Color } from '../../types'
-
-// Styles
-import { InputWrapper, InputBase, BASE_CLASS_NAME, InputIcon } from './Input.styled'
+import Icon from '../Icon'
+import { BASE_CLASS_NAME, InputBase, InputIcon, InputWrapper } from './Input.styled'
 
 export interface IProps extends ComponentPropsWithoutRef<'input'> {
   fullWidth?: boolean
@@ -36,16 +31,16 @@ const Input: FC<IProps> = ({
 
   const classNames = cxGenerator({
     ccn: BASE_CLASS_NAME,
-    data: [status, focusClass, fullWidthClass],
+    data: [status, focusClass, fullWidthClass]
   })
 
   const handleShowPassword = () => {
-    setShowValue(prev => !prev)
+    setShowValue((prev) => !prev)
   }
 
   const iconProps = {
     size: 20,
-    color: 'red',
+    color: 'red'
   }
 
   const eye = () => <Icon library="feather" type="eye" width={20} />

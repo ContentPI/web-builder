@@ -1,4 +1,5 @@
 import React from 'react'
+
 import TextArea from './index'
 
 const stories = {
@@ -8,14 +9,14 @@ const stories = {
       name: 'fullWidth',
       type: 'boolean',
       default: 'false',
-      description: 'The content of the Text Area',
+      description: 'The content of the Text Area'
     },
     {
       name: 'status',
       type: 'StatusColor',
       default: ' ',
-      description: 'The color status of the Text Area',
-    },
+      description: 'The color status of the Text Area'
+    }
   ],
   stories: [
     {
@@ -25,7 +26,7 @@ const stories = {
       prop: false,
       code: `
        <TextArea />
-      `,
+      `
     },
     {
       name: 'TextArea with full width',
@@ -34,9 +35,9 @@ const stories = {
       prop: 'fullWidth',
       code: `
        <TextArea fullWidth />
-      `,
-    },
-  ],
+      `
+    }
+  ]
 }
 
 export default stories

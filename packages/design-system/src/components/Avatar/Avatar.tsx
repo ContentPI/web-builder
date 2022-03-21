@@ -1,11 +1,7 @@
-// Dependencies
-import React, { FC } from 'react'
 import { cxGenerator } from '@contentpi/lib'
+import React, { FC } from 'react'
 
-// Types
-import { Shape, Color } from '../../types'
-
-// Styles
+import { Color, Shape } from '../../types'
 import { Avatar, BASE_CLASS_NAME } from './Avatar.styled'
 
 interface IProps {
@@ -21,7 +17,7 @@ const AvatarComponent: FC<IProps> = ({
 }) => {
   const classNames = cxGenerator({
     ccn: BASE_CLASS_NAME,
-    data: [color, shape],
+    data: [color, shape]
   })
 
   return (

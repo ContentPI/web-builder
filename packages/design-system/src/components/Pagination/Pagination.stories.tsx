@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Pagination from './index'
 
 const stories = {
@@ -8,26 +9,26 @@ const stories = {
       name: 'color',
       type: 'StatusColor',
       default: 'primary',
-      description: 'The color of the badge',
+      description: 'The color of the badge'
     },
     {
       name: 'page',
       type: 'number',
       default: '1',
-      description: 'The current page of the pagination',
+      description: 'The current page of the pagination'
     },
     {
       name: 'total',
       type: 'number',
       default: '1',
-      description: 'The total of pages',
+      description: 'The total of pages'
     },
     {
       name: 'rowsPerPage',
       type: 'number',
       default: '1',
-      description: 'The number of items that will  be displayed per page',
-    },
+      description: 'The number of items that will  be displayed per page'
+    }
   ],
   stories: [
     {
@@ -42,7 +43,7 @@ const stories = {
         rowsPerPage={10}
         href="/blog/"
       />
-    `,
+    `
     },
     {
       name: 'Pagination with color',
@@ -93,9 +94,9 @@ const stories = {
         href="/blog/"
         color="warning"
       />
-      `,
-    },
-  ],
+      `
+    }
+  ]
 }
 
 export default stories

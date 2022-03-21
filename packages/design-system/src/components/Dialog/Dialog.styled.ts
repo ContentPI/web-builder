@@ -1,34 +1,32 @@
-// Dependencies
 import styled, { createGlobalStyle, CSSObject } from 'styled-components'
 
-// Theme
 import { Base, Gray } from '../../theme'
 
 export const GlobalStyle = createGlobalStyle({
   'html, body': {
     margin: 0,
     height: '100%',
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   ':root': {
-    scrollbarColor: `${Gray.V300} ${Base.WHITE} !important`,
+    scrollbarColor: `${Gray.V300} ${Base.WHITE} !important`
   },
   '::-webkit-scrollbar': {
     width: '8px',
-    height: '3px',
+    height: '3px'
   },
   '::-webkit-scrollbar-track-piece': {
-    backgroundColor: Base.WHITE,
+    backgroundColor: Base.WHITE
   },
   '::-webkit-scrollbar-thumb': {
     height: '20px',
     backgroundColor: Gray.V300,
-    borderRadius: '10px',
+    borderRadius: '10px'
   },
   input: {
     borderRadius: 0,
-    appearance: 'none',
-  },
+    appearance: 'none'
+  }
 })
 
 export const Dialog = styled.div({
@@ -39,7 +37,7 @@ export const Dialog = styled.div({
   width: '100%',
   height: '100%',
   overflow: 'hidden',
-  backgroundColor: 'rgba(0, 0, 0, 0.7)',
+  backgroundColor: 'rgba(0, 0, 0, 0.7)'
 })
 
 interface IContainerProps {
@@ -59,8 +57,8 @@ export const Container = styled.div<IContainerProps>(({ maxWidth, height, margin
       height: '100%',
       margin: 0,
       border: 'none',
-      maxWidth: '100%',
-    },
+      maxWidth: '100%'
+    }
   }
 
   if (maxWidth) {
@@ -85,15 +83,15 @@ export const Close = styled.span({
   right: '10px',
   '@media (max-width: 768px)': {
     marginTop: 0,
-    right: '15px',
-  },
+    right: '15px'
+  }
 })
 
 export const Img = styled.img({
   width: '12px',
   '@media (max-width: 768px)': {
-    width: '16px',
-  },
+    width: '16px'
+  }
 })
 
 export const Content = styled.div({
@@ -110,9 +108,9 @@ export const Content = styled.div({
     marginBottom: '15px',
     fontSize: '23px',
     fontWeight: 500,
-    wordWrap: 'break-word',
+    wordWrap: 'break-word'
   },
   textarea: {
-    resize: 'none',
-  },
+    resize: 'none'
+  }
 })

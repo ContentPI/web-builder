@@ -1,9 +1,7 @@
-// Dependencies
-import React, { FC } from 'react'
 import { cxGenerator } from '@contentpi/lib'
+import React, { FC } from 'react'
 
-// Styles
-import { PaperBase, BASE_CLASS_NAME } from './Paper.styled'
+import { BASE_CLASS_NAME, PaperBase } from './Paper.styled'
 
 interface IProps {
   className?: string

@@ -1,10 +1,6 @@
-// Dependencies
 import styled from 'styled-components'
 
-// Theme
-import { themeCssVars, calc, mapColorStyles, Base, Gray } from '../../theme'
-
-// Types
+import { Base, calc, Gray, mapColorStyles, themeCssVars } from '../../theme'
 import { CalcType, Colors, FontSize } from '../../types'
 
 // Base Class Name
@@ -14,8 +10,8 @@ export const BASE_CLASS_NAME = 'input'
 const colorStyles = mapColorStyles(Colors, BASE_CLASS_NAME, themeCssVars, {
   borderColor: 'main',
   '&:hover': {
-    borderColor: 'main',
-  },
+    borderColor: 'main'
+  }
 })
 
 export const InputWrapper = styled.div({
@@ -30,20 +26,20 @@ export const InputWrapper = styled.div({
   width: '250px',
   '&::placeholder': {
     color: Base.WHITE,
-    opacity: 1,
+    opacity: 1
   },
   '&:hover': {
-    borderColor: themeCssVars.palette.primary.common.main,
+    borderColor: themeCssVars.palette.primary.common.main
   },
   [`&.${BASE_CLASS_NAME}-focus`]: {
-    borderColor: themeCssVars.palette.primary.common.main,
+    borderColor: themeCssVars.palette.primary.common.main
   },
   [`&.${BASE_CLASS_NAME}-full-width`]: {
-    width: '100%',
+    width: '100%'
   },
   display: 'flex',
   alignItems: 'center',
-  ...colorStyles,
+  ...colorStyles
 })
 
 export const InputBase = styled.input({
@@ -55,7 +51,7 @@ export const InputBase = styled.input({
   lineHeight: '20px',
   outline: 'none',
   resize: 'none',
-  ...colorStyles,
+  ...colorStyles
 })
 
 export const InputIcon = styled.div({
@@ -67,18 +63,18 @@ export const InputIcon = styled.div({
   width: calc(CalcType.spacing, 5),
   '&.icon-left': {
     marginLeft: 0,
-    marginRight: calc(CalcType.spacing, 2),
+    marginRight: calc(CalcType.spacing, 2)
   },
   '&.icon-right': {
     marginLeft: calc(CalcType.spacing, 2),
-    marginRight: 0,
+    marginRight: 0
   },
   '&.pointer': {
-    cursor: 'pointer',
+    cursor: 'pointer'
   },
   '& > svg': {
     color: Gray.V250,
     minHeight: '18px',
-    minWidth: '18px',
-  },
+    minWidth: '18px'
+  }
 })

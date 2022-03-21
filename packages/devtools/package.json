@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@svgr/webpack": "^6.2.1",
+    "@types/file-loader": "^5.0.1",
     "cli-color": "^2.0.1",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",

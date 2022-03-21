@@ -20,9 +20,11 @@
     "babel-plugin-styled-components": "^2.0.6"
   },
   "dependencies": {
+    "@web-builder/design-system": "1.0.0",
     "@web-builder/devtools": "1.0.0",
     "babel-preset-next": "^1.4.0",
     "dotenv": "^16.0.0",
+    "encoding": "^0.1.13",
     "express": "^4.17.3",
     "next": "^12.1.0",
     "react-icons": "^4.3.1",
