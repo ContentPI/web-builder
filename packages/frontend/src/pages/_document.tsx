@@ -13,12 +13,15 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App: any) => (props: any) =>
-            sheet.collectStyles(
-              <body className={cx.join('site', Config.site)}>
+          enhanceApp: (App: any) => (props: any) => {
+            const page = props.router.asPath === '/' ? '' : props.router.asPath.replace('/', '')
+
+            return sheet.collectStyles(
+              <body className={cx.join('site', Config.site, page)}>
                 <App {...props} title={Config.siteTitle} />
               </body>
             )
+          }
         })
 
       const initialProps = await Document.getInitialProps(ctx)
