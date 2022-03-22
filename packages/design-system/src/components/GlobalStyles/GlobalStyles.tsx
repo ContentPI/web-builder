@@ -1,12 +1,12 @@
 import { customThemesCssVars, themeRootVars } from '../../theme'
-import workSans from './fonts/workSans'
+import poppins from './fonts/poppins'
 
 const fontStyles = `
   @font-face {
-    font-family: WorkSans;
+    font-family: Poppins;
     font-style: normal;
     font-weight: 400;
-    src: url(${workSans});
+    src: url(${poppins});
   }
 `
 
@@ -15,7 +15,7 @@ const htmlReset = `
     outline: none;
   }
   body {
-    font-family: WorkSans;
+    font-family: Poppins;
     margin: 0;
     padding: 0;
   }
@@ -31,9 +31,24 @@ const htmlReset = `
   }
 `
 
+const keyframes = `
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+`
+
 const GlobalStyles = `
   ${htmlReset}
   ${fontStyles}
+  ${keyframes}
   ${themeRootVars}
   ${customThemesCssVars}
 `

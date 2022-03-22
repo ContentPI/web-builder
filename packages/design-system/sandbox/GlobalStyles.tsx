@@ -1,16 +1,15 @@
 import { createGlobalStyle, css } from 'styled-components'
 
 import { customThemesCssVars, themeRootVars } from '../src/theme'
-import WorkSansRegularWoff from './fonts/worksans-regular.woff'
-import WorkSansRegularWoff2 from './fonts/worksans-regular.woff2'
+import PoppinsRegularWoff from './fonts/poppins-regular.woff'
+import PoppinsRegularWoff2 from './fonts/poppins-regular.woff2'
 
 const fontStyles = css`
   @font-face {
-    font-family: WorkSans;
+    font-family: Poppins;
     font-style: normal;
     font-weight: 400;
-    src: url('${WorkSansRegularWoff}') format('woff'),
-      url('${WorkSansRegularWoff2}') format('woff2');
+    src: url('${PoppinsRegularWoff}') format('woff'), url('${PoppinsRegularWoff2}') format('woff2');
   }
 `
 
@@ -19,7 +18,7 @@ const htmlReset = `
     outline: none;
   }
   body {
-    font-family: WorkSans;
+    font-family: Poppins;
     margin: 0;
     padding: 0;
   }
