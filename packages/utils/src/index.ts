@@ -1,4 +1,5 @@
 export { default as base64 } from './base64'
+export { default as capitalize } from './capitalize'
 export { default as chunk } from './chunk'
 export { default as cx } from './cx'
 export { default as forEach } from './forEach'
