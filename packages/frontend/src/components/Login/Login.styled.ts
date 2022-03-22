@@ -5,7 +5,11 @@ export const CSSLogin = styled.div({
   height: '100vh',
   width: '100%',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  flexDirection: 'column',
+  '.footer': {
+    marginTop: '40px'
+  }
 })
 
 export const CSSLoginBox = styled.div({
@@ -38,7 +42,8 @@ export const CSSLoginBox = styled.div({
       alignSelf: 'end',
       fontSize: '13px',
       marginBottom: '25px',
-      marginRight: '5px'
+      marginRight: '5px',
+      width: '250px'
     }
   }
 })
