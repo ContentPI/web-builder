@@ -1,2 +1,2 @@
-export * from './sites'
+export * from './config'
 export * from './utils'

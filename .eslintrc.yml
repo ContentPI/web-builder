@@ -68,6 +68,8 @@ rules:
   react/require-default-props: 'off'
   # We want to have more than one expression per line
   react/jsx-one-expression-per-line: 'off'
+  # This is for React 15
+  react/prop-types: 'off'
 
   # ⭐ General rules
   # Fixing conflict between prettier and eslint with this rule

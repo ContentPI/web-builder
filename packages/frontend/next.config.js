@@ -1,8 +1,4 @@
 import { resolve, resolve } from 'path'
-import { loadEnvVariables } from '@web-builder/devtools'
-
-// Loading env variables
-loadEnvVariables('frontend')
 
 export default {
   reactStrictMode: true,
