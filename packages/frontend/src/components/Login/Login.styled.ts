@@ -1,3 +1,4 @@
+import { device } from '@web-builder/design-system'
 import styled from 'styled-components'
 
 export const CSSLogin = styled.div({
@@ -9,6 +10,10 @@ export const CSSLogin = styled.div({
   flexDirection: 'column',
   '.footer': {
     marginTop: '40px'
+  },
+  [device.laptop]: {
+    width: '90%',
+    margin: '0 auto'
   }
 })
 
