@@ -14,7 +14,10 @@ export default class MyDocument extends Document {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App: any) => (props: any) => {
-            const page = props.router.asPath === '/' ? '' : props.router.asPath.replace('/', '')
+            const page =
+              props.router.asPath === '/'
+                ? ''
+                : props.router.asPath.split('/').filter((v: string) => v)[1]
 
             return sheet.collectStyles(
               <body className={cx.join('site', Config.site, page)}>

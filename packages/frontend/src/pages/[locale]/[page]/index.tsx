@@ -2,8 +2,8 @@ import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 
 import Config from '~/config'
-import { Site } from '../../types'
-import SwitcherPage from '../switcher'
+import { Site } from '../../../types'
+import SwitcherPage from '../../switcher'
 
 type Props = {
   site: Site
