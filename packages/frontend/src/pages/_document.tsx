@@ -1,4 +1,4 @@
-import { getUrlInfo } from '@web-builder/localization'
+import { getUrlInfo } from '@web-builder/i18n'
 import { cx } from '@web-builder/utils'
 import Document from 'next/document'
 import React from 'react'

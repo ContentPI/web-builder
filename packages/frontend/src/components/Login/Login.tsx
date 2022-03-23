@@ -16,33 +16,38 @@ const Login: FC<Props> = () => {
       <CSSLoginBox>
         <header>
           <img className="logo" src="/images/isotype.png" alt="Logo" data-testid="logo" /> <br />
-          <h2 data-testid="signin">{t('Sign into your Account')}</h2>
+          <h2 data-testid="signin">{t('login.signIn')}</h2>
         </header>
 
         <section>
-          <TextField label={t('Email')} name="email" placeholder={t('Email')} data-testid="email" />
+          <TextField
+            label={t('login.email')}
+            name="email"
+            placeholder={t('login.email')}
+            data-testid="email"
+          />
 
           <TextField
-            label={t('Password')}
+            label={t('login.password')}
             name="password"
-            placeholder={t('Password')}
+            placeholder={t('login.password')}
             data-testid="password"
           />
 
           <div className="forgot" data-testid="forgot">
-            {t('Forgot Password')}
+            {t('login.forgot')}
           </div>
 
           <div className="actions">
-            <Button data-testid="login">{t('Login')}</Button>
+            <Button data-testid="login">{t('login.login')}</Button>
             <Button color="success" data-testid="register">
-              {t('Register')}
+              {t('login.register')}
             </Button>
           </div>
         </section>
       </CSSLoginBox>
 
-      <p className="footer">&copy; San Pancho - 2022 - Powered by Web Builder</p>
+      <p className="footer">{t('login.footer', { site: 'San Pancho', name: 'Web Builder' })}</p>
     </CSSLogin>
   )
 }

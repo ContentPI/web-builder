@@ -1,4 +1,4 @@
-import { isValidLocale } from '@web-builder/localization'
+import { isValidLocale } from '@web-builder/i18n'
 import React, { FC } from 'react'
 
 import GlobalStyle from '~/components/GlobalStyles/GlobalStyles'

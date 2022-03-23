@@ -1,4 +1,4 @@
-import { translations } from '@web-builder/localization'
+import { translations } from '@web-builder/i18n'
 import React, { createContext, FC, ReactElement, useContext, useMemo } from 'react'
 
 type ContextProps = {
@@ -17,22 +17,24 @@ type Props = {
 }
 
 export const I18nProvider: FC<Props> = ({ children, locale = 'en' }) => {
-  const t = (key1: string, key2 = '', key3 = '') => {
-    if (key2) {
-      key1 += ` ${key2}`
+  const t = (key: string, replacements: any) => {
+    const translation = translations[key]
+    let text = (translation && translation[locale]) || key
+
+    const matches = text.match(/\{(.*?)\}/g)
+
+    if (matches) {
+      matches.forEach((match: string) => {
+        const tag = match.replace(/[{}]/g, '')
+        const replacement = replacements[tag]
+
+        if (replacement) {
+          text = text.replace(`{${tag}}`, replacement)
+        }
+      })
     }
 
-    if (key3) {
-      key1 += key3 === '?' || key3 === '!' ? key3 : ` ${key3}`
-    }
-
-    if (locale === 'en') {
-      return key1
-    }
-
-    const translation = translations[key1]
-
-    return (translation && translation[locale]) || key1
+    return text
   }
 
   const context = useMemo(

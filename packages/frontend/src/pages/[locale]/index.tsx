@@ -1,4 +1,4 @@
-import { isValidLocale } from '@web-builder/localization'
+import { isValidLocale } from '@web-builder/i18n'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 

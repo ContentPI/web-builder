@@ -1,4 +1,4 @@
-import { getUrlInfo } from '@web-builder/localization'
+import { getUrlInfo } from '@web-builder/i18n'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function middleware(req: NextRequest) {

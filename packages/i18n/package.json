@@ -1,5 +1,5 @@
 {
-  "name": "@web-builder/localization",
+  "name": "@web-builder/i18n",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
