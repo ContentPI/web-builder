@@ -89,6 +89,8 @@ rules:
   no-nested-ternary: 'off'
   # Conflicting with prettier
   react/jsx-wrap-multilines: 'off'
+  # We need __NEXT_DATA__
+  no-underscore-dangle: 'off'
 
   # ⭐ JSX-A11Y rules
   jsx-a11y/no-noninteractive-element-interactions: 'off'

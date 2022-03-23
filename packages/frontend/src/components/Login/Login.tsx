@@ -1,6 +1,7 @@
 import { Button, TextField } from '@web-builder/design-system'
 import React, { FC } from 'react'
 
+import Config from '~/config'
 import { useI18n } from '~/contexts/i18n'
 import { CSSLogin, CSSLoginBox } from './Login.styled'
 
@@ -47,7 +48,7 @@ const Login: FC<Props> = () => {
         </section>
       </CSSLoginBox>
 
-      <p className="footer">{t('login.footer', { site: 'San Pancho', name: 'Web Builder' })}</p>
+      <p className="footer">{t('login.footer', { site: Config.siteTitle, name: 'Web Builder' })}</p>
     </CSSLogin>
   )
 }

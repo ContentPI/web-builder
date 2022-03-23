@@ -1,3 +1,5 @@
+import { is } from '@web-builder/utils'
+
 import { config as blankPageConfig } from './sites/blank-page/config'
 import { config as codejobsConfig } from './sites/codejobs/config'
 import { config as sanPanchoConfig } from './sites/san-pancho/config'
@@ -15,7 +17,18 @@ const getSiteConfig = (site: Site): SiteConfiguration => {
 }
 
 const buildConfig = (): SiteBuilderConfiguration => {
-  const site = process.env.SITE as Site
+  // Server site
+  let site = process.env.SITE as Site
+
+  // Client site
+  if (is.Browser()) {
+    const { pageProps } = window.__NEXT_DATA__.props
+
+    if (pageProps.site) {
+      site = pageProps.site
+    }
+  }
+
   const siteConfig = getSiteConfig(site)
 
   const config: SiteBuilderConfiguration = {
