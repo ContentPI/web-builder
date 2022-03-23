@@ -15,20 +15,29 @@ const Login: FC<Props> = () => {
     <CSSLogin>
       <CSSLoginBox>
         <header>
-          <img className="logo" src="/images/isotype.png" alt="Logo" /> <br />
-          <h2>{t('Sign into your Account')}</h2>
+          <img className="logo" src="/images/isotype.png" alt="Logo" data-testid="logo" /> <br />
+          <h2 data-testid="signin">{t('Sign into your Account')}</h2>
         </header>
 
         <section>
-          <TextField label={t('Email')} name="email" placeholder={t('Email')} />
+          <TextField label={t('Email')} name="email" placeholder={t('Email')} data-testid="email" />
 
-          <TextField label={t('Password')} name="password" placeholder={t('Password')} />
+          <TextField
+            label={t('Password')}
+            name="password"
+            placeholder={t('Password')}
+            data-testid="password"
+          />
 
-          <div className="forgot">{t('Forgot Password')}</div>
+          <div className="forgot" data-testid="forgot">
+            {t('Forgot Password')}
+          </div>
 
           <div className="actions">
-            <Button>{t('Login')}</Button>
-            <Button color="success">{t('Register')}</Button>
+            <Button data-testid="login">{t('Login')}</Button>
+            <Button color="success" data-testid="register">
+              {t('Register')}
+            </Button>
           </div>
         </section>
       </CSSLoginBox>
