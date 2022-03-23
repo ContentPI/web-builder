@@ -1,3 +1,4 @@
+import { isValidLocale } from '@web-builder/localization'
 import React, { FC } from 'react'
 
 import GlobalStyle from '~/components/GlobalStyles/GlobalStyles'
@@ -15,9 +16,14 @@ const App: FC<any> = ({ Component, pageProps, locale = 'en' }) => (
 // @ts-ignore
 App.getInitialProps = async ({ router }: { router: any }) => {
   const { locale } = router.query
+  let newLocale = locale
+
+  if (!isValidLocale(locale as string)) {
+    newLocale = 'en'
+  }
 
   return {
-    locale
+    locale: newLocale
   }
 }
 

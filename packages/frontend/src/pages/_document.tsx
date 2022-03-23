@@ -1,3 +1,4 @@
+import { getUrlInfo } from '@web-builder/localization'
 import { cx } from '@web-builder/utils'
 import Document from 'next/document'
 import React from 'react'
@@ -14,10 +15,7 @@ export default class MyDocument extends Document {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App: any) => (props: any) => {
-            const page =
-              props.router.asPath === '/'
-                ? ''
-                : props.router.asPath.split('/').filter((v: string) => v)[1]
+            const { page } = getUrlInfo(props.router.asPath)
 
             return sheet.collectStyles(
               <body className={cx.join('site', Config.site, page)}>
