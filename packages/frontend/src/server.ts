@@ -5,8 +5,10 @@ import path from 'path'
 import Config from './config'
 
 // Setting up Next App
+const hostname = 'localhost'
+const port = 3000
 const dev = process.env.NODE_ENV !== 'production'
-const nextApp = next({ dev })
+const nextApp = next({ dev, hostname, port })
 const handle = nextApp.getRequestHandler()
 
 // Running Next App

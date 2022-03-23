@@ -1,2 +1,3 @@
-export { default as es } from './translations/es'
+export { default as translations } from './translations'
 export * from './locales'
+export * from './i18n'
