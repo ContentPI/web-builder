@@ -1,6 +1,6 @@
 import LoginPage from '../pages/login.page'
 
-describe('Login Test', () => {
+describe('Login Page Test', () => {
   it('should render the login page correctly', async () => {
     // Opening Url
     LoginPage.open('/en/login')
