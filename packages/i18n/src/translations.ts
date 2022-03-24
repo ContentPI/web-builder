@@ -1,31 +1,31 @@
 const translations: Record<string, Record<string, string>> = {
   'login.email': {
-    en: 'Email',
-    es: 'Correo electrónico'
+    'en-us': 'Email',
+    'es-mx': 'Correo electrónico'
   },
   'login.footer': {
-    en: `© {site} - ${new Date().getFullYear()} - Powered by {name}`,
-    es: `© {site} - ${new Date().getFullYear()} - Creador por {name}`
+    'en-us': `© {site} - ${new Date().getFullYear()} - Powered by {name}`,
+    'es-mx': `© {site} - ${new Date().getFullYear()} - Creador por {name}`
   },
   'login.forgot': {
-    en: 'Forgot Password',
-    es: '¿Olvido su contraseña?'
+    'en-us': 'Forgot Password',
+    'es-mx': '¿Olvido su contraseña?'
   },
   'login.login': {
-    en: 'Login',
-    es: 'Conectar'
+    'en-us': 'Login',
+    'es-mx': 'Conectar'
   },
   'login.password': {
-    en: 'Password',
-    es: 'Contraseña'
+    'en-us': 'Password',
+    'es-mx': 'Contraseña'
   },
   'login.register': {
-    en: 'Register',
-    es: 'Registrar'
+    'en-us': 'Register',
+    'es-mx': 'Registrar'
   },
   'login.signIn': {
-    en: 'Sign into your Account',
-    es: 'Iniciar sesión en su cuenta'
+    'en-us': 'Sign into your Account',
+    'es-mx': 'Iniciar sesión en su cuenta'
   }
 }
 

@@ -24,7 +24,7 @@ const buildConfig = (): SiteBuilderConfiguration => {
   if (is.Browser()) {
     const { pageProps } = window.__NEXT_DATA__.props
 
-    if (pageProps.site) {
+    if (pageProps && pageProps.site) {
       site = pageProps.site
     }
   }

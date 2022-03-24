@@ -1,3 +1,5 @@
+import { Locale } from '@web-builder/i18n'
+
 import { ValueOf } from './utils'
 
 export const Site = {
@@ -19,6 +21,11 @@ export enum DeploymentType {
 export interface SiteConfiguration {
   siteTitle: string
   domainName: string
+  i18n: {
+    locales: Locale[]
+    defaultLocale: Locale
+  }
+  pages: string[]
 }
 
 export interface SiteBuilderConfiguration extends SiteConfiguration {

@@ -20,7 +20,7 @@ type Props = {
 export const I18nProvider: FC<Props> = ({ children, locale = 'en' }) => {
   const t = (key: string, replacements: any) => {
     const translation = translations[key]
-    let text = (translation && translation[locale]) || key
+    let text = (translation && translation[locale.toLowerCase()]) || key
 
     const matches = text.match(/\{(.*?)\}/g)
 

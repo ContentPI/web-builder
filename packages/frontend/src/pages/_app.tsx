@@ -1,9 +1,10 @@
-import { I18nProvider, isValidLocale } from '@web-builder/i18n'
+import { I18nProvider } from '@web-builder/i18n'
 import React, { FC } from 'react'
 
 import GlobalStyle from '~/components/GlobalStyles/GlobalStyles'
+import Config from '~/config'
 
-const App: FC<any> = ({ Component, pageProps, locale = 'en' }) => (
+const App: FC<any> = ({ Component, pageProps, locale = Config.i18n.defaultLocale }) => (
   <>
     <GlobalStyle />
     <I18nProvider locale={locale}>
@@ -15,14 +16,9 @@ const App: FC<any> = ({ Component, pageProps, locale = 'en' }) => (
 // @ts-ignore
 App.getInitialProps = async ({ router }: { router: any }) => {
   const { locale } = router.query
-  let newLocale = locale
-
-  if (!isValidLocale(locale as string)) {
-    newLocale = 'en'
-  }
 
   return {
-    locale: newLocale
+    locale
   }
 }
 
