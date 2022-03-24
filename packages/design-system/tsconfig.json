@@ -29,5 +29,5 @@
     "src/components/TextField/index.ts",
     "src/index.ts"
   ],
-  "include": ["src/**/*", "global.d.ts"]
+  "include": ["src/**/*"]
 }
