@@ -1,8 +1,7 @@
-import { isValidLocale } from '@web-builder/i18n'
+import { I18nProvider, isValidLocale } from '@web-builder/i18n'
 import React, { FC } from 'react'
 
 import GlobalStyle from '~/components/GlobalStyles/GlobalStyles'
-import { I18nProvider } from '~/contexts/i18n'
 
 const App: FC<any> = ({ Component, pageProps, locale = 'en' }) => (
   <>

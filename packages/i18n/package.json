@@ -7,10 +7,17 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "NODE_ENV=production npm-run-all clean compile webpack:production",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc",
     "lint": "npm run --prefix ../../ lint",
-    "lint:fix": "npm run --prefix ../../ lint:fix"
+    "lint:fix": "npm run --prefix ../../ lint:fix",
+    "prepublishOnly": "npm run lint && npm run build",
+    "webpack:production": "webpack --config=webpack.config.ts --env mode=production --env type=package"
   },
   "author": "Carlos Santana",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2"
+  }
 }

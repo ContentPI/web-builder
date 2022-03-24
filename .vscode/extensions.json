@@ -7,6 +7,7 @@
     "redhat.vscode-yaml",
     "GraphQL.vscode-graphql",
     "aaron-bond.better-comments",
-    "mike-co.import-sorter"
+    "mike-co.import-sorter",
+    "zengxingxin.sort-js-object-keys"
   ]
 }

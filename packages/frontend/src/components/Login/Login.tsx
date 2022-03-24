@@ -1,8 +1,8 @@
 import { Button, TextField } from '@web-builder/design-system'
+import { useI18n } from '@web-builder/i18n'
 import React, { FC } from 'react'
 
 import Config from '~/config'
-import { useI18n } from '~/contexts/i18n'
 import { CSSLogin, CSSLoginBox } from './Login.styled'
 
 type Props = {

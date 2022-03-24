@@ -9,7 +9,11 @@ export const CSSLogin = styled.div({
   justifyContent: 'center',
   flexDirection: 'column',
   '.footer': {
-    marginTop: '40px'
+    marginTop: '40px',
+    textAlign: 'center',
+    [device.laptop]: {
+      fontSize: '13px'
+    }
   },
   [device.laptop]: {
     width: '90%',

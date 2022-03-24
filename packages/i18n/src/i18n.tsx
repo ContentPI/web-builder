@@ -1,5 +1,6 @@
-import { translations } from '@web-builder/i18n'
 import React, { createContext, FC, ReactElement, useContext, useMemo } from 'react'
+
+import translations from './translations'
 
 type ContextProps = {
   t: any

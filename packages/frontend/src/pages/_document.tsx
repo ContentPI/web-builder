@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
             const { page } = getUrlInfo(props.router.asPath)
 
             return sheet.collectStyles(
-              <body className={cx.join('site', Config.site, page)}>
+              <body className={cx.join(Config.site, page)}>
                 <App {...props} title={Config.siteTitle} />
               </body>
             )
