@@ -1,4 +1,4 @@
-import { i18n } from '@web-builder/i18n'
+import { getCurrentPage } from '@web-builder/i18n'
 import { cx } from '@web-builder/utils'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
@@ -15,11 +15,7 @@ export default class MyDocument extends Document {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App: any) => (props: any) => {
-            const { page } = i18n({
-              path: props.router.asPath,
-              pages: Config.pages,
-              ...Config.i18n
-            })
+            const page = getCurrentPage(props.router.asPath, Config.pages)
 
             return sheet.collectStyles(
               <body className={cx.join(Config.site, page)}>

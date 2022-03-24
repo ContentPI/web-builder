@@ -1,5 +1,9 @@
 export type Locale =
   | 'ar'
+  | 'en'
+  | 'es'
+  | 'fr'
+  | 'jp'
   | 'de-DE'
   | 'en-GB'
   | 'en-US'
@@ -19,6 +23,22 @@ export const availableLocales: any = {
     lang: 'ar',
     name: 'العربية'
   },
+  en: {
+    lang: 'en',
+    name: 'English'
+  },
+  es: {
+    lang: 'es',
+    name: 'Español'
+  },
+  fr: {
+    lang: 'fr',
+    name: 'Français'
+  },
+  jp: {
+    lang: 'jp',
+    name: '日本語'
+  },
   'de-DE': {
     lang: 'de-DE',
     name: 'Deutsch'
@@ -32,8 +52,8 @@ export const availableLocales: any = {
     name: 'English (US)'
   },
   'es-MX': {
-    lang: 'es',
-    name: 'Español'
+    lang: 'es-MX',
+    name: 'Español (MX)'
   },
   'fr-FR': {
     lang: 'fr-FR',
@@ -74,33 +94,66 @@ type I18nAttrs = {
   locales: Locale[]
   defaultLocale: Locale
   pages: string[]
+  localeRedirections?: Record<string, Locale>
+  forceRedirection?: boolean
 }
 
-const isValidLocale = (locale: Locale, locales: Locale[]) => !!locales.includes(locale)
+const isValidLocale = (locale: Locale, locales: Locale[]) =>
+  !!(locales.includes(locale) || availableLocales[locale])
 const isValidPage = (page: string, pages: string[]) => !!pages.includes(page)
 
-export const i18n = ({ path, locales = [], defaultLocale = 'en-US', pages = [] }: I18nAttrs) => {
+// Getting the segments [0] = locale [1] = page
+const getPathSegments = (path: string) => {
+  const segments = path.split('/').filter((v: string) => v)
+
+  return {
+    segments,
+    segmentsCount: segments.length
+  }
+}
+export const getCurrentPage = (path: string, pages: string[]) => {
+  const { segments } = getPathSegments(path)
+
+  const page = isValidPage(segments[0], pages)
+    ? segments[0]
+    : isValidPage(segments[1], pages)
+    ? segments[1]
+    : segments[0] ?? ''
+
+  return page
+}
+
+export const getCurrentLocale = (path: string, locales: Locale[]) => {
+  const { segments } = getPathSegments(path)
+  const locale = isValidLocale(segments[0] as Locale, locales) ? segments[0] : ''
+
+  return locale
+}
+
+export const i18n = ({
+  path,
+  locales = [],
+  defaultLocale,
+  pages = [],
+  localeRedirections = {},
+  forceRedirection = false
+}: I18nAttrs) => {
   // Root
   if (!path) {
     return {
       locale: defaultLocale,
       page: 'index',
-      isInvalidLocale: false
+      mustRedirect: forceRedirection
     }
   }
 
-  // Getting the segments [0] = locale [1] = page
-  const segments = path.split('/').filter((v: string) => v)
+  const { segmentsCount } = getPathSegments(path)
 
   // If is valid locale we add it
-  const locale = isValidLocale(segments[0] as Locale, locales) ? segments[0] : false
+  const locale = getCurrentLocale(path, locales)
 
   // Getting the page
-  const page = isValidPage(segments[0], pages)
-    ? segments[0]
-    : isValidPage(segments[1], pages)
-    ? segments[1]
-    : segments[0] ?? false
+  const page = getCurrentPage(path, pages)
 
   // Validations for valid locales and valid pages
   const equals = locale === page
@@ -109,12 +162,21 @@ export const i18n = ({ path, locales = [], defaultLocale = 'en-US', pages = [] }
   const validLocale = !invalidLocale
   const validPage = !equals && isValidPage(page, pages)
 
+  // Locale Redirections
+  if (localeRedirections[locale]) {
+    return {
+      locale: localeRedirections[locale],
+      page: validPage ? page : '',
+      mustRedirect: forceRedirection
+    }
+  }
+
   // This is for single pages with no locale (/login)
-  if (segments.length === 1 && invalidLocale && validPage) {
+  if (segmentsCount === 1 && invalidLocale && validPage) {
     return {
       locale: defaultLocale,
       page,
-      mustRedirect: true
+      mustRedirect: forceRedirection
     }
   }
 
@@ -122,6 +184,6 @@ export const i18n = ({ path, locales = [], defaultLocale = 'en-US', pages = [] }
   return {
     locale: validLocale ? locale : defaultLocale,
     page: validPage ? page : '',
-    mustRedirect: invalidLocale || invalidPage
+    mustRedirect: forceRedirection && (invalidLocale || invalidPage)
   }
 }

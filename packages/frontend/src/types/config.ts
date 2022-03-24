@@ -26,6 +26,9 @@ export interface SiteConfiguration {
     defaultLocale: Locale
   }
   pages: string[]
+  redirections?: {
+    localeRedirections: Record<string, Locale>
+  }
 }
 
 export interface SiteBuilderConfiguration extends SiteConfiguration {

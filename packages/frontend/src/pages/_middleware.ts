@@ -8,7 +8,9 @@ export async function middleware(req: NextRequest) {
   const { locale, page, mustRedirect } = i18n({
     path: pathname,
     pages: Config.pages,
-    ...Config.i18n
+    forceRedirection: true,
+    ...Config.i18n,
+    ...(Config.redirections ?? {})
   })
 
   if (mustRedirect) {
