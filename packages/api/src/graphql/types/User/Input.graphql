@@ -1,5 +1,5 @@
 "CreateUser Input"
-input CreateUser {
+input ICreateUser {
   "Username"
   username: String!
   "Encrypted password"

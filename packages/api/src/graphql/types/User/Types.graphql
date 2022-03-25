@@ -2,6 +2,8 @@
 type User {
   "ID"
   id: UUID!
+  "Role Id"
+  roleId: UUID!
   "The user's username"
   username: String!
   "The user's password"
@@ -14,6 +16,4 @@ type User {
   createdAt: Datetime!
   "Last update date"
   updatedAt: Datetime!
-  "Role (admin or editor)"
-  roles: [Role!]
 }
