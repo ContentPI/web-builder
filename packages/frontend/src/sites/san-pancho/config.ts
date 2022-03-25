@@ -7,7 +7,7 @@ export const config: SiteConfiguration = {
     brandColors: ['#465f95', '#537f6b', '#ffcd44', '#7f7171']
   },
   i18n: {
-    locales: ['ar', 'en-us', 'es-mx', 'fr-fr', 'ja-jp'],
+    locales: ['ar', 'en-us', 'es-mx', 'fr-fr', 'it-it', 'ja-jp'],
     defaultLocale: 'es-mx'
   },
   pages: ['index', 'login'],
@@ -16,6 +16,7 @@ export const config: SiteConfiguration = {
       en: 'en-us',
       es: 'es-mx',
       fr: 'fr-fr',
+      it: 'it-it',
       jp: 'ja-jp'
     }
   }

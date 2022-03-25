@@ -36,6 +36,10 @@ export const availableLocales: any = {
     lang: 'fr',
     name: 'Français'
   },
+  it: {
+    lang: 'it',
+    name: 'Italiano'
+  },
   jp: {
     lang: 'jp',
     name: '日本語'
@@ -49,11 +53,11 @@ export const availableLocales: any = {
     name: 'English (UK)'
   },
   'en-us': {
-    lang: 'en-us',
+    lang: 'en-US',
     name: 'English (US)'
   },
   'es-mx': {
-    lang: 'es-mx',
+    lang: 'es-MX',
     name: 'Español (MX)'
   },
   'fr-fr': {
@@ -115,7 +119,7 @@ const getPathSegments = (path: string) => {
     segmentsCount: segments.length
   }
 }
-export const getCurrentPage = (path: string, pages: string[]) => {
+export const getCurrentPage = (path: string, pages: string[], returnValidPage = false) => {
   const { segments } = getPathSegments(path)
 
   const page = isValidPage(segments[0], pages)
@@ -124,14 +128,16 @@ export const getCurrentPage = (path: string, pages: string[]) => {
     ? segments[1]
     : segments[0] ?? ''
 
-  return page
+  const validPage = isValidPage(page, pages) ? page : '/'
+
+  return returnValidPage ? validPage : page
 }
 
-export const getCurrentLocale = (path: string, locales: Locale[]) => {
+export const getCurrentLocale = (path: string, locales: Locale[], returnOriginal = false) => {
   const { segments } = getPathSegments(path)
   const locale = isValidLocale(segments[0] as Locale, locales) ? segments[0] : ''
 
-  return locale
+  return returnOriginal ? segments[0] : locale
 }
 
 export const i18n = ({
@@ -190,4 +196,12 @@ export const i18n = ({
     page: validPage ? page : '',
     mustRedirect: forceRedirection && (invalidLocale || invalidPage || locale !== lowerLocale)
   }
+}
+
+export const getUserLanguage = (acceptLanguage: string, locales: Locale[]) => {
+  const languages = acceptLanguage.split(';')[0]
+  const userLanguage = languages.split(',')[0] || ''
+
+  const validLocale = isValidLocale(userLanguage, locales)
+  return validLocale ? userLanguage.toLowerCase() : availableLocales['en-us'].lang.toLowerCase()
 }
