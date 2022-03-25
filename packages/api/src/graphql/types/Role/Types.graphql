@@ -6,4 +6,6 @@ type Role {
   role: String!
   "Description"
   description: String!
+  "Users with this role"
+  users: [User!]!
 }

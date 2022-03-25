@@ -1,5 +1,5 @@
 "Login Input"
-input Login {
+input ILogin {
   "Email for authentication"
   email: String!
   "Password for authentication"

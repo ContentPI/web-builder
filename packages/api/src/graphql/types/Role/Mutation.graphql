@@ -1,5 +1,5 @@
 "Role Mutation"
 type Mutation {
   "This mutation will create a new role"
-  createRole(input: CreateRole): Role!
+  createRole(input: ICreateRole): Role!
 }
