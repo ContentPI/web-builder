@@ -3,17 +3,20 @@ import { SiteConfiguration } from '../../types/config'
 export const config: SiteConfiguration = {
   siteTitle: 'Codejobs',
   domainName: 'codejobs.com',
+  theme: {
+    brandColors: ['#00325a', '#027ac1', '#222', '#bdbdbd']
+  },
   i18n: {
-    locales: ['ar', 'en-US', 'es-MX', 'fr-FR', 'ja-JP'],
-    defaultLocale: 'en-US'
+    locales: ['ar', 'en-us', 'es-mx', 'fr-fr', 'ja-jp'],
+    defaultLocale: 'en-us'
   },
   pages: ['index', 'login'],
   redirections: {
     localeRedirections: {
-      en: 'en-US',
-      es: 'es-MX',
-      fr: 'fr-FR',
-      jp: 'ja-JP'
+      en: 'en-us',
+      es: 'es-mx',
+      fr: 'fr-fr',
+      jp: 'ja-jp'
     }
   }
 }

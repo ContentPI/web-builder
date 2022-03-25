@@ -21,6 +21,9 @@ export enum DeploymentType {
 export interface SiteConfiguration {
   siteTitle: string
   domainName: string
+  theme?: {
+    brandColors: string[]
+  }
   i18n: {
     locales: Locale[]
     defaultLocale: Locale
