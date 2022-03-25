@@ -1,0 +1,13 @@
+"CreateUser Input"
+input CreateUser {
+  "Username"
+  username: String!
+  "Encrypted password"
+  password: String!
+  "Email"
+  email: String!
+  "Account status"
+  active: Boolean!
+  "Role for the user"
+  roleId: UUID!
+}

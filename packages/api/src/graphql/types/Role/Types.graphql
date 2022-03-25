@@ -1,0 +1,9 @@
+"Role type"
+type Role {
+  "ID"
+  id: UUID!
+  "Role"
+  role: String!
+  "Description"
+  description: String!
+}

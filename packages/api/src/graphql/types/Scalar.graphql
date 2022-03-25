@@ -1,0 +1,6 @@
+"UUID"
+scalar UUID
+"Datetime"
+scalar Datetime
+"JSON"
+scalar JSON

@@ -1,0 +1,5 @@
+"Role Query"
+type Query {
+  "Gets all roles"
+  getRoles: [Role!]
+}

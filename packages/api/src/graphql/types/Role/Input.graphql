@@ -1,0 +1,7 @@
+"Create Role Input"
+input CreateRole {
+  "Role (admin | editor | viewer)"
+  role: String!
+  "Description for the role"
+  description: String!
+}

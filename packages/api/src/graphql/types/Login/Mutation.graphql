@@ -1,0 +1,5 @@
+"Login Mutation"
+type Mutation {
+  "Login mutation (returns a token)"
+  login(input: Login): Token!
+}

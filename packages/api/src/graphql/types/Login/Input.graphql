@@ -1,0 +1,7 @@
+"Login Input"
+input Login {
+  "Email for authentication"
+  email: String!
+  "Password for authentication"
+  password: String!
+}

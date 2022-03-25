@@ -91,6 +91,10 @@ rules:
   react/jsx-wrap-multilines: 'off'
   # We need __NEXT_DATA__
   no-underscore-dangle: 'off'
+  # This is affecting the authentication
+  no-promise-executor-return: 'off'
+  # We don't need a default in all cases
+  default-case: 'off'
 
   # ⭐ JSX-A11Y rules
   jsx-a11y/no-noninteractive-element-interactions: 'off'
@@ -106,6 +110,8 @@ rules:
   '@typescript-eslint/no-redeclare': 'off'
   # We don't like semicolons
   '@typescript-eslint/semi': 'off'
+  # Need it to stop if SERVICE is not passed
+  '@typescript-eslint/no-throw-literal': 'off'
 
 # ⭐ Overrides
 overrides:
