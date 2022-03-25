@@ -1,3 +1,5 @@
+import { getUserLanguage } from '@web-builder/i18n'
+import cookieParser from 'cookie-parser'
 import express, { Application, Request, Response } from 'express'
 import next from 'next'
 import path from 'path'
@@ -16,12 +18,19 @@ nextApp.prepare().then(() => {
   // Express application
   const app: Application = express()
 
+  // Cookies
+  app.use(cookieParser())
+
   // Sites static directories
   app.use(express.static(path.join(__dirname, '../public')))
   app.use(express.static(path.join(__dirname, `./sites/${Config.site}/static`)))
 
   // Traffic handling
   app.all('*', (req: Request, res: Response) => {
+    const userLanguage = getUserLanguage(req.headers['accept-language'] || '', Config.i18n.locales)
+
+    res.cookie('userLanguage', userLanguage.toLowerCase())
+
     handle(req, res)
   })
 

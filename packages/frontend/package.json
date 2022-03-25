@@ -17,6 +17,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/node": "^7.16.8",
+    "@types/cookie-parser": "^1.4.2",
     "babel-plugin-jsx-remove-data-test-id": "^3.0.0",
     "babel-plugin-styled-components": "^2.0.6"
   },
@@ -26,6 +27,7 @@
     "@web-builder/i18n": "^1.0.0",
     "@web-builder/utils": "^1.0.0",
     "babel-preset-next": "^1.4.0",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
     "encoding": "^0.1.13",
     "express": "^4.17.3",

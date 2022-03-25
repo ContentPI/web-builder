@@ -1,6 +1,7 @@
 export { default as base64 } from './utils/base64'
 export { default as capitalize } from './utils/capitalize'
 export { default as chunk } from './utils/chunk'
+export { default as cookies } from './utils/cookies'
 export { default as cx } from './utils/cx'
 export { default as forEach } from './utils/forEach'
 export { default as is } from './utils/is'
