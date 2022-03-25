@@ -6,6 +6,8 @@ const StyledMenu = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
+  background: #f5f5f5;
+
   li {
     width: 280px;
     h2 {
@@ -45,25 +47,23 @@ type Props = {
   components: any
 }
 
-const Sidebar: FC<Props> = ({ components }) => {
-  return (
-    <StyledMenu>
-      <li>
-        <h2>Preview Components</h2>
-      </li>
-      {Object.keys(components).map((component: any) => {
-        const url = `/${component.toLowerCase()}`
+const Sidebar: FC<Props> = ({ components }) => (
+  <StyledMenu>
+    <li>
+      <h2>Preview Components</h2>
+    </li>
+    {Object.keys(components).map((component: any) => {
+      const url = `/${component.toLowerCase()}`
 
-        return (
-          <li key={component} className="item">
-            <Link to={url} className={url === '' ? 'active' : ''}>
-              {component}
-            </Link>
-          </li>
-        )
-      })}
-    </StyledMenu>
-  )
-}
+      return (
+        <li key={component} className="item">
+          <Link to={url} className={url === '' ? 'active' : ''}>
+            {component}
+          </Link>
+        </li>
+      )
+    })}
+  </StyledMenu>
+)
 
 export default Sidebar

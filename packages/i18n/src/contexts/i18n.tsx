@@ -1,6 +1,6 @@
 import React, { createContext, FC, ReactElement, useContext, useMemo } from 'react'
 
-import translations from './translations'
+import translations from '../i18n/translations'
 
 type ContextProps = {
   t: any
@@ -17,10 +17,10 @@ type Props = {
   locale: string
 }
 
-export const I18nProvider: FC<Props> = ({ children, locale = 'en' }) => {
+export const I18nProvider: FC<Props> = ({ children, locale = 'en-us' }) => {
   const t = (key: string, replacements: any) => {
     const translation = translations[key]
-    let text = (translation && translation[locale.toLowerCase()]) || key
+    let text = (translation && translation[locale]) || key
 
     const matches = text.match(/\{(.*?)\}/g)
 

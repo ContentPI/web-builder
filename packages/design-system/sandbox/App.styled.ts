@@ -1,10 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
-import bgImage from './bg.png'
-
 export const BodyStyles = createGlobalStyle`
   body {
-    background-image: url("${bgImage}") !important;
     background-position: left;
     background-repeat: repeat-y;
     background-color: #fff !important;

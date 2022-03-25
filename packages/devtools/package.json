@@ -7,7 +7,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "npm-run-all clean compile",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc",
     "lint": "npm run --prefix ../../ lint",
     "lint:fix": "npm run --prefix ../../ lint:fix"
   },

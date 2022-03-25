@@ -7,18 +7,18 @@
     "dist"
   ],
   "scripts": {
-    "build:dev": "NODE_ENV=development npm-run-all clean compile webpack:development",
     "build": "NODE_ENV=production npm-run-all clean compile webpack:production",
+    "build:dev": "NODE_ENV=development npm-run-all clean compile webpack:development",
     "clean": "rm -rf ./dist",
     "compile": "tsc",
     "lint": "npm run --prefix ../../ lint",
     "lint:fix": "npm run --prefix ../../ lint:fix",
     "prepublishOnly": "npm run lint && npm run build",
-    "sandbox": "webpack serve --open --config=webpack.config.ts --env mode=development --env type=package --env sandbox=true",
+    "sandbox": "npm run --prefix ../../ design-system:sandbox",
     "test": "jest",
     "versioning": "./scripts/versioning.sh",
-    "webpack:development": "webpack --config=webpack.config.ts --env mode=development --env type=package",
-    "webpack:production": "webpack --config=webpack.config.ts --env mode=production --env type=package"
+    "webpack:development": "npm run --prefix ../../ design-system:webpack:development",
+    "webpack:production": "npm run --prefix ../../ design-system:webpack:production"
   },
   "author": "Carlos Santana",
   "license": "MIT",

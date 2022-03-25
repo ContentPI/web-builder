@@ -1,10 +1,11 @@
 export type WebpackMode = 'production' | 'development'
 export type ConfigType = 'web' | 'package'
-export type Package = 'design-system' | 'frontend'
+export type Package = 'api' | 'design-system' | 'frontend' | 'i18n' | 'utils'
 export type ConfigArgs = {
   mode: WebpackMode
   type: ConfigType
   sandbox?: 'true' | 'false'
+  packageName: Package
 }
 export type ModeArgs = {
   configType: ConfigType

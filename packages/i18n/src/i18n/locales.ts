@@ -4,18 +4,19 @@ export type Locale =
   | 'es'
   | 'fr'
   | 'jp'
-  | 'de-DE'
-  | 'en-GB'
-  | 'en-US'
-  | 'es-MX'
-  | 'fr-FR'
-  | 'it-IT'
-  | 'ja-JP'
-  | 'ko-KR'
-  | 'pt-BR'
-  | 'pt-PT'
-  | 'ru-RU'
-  | 'zh-CN'
+  | 'de-de'
+  | 'en-gb'
+  | 'en-us'
+  | 'es-mx'
+  | 'fr-fr'
+  | 'it-it'
+  | 'ja-jp'
+  | 'ko-kr'
+  | 'pt-br'
+  | 'pt-pt'
+  | 'ru-ru'
+  | 'zh-cn'
+  | string
 
 export const availableLocales: any = {
   ar: {
@@ -39,51 +40,51 @@ export const availableLocales: any = {
     lang: 'jp',
     name: '日本語'
   },
-  'de-DE': {
+  'de-de': {
     lang: 'de-DE',
     name: 'Deutsch'
   },
-  'en-GB': {
+  'en-gb': {
     lang: 'en-GB',
     name: 'English (UK)'
   },
-  'en-US': {
-    lang: 'en-US',
+  'en-us': {
+    lang: 'en-us',
     name: 'English (US)'
   },
-  'es-MX': {
-    lang: 'es-MX',
+  'es-mx': {
+    lang: 'es-mx',
     name: 'Español (MX)'
   },
-  'fr-FR': {
+  'fr-fr': {
     lang: 'fr-FR',
     name: 'Français'
   },
-  'it-IT': {
+  'it-it': {
     lang: 'it-IT',
     name: 'Italiano'
   },
-  'ja-JP': {
+  'ja-jp': {
     lang: 'ja-JP',
     name: '日本語'
   },
-  'ko-KR': {
+  'ko-kr': {
     lang: 'ko-KR',
     name: '한국어'
   },
-  'pt-BR': {
+  'pt-br': {
     lang: 'pt-BR',
     name: 'Português (BR)'
   },
-  'pt-PT': {
+  'pt-pt': {
     lang: 'pt-PT',
     name: 'Português (PT)'
   },
-  'ru-RU': {
+  'ru-ru': {
     lang: 'ru-RU',
     name: 'Русский'
   },
-  'zh-CN': {
+  'zh-cn': {
     lang: 'zh-CN',
     name: '中文（简体）'
   }
@@ -99,8 +100,11 @@ type I18nAttrs = {
 }
 
 const isValidLocale = (locale: Locale, locales: Locale[]) =>
-  !!(locales.includes(locale) || availableLocales[locale])
-const isValidPage = (page: string, pages: string[]) => !!pages.includes(page)
+  !!(
+    locales.includes(locale && locale.toLowerCase()) ||
+    availableLocales[locale && locale.toLowerCase()]
+  )
+const isValidPage = (page: string, pages: string[]) => !!pages.includes(page && page.toLowerCase())
 
 // Getting the segments [0] = locale [1] = page
 const getPathSegments = (path: string) => {
@@ -151,6 +155,7 @@ export const i18n = ({
 
   // If is valid locale we add it
   const locale = getCurrentLocale(path, locales)
+  const lowerLocale = locale.toLowerCase()
 
   // Getting the page
   const page = getCurrentPage(path, pages)
@@ -163,9 +168,9 @@ export const i18n = ({
   const validPage = !equals && isValidPage(page, pages)
 
   // Locale Redirections
-  if (localeRedirections[locale]) {
+  if (localeRedirections[lowerLocale]) {
     return {
-      locale: localeRedirections[locale],
+      locale: localeRedirections[lowerLocale],
       page: validPage ? page : '',
       mustRedirect: forceRedirection
     }
@@ -180,10 +185,9 @@ export const i18n = ({
     }
   }
 
-  // All other paths
   return {
-    locale: validLocale ? locale : defaultLocale,
+    locale: validLocale ? lowerLocale : defaultLocale,
     page: validPage ? page : '',
-    mustRedirect: forceRedirection && (invalidLocale || invalidPage)
+    mustRedirect: forceRedirection && (invalidLocale || invalidPage || locale !== lowerLocale)
   }
 }
