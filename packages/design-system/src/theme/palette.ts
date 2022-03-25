@@ -1,4 +1,5 @@
-import { ValueOf } from '../types/utils'
+import { ValueOf } from '@web-builder/utils'
+
 import { Base, Blue, Gray, Green, Red, Yellow } from './color'
 
 export type ColorPalette = Base | Blue | Gray | Green | Red | Yellow

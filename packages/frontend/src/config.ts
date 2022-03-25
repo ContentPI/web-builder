@@ -27,6 +27,8 @@ const buildConfig = (): SiteBuilderConfiguration => {
     if (pageProps && pageProps.site) {
       site = pageProps.site
     }
+  } else if (!site) {
+    throw 'You must specify a site (E.g. SITE=codejobs npm run dev)'
   }
 
   const siteConfig = getSiteConfig(site)

@@ -1,6 +1,5 @@
 import { Locale } from '@web-builder/i18n'
-
-import { ValueOf } from './utils'
+import { ValueOf } from '@web-builder/utils'
 
 export const Site = {
   CodeJobs: 'codejobs',

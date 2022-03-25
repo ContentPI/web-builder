@@ -11,7 +11,6 @@ export * from './shape'
 export * from './size'
 export * from './theme'
 export * from './typography'
-export * from './utils'
 export * from './variant'
 
 export interface CustomTheme {

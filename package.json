@@ -10,6 +10,7 @@
     "test:e2e": "concurrently 'SITE=codejobs npm run frontend:dev' 'sleep 10 && npm run webdriver:wdio' 'sleep 15 && kill -9 $(lsof -ti:3000)'",
     "frontend:dev": "cd ./packages/frontend && npm run dev",
     "webdriver:wdio": "cd ./packages/webdriver && npm run wdio",
+    "api:webpack:production": "webpack --config=webpack.config.ts --env mode=production --env type=package --env packageName=api",
     "design-system:sandbox": "webpack serve --open --config=webpack.config.ts --env mode=development --env type=package --env sandbox=true --env packageName=design-system",
     "design-system:webpack:development": "webpack --config=webpack.config.ts --env mode=development --env type=package --env packageName=design-system",
     "design-system:webpack:production": "webpack --config=webpack.config.ts --env mode=production --env type=package --env packageName=design-system",

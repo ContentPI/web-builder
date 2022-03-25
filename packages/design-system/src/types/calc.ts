@@ -1,4 +1,4 @@
-import { ValueOf } from './utils'
+import { ValueOf } from '@web-builder/utils'
 
 export const CalcType = {
   spacing: 'spacing',
