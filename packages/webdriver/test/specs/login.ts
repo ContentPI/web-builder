@@ -6,7 +6,7 @@ describe('Login Page Test', () => {
     LoginPage.open('/en/login')
 
     // Get all elements
-    const { logo, login, register, signInTitle, email, password, forgot } = LoginPage.get()
+    const { logo, login, register, signInTitle, email, password, forgot } = LoginPage.element
 
     // Logo should exists
     await expect(logo()).toBeExisting()

@@ -1,6 +1,6 @@
 const LoginPage = {
   open: (path = '') => browser.url(`http://localhost:3000${path}`),
-  get: () => ({
+  element: {
     email: () => $('[data-testid="email"]'),
     password: () => $('[data-testid="password"]'),
     logo: () => $('[data-testid="logo"]'),
@@ -8,11 +8,11 @@ const LoginPage = {
     forgot: () => $('[data-testid="forgot"]'),
     login: () => $('[data-testid="login"]'),
     register: () => $('[data-testid="register"]')
-  }),
+  },
   async login(username: string, password: string) {
-    await this.get().username().setValue(username)
-    await this.get().password().setValue(password)
-    await this.get().submitButton().click()
+    await this.element.username().setValue(username)
+    await this.element.password().setValue(password)
+    await this.element.submitButton().click()
   }
 }
 
