@@ -6,6 +6,7 @@ export type User = {
   email: string
   active: boolean
   roleId: string
+  role?: string
 }
 
 export type Role = {

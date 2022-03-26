@@ -10,14 +10,15 @@ const secretKey = 'xxx'
 const expiresIn = '7d'
 
 export const createToken = async (user: User): Promise<string[]> => {
-  const { id, username, password, email, active } = user
+  const { id, username, password, email, active, role } = user
   const token = base64.set(`${security.encrypt(secretKey)}${password}`)
   const userData = {
     id,
     username,
     email,
     active,
-    token
+    token,
+    role
   }
 
   const createTk = jwt.sign({ data: base64.set(userData) }, secretKey, {
@@ -27,7 +28,7 @@ export const createToken = async (user: User): Promise<string[]> => {
   return Promise.all([createTk])
 }
 
-export const getUserBy = async (where: any, roles: string[], models: Model): Promise<User> => {
+export const getUserBy = async (where: any, roles: string[], models: Model): Promise<any> => {
   const user = await models.User.findOne({
     where,
     raw: true
@@ -45,8 +46,17 @@ export const getUserBy = async (where: any, roles: string[], models: Model): Pro
       }
     ]
   })
-  console.log('userRoles===', userRoles)
-  return user
+
+  const findUser = userRoles.find((role: any) => role['users.email'] === where.email)
+
+  if (findUser) {
+    return {
+      ...user,
+      role: findUser.role
+    }
+  }
+
+  return null
 }
 
 export const authenticate = async (
