@@ -6,27 +6,27 @@ describe('Login Page Test', () => {
     LoginPage.open('/en/login')
 
     // Get all elements
-    const { logo, signInTitle, email, password, forgot } = LoginPage.get()
+    const { logo, login, register, signInTitle, email, password, forgot } = LoginPage.get()
 
     // Logo should exists
-    await expect(logo).toBeExisting()
+    await expect(logo()).toBeExisting()
 
     // Sign in message should be there
-    await expect(signInTitle).toHaveTextContaining('Sign into your Account')
+    await expect(signInTitle()).toHaveTextContaining('Sign into your Account')
 
     // Email & password inputs should exists
-    const emailPlaceholder = await email.getAttribute('placeholder')
-    const passwordPlaceholder = await password.getAttribute('placeholder')
+    const emailPlaceholder = await email().getAttribute('placeholder')
+    const passwordPlaceholder = await password().getAttribute('placeholder')
 
     await expect(emailPlaceholder).toBe('Email')
     await expect(passwordPlaceholder).toBe('Password')
 
     // Forgot Password link should exists
-    await expect(forgot).toHaveTextContaining('Forgot Password')
+    await expect(forgot()).toHaveTextContaining('Forgot Password')
 
     // Delayed elements
-    const loginButton = await $('[data-testid="login"]')
-    const registerButton = await $('[data-testid="register"]')
+    const loginButton = await login()
+    const registerButton = await register()
 
     await expect(loginButton).toHaveTextContaining('Login')
     await expect(registerButton).toHaveTextContaining('Register')
