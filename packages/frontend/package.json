@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development ts-node src/server.ts",
+    "dev": "concurrently 'NODE_ENV=development npm run next' 'NODE_ENV=development npm run api'",
+    "next": "ts-node src/server.ts",
+    "api": "npm run --prefix ../api dev",
     "lint": "npm run --prefix ../../ lint",
     "lint:fix": "npm run --prefix ../../ lint:fix",
     "typecheck": "tsc --noEmit"
