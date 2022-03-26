@@ -5,7 +5,7 @@ import Config from '../config'
 import { Model } from '../types'
 
 // Db Connection
-const { engine, port, host, database, username, password } = Config.database
+const { engine, port, host, database, username, password } = Config.database ?? {}
 
 const uri = `${engine}://${username}:${password}@${host}:${port}/${database}`
 const sequelize = new Sequelize(uri)
