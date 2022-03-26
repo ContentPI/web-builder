@@ -2,7 +2,7 @@ import { ServiceConfiguration } from '../../types/config'
 
 export const config: ServiceConfiguration = {
   domainName: 'codejobs.com',
-  port: 5000,
+  port: 4000,
   database: {
     database: 'cms'
   }
