@@ -18,13 +18,13 @@ export enum DeploymentType {
 export interface ServiceConfiguration {
   domainName: string
   port: number
-  database: {
-    engine: 'postgresql' | 'mysql'
-    port: number
-    host: string
-    database: string
-    username: string
-    password: string
+  database?: {
+    engine?: string
+    port?: number
+    host?: string
+    database?: string
+    username?: string
+    password?: string
   }
 }
 
