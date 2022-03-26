@@ -10,9 +10,9 @@ const LoginPage = {
     register: () => $('[data-testid="register"]')
   }),
   async login(username: string, password: string) {
-    await this.get().username.setValue(username)
-    await this.get().password.setValue(password)
-    await this.get().submitButton.click()
+    await this.get().username().setValue(username)
+    await this.get().password().setValue(password)
+    await this.get().submitButton().click()
   }
 }
 
