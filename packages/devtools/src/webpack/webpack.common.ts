@@ -94,18 +94,9 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
 
   // Optimization
   const optimization =
-    configType === 'web'
+    configType === 'package'
       ? {
-          splitChunks: {
-            cacheGroups: {
-              default: false,
-              commons: {
-                test: /node_modules/,
-                name: 'vendor',
-                chunks: 'all'
-              }
-            }
-          }
+          minimize: true // Mark as false to debug on production bundle
         }
       : {}
 
