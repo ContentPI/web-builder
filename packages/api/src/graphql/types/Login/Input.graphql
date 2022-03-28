@@ -1,7 +1,0 @@
-"Login Input"
-input ILogin {
-  "Email for authentication"
-  email: String!
-  "Password for authentication"
-  password: String!
-}

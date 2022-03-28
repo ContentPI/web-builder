@@ -1,7 +1,0 @@
-"User Query"
-type Query {
-  "Get a specific user by passing an access token"
-  getUser(at: String!): User!
-  "Gets all users"
-  getUsers: [User!]
-}

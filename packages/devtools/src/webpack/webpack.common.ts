@@ -39,7 +39,8 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
     fallback: {
       buffer: false,
       crypto: false,
-      stream: false
+      stream: false,
+      path: require.resolve('path-browserify')
     }
   }
 
@@ -196,7 +197,10 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
     plugins,
     module: {
       rules
-    }
+    },
+    ...(configType === 'package' && {
+      target: 'node'
+    })
   }
 
   return webpackConfig as Configuration

@@ -8,13 +8,16 @@
   ],
   "scripts": {
     "api": "pm2 start processes.json",
-    "build": "NODE_ENV=production npm-run-all clean compile webpack:production",
+    "build": "NODE_ENV=production npm-run-all clean compile webpack:production && npm run copy",
+    "build:dev": "NODE_ENV=development npm-run-all clean compile webpack:development && npm run copy",
+    "copy": "cp ./src/graphql/types/*.graphql ./dist/graphql/types/",
     "clean": "rm -rf ./dist",
     "compile": "tsc",
     "dev": "ts-node-dev src/index.ts",
     "lint": "npm run --prefix ../../ lint",
     "lint:fix": "npm run --prefix ../../ lint:fix",
     "start": "ts-node dist/index.js",
+    "webpack:development": "npm run --prefix ../../ api:webpack:development",
     "webpack:production": "npm run --prefix ../../ api:webpack:production"
   },
   "author": "Carlos Santana",

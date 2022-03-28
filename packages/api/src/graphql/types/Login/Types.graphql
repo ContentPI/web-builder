@@ -1,5 +1,0 @@
-"Token type"
-type Token {
-  "Access Token for valid user"
-  token: String!
-}
