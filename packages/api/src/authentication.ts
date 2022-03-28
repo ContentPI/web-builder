@@ -34,26 +34,8 @@ export const getUserBy = async (where: any, roles: string[], models: Model): Pro
     raw: true
   })
 
-  const userRoles = await models.Role.findAll({
-    where: {
-      role: { [Sequelize.Op.in]: roles }
-    },
-    raw: true,
-    include: [
-      {
-        model: models.User,
-        as: 'users'
-      }
-    ]
-  })
-
-  const findUser = userRoles.find((role: any) => role['users.email'] === where.email)
-
-  if (findUser) {
-    return {
-      ...user,
-      role: findUser.role
-    }
+  if (roles.includes(user.role)) {
+    return user
   }
 
   return null

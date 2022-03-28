@@ -30,6 +30,5 @@ export type ICreateUser = User
 
 export type Model = {
   User: any
-  Role: any
   sequelize: any
 }

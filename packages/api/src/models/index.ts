@@ -16,7 +16,6 @@ const sequelize = new Sequelize(uri, {
 // Models
 const models: Model = {
   User: require('./User').default(sequelize, Sequelize),
-  Role: require('./Role').default(sequelize, Sequelize),
   sequelize
 }
 

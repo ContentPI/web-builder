@@ -42,6 +42,10 @@ export default (sequelize: Sequelize, dataType: DataType): User => {
           }
         }
       },
+      role: {
+        type: dataType.STRING,
+        allowNull: false
+      },
       active: {
         type: dataType.BOOLEAN,
         allowNull: false,

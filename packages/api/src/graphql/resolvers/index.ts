@@ -1,8 +1,7 @@
 import { mergeResolvers } from '@graphql-tools/merge'
 
-import role from './role'
 import user from './user'
 
-const resolvers = mergeResolvers([role, user])
+const resolvers = mergeResolvers([user])
 
 export default resolvers
