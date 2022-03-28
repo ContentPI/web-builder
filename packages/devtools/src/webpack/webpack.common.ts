@@ -96,7 +96,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
   const optimization =
     configType === 'package'
       ? {
-          minimize: true // Mark as false to debug on production bundle
+          minimize: !process.env.DEBUG // Mark as false to debug on production bundle
         }
       : {}
 
@@ -119,14 +119,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
       use: [
         {
           loader: 'file-loader',
-          options:
-            configType === 'package'
-              ? {
-                  name: '[name].[ext]',
-                  outputPath: 'fonts/',
-                  esModule: false
-                }
-              : {}
+          options: {}
         }
       ]
     },

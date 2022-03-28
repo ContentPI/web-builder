@@ -1,5 +1,5 @@
 import { base64, is, security } from '@web-builder/utils'
-import { AuthenticationError } from 'apollo-server'
+import { AuthenticationError } from 'apollo-server-express'
 import jwt from 'jsonwebtoken'
 import Sequelize from 'sequelize'
 
