@@ -1,22 +1,58 @@
 import { makeExecutableSchema } from '@graphql-tools/schema'
-import { ApolloServer } from 'apollo-server'
+import { ApolloServer } from 'apollo-server-express'
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
+import express from 'express'
+// import expressJwt from 'express-jwt'
+import { applyMiddleware } from 'graphql-middleware'
 
-import Config from './config'
 import resolvers from './graphql/resolvers'
 import typeDefs from './graphql/types'
 import models from './models'
 
-// Schema
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers
+const app = express()
+
+const corsOptions = {
+  origin: '*',
+  credentials: true
+}
+
+app.use(cors(corsOptions))
+
+app.use(cookieParser())
+
+// app.use(
+//   expressJwt({
+//     secret: 'xxx',
+//     algorithms: ['HS256'],
+//     credentialsRequired: false
+//   })
+// )
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
 })
+
+// Schema
+const schema = applyMiddleware(
+  makeExecutableSchema({
+    typeDefs,
+    resolvers
+  })
+)
 
 // Apollo Server
 const apolloServer = new ApolloServer({
   schema,
-  context: {
-    models
+  context: async ({ req }: any) => {
+    const user: any = req.user || null
+
+    return {
+      models,
+      user
+    }
   }
 })
 
@@ -24,7 +60,12 @@ const alter = true
 const force = false
 
 models.sequelize.sync({ alter, force }).then(() => {
-  apolloServer.listen(Config.port).then(({ url }) => {
-    console.log(`Running on ${url}`)
+  apolloServer.start().then(() => {
+    apolloServer.applyMiddleware({ app, path: '/graphql', cors: corsOptions })
+
+    app.listen({ port: 4000 }, () => {
+      // eslint-disable-next-line no-console
+      console.log('Running on http://localhost:4000')
+    })
   })
 })
