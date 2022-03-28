@@ -1,4 +1,5 @@
 import crypto from 'crypto'
+import { v4 as uuid } from 'uuid'
 
 const security = {
   encrypt(str: string) {
@@ -17,6 +18,9 @@ const security = {
     }
 
     return code
+  },
+  uuid() {
+    return uuid()
   }
 }
 
