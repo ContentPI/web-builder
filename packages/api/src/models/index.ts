@@ -1,4 +1,5 @@
 import { keys, ts } from '@web-builder/utils'
+import pg from 'pg'
 import { Sequelize } from 'sequelize'
 
 import Config from '../config'
@@ -8,7 +9,9 @@ import { Model } from '../types'
 const { engine, port, host, database, username, password } = Config.database ?? {}
 
 const uri = `${engine}://${username}:${password}@${host}:${port}/${database}`
-const sequelize = new Sequelize(uri)
+const sequelize = new Sequelize(uri, {
+  dialectModule: pg
+})
 
 // Models
 const models: Model = {

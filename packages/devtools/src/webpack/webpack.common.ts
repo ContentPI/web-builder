@@ -3,6 +3,7 @@ import path from 'path'
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components'
 import { Configuration, WebpackPluginInstance } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import nodeExternals from 'webpack-node-externals'
 import WebpackBar from 'webpackbar'
 
 import { ModeArgs } from './webpack.types'
@@ -188,6 +189,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
         port: devServerPort
       }
     }),
+    externals: [nodeExternals()],
     output,
     resolve,
     optimization,
