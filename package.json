@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint --ext .tsx,.ts ./packages/**/src",
     "lint:fix": "eslint --ext .tsx,.ts ./packages/**/src",
-    "test:e2e": "concurrently 'SITE=codejobs npm run frontend:dev' 'sleep 10 && npm run webdriver:wdio' 'sleep 15 && kill -9 $(lsof -ti:3000)'",
+    "test:e2e": "concurrently 'SITE=codejobs SERVICE=cms npm run frontend:dev' 'sleep 10 && npm run webdriver:wdio' 'sleep 15 && kill -9 $(lsof -ti:3000)'",
     "frontend:dev": "cd ./packages/frontend && npm run dev",
     "webdriver:wdio": "cd ./packages/webdriver && npm run wdio",
     "api:webpack:production": "webpack --config=webpack.config.ts --env mode=production --env type=package --env packageName=api",

@@ -3,7 +3,7 @@ import LoginPage from '../pages/login.page'
 describe('Login Page Test', () => {
   it('should render the login page correctly', async () => {
     // Opening Url
-    LoginPage.open('/en/login')
+    LoginPage.open('/en-us/login')
 
     // Get all elements
     const { logo, login, register, signInTitle, email, password, forgot } = LoginPage.element
