@@ -5,8 +5,7 @@ export type User = {
   password: string
   email: string
   active: boolean
-  roleId: string
-  role?: string
+  role: string
 }
 
 export type Role = {
@@ -19,7 +18,7 @@ export type Token = {
 }
 
 export type Login = {
-  email: string
+  emailOrUsername: string
   password: string
 }
 

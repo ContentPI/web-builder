@@ -41,7 +41,7 @@ const createUser = (_: any, { input }: { input: ICreateUser }, { models }: { mod
   models.User.create({ ...input })
 
 const login = (_: any, { input }: { input: ILogin }, { models }: { models: Model }) =>
-  authenticate(input.email, input.password, models)
+  authenticate(input.emailOrUsername, input.password, models)
 
 export default {
   Query: {

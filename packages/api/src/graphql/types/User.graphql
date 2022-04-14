@@ -2,14 +2,14 @@
 type User {
   "ID"
   id: UUID!
-  "Role Id"
-  roleId: UUID!
   "The user's username"
   username: String!
   "The user's password"
   password: String!
   "Unique email"
   email: String!
+  "Role"
+  role: String!
   "The user needs to activate the account"
   active: Boolean!
   "Created date"
@@ -51,13 +51,13 @@ input ICreateUser {
   "Account status"
   active: Boolean!
   "Role for the user"
-  roleId: UUID!
+  role: String!
 }
 
 "Login Input"
 input ILogin {
   "Email for authentication"
-  email: String!
+  emailOrUsername: String!
   "Password for authentication"
   password: String!
 }

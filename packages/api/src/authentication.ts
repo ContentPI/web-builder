@@ -1,7 +1,6 @@
 import { base64, is, security } from '@web-builder/utils'
 import { AuthenticationError } from 'apollo-server-express'
 import jwt from 'jsonwebtoken'
-import Sequelize from 'sequelize'
 
 import { Model, Token, User } from './types'
 
@@ -34,7 +33,7 @@ export const getUserBy = async (where: any, roles: string[], models: Model): Pro
     raw: true
   })
 
-  if (roles.includes(user.role)) {
+  if (user && roles.includes(user.role)) {
     return user
   }
 
@@ -42,11 +41,15 @@ export const getUserBy = async (where: any, roles: string[], models: Model): Pro
 }
 
 export const authenticate = async (
-  email: string,
+  emailOrUsername: string,
   password: string,
   models: Model
 ): Promise<Token> => {
-  const user = await getUserBy({ email }, ['Admin', 'Editor'], models)
+  const where = emailOrUsername.includes('@')
+    ? { email: emailOrUsername }
+    : { username: emailOrUsername }
+
+  const user = await getUserBy(where, ['god', 'admin', 'editor'], models)
 
   if (!user) {
     throw new AuthenticationError('Invalid Login')
