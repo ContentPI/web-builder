@@ -1,71 +1,62 @@
-import { makeExecutableSchema } from '@graphql-tools/schema'
 import { ApolloServer } from 'apollo-server-express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express from 'express'
 // import expressJwt from 'express-jwt'
 import { applyMiddleware } from 'graphql-middleware'
+import { buildSchema } from 'type-graphql'
 
-import resolvers from './graphql/resolvers'
+import db from './db'
+import { UserResolver } from './graphql/resolvers/user'
 import typeDefs from './graphql/types'
-import models from './models'
 
-const app = express()
+const main = async () => {
+  const app = express()
 
-const corsOptions = {
-  origin: '*',
-  credentials: true
-}
-
-app.use(cors(corsOptions))
-
-app.use(cookieParser())
-
-// app.use(
-//   expressJwt({
-//     secret: 'xxx',
-//     algorithms: ['HS256'],
-//     credentialsRequired: false
-//   })
-// )
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next()
-})
-
-// Schema
-const schema = applyMiddleware(
-  makeExecutableSchema({
-    typeDefs,
-    resolvers
-  })
-)
-
-// Apollo Server
-const apolloServer = new ApolloServer({
-  schema,
-  context: async ({ req }: any) => {
-    const user: any = req.user || null
-
-    return {
-      models,
-      user
-    }
+  const corsOptions = {
+    origin: '*',
+    credentials: true
   }
-})
 
-const alter = true
-const force = false
+  app.use(cors(corsOptions))
 
-models.sequelize.sync({ alter, force }).then(() => {
-  apolloServer.start().then(() => {
-    apolloServer.applyMiddleware({ app, path: '/graphql', cors: corsOptions })
+  app.use(cookieParser())
 
-    app.listen({ port: 4000 }, () => {
-      // eslint-disable-next-line no-console
-      console.log('Running on http://localhost:4000')
+  // app.use(
+  //   expressJwt({
+  //     secret: 'xxx',
+  //     algorithms: ['HS256'],
+  //     credentialsRequired: false
+  //   })
+  // )
+
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    next()
+  })
+
+  // Apollo Server
+  const apolloServer = new ApolloServer({
+    schema: await buildSchema({
+      resolvers: [UserResolver],
+      validate: false
+    }),
+    context: ({ req, res }) => ({
+      req,
+      res,
+      db
     })
   })
+
+  apolloServer.applyMiddleware({ app, path: '/graphql', cors: corsOptions })
+
+  app.listen({ port: 4000 }, () => {
+    // eslint-disable-next-line no-console
+    console.log('Running on http://localhost:4000')
+  })
+}
+
+main().catch((error) => {
+  console.log(error)
 })

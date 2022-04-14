@@ -1,9 +1,8 @@
 import { base64, is, security } from '@web-builder/utils'
 import { AuthenticationError } from 'apollo-server-express'
 import jwt from 'jsonwebtoken'
-import Sequelize from 'sequelize'
 
-import { Model, Token, User } from './types'
+import { Token } from './types'
 
 // TODO: Movie this to secrets.env
 const secretKey = 'xxx'
@@ -28,8 +27,8 @@ export const createToken = async (user: User): Promise<string[]> => {
   return Promise.all([createTk])
 }
 
-export const getUserBy = async (where: any, roles: string[], models: Model): Promise<any> => {
-  const user = await models.User.findOne({
+export const getUserBy = async (where: any, roles: string[], User: any): Promise<any> => {
+  const user = await User.findOne({
     where,
     raw: true
   })
@@ -41,12 +40,8 @@ export const getUserBy = async (where: any, roles: string[], models: Model): Pro
   return null
 }
 
-export const authenticate = async (
-  email: string,
-  password: string,
-  models: Model
-): Promise<Token> => {
-  const user = await getUserBy({ email }, ['Admin', 'Editor'], models)
+export const authenticate = async (email: string, password: string, User: any): Promise<Token> => {
+  const user = await getUserBy({ email }, ['Admin', 'Editor'], User)
 
   if (!user) {
     throw new AuthenticationError('Invalid Login')
