@@ -26,7 +26,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
 
   // Client Entry
   const entry =
-    configType === 'package'
+    configType !== 'web'
       ? path.resolve(__dirname, `../../../${packageName}/src/index.ts`)
       : path.resolve(__dirname, `../../../${packageName}/src/index.tsx`)
 
@@ -40,6 +40,8 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
       buffer: false,
       crypto: false,
       stream: false,
+      querystring: false,
+      os: false,
       path: require.resolve('path-browserify')
     }
   }
@@ -182,7 +184,7 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
     module: {
       rules
     },
-    ...(configType === 'package' && {
+    ...(configType !== 'web' && {
       target: 'node'
     })
   }
