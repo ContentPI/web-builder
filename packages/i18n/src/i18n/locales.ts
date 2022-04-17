@@ -103,6 +103,9 @@ type I18nAttrs = {
   forceRedirection?: boolean
 }
 
+export const isValidLanguage = (locale: Locale) =>
+  !!availableLocales[locale && locale.toLowerCase()]
+
 const isValidLocale = (locale: Locale, locales: Locale[]) =>
   !!(
     locales.includes(locale && locale.toLowerCase()) ||
