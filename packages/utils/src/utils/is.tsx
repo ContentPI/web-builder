@@ -1,3 +1,5 @@
+import { isValidLanguage } from '@web-builder/i18n'
+
 const is = {
   Array(v: unknown) {
     return v instanceof Array
@@ -5,8 +7,16 @@ const is = {
   Defined(v: unknown) {
     return typeof v !== 'undefined' && v !== null
   },
+  Email(email: string) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    return regex.test(email)
+  },
   False(v: unknown) {
     return (this.Defined(v) && v === false) || v === 'false'
+  },
+  Language(locale: string) {
+    return isValidLanguage(locale)
   },
   Number(v: unknown) {
     return typeof v === 'number'
