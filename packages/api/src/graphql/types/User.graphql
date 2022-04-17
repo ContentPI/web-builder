@@ -4,8 +4,6 @@ type User {
   id: UUID!
   "The user's username"
   username: String!
-  "The user's password"
-  password: String!
   "Unique email"
   email: String!
   "Role"

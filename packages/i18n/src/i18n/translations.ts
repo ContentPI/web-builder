@@ -7,6 +7,14 @@ const translations: Record<string, Record<string, string>> = {
     'it-it': 'Email',
     'ja-jp': 'Eメール'
   },
+  'login.emailOrUsername': {
+    ar: 'البريد الإلكتروني أو اسم المستخدم',
+    'en-us': 'Email or Username',
+    'es-mx': 'Correo electrónico ó Usuario',
+    'fr-fr': "E-mail ou nom d'utilisateur",
+    'it-it': 'Email o nome utente',
+    'ja-jp': 'メールアドレスまたはユーザ名'
+  },
   'login.footer': {
     ar: `© {site} - ${new Date().getFullYear()} - بدعم من {name}`,
     'en-us': `© {site} - ${new Date().getFullYear()} - Powered by {name}`,

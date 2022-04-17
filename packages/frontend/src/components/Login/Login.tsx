@@ -22,9 +22,9 @@ const Login: FC<Props> = () => {
 
         <section>
           <TextField
-            label={t('login.email')}
+            label={t('login.emailOrUsername')}
             name="email"
-            placeholder={t('login.email')}
+            placeholder={t('login.emailOrUsername')}
             data-testid="email"
           />
 
