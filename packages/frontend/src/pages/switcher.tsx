@@ -3,6 +3,8 @@ import React, { FC } from 'react'
 
 import Helmet from '~/components/Helmet'
 import Config from '~/config'
+import FormProvider from '~/contexts/form'
+import UserProvider from '~/contexts/user'
 import { Site } from '../types'
 
 const dynamicPages: Record<string, Record<string, any>> = {
@@ -29,7 +31,11 @@ const Switcher: FC<Props> = ({ site, page, props = {}, siteTitle }) => {
   return (
     <>
       <Helmet title={page as string} site={siteTitle || ''} />
-      <PageToRender {...props} />
+      <UserProvider>
+        <FormProvider>
+          <PageToRender {...props} />
+        </FormProvider>
+      </UserProvider>
     </>
   )
 }

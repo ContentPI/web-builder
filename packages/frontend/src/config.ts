@@ -5,6 +5,8 @@ import { config as codejobsConfig } from './sites/codejobs/config'
 import { config as sanPanchoConfig } from './sites/san-pancho/config'
 import { Site, SiteBuilderConfiguration, SiteConfiguration } from './types/config'
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 const getSiteConfig = (site: Site): SiteConfiguration => {
   switch (site) {
     case Site.CodeJobs:
@@ -35,6 +37,9 @@ const buildConfig = (): SiteBuilderConfiguration => {
 
   const config: SiteBuilderConfiguration = {
     ...siteConfig,
+    api: {
+      uri: isProduction ? siteConfig.api.uri : 'http://localhost:4000/graphql'
+    },
     site,
     homeUrl: `https://${siteConfig.domainName}`
   }

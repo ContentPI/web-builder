@@ -6,6 +6,9 @@ export const config: SiteConfiguration = {
   theme: {
     brandColors: ['#465f95', '#537f6b', '#ffcd44', '#7f7171']
   },
+  api: {
+    uri: 'https://ranchosanpancho.com/graphql'
+  },
   i18n: {
     locales: ['ar', 'en-us', 'es-mx', 'fr-fr', 'it-it', 'ja-jp'],
     defaultLocale: 'es-mx'

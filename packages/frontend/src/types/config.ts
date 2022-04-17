@@ -23,6 +23,9 @@ export interface SiteConfiguration {
   theme?: {
     brandColors: string[]
   }
+  api: {
+    uri: string
+  }
   i18n: {
     locales: Locale[]
     defaultLocale: Locale

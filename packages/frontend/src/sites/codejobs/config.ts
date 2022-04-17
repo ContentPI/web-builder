@@ -6,6 +6,9 @@ export const config: SiteConfiguration = {
   theme: {
     brandColors: ['#00325a', '#027ac1', '#222', '#bdbdbd']
   },
+  api: {
+    uri: 'https://codejobs.com/graphql'
+  },
   i18n: {
     locales: ['ar', 'en-us', 'es-mx', 'fr-fr', 'it-it', 'ja-jp'],
     defaultLocale: 'en-us'
