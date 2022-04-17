@@ -29,10 +29,12 @@ const getUser = async (_: any, { at }: { at: string }, { models }: { models: Mod
   return {
     id: '',
     username: '',
-    password: '',
     email: '',
     role: '',
-    active: false
+    active: false,
+    _DEBUG: JSON.stringify({
+      hasCookie: Boolean(at)
+    })
   }
 }
 

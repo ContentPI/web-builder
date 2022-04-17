@@ -45,7 +45,7 @@ export const authenticate = async (
   password: string,
   models: Model
 ): Promise<Token> => {
-  const where = emailOrUsername.includes('@')
+  const where = is.Email(emailOrUsername)
     ? { email: emailOrUsername }
     : { username: emailOrUsername }
 

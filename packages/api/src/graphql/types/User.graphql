@@ -14,6 +14,8 @@ type User {
   createdAt: Datetime!
   "Last update date"
   updatedAt: Datetime!
+  "Helps to debug user"
+  _DEBUG: JSON
 }
 
 "Token type"
