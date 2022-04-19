@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently 'NODE_ENV=development npm run next' 'NODE_ENV=development npm run api'",
+    "dev": "NODE_ENV=development npm run next:dev",
+    "dev:api": "concurrently 'NODE_ENV=development npm run next:dev' 'NODE_ENV=development npm run api'",
     "next": "ts-node src/server.ts",
+    "next:dev": "ts-node src/server.ts",
     "api": "npm run --prefix ../api dev",
     "lint": "npm run --prefix ../../ lint",
     "lint:fix": "npm run --prefix ../../ lint:fix",
@@ -22,10 +24,12 @@
     "@types/cookie-parser": "^1.4.2",
     "@types/isomorphic-fetch": "^0.0.36",
     "babel-plugin-jsx-remove-data-test-id": "^3.0.0",
-    "babel-plugin-styled-components": "^2.0.6"
+    "babel-plugin-styled-components": "^2.0.6",
+    "ts-node-dev": "^1.1.8"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
+    "@web-builder/authentication": "1.0.0",
     "@web-builder/design-system": "1.0.0",
     "@web-builder/devtools": "1.0.0",
     "@web-builder/i18n": "^1.0.0",

@@ -1,4 +1,5 @@
-import { authenticate, getUserBy, getUserData } from '../../authentication'
+import { authenticate, getUserBy, getUserData } from '@web-builder/authentication'
+
 import { ICreateUser, ILogin, Model } from '../../types'
 
 // Queries

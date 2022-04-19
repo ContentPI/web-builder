@@ -3,18 +3,18 @@ import React, { FC } from 'react'
 
 import Helmet from '~/components/Helmet'
 import Config from '~/config'
-import FormProvider from '~/contexts/form'
-import UserProvider from '~/contexts/user'
 import { Site } from '../types'
 
 const dynamicPages: Record<string, Record<string, any>> = {
   [Site.CodeJobs]: {
     index: dynamic(() => import('../sites/codejobs/pages/index')),
-    login: dynamic(() => import('../sites/codejobs/pages/login'))
+    login: dynamic(() => import('../sites/codejobs/pages/login')),
+    dashboard: dynamic(() => import('../sites/codejobs/pages/dashboard'))
   },
   [Site.SanPancho]: {
     index: dynamic(() => import('../sites/san-pancho/pages/index')),
-    login: dynamic(() => import('../sites/san-pancho/pages/login'))
+    login: dynamic(() => import('../sites/san-pancho/pages/login')),
+    dashboard: dynamic(() => import('../sites/san-pancho/pages/dashboard'))
   }
 }
 
@@ -31,11 +31,8 @@ const Switcher: FC<Props> = ({ site, page, props = {}, siteTitle }) => {
   return (
     <>
       <Helmet title={page as string} site={siteTitle || ''} />
-      <UserProvider>
-        <FormProvider>
-          <PageToRender {...props} />
-        </FormProvider>
-      </UserProvider>
+
+      <PageToRender {...props} />
     </>
   )
 }

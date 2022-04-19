@@ -4,7 +4,9 @@ import React, { FC } from 'react'
 
 import GlobalStyle from '~/components/GlobalStyles/GlobalStyles'
 import Config from '~/config'
-import { useApollo } from '~/lib/apolloClient'
+import { useApollo } from '~/contexts/apolloClient'
+import FormProvider from '~/contexts/form'
+import UserProvider from '~/contexts/user'
 
 const App: FC<any> = ({ Component, pageProps, locale = Config.i18n.defaultLocale }) => {
   const apolloClient = useApollo((pageProps && pageProps.initialApolloState) || {})
@@ -14,7 +16,11 @@ const App: FC<any> = ({ Component, pageProps, locale = Config.i18n.defaultLocale
       <GlobalStyle />
       <ApolloProvider client={apolloClient}>
         <I18nProvider locale={locale}>
-          <Component {...pageProps} />
+          <UserProvider>
+            <FormProvider>
+              <Component {...pageProps} />
+            </FormProvider>
+          </UserProvider>
         </I18nProvider>
       </ApolloProvider>
     </>

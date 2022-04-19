@@ -18,7 +18,7 @@ export type Locale =
   | 'zh-cn'
   | string
 
-export const availableLocales: any = {
+export const currentLocales: any = {
   ar: {
     dir: 'rtl',
     lang: 'ar',
@@ -103,13 +103,22 @@ type I18nAttrs = {
   forceRedirection?: boolean
 }
 
-export const isValidLanguage = (locale: Locale) =>
-  !!availableLocales[locale && locale.toLowerCase()]
+export const availableLocales = (join = true) => {
+  const listOfLocales = Object.keys(currentLocales)
+
+  if (join) {
+    return listOfLocales.join('|')
+  }
+
+  return listOfLocales
+}
+
+export const isValidLanguage = (locale: Locale) => !!currentLocales[locale && locale.toLowerCase()]
 
 const isValidLocale = (locale: Locale, locales: Locale[]) =>
   !!(
     locales.includes(locale && locale.toLowerCase()) ||
-    availableLocales[locale && locale.toLowerCase()]
+    currentLocales[locale && locale.toLowerCase()]
   )
 const isValidPage = (page: string, pages: string[]) => !!pages.includes(page && page.toLowerCase())
 
@@ -125,11 +134,14 @@ const getPathSegments = (path: string) => {
 export const getCurrentPage = (path: string, pages: string[], returnValidPage = false) => {
   const { segments } = getPathSegments(path)
 
-  const page = isValidPage(segments[0], pages)
-    ? segments[0]
-    : isValidPage(segments[1], pages)
-    ? segments[1]
-    : segments[0] ?? ''
+  const [firstPage] = segments[0] ? segments[0].split('?') : ['']
+  const [secondPage] = segments[1] ? segments[1].split('?') : ['']
+
+  const page = isValidPage(firstPage, pages)
+    ? firstPage
+    : isValidPage(secondPage, pages)
+    ? secondPage
+    : firstPage ?? ''
 
   const validPage = isValidPage(page, pages) ? page : '/'
 
@@ -206,5 +218,5 @@ export const getUserLanguage = (acceptLanguage: string, locales: Locale[]) => {
   const userLanguage = languages.split(',')[0] || ''
 
   const validLocale = isValidLocale(userLanguage, locales)
-  return validLocale ? userLanguage.toLowerCase() : availableLocales['en-us'].lang.toLowerCase()
+  return validLocale ? userLanguage.toLowerCase() : currentLocales['en-us'].lang.toLowerCase()
 }

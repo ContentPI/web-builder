@@ -1,10 +1,9 @@
 import HtmlWebPackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components'
-import { Configuration, WebpackPluginInstance } from 'webpack'
+import { Configuration } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import nodeExternals from 'webpack-node-externals'
-import WebpackBar from 'webpackbar'
 
 import { ModeArgs } from './webpack.types'
 
@@ -15,7 +14,6 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
     port = 3000,
     mode,
     analyzerPort = 9001,
-    color = '#2EA1F8',
     packageName,
     htmlOptions,
     sandbox,
@@ -66,22 +64,12 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
   // Plugins
   const plugins = []
 
-  // WebpackBar
-  const webpackBarPlugin: WebpackPluginInstance = new WebpackBar({
-    name: 'client',
-    color
-  })
-
   if (isAnalyze) {
     plugins.push(
       new BundleAnalyzerPlugin({
         analyzerPort
       })
     )
-  }
-
-  if (configType === 'web') {
-    plugins.push(webpackBarPlugin)
   }
 
   if (mode === 'development' && htmlOptions?.title && htmlOptions.template) {
@@ -94,54 +82,40 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
     )
   }
 
-  // Optimization
-  const optimization =
-    configType === 'package'
-      ? {
-          minimize: !process.env.DEBUG // Mark as false to debug on production bundle
-        }
-      : {}
-
   // Rules
-  const svgUrlLoaderInclude: Record<string, string[]> = {
-    'design-system': [
-      path.resolve(__dirname, '../../../design-system/src/components/Spinner/loaders'),
-      path.resolve(__dirname, '../../../design-system/src/components/Dialog/icons'),
-      path.resolve(__dirname, '../../../design-system/src/icons')
-    ]
-  }
+  const rules = []
 
-  const svgrWebpackInclude: Record<string, string[]> = {
-    'design-system': [path.resolve(__dirname, '../../../design-system/src/components/Icon/icons')]
-  }
+  rules.push({
+    test: /\.(tsx|ts)$/,
+    exclude: /node_modules/,
+    loader: 'ts-loader',
+    options: {
+      getCustomTransformers: () => ({
+        before: [
+          createStyledComponentsTransformer({
+            displayName: true,
+            ssr: true,
+            minify: true
+          })
+        ]
+      })
+    }
+  })
 
-  const rules = [
-    {
-      test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {}
-        }
+  if (packageName === 'design-system') {
+    const svgUrlLoaderInclude: Record<string, string[]> = {
+      'design-system': [
+        path.resolve(__dirname, '../../../design-system/src/components/Spinner/loaders'),
+        path.resolve(__dirname, '../../../design-system/src/components/Dialog/icons'),
+        path.resolve(__dirname, '../../../design-system/src/icons')
       ]
-    },
-    {
-      test: /\.(tsx|ts)$/,
-      exclude: /node_modules/,
-      loader: 'ts-loader',
-      options: {
-        getCustomTransformers: () => ({
-          before: [
-            createStyledComponentsTransformer({
-              displayName: true,
-              ssr: true,
-              minify: true
-            })
-          ]
-        })
-      }
-    },
-    {
+    }
+
+    const svgrWebpackInclude: Record<string, string[]> = {
+      'design-system': [path.resolve(__dirname, '../../../design-system/src/components/Icon/icons')]
+    }
+
+    rules.push({
       test: /\.svg$/,
       oneOf: [
         {
@@ -153,8 +127,8 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
           include: configType === 'package' ? svgrWebpackInclude[packageName] ?? [] : []
         }
       ]
-    }
-  ]
+    })
+  }
 
   if (configType === 'package' && sandbox) {
     rules.push({
@@ -179,7 +153,6 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
     externals: [nodeExternals()],
     output,
     resolve,
-    optimization,
     plugins,
     module: {
       rules

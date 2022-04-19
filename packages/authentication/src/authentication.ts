@@ -2,13 +2,10 @@ import { base64, is, security } from '@web-builder/utils'
 import { AuthenticationError } from 'apollo-server-express'
 import jwt from 'jsonwebtoken'
 
-import { Model, Token, User } from './types'
+export const secretKey = 'W3bBu1ld3r'
+export const expiresIn = '7d'
 
-// TODO: Movie this to secrets.env
-const secretKey = 'xxx'
-const expiresIn = '7d'
-
-export const createToken = async (user: User): Promise<string[]> => {
+export const createToken = async (user: any): Promise<string[] | string> => {
   const { id, username, password, email, active, role } = user
   const token = base64.set(`${security.encrypt(secretKey)}${password}`)
   const userData = {
@@ -27,7 +24,7 @@ export const createToken = async (user: User): Promise<string[]> => {
   return Promise.all([createTk])
 }
 
-export const getUserBy = async (where: any, roles: string[], models: Model): Promise<any> => {
+export const getUserBy = async (where: any, roles: string[], models: any): Promise<any> => {
   const user = await models.User.findOne({
     where,
     raw: true
@@ -43,13 +40,13 @@ export const getUserBy = async (where: any, roles: string[], models: Model): Pro
 export const authenticate = async (
   emailOrUsername: string,
   password: string,
-  models: Model
-): Promise<Token> => {
+  models: any
+): Promise<any> => {
   const where = is.Email(emailOrUsername)
     ? { email: emailOrUsername }
     : { username: emailOrUsername }
 
-  const user = await getUserBy(where, ['god', 'admin', 'editor'], models)
+  const user = await getUserBy(where, ['god', 'admin', 'editor', 'user'], models)
 
   if (!user) {
     throw new AuthenticationError('Invalid Login')
@@ -73,7 +70,7 @@ export const authenticate = async (
   }
 }
 
-export function jwtVerify(accessToken: any, cb: any): void {
+export function jwtVerify(accessToken: any, cb: any): any {
   jwt.verify(accessToken, secretKey, (error: any, accessTokenData: any = {}) => {
     const { data: user } = accessTokenData
 
@@ -85,6 +82,8 @@ export function jwtVerify(accessToken: any, cb: any): void {
 
     return cb(userData)
   })
+
+  return null
 }
 
 export async function getUserData(accessToken: any): Promise<any> {

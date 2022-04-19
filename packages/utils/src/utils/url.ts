@@ -71,3 +71,7 @@ export function redirectTo(url = '/', includeLanguage?: any): void {
     }
   }
 }
+
+export function getRedirectToUrl() {
+  return is.Browser() ? window.location.search.replace('?redirectTo=', '') : ''
+}

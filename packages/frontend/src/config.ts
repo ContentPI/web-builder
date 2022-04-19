@@ -41,7 +41,9 @@ const buildConfig = (): SiteBuilderConfiguration => {
       uri: isProduction ? siteConfig.api.uri : 'http://localhost:4000/graphql'
     },
     site,
-    homeUrl: `https://${siteConfig.domainName}`
+    homeUrl: `https://${siteConfig.domainName}`,
+    hostname: isProduction ? siteConfig.domainName : 'localhost',
+    mode: isProduction ? 'production' : 'development'
   }
 
   return config

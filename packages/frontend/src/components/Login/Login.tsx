@@ -1,6 +1,6 @@
 import { Button, Input, Notification, RenderIf } from '@web-builder/design-system'
 import { useI18n } from '@web-builder/i18n'
-import { redirectTo } from '@web-builder/utils'
+import { getRedirectToUrl, is, redirectTo } from '@web-builder/utils'
 import React, { FC, useContext, useState } from 'react'
 
 import Config from '~/config'
@@ -13,6 +13,8 @@ type Props = {
 }
 
 const Login: FC<Props> = () => {
+  const redirectToUrl = getRedirectToUrl()
+
   // States
   const [values, setValues] = useState({
     emailOrUsername: '',
@@ -25,7 +27,7 @@ const Login: FC<Props> = () => {
   })
 
   const [invalidLogin, setInvalidLogin] = useState(false)
-  console.log('values', values)
+
   // Contexts
   const { change } = useContext(FormContext)
   const { login } = useContext(UserContext)
@@ -44,7 +46,7 @@ const Login: FC<Props> = () => {
         message: response.message
       })
     } else {
-      redirectTo('/', false)
+      redirectTo(redirectToUrl || '/', true)
     }
   }
 

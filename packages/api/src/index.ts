@@ -1,9 +1,10 @@
 import { makeExecutableSchema } from '@graphql-tools/schema'
+import { secretKey } from '@web-builder/authentication'
 import { ApolloServer } from 'apollo-server-express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express from 'express'
-// import expressJwt from 'express-jwt'
+import expressJwt from 'express-jwt'
 import { applyMiddleware } from 'graphql-middleware'
 
 import resolvers from './graphql/resolvers'
@@ -21,13 +22,13 @@ app.use(cors(corsOptions))
 
 app.use(cookieParser())
 
-// app.use(
-//   expressJwt({
-//     secret: 'xxx',
-//     algorithms: ['HS256'],
-//     credentialsRequired: false
-//   })
-// )
+app.use(
+  expressJwt({
+    secret: secretKey,
+    algorithms: ['HS256'],
+    credentialsRequired: false
+  })
+)
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')

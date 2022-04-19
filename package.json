@@ -12,6 +12,8 @@
     "webdriver:wdio": "cd ./packages/webdriver && npm run wdio",
     "api:webpack:production": "webpack --config=webpack.config.ts --env mode=production --env type=api --env packageName=api",
     "api:webpack:development": "webpack --config=webpack.config.ts --env mode=development --env type=api --env packageName=api",
+    "authentication:webpack:development": "webpack --config=webpack.config.ts --env mode=development --env type=package --env packageName=authentication",
+    "authentication:webpack:production": "webpack --config=webpack.config.ts --env mode=production --env type=package --env packageName=authentication",
     "design-system:sandbox": "webpack serve --open --config=webpack.config.ts --env mode=development --env type=package --env sandbox=true --env packageName=design-system",
     "design-system:webpack:development": "webpack --config=webpack.config.ts --env mode=development --env type=package --env packageName=design-system",
     "design-system:webpack:production": "webpack --config=webpack.config.ts --env mode=production --env type=package --env packageName=design-system",

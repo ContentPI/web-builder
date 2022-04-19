@@ -21,7 +21,8 @@ const getWebpackProductionConfig = (args: ModeArgs): Configuration => {
             amd: 'ReactDOM',
             root: 'ReactDOM'
           },
-          'react-router-dom': 'react-router-dom'
+          'apollo-server-express': 'apollo-server-express',
+          jsonwebtoken: 'jsonwebtoken'
         }
       : {}
 

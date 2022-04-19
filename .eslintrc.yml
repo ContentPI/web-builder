@@ -95,6 +95,10 @@ rules:
   no-promise-executor-return: 'off'
   # We don't need a default in all cases
   default-case: 'off'
+  # Prefering prettier format
+  function-paren-newline: 'off'
+  # We don't need consistent returns
+  consistent-return: 'off'
 
   # ⭐ JSX-A11Y rules
   jsx-a11y/no-noninteractive-element-interactions: 'off'

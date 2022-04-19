@@ -20,6 +20,8 @@ export enum DeploymentType {
 export interface SiteConfiguration {
   siteTitle: string
   domainName: string
+  hostname?: string
+  mode?: string
   theme?: {
     brandColors: string[]
   }
