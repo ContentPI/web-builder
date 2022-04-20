@@ -2,7 +2,7 @@ import { slug } from '@web-builder/utils'
 import React, { FC, useEffect, useState } from 'react'
 
 import Icon from '../Icon'
-import { Tags } from './Tags.styled'
+import { CSS } from './Tags.styled'
 
 type Tag = {
   option: string
@@ -62,7 +62,7 @@ const TagsComponent: FC<IProps> = (props) => {
 
   return (
     <div style={{ marginTop: '5px', marginBottom: '20px' }}>
-      <Tags className="Tags">
+      <CSS.Tags className="Tags">
         <div className="container">
           {tagsArr.map((tag, index) => (
             <div key={`${tag.value}-${index}`} className="tag">
@@ -79,7 +79,7 @@ const TagsComponent: FC<IProps> = (props) => {
             value={newTag}
           />
         </div>
-      </Tags>
+      </CSS.Tags>
     </div>
   )
 }

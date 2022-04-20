@@ -2,13 +2,7 @@ import { cx } from '@web-builder/utils'
 import React, { ComponentPropsWithoutRef, FC, MouseEvent } from 'react'
 
 import { Color, Shape } from '../../types'
-import {
-  BASE_CLASS_NAME,
-  Checkbox,
-  CheckboxChild,
-  CheckboxText,
-  CheckboxWrapper
-} from './Checkbox.styled'
+import { BASE_CLASS_NAME, CSS } from './Checkbox.styled'
 
 interface Props extends ComponentPropsWithoutRef<'input'> {
   color?: Color
@@ -33,11 +27,11 @@ const CheckboxComponent: FC<Props> = ({
   })
 
   return (
-    <CheckboxWrapper data-component="Checkbox">
-      <CheckboxText>{label}</CheckboxText>
-      <Checkbox {...checkboxProps} type="checkbox" checked={checked} />
-      <CheckboxChild className={cx.join(classNames, 'checkmark')} />
-    </CheckboxWrapper>
+    <CSS.CheckboxWrapper data-component="Checkbox">
+      <CSS.CheckboxText>{label}</CSS.CheckboxText>
+      <CSS.Checkbox {...checkboxProps} type="checkbox" checked={checked} />
+      <CSS.CheckboxChild className={cx.join(classNames, 'checkmark')} />
+    </CSS.CheckboxWrapper>
   )
 }
 

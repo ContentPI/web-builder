@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react'
 
-import { Close, Container, Content, Dialog, GlobalStyle, Img } from './Dialog.styled'
+import { CSS, GlobalStyle } from './Dialog.styled'
 
 type Props = {
   open: boolean
@@ -47,18 +47,18 @@ const DialogComponent: FC<Props> = ({
     <>
       <GlobalStyle />
 
-      <Dialog className="Modal">
-        <Container maxWidth={width} height={height} margin={margin}>
-          <Close onClick={handleClose}>
-            <Img alt="Close" src={require('./icons/close.svg')} />
-          </Close>
+      <CSS.Dialog className="Modal">
+        <CSS.Container maxWidth={width} height={height} margin={margin}>
+          <CSS.Close onClick={handleClose}>
+            <CSS.Img alt="Close" src={require('./icons/close.svg')} />
+          </CSS.Close>
 
-          <Content style={{ maxHeight: height !== '100%' ? height : '500px' }}>
+          <CSS.Content style={{ maxHeight: height !== '100%' ? height : '500px' }}>
             {title && <h2 className="label">{title}</h2>}
             {children}
-          </Content>
-        </Container>
-      </Dialog>
+          </CSS.Content>
+        </CSS.Container>
+      </CSS.Dialog>
     </>
   )
 }

@@ -18,32 +18,34 @@ const colorStyles = mapColorStyles(Colors, BASE_CLASS_NAME, themeCssVars, {
   }
 })
 
-export const Ul = styled.ul({
-  listStyle: 'none',
-  padding: 0,
-  display: 'flex',
-  justifyContent: 'center',
-  margin: '500 auto',
-  marginTop: '90px',
-  marginBottom: '50px',
-  width: '100%',
-  ...colorStyles
-})
+export namespace CSS {
+  export const Ul = styled.ul({
+    listStyle: 'none',
+    padding: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '500 auto',
+    marginTop: '90px',
+    marginBottom: '50px',
+    width: '100%',
+    ...colorStyles
+  })
 
-export const Li = styled.li({
-  margin: '5px',
-  a: {
-    color: Gray.V250,
-    textDecoration: 'none'
-  }
-})
-
-export const SpanLink = styled.span({
-  padding: '15px 20px',
-  borderRadius: '5px',
-  i: {
-    '*[dir="rtl"] &': {
-      transform: 'rotateY(180deg)'
+  export const Li = styled.li({
+    margin: '5px',
+    a: {
+      color: Gray.V250,
+      textDecoration: 'none'
     }
-  }
-})
+  })
+
+  export const SpanLink = styled.span({
+    padding: '15px 20px',
+    borderRadius: '5px',
+    i: {
+      '*[dir="rtl"] &': {
+        transform: 'rotateY(180deg)'
+      }
+    }
+  })
+}

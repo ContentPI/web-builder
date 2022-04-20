@@ -138,41 +138,43 @@ const shapeStyles: CSSObject = {
 }
 
 // Button component
-export const Button = styled.button({
-  position: 'relative',
-  img: {
-    position: 'absolute',
-    left: '15px',
-    top: '15px',
-    "*[dir='rtl'] &": {
-      right: '15px'
-    }
-  },
-  ...shapeStyles,
-  ...sizeStyles,
-  ...buttonStyles,
-  ...variantStyles
-})
-
-// LinkButton component
-export const LinkButton = styled.span({
-  marginRight: '5px',
-  a: {
-    color: 'inherit',
-    display: 'inline-block',
+export namespace CSS {
+  export const Button = styled.button({
     position: 'relative',
-    textDecoration: 'none',
     img: {
       position: 'absolute',
-      top: '3px',
-      left: '-10px',
+      left: '15px',
+      top: '15px',
       "*[dir='rtl'] &": {
-        right: '-6px'
+        right: '15px'
       }
-    }
-  },
-  ...shapeStyles,
-  ...sizeStyles,
-  ...buttonStyles,
-  ...variantStyles
-})
+    },
+    ...shapeStyles,
+    ...sizeStyles,
+    ...buttonStyles,
+    ...variantStyles
+  })
+
+  // LinkButton component
+  export const LinkButton = styled.span({
+    marginRight: '5px',
+    a: {
+      color: 'inherit',
+      display: 'inline-block',
+      position: 'relative',
+      textDecoration: 'none',
+      img: {
+        position: 'absolute',
+        top: '3px',
+        left: '-10px',
+        "*[dir='rtl'] &": {
+          right: '-6px'
+        }
+      }
+    },
+    ...shapeStyles,
+    ...sizeStyles,
+    ...buttonStyles,
+    ...variantStyles
+  })
+}

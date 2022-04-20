@@ -2,7 +2,7 @@ import { cx } from '@web-builder/utils'
 import React, { FC } from 'react'
 
 import { Color, Shape } from '../../types'
-import { Badge, BASE_CLASS_NAME } from './Badge.styled'
+import { BASE_CLASS_NAME, CSS } from './Badge.styled'
 
 interface IProps {
   color?: Color
@@ -18,9 +18,9 @@ const BadgeComponent: FC<IProps> = ({ children, color = Color.primary, shape = S
   })
 
   return (
-    <Badge data-component="Badge" className={classNames}>
+    <CSS.Badge data-component="Badge" className={classNames}>
       {children}
-    </Badge>
+    </CSS.Badge>
   )
 }
 

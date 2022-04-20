@@ -2,7 +2,7 @@ import { cx } from '@web-builder/utils'
 import React, { FC } from 'react'
 
 import { Color, Shape } from '../../types'
-import { Avatar, BASE_CLASS_NAME } from './Avatar.styled'
+import { BASE_CLASS_NAME, CSS } from './Avatar.styled'
 
 type Props = {
   color?: Color
@@ -21,9 +21,9 @@ const AvatarComponent: FC<Props> = ({
   })
 
   return (
-    <Avatar className={classNames} {...restProps}>
+    <CSS.Avatar className={classNames} {...restProps}>
       {children}
-    </Avatar>
+    </CSS.Avatar>
   )
 }
 

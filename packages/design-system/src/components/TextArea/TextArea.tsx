@@ -1,7 +1,7 @@
 import { cx } from '@web-builder/utils'
 import React, { ComponentPropsWithoutRef, FC, useState } from 'react'
 
-import { BASE_CLASS_NAME, TextArea, TextAreaWrapper } from './TextArea.styled'
+import { BASE_CLASS_NAME, CSS } from './TextArea.styled'
 
 export interface Props extends ComponentPropsWithoutRef<'textarea'> {
   fullWidth?: boolean
@@ -21,13 +21,13 @@ const TextAreaComponent: FC<Props> = (props) => {
   })
 
   return (
-    <TextAreaWrapper className={classNames}>
-      <TextArea
+    <CSS.TextAreaWrapper className={classNames}>
+      <CSS.TextArea
         onFocus={() => setHasFocus(true)}
         onBlur={() => setHasFocus(false)}
         {...restProps}
       />
-    </TextAreaWrapper>
+    </CSS.TextAreaWrapper>
   )
 }
 

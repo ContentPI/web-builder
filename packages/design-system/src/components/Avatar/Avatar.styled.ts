@@ -24,15 +24,17 @@ const shapeStyles: CSSObject = {
 }
 
 // Component
-export const Avatar = styled.div({
-  fontSize: FontSize.medium,
-  fontWeight: FontWeight.heavy,
-  height: '40px',
-  lineHeight: '40px',
-  marginBottom: '1rem',
-  textAlign: 'center',
-  textTransform: 'uppercase',
-  width: '40px',
-  ...colorStyles,
-  ...shapeStyles
-})
+export namespace CSS {
+  export const Avatar = styled.div({
+    fontSize: FontSize.medium,
+    fontWeight: FontWeight.heavy,
+    height: '40px',
+    lineHeight: '40px',
+    marginBottom: '1rem',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    width: '40px',
+    ...colorStyles,
+    ...shapeStyles
+  })
+}

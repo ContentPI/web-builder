@@ -4,7 +4,7 @@ import { LinkProps } from 'react-router-dom'
 
 import { Color } from '../../types'
 import Icon from '../Icon'
-import { BASE_CLASS_NAME, Li, SpanLink, Ul } from './Pagination.styled'
+import { BASE_CLASS_NAME, CSS } from './Pagination.styled'
 
 export type Props = {
   color?: Color
@@ -47,36 +47,36 @@ const Pagination: FC<Props> = ({
       if (start === next) {
         if (Link) {
           pageNav.push(
-            <Li key={i}>
+            <CSS.Li key={i}>
               <a href="#">
-                <SpanLink className="active">{pge}</SpanLink>
+                <CSS.SpanLink className="active">{pge}</CSS.SpanLink>
               </a>
-            </Li>
+            </CSS.Li>
           )
         } else {
           pageNav.push(
-            <Li key={i}>
+            <CSS.Li key={i}>
               <a href="#">
-                <SpanLink className="active">{pge}</SpanLink>
+                <CSS.SpanLink className="active">{pge}</CSS.SpanLink>
               </a>
-            </Li>
+            </CSS.Li>
           )
         }
       } else if (Link) {
         pageNav.push(
-          <Li key={i}>
+          <CSS.Li key={i}>
             <Link to={`${href}${pge}`}>
-              <SpanLink>{pge}</SpanLink>
+              <CSS.SpanLink>{pge}</CSS.SpanLink>
             </Link>
-          </Li>
+          </CSS.Li>
         )
       } else {
         pageNav.push(
-          <Li key={i}>
+          <CSS.Li key={i}>
             <a href={`${href}${pge}`}>
-              <SpanLink>{pge}</SpanLink>
+              <CSS.SpanLink>{pge}</CSS.SpanLink>
             </a>
-          </Li>
+          </CSS.Li>
         )
       }
     }
@@ -88,23 +88,23 @@ const Pagination: FC<Props> = ({
     if (currentPage <= pages - 1) {
       if (Link) {
         return (
-          <Li>
+          <CSS.Li>
             <Link to={`${href}${currentPage + 1}`}>
-              <SpanLink className="next">
+              <CSS.SpanLink className="next">
                 <Icon type="fas fa-chevron-right" />
-              </SpanLink>
+              </CSS.SpanLink>
             </Link>
-          </Li>
+          </CSS.Li>
         )
       }
       return (
-        <Li>
+        <CSS.Li>
           <a href={`${href}${currentPage + 1}`}>
-            <SpanLink className="next">
+            <CSS.SpanLink className="next">
               <Icon type="fas fa-chevron-right" />
-            </SpanLink>
+            </CSS.SpanLink>
           </a>
-        </Li>
+        </CSS.Li>
       )
     }
 
@@ -115,24 +115,24 @@ const Pagination: FC<Props> = ({
     if (start > 0) {
       if (Link) {
         return (
-          <Li>
+          <CSS.Li>
             <Link to={`${href}${currentPage - 1}`}>
-              <SpanLink className="previous">
+              <CSS.SpanLink className="previous">
                 <Icon type="fas fa-chevron-left" />
-              </SpanLink>
+              </CSS.SpanLink>
             </Link>
-          </Li>
+          </CSS.Li>
         )
       }
 
       return (
-        <Li>
+        <CSS.Li>
           <a href={`${href}${currentPage - 1}`}>
-            <SpanLink className="previous">
+            <CSS.SpanLink className="previous">
               <Icon type="fas fa-chevron-left" />
-            </SpanLink>
+            </CSS.SpanLink>
           </a>
-        </Li>
+        </CSS.Li>
       )
     }
 
@@ -196,11 +196,11 @@ const Pagination: FC<Props> = ({
     }
 
     return (
-      <Ul className={classNames}>
+      <CSS.Ul className={classNames}>
         {pagePrevious}
         {pageNav}
         {pageNext}
-      </Ul>
+      </CSS.Ul>
     )
   }
 

@@ -1,12 +1,12 @@
 import { Button, Input, Notification, RenderIf } from '@web-builder/design-system'
 import { useI18n } from '@web-builder/i18n'
-import { getRedirectToUrl, is, redirectTo } from '@web-builder/utils'
+import { getRedirectToUrl, redirectTo } from '@web-builder/utils'
 import React, { FC, useContext, useState } from 'react'
 
 import Config from '~/config'
 import { FormContext } from '~/contexts/form'
 import { UserContext } from '~/contexts/user'
-import { CSSLogin, CSSLoginBox } from './Login.styled'
+import { CSS } from './Login.styled'
 
 type Props = {
   background?: string
@@ -61,8 +61,9 @@ const Login: FC<Props> = () => {
           duration={5}
         />
       </RenderIf>
-      <CSSLogin>
-        <CSSLoginBox>
+
+      <CSS.Login>
+        <CSS.LoginBox>
           <header>
             <img className="logo" src="/images/isotype.png" alt="Logo" data-testid="logo" /> <br />
             <h2 data-testid="signin">{t('login.signIn')}</h2>
@@ -100,12 +101,12 @@ const Login: FC<Props> = () => {
               </Button>
             </div>
           </section>
-        </CSSLoginBox>
+        </CSS.LoginBox>
 
         <p className="footer">
           {t('login.footer', { site: Config.siteTitle, name: 'Web Builder' })}
         </p>
-      </CSSLogin>
+      </CSS.Login>
     </>
   )
 }

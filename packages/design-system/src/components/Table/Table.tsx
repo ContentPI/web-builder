@@ -1,13 +1,6 @@
 import React, { FC, ReactElement } from 'react'
 
-import {
-  TableBase,
-  TableBody,
-  TableCol,
-  TableHeader,
-  TableHeaderCol,
-  TableRow
-} from './Table.styled'
+import { CSS } from './Table.styled'
 
 interface IProps {
   data: {
@@ -17,24 +10,24 @@ interface IProps {
 }
 
 const Table: FC<IProps> = ({ data }) => (
-  <TableBase>
-    <TableHeader>
-      <TableRow>
+  <CSS.TableBase>
+    <CSS.TableHeader>
+      <CSS.TableRow>
         {data.columns.map((header) => (
-          <TableHeaderCol key={`header-${header}`}>{header}</TableHeaderCol>
+          <CSS.TableHeaderCol key={`header-${header}`}>{header}</CSS.TableHeaderCol>
         ))}
-      </TableRow>
-    </TableHeader>
-    <TableBody>
+      </CSS.TableRow>
+    </CSS.TableHeader>
+    <CSS.TableBody>
       {data.rows.map((item, i) => (
-        <TableRow key={`row-${i}`}>
+        <CSS.TableRow key={`row-${i}`}>
           {item.map((row, j) => (
-            <TableCol key={`col-${j}`}>{row}</TableCol>
+            <CSS.TableCol key={`col-${j}`}>{row}</CSS.TableCol>
           ))}
-        </TableRow>
+        </CSS.TableRow>
       ))}
-    </TableBody>
-  </TableBase>
+    </CSS.TableBody>
+  </CSS.TableBase>
 )
 
 export default Table

@@ -2,7 +2,7 @@ import { cx } from '@web-builder/utils'
 import React, { ComponentPropsWithoutRef, FC } from 'react'
 
 import { Color, Shape } from '../../types'
-import { BASE_CLASS_NAME, Radio, RadioChild, RadioText, RadioWrapper } from './Radio.styled'
+import { BASE_CLASS_NAME, CSS } from './Radio.styled'
 
 interface Props extends ComponentPropsWithoutRef<'input'> {
   color?: Color
@@ -27,11 +27,11 @@ const RadioComponent: FC<Props> = ({
   })
 
   return (
-    <RadioWrapper data-component="Checkbox">
-      <RadioText>{label}</RadioText>
-      <Radio {...checkboxProps} type="radio" checked={checked} />
-      <RadioChild className={cx.join(classNames, 'checkmark')} />
-    </RadioWrapper>
+    <CSS.RadioWrapper data-component="Checkbox">
+      <CSS.RadioText>{label}</CSS.RadioText>
+      <CSS.Radio {...checkboxProps} type="radio" checked={checked} />
+      <CSS.RadioChild className={cx.join(classNames, 'checkmark')} />
+    </CSS.RadioWrapper>
   )
 }
 

@@ -4,7 +4,7 @@ import { CSSObject } from 'styled-components'
 
 import { Color, Size } from '../../types'
 import Icon from '../Icon'
-import { BASE_CLASS_NAME, Select } from './Select.styled'
+import { BASE_CLASS_NAME, CSS } from './Select.styled'
 
 type Option = {
   option: string
@@ -142,7 +142,7 @@ const SelectComponent: FC<Props> = ({
 
   return (
     <div ref={node} style={{ marginTop: '5px', marginBottom: '20px' }}>
-      <Select data-component="Select" color={color} className={className} {...selectProps}>
+      <CSS.Select data-component="Select" color={color} className={className} {...selectProps}>
         <>
           <a onClick={handleOpenOnClick} className={classNames} role="button" tabIndex={0}>
             <div>{selectedOption.option || label}</div>
@@ -153,7 +153,7 @@ const SelectComponent: FC<Props> = ({
           </a>
           {renderList()}
         </>
-      </Select>
+      </CSS.Select>
     </div>
   )
 }

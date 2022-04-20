@@ -2,7 +2,7 @@ import { cx } from '@web-builder/utils'
 import React, { FC } from 'react'
 
 import { Color, TextAlign, Typography } from '../../types'
-import { BASE_CLASS_NAME, Text } from './Text.styled'
+import { BASE_CLASS_NAME, CSS } from './Text.styled'
 
 export interface TextProps {
   align?: TextAlign
@@ -28,9 +28,9 @@ const TextComponent: FC<TextProps> = ({
   const cpmTag = component
 
   return (
-    <Text as={cpmTag} className={classNames} {...restProps}>
+    <CSS.Text as={cpmTag} className={classNames} {...restProps}>
       {children}
-    </Text>
+    </CSS.Text>
   )
 }
 

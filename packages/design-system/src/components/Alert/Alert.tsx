@@ -2,7 +2,7 @@ import { cx } from '@web-builder/utils'
 import React, { FC } from 'react'
 
 import { Alignment, Color, Shape } from '../../types'
-import { Alert, BASE_CLASS_NAME } from './Alert.styled'
+import { BASE_CLASS_NAME, CSS } from './Alert.styled'
 
 type Props = {
   alignment?: Alignment
@@ -26,9 +26,9 @@ const AlertComponent: FC<Props> = ({
   })
 
   return (
-    <Alert data-component="Alert" className={classNames} {...alertProps}>
+    <CSS.Alert data-component="Alert" className={classNames} {...alertProps}>
       {children}
-    </Alert>
+    </CSS.Alert>
   )
 }
 

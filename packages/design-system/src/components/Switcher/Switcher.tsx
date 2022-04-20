@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC } from 'react'
 
-import { Input, Label, RoundSpan, SquareSpan, Switcher, Text } from './Switcher.styled'
+import { CSS } from './Switcher.styled'
 
 interface IProps {
   label?: string
@@ -17,14 +17,18 @@ const SwitcherComponent: FC<IProps> = ({
   onChange,
   checked = false
 }) => (
-  <Switcher data-component="Switcher">
-    <Label>
-      <Input type="checkbox" onChange={onChange} checked={checked} readOnly={readOnly} />
-      {type === 'round' ? <RoundSpan className="slider" /> : <SquareSpan className="slider" />}
-    </Label>
+  <CSS.Switcher data-component="Switcher">
+    <CSS.Label>
+      <CSS.Input type="checkbox" onChange={onChange} checked={checked} readOnly={readOnly} />
+      {type === 'round' ? (
+        <CSS.RoundSpan className="slider" />
+      ) : (
+        <CSS.SquareSpan className="slider" />
+      )}
+    </CSS.Label>
     &nbsp;
-    <Text>{label}</Text>
-  </Switcher>
+    <CSS.Text>{label}</CSS.Text>
+  </CSS.Switcher>
 )
 
 export default SwitcherComponent

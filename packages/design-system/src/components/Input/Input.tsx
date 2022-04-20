@@ -3,7 +3,7 @@ import React, { ComponentPropsWithoutRef, ElementType, FC, useState } from 'reac
 
 import { Color } from '../../types'
 import Icon from '../Icon'
-import { BASE_CLASS_NAME, InputBase, InputIcon, InputWrapper } from './Input.styled'
+import { BASE_CLASS_NAME, CSS } from './Input.styled'
 
 export interface Props extends ComponentPropsWithoutRef<'input'> {
   fullWidth?: boolean
@@ -50,13 +50,13 @@ const Input: FC<Props> = ({
   const RightIcon = (isPassword && (showValue ? eye : eyeOff)) || rightIcon
 
   return (
-    <InputWrapper className={classNames}>
+    <CSS.InputWrapper className={classNames}>
       {LeftIcon && (
-        <InputIcon className="icon-left">
+        <CSS.InputIcon className="icon-left">
           <LeftIcon {...iconProps} />
-        </InputIcon>
+        </CSS.InputIcon>
       )}
-      <InputBase
+      <CSS.InputBase
         type={inputType}
         onFocus={() => setHasFocus(true)}
         onBlur={() => setHasFocus(false)}
@@ -65,15 +65,15 @@ const Input: FC<Props> = ({
       />
       {RightIcon &&
         (isPassword ? (
-          <InputIcon className="icon-right pointer" as="button" onClick={handleShowPassword}>
+          <CSS.InputIcon className="icon-right pointer" as="button" onClick={handleShowPassword}>
             <RightIcon {...iconProps} />
-          </InputIcon>
+          </CSS.InputIcon>
         ) : (
-          <InputIcon className="icon-right">
+          <CSS.InputIcon className="icon-right">
             <RightIcon {...iconProps} />
-          </InputIcon>
+          </CSS.InputIcon>
         ))}
-    </InputWrapper>
+    </CSS.InputWrapper>
   )
 }
 

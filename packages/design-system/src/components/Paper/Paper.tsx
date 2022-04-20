@@ -1,7 +1,7 @@
 import { cx } from '@web-builder/utils'
 import React, { FC } from 'react'
 
-import { BASE_CLASS_NAME, PaperBase } from './Paper.styled'
+import { BASE_CLASS_NAME, CSS } from './Paper.styled'
 
 interface IProps {
   className?: string
@@ -14,7 +14,7 @@ const Paper: FC<IProps> = ({ children, className }) => {
     className
   })
 
-  return <PaperBase className={classNames}>{children}</PaperBase>
+  return <CSS.PaperBase className={classNames}>{children}</CSS.PaperBase>
 }
 
 export default Paper

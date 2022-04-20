@@ -44,15 +44,17 @@ const alignmentStyles: CSSObject = {
 }
 
 // Component
-export const Alert = styled.div({
-  border: '1px solid transparent',
-  borderRadius: '0.25rem',
-  fontSize: FontSize.regular,
-  marginBottom: '1rem',
-  padding: '0.75rem 1.25rem',
-  position: 'relative',
-  width: '100%',
-  ...alignmentStyles,
-  ...colorStyles,
-  ...shapeStyles
-})
+export namespace CSS {
+  export const Alert = styled.div({
+    border: '1px solid transparent',
+    borderRadius: '0.25rem',
+    fontSize: FontSize.regular,
+    marginBottom: '1rem',
+    padding: '0.75rem 1.25rem',
+    position: 'relative',
+    width: '100%',
+    ...alignmentStyles,
+    ...colorStyles,
+    ...shapeStyles
+  })
+}

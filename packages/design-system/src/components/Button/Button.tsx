@@ -3,7 +3,7 @@ import React, { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
 
 import { ButtonVariant, Color, Shape, Size, Variant } from '../../types'
 import Spinner from '../Spinner'
-import { BASE_CLASS_NAME, Button, LinkButton } from './Button.styled'
+import { BASE_CLASS_NAME, CSS } from './Button.styled'
 
 interface Props extends ComponentPropsWithoutRef<'button'> {
   color?: Color
@@ -59,26 +59,26 @@ const ButtonComponent: FC<Props> = ({
     }
 
     return (
-      <LinkButton
+      <CSS.LinkButton
         data-component="LinkButton"
         className={classNames}
         {...linkBtnProps}
         disabled={isLoading || disabled}
       >
         <a {...linkBtnProps}>{buttonText}</a>
-      </LinkButton>
+      </CSS.LinkButton>
     )
   }
 
   return (
-    <Button
+    <CSS.Button
       data-component="Button"
       className={classNames}
       {...btnProps}
       disabled={isLoading || disabled}
     >
       {buttonText}
-    </Button>
+    </CSS.Button>
   )
 }
 

@@ -1,10 +1,10 @@
 import { cx } from '@web-builder/utils'
 import React, { FC, useState } from 'react'
 
-import Input, { Props as InputProps } from '../Input'
+import Input from '../Input'
 import Text from '../Text'
-import TextArea, { ITextAreaProps } from '../TextArea'
-import { BASE_CLASS_NAME, TextFieldBase, TextFieldHelpersWrapper } from './TextField.styled'
+import TextArea from '../TextArea'
+import { BASE_CLASS_NAME, CSS } from './TextField.styled'
 
 interface ITextFieldBaseProps {
   label?: string
@@ -14,6 +14,7 @@ interface ITextFieldBaseProps {
   textArea?: boolean
   minLength?: number
   maxLength?: number
+  placeholder?: string
   type?: string
   value?: string
 }
@@ -49,7 +50,7 @@ const ValidateLength = ({ length, value }: IValidateLength): string | null => {
   return null
 }
 
-const TextField: FC<any> = (props) => {
+const TextField: FC<ITextFieldBaseProps> = (props) => {
   const {
     label,
     helperText,
@@ -81,7 +82,7 @@ const TextField: FC<any> = (props) => {
   })
 
   return (
-    <TextFieldBase className={classNames}>
+    <CSS.TextFieldBase className={classNames}>
       {label && <Text variant="label">{label}</Text>}
 
       {isInput ? (
@@ -96,14 +97,14 @@ const TextField: FC<any> = (props) => {
       )}
 
       {(maxLength || errorMsg || helperText) && (
-        <TextFieldHelpersWrapper>
+        <CSS.TextFieldHelpersWrapper>
           <Text variant="caption1">{errorMsg || helperText}</Text>
           {maxLength && (
             <Text variant="caption1">{maxLength && `${formatValue.length}/${maxLength}`}</Text>
           )}
-        </TextFieldHelpersWrapper>
+        </CSS.TextFieldHelpersWrapper>
       )}
-    </TextFieldBase>
+    </CSS.TextFieldBase>
   )
 }
 

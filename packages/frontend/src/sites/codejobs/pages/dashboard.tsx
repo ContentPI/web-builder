@@ -1,7 +1,5 @@
 import React from 'react'
 
-export default () => (
-  <h1>
-    Codejobs Dashboard <a href="/logout">Logout</a>
-  </h1>
-)
+import Dashboard from '~/components/Dashboard'
+
+export default () => <Dashboard />

@@ -3,7 +3,7 @@ import React, { FC, Fragment } from 'react'
 import { LinkProps } from 'react-router-dom'
 
 import Text from '../Text'
-import { BASE_CLASS_NAME, Breadcrumb, BreadcrumbDivider } from './Breadcrumb.styled'
+import { BASE_CLASS_NAME, CSS } from './Breadcrumb.styled'
 
 type LabelBody = {
   title: string
@@ -38,15 +38,15 @@ const BreadcrumbComponent: FC<Props> = (props) => {
           </a>
         )}
         {!isLast && (
-          <BreadcrumbDivider>
+          <CSS.BreadcrumbDivider>
             <Text variant="subtitle2">/</Text>
-          </BreadcrumbDivider>
+          </CSS.BreadcrumbDivider>
         )}
       </Fragment>
     )
   })
 
-  return <Breadcrumb className={classNames}>{items}</Breadcrumb>
+  return <CSS.Breadcrumb className={classNames}>{items}</CSS.Breadcrumb>
 }
 
 export default BreadcrumbComponent
