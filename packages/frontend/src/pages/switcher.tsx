@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 
 import Helmet from '~/components/Helmet'
 import Config from '~/config'
-import { Site } from '../types'
+import { Site } from '~/types'
 
 const dynamicPages: Record<string, Record<string, any>> = {
   [Site.CodeJobs]: {

@@ -1,24 +1,22 @@
-import styled, { CSSProperties } from 'styled-components'
+import styled from 'styled-components'
 
 export namespace CSS {
-  export const DashboardLayout = styled.div({})
+  export const Icon = styled.span({
+    display: 'flex',
+    alignItems: 'center',
+    marginRight: '10px'
+  })
 
-  export const Header: CSSProperties = styled.header({
-    borderBottom: '1px solid rgba(72, 94, 144, 0.16)',
-    height: '60px',
-    lineHeight: '60px',
-    paddingLeft: '20px',
-    img: {
-      height: '45px',
-      marginTop: '5px'
+  export const Item = styled.div({
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: '10px',
+    svg: {
+      width: '15px'
     }
   })
 
-  export const FlexWrapper: CSSProperties = styled.div({
-    display: 'flex'
-  })
-
-  export const Sidebar: CSSProperties = styled.aside({
+  export const Sidebar = styled.aside({
     borderRight: '1px solid rgba(72, 94, 144, 0.16)',
     backgroundColor: '#002f4f',
     width: '240px',
@@ -27,15 +25,21 @@ export namespace CSS {
     zIndex: 900,
     left: 0,
     a: {
-      color: 'white',
-      textDecoration: 'none'
+      color: '#CCC',
+      textDecoration: 'none',
+      display: 'flex',
+      justifyContent: 'space-between',
+      '&:hover': {
+        color: 'white'
+      }
     },
     h4: {
       textIndent: '10px',
       color: '#8392a5',
       fontWeight: 500,
       fontSize: '12px',
-      marginTop: '10px'
+      marginTop: '10px',
+      textTransform: 'uppercase'
     },
     ul: {
       listStyle: 'none',
@@ -47,12 +51,20 @@ export namespace CSS {
       }
     },
     '.menu': {
+      display: 'flex',
+      flexDirection: 'column',
       textIndent: '10px',
       fontWeight: 500,
       '.submenu': {
-        display: 'none',
+        maxHeight: 0,
+        overflow: 'hidden',
+        transition: 'max-height 0.25s linear',
+        '&.active': {
+          maxHeight: '200px'
+        },
         backgroundColor: 'white',
         fontWeight: 400,
+        textIndent: '35px',
         a: {
           display: 'block',
           color: '#05050b',

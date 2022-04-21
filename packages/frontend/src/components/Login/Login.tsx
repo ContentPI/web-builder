@@ -73,7 +73,7 @@ const Login: FC<Props> = () => {
             <Input
               autoComplete="off"
               name="emailOrUsername"
-              placeholder={t('login.emailOrUsername')}
+              placeholder={t('emailOrUsername')}
               data-testid="email"
               onChange={onChange}
               value={values.emailOrUsername}
@@ -82,22 +82,22 @@ const Login: FC<Props> = () => {
             <Input
               name="password"
               type="password"
-              placeholder={t('login.password')}
+              placeholder={t('password')}
               data-testid="password"
               onChange={onChange}
               value={values.password}
             />
 
             <div className="forgot" data-testid="forgot">
-              {t('login.forgot')}
+              {t('forgotPassword')}
             </div>
 
             <div className="actions">
               <Button onClick={(): Promise<void> => handleSubmit(values)} data-testid="login">
-                {t('login.login')}
+                {t('login')}
               </Button>
               <Button color="success" data-testid="register">
-                {t('login.register')}
+                {t('register')}
               </Button>
             </div>
           </section>

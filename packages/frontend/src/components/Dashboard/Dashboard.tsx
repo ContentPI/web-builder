@@ -1,12 +1,8 @@
 import React, { FC } from 'react'
 
-import DashboardLayout from '~/components/Layouts/DashboardLayout'
+import DashboardLayout from '~/components/Dashboard/Layout'
 
-type Props = {
-  background?: string
-}
-
-const Dashboard: FC<Props> = () => (
+const Dashboard: FC = () => (
   <DashboardLayout>
     <h2>Dash</h2>
   </DashboardLayout>
