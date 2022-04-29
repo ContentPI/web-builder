@@ -1,6 +1,20 @@
 import styled from 'styled-components'
 
+import Config from '~/config'
+
+const mainColor = Config.theme?.brandColors[0]
+
 export namespace CSS {
+  export const Header = styled.header({
+    backgroundColor: '#f5f5f5',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+    '.logo': {
+      height: '45px',
+      marginTop: '5px'
+    }
+  })
+
   export const Icon = styled.span({
     display: 'flex',
     alignItems: 'center',
@@ -17,13 +31,31 @@ export namespace CSS {
   })
 
   export const Sidebar = styled.aside({
-    borderRight: '1px solid rgba(72, 94, 144, 0.16)',
-    backgroundColor: '#002f4f',
+    backgroundColor: mainColor,
+    top: '0.5px',
     width: '240px',
     height: '100vh',
     position: 'fixed',
     zIndex: 900,
     left: 0,
+    '.profile': {
+      marginTop: '20px',
+      textAlign: 'center',
+      color: 'white',
+      '.role': {
+        color: '#ccc',
+        fontSize: '13px',
+        textTransform: 'uppercase'
+      },
+      img: {
+        display: 'block',
+        margin: '0 auto',
+        borderRadius: '50%',
+        width: '100px',
+        padding: '5px',
+        border: '3px solid white'
+      }
+    },
     a: {
       color: '#CCC',
       textDecoration: 'none',
@@ -35,7 +67,7 @@ export namespace CSS {
     },
     h4: {
       textIndent: '10px',
-      color: '#8392a5',
+      color: '#CCC',
       fontWeight: 500,
       fontSize: '12px',
       marginTop: '10px',
@@ -47,7 +79,8 @@ export namespace CSS {
       margin: 0,
       padding: 0,
       li: {
-        lineHeight: '40px'
+        lineHeight: '40px',
+        cursor: 'pointer'
       }
     },
     '.menu': {
@@ -67,9 +100,9 @@ export namespace CSS {
         textIndent: '35px',
         a: {
           display: 'block',
-          color: '#05050b',
+          color: '#000',
           '&:hover': {
-            color: '#0066aa'
+            color: mainColor
           }
         }
       }

@@ -6,7 +6,7 @@ import React, { FC, useState } from 'react'
 import Config from '~/config'
 import { CSS } from './Sidebar.styled'
 
-const { sidebar } = require(`../../../sites/${Config.site}/data/dashboard/sidebar`)
+const { sidebar } = require(`~/sites/${Config.site}/data/dashboard/sidebar`)
 
 const Sidebar: FC = () => {
   const [activeSection, setActiveSection] = useState('')
@@ -19,6 +19,16 @@ const Sidebar: FC = () => {
 
   return (
     <CSS.Sidebar>
+      <CSS.Header>
+        <img className="logo" src="/images/logo.png" alt="Logo" />
+      </CSS.Header>
+
+      <div className="profile">
+        <img src="/images/avatar.jpeg" alt="Profile" /> <br />
+        Carlos Santana <br />
+        <span className="role">God</span>
+      </div>
+
       <h4>{t(sidebar.title)}</h4>
 
       <ul className="menu">
