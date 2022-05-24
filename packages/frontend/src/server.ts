@@ -18,7 +18,7 @@ const handle = nextApp.getRequestHandler()
 nextApp.prepare().then(() => {
   // Express application
   const app: Application = express()
-
+  console.log('TESTING PR')
   // Cookies
   app.use(cookieParser())
 
