@@ -21,7 +21,7 @@ nextApp.prepare().then(() => {
 
   // Cookies
   app.use(cookieParser())
-
+  console.log('TEST2')
   // Sites static directories
   app.use(express.static(path.join(__dirname, '../public')))
   app.use(express.static(path.join(__dirname, `./sites/${Config.site}/static`)))
