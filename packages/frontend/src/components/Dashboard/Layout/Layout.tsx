@@ -9,7 +9,7 @@ type Props = {
   children: ReactElement
 }
 
-const DashboardLayout: FC<Props> = ({ children }) => {
+const DashboardLayout: FC<Props> = () => {
   const [openMenu, setOpenMenu] = useState(true)
 
   const handleMenu = () => setOpenMenu(!openMenu)
