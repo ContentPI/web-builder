@@ -1,0 +1,19 @@
+name: on-pull-request
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  release:
+    name: validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org
+      - run: npm install
+      - run: npm run lint
