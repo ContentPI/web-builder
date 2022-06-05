@@ -4,6 +4,6 @@ export const config: ServiceConfiguration = {
   domainName: 'ranchosanpancho.com',
   port: 4000,
   database: {
-    database: 'sanpancho'
+    database: 'crm'
   }
 }

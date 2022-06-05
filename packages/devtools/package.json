@@ -29,6 +29,7 @@
     "css-loader": "^6.7.1",
     "dotenv": "^16.0.0",
     "file-loader": "^6.2.0",
+    "graphql-tag": "^2.12.6",
     "html-webpack-plugin": "^5.5.0",
     "path-browserify": "^1.0.1",
     "run-script-webpack-plugin": "^0.0.11",

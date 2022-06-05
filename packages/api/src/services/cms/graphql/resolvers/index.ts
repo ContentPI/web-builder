@@ -1,6 +1,6 @@
 import { mergeResolvers } from '@graphql-tools/merge'
 
-import user from './user'
+import user from '../../../../graphql/resolvers/user'
 
 const resolvers = mergeResolvers([user])
 

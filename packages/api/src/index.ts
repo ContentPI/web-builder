@@ -7,9 +7,36 @@ import express from 'express'
 import expressJwt from 'express-jwt'
 import { applyMiddleware } from 'graphql-middleware'
 
-import resolvers from './graphql/resolvers'
-import typeDefs from './graphql/types'
-import models from './models'
+import resolversCMS from './services/cms/graphql/resolvers'
+import typeDefsCMS from './services/cms/graphql/types'
+import modelsCMS from './services/cms/models'
+import setInitialSeedsCMS from './services/cms/seeds'
+import resolversCRM from './services/crm/graphql/resolvers'
+import typeDefsCRM from './services/crm/graphql/types'
+import modelsCRM from './services/crm/models'
+import setInitialSeedsCRM from './services/crm/seeds'
+
+const service = process.env.SERVICE ?? 'default'
+
+const seeds: any = {
+  cms: setInitialSeedsCMS,
+  crm: setInitialSeedsCRM
+}
+
+const models: any = {
+  cms: modelsCMS,
+  crm: modelsCRM
+}
+
+const resolvers: any = {
+  cms: resolversCMS,
+  crm: resolversCRM
+}
+
+const typeDefs: any = {
+  cms: typeDefsCMS,
+  crm: typeDefsCRM
+}
 
 const app = express()
 
@@ -39,8 +66,8 @@ app.use((req, res, next) => {
 // Schema
 const schema = applyMiddleware(
   makeExecutableSchema({
-    typeDefs,
-    resolvers
+    typeDefs: typeDefs[service],
+    resolvers: resolvers[service]
   })
 )
 
@@ -58,13 +85,21 @@ const apolloServer = new ApolloServer({
 })
 
 const alter = true
-const force = false
+const force = true
 
-models.sequelize.sync({ alter, force }).then(() => {
+if (!models[service]) {
+  throw 'Invalid service'
+}
+
+models[service].sequelize.sync({ alter, force }).then(() => {
   apolloServer.start().then(() => {
     apolloServer.applyMiddleware({ app, path: '/graphql', cors: corsOptions })
 
     app.listen({ port: 4000 }, () => {
+      // Setting up initial seeds
+      console.log('Initializing Seeds...')
+      seeds[service]()
+
       // eslint-disable-next-line no-console
       console.log('Running on http://localhost:4000')
     })

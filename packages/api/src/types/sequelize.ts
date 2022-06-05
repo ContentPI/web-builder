@@ -13,6 +13,7 @@ export type DataType = {
   BOOLEAN: boolean
   TEXT: string
   INTEGER: number
+  JSON: string
   DATE: string
   FLOAT: number
 }

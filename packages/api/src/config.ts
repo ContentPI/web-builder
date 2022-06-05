@@ -1,8 +1,8 @@
 import dotenv from 'dotenv'
 
-import { config as blankServiceConfig } from './services/blank-service/config'
 import { config as cmsConfig } from './services/cms/config'
 import { config as crmConfig } from './services/crm/config'
+import { config as blankServiceConfig } from './services/default/config'
 import { Service, ServiceBuilderConfiguration, ServiceConfiguration } from './types/config'
 
 // Loading Env vars
