@@ -18,15 +18,23 @@ const dynamicPages: Record<string, Record<string, any>> = {
   }
 }
 
+const dynamicSections: Record<string, Record<string, any>> = {
+  [Site.CodeJobs]: {},
+  [Site.SanPancho]: {
+    clients: dynamic(() => import('../sites/san-pancho/pages/dashboard/clients'))
+  }
+}
+
 type Props = {
   site: Site
   page: string
+  section?: string
   siteTitle: string
   props?: Record<string, any>
 }
 
-const Switcher: FC<Props> = ({ site, page, props = {}, siteTitle }) => {
-  const PageToRender = dynamicPages[site][page]
+const Switcher: FC<Props> = ({ site, page, section, props = {}, siteTitle }) => {
+  const PageToRender = section ? dynamicSections[site][section] : dynamicPages[site][page]
 
   return (
     <>

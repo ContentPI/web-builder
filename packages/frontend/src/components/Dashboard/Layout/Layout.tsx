@@ -25,17 +25,7 @@ const DashboardLayout: FC<Props> = ({ children }) => {
           </div>
 
           <div className={cx.join('blocks', openMenu ? 'wrapper' : 'full')}>
-            <CSS.Content>
-              <p>Content</p>
-              <p>Content</p>
-              <p>Content</p>
-              <p>Content</p>
-              <p>Content</p>
-              <p>Content</p>
-              <p>Content</p>
-              <p>Content</p>
-              <p>Content</p>
-            </CSS.Content>
+            <CSS.Content>{children}</CSS.Content>
           </div>
         </CSS.FlexWrapper>
       </CSS.DashboardLayout>
