@@ -7,40 +7,62 @@ import { Site } from '~/types'
 
 const dynamicPages: Record<string, Record<string, any>> = {
   [Site.CodeJobs]: {
-    index: dynamic(() => import('../sites/codejobs/pages/index')),
-    login: dynamic(() => import('../sites/codejobs/pages/login')),
-    dashboard: dynamic(() => import('../sites/codejobs/pages/dashboard'))
+    index: {
+      index: dynamic(() => import('../sites/codejobs/pages/index'))
+    },
+    login: {
+      index: dynamic(() => import('../sites/codejobs/pages/login'))
+    },
+    dashboard: {
+      index: dynamic(() => import('../sites/codejobs/pages/dashboard'))
+    }
   },
   [Site.SanPancho]: {
-    index: dynamic(() => import('../sites/san-pancho/pages/index')),
-    login: dynamic(() => import('../sites/san-pancho/pages/login')),
-    dashboard: dynamic(() => import('../sites/san-pancho/pages/dashboard'))
+    index: {
+      index: dynamic(() => import('../sites/san-pancho/pages/index'))
+    },
+    login: {
+      index: dynamic(() => import('../sites/san-pancho/pages/login'))
+    },
+    dashboard: {
+      index: dynamic(() => import('../sites/san-pancho/pages/dashboard')),
+      clients: dynamic(() => import('../sites/san-pancho/pages/dashboard/clients/index')),
+      profile: dynamic(() => import('../sites/san-pancho/pages/dashboard/clients/profile'))
+    }
   }
 }
 
-const dynamicSections: Record<string, Record<string, any>> = {
-  [Site.CodeJobs]: {},
-  [Site.SanPancho]: {
-    clients: dynamic(() => import('../sites/san-pancho/pages/dashboard/clients'))
-  }
+type Route = {
+  page: string
+  section?: string
+  params?: string[]
 }
 
 type Props = {
   site: Site
-  page: string
-  section?: string
+  route: Route
   siteTitle: string
   props?: Record<string, any>
 }
 
-const Switcher: FC<Props> = ({ site, page, section, props = {}, siteTitle }) => {
-  const PageToRender = section ? dynamicSections[site][section] : dynamicPages[site][page]
+const Switcher: FC<Props> = ({ site, route, props = {}, siteTitle }) => {
+  const { page, params = [] } = route
+  const [section = 'index', ...moreParams] = params
+  let PageToRender
+
+  if (page) {
+    PageToRender = dynamicPages[site][page]
+  }
+
+  if (page && section) {
+    PageToRender = dynamicPages[site][page][section]
+  }
 
   return (
     <>
       <Helmet title={page as string} site={siteTitle || ''} />
 
-      <PageToRender {...props} />
+      <PageToRender {...props} params={moreParams} />
     </>
   )
 }

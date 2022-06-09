@@ -12,16 +12,14 @@ type Props = {
 
 const Page: FC<Props> = ({ site, siteTitle }) => {
   const router = useRouter()
-  const { page = 'index', section = '' } = router.query
+  const { page = 'index', params = [] } = router.query
 
-  return (
-    <SwitcherPage
-      site={site}
-      page={page as string}
-      section={section as string}
-      siteTitle={siteTitle}
-    />
-  )
+  const route = {
+    page: page as string,
+    params: params as string[]
+  }
+
+  return <SwitcherPage site={site} route={route} siteTitle={siteTitle} />
 }
 
 export const getServerSideProps = async () => ({

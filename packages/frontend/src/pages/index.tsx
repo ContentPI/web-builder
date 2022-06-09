@@ -9,9 +9,13 @@ type Props = {
   siteTitle: string
 }
 
-const Page: FC<Props> = ({ site, siteTitle }) => (
-  <Switcher site={site} page="index" siteTitle={siteTitle} />
-)
+const Page: FC<Props> = ({ site, siteTitle }) => {
+  const route = {
+    page: 'index'
+  }
+
+  return <Switcher site={site} route={route} siteTitle={siteTitle} />
+}
 
 export const getServerSideProps = async () => ({
   props: {
