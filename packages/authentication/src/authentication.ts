@@ -3,7 +3,7 @@ import { AuthenticationError } from 'apollo-server-express'
 import jwt from 'jsonwebtoken'
 
 export const secretKey = 'W3bBu1ld3r'
-export const expiresIn = '7d'
+export const expiresIn = '30d'
 
 export const createToken = async (user: any): Promise<string[] | string> => {
   const { id, username, password, email, active, role } = user

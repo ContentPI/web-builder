@@ -60,7 +60,7 @@ const UserProvider: FC<Props> = ({ children }) => {
       })
 
       if (dataLogin) {
-        setCookie('at', dataLogin.login.token, { path: '/' })
+        setCookie('at', dataLogin.login.token, { path: '/', maxAge: 45 * 60 * 1000 })
 
         return dataLogin.login.token
       }
