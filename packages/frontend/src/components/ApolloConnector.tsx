@@ -1,13 +1,13 @@
 import { DocumentNode, OperationVariables, QueryResult, useQuery } from '@apollo/client'
-import React, { FC, ReactElement } from 'react'
+import React, { FC } from 'react'
 
 type ApolloConnectorProps = {
   query: DocumentNode
   variables?: Record<string, any>
-  onSuccess: (data: any) => ReactElement
+  onSuccess: (data: any) => any
 }
 
-const ApolloConnector: FC<ApolloConnectorProps> = ({ onSuccess, query, variables = {} }) => {
+const ApolloConnector: FC<ApolloConnectorProps> = ({ query, variables = {}, onSuccess }) => {
   const queryOptions: OperationVariables = {
     variables: {
       ...variables

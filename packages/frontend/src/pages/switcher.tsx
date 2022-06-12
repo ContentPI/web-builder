@@ -26,8 +26,8 @@ const dynamicPages: Record<string, Record<string, any>> = {
     },
     dashboard: {
       index: dynamic(() => import('../sites/san-pancho/pages/dashboard')),
-      clients: dynamic(() => import('../sites/san-pancho/pages/dashboard/clients/index')),
-      profile: dynamic(() => import('../sites/san-pancho/pages/dashboard/clients/profile'))
+      guests: dynamic(() => import('../sites/san-pancho/pages/dashboard/guests/list')),
+      profile: dynamic(() => import('../sites/san-pancho/pages/dashboard/guests/profile'))
     }
   }
 }

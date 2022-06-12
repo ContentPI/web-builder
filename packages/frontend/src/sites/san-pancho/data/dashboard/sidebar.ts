@@ -17,9 +17,9 @@ const sidebar = {
       ]
     },
     {
-      title: 'sidebar.clients',
+      title: 'sidebar.guests',
       icon: 'briefcase',
-      url: '/dashboard/clients'
+      url: '/dashboard/guests'
     },
     {
       title: 'sidebar.reports',

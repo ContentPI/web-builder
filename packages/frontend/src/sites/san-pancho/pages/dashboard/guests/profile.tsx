@@ -11,7 +11,7 @@ const Profile: FC<Props> = ({ params = [] }) => {
 
   return (
     <DashboardLayout>
-      <h2>Client profile {id}</h2>
+      <h2>Guest profile {id}</h2>
     </DashboardLayout>
   )
 }

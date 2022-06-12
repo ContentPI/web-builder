@@ -119,13 +119,13 @@ const translations: Record<string, Record<string, string>> = {
     'it-it': 'Campeggio',
     'ja-jp': 'キャンプ'
   },
-  'sidebar.clients': {
-    ar: 'العملاء',
-    'en-us': 'Clients',
-    'es-mx': 'Clientes',
-    'fr-fr': 'Clientes',
-    'it-it': 'Clienti',
-    'ja-jp': 'クライアント'
+  'sidebar.guests': {
+    ar: 'ضيوف',
+    'en-us': 'Guests',
+    'es-mx': 'Huéspedes',
+    'fr-fr': 'Les hôtes',
+    'it-it': 'Ospiti',
+    'ja-jp': 'ゲスト'
   },
   'sidebar.information': {
     ar: 'معلومة',
