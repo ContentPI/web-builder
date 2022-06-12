@@ -1,11 +1,13 @@
 export default {
   Query: {
-    getReservations: (_: any, _args: any, { models }: { models: any }): any[] =>
-      models.Reservations.findAll({
+    getReservations: (_: any, _args: any, { models }: { models: any }): any[] => {
+      console.log('MODELS====', models)
+      return models.Reservation.findAll({
         order: [['startDate', 'ASC']]
-      }),
+      })
+    },
     getReservationById: (_: any, { id }: { id: string }, { models }: { models: any }): any[] =>
-      models.Reservations.findAll({
+      models.Reservation.findAll({
         where: {
           id
         }
@@ -17,7 +19,7 @@ export default {
       { input }: { input: any },
       { models }: { models: any }
     ): Promise<any> => {
-      const createdReservation = await models.Reservations.create({ ...input })
+      const createdReservation = await models.Reservation.create({ ...input })
 
       return createdReservation
     },
@@ -27,7 +29,7 @@ export default {
       { id }: { id: string },
       { models }: { models: any }
     ): Promise<any> => {
-      const reservationToRemove = await models.Reservations.findByPk(id)
+      const reservationToRemove = await models.Reservation.findByPk(id)
 
       if (reservationToRemove) {
         await reservationToRemove.destroy({ where: { id } })
@@ -42,7 +44,7 @@ export default {
       { id, input }: { id: string; input: any },
       { models }: { models: any }
     ): Promise<any> => {
-      const ReservationToEdit = await models.Reservations.findByPk(id)
+      const ReservationToEdit = await models.Reservation.findByPk(id)
 
       if (ReservationToEdit) {
         const updatedReservation = await ReservationToEdit.update({ ...input }, { where: { id } })

@@ -8,18 +8,18 @@ const sidebar = {
       subMenu: [
         {
           title: 'sidebar.stoneHouse',
-          url: '/dashboard/reservations/stone'
+          url: 'reservations'
         },
         {
           title: 'sidebar.camping',
-          url: '/dashboard/reservations/camping'
+          url: 'dashboard/reservations/camping'
         }
       ]
     },
     {
       title: 'sidebar.guests',
       icon: 'briefcase',
-      url: '/dashboard/guests'
+      url: 'dashboard/guests'
     },
     {
       title: 'sidebar.reports',

@@ -85,7 +85,7 @@ const apolloServer = new ApolloServer({
 })
 
 const alter = true
-const force = true
+const force = false
 
 if (!models[service]) {
   throw 'Invalid service'

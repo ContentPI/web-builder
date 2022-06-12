@@ -1,4 +1,4 @@
-import { Button, Icon, Input, Pagination, Table } from '@web-builder/design-system'
+import { Icon, Input, Pagination, Table } from '@web-builder/design-system'
 import React, { FC, useEffect, useState } from 'react'
 
 import ApolloConnector from '~/components/ApolloConnector'

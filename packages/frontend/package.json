@@ -23,11 +23,15 @@
     "@babel/node": "^7.16.8",
     "@types/cookie-parser": "^1.4.2",
     "@types/isomorphic-fetch": "^0.0.36",
+    "@types/react-vertical-timeline-component": "^3.3.3",
     "babel-plugin-jsx-remove-data-test-id": "^3.0.0",
     "babel-plugin-styled-components": "^2.0.6"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
+    "@fullcalendar/daygrid": "^5.11.0",
+    "@fullcalendar/interaction": "^5.11.0",
+    "@fullcalendar/react": "^5.11.1",
     "@web-builder/authentication": "1.0.0",
     "@web-builder/design-system": "1.0.0",
     "@web-builder/devtools": "1.0.0",
@@ -39,9 +43,12 @@
     "encoding": "^0.1.13",
     "express": "^4.17.3",
     "isomorphic-fetch": "^3.0.0",
+    "moment": "^2.29.3",
+    "moment-range": "^4.0.2",
     "next": "^12.1.0",
     "react-cookie": "^4.1.1",
     "react-icons": "^4.3.1",
+    "react-vertical-timeline-component": "^3.5.2",
     "styled-components": "^5.3.3",
     "webpack": "^5.70.0"
   }
