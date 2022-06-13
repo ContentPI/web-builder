@@ -52,13 +52,14 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
       publicPath: '/',
       chunkFilename: '[name].js'
     }),
-    ...(configType === 'package' && {
-      filename: 'index.js',
-      libraryTarget: 'umd',
-      library: 'lib',
-      umdNamedDefine: true,
-      globalObject: 'this'
-    })
+    ...(configType === 'package' &&
+      !sandbox && {
+        filename: 'index.js',
+        libraryTarget: 'umd',
+        library: 'lib',
+        umdNamedDefine: true,
+        globalObject: 'this'
+      })
   }
 
   // Plugins
@@ -150,16 +151,19 @@ const getWebpackCommonConfig = (args: ModeArgs): Configuration => {
         port: devServerPort
       }
     }),
-    externals: [nodeExternals()],
+    ...(!sandbox && {
+      externals: [nodeExternals()]
+    }),
     output,
     resolve,
     plugins,
     module: {
       rules
     },
-    ...(configType !== 'web' && {
-      target: 'node'
-    })
+    ...(configType !== 'web' &&
+      !sandbox && {
+        target: 'node'
+      })
   }
 
   return webpackConfig as Configuration

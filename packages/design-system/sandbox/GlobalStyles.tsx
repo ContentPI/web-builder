@@ -1,15 +1,14 @@
-import { createGlobalStyle, css } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 import { customThemesCssVars, themeRootVars } from '../src/theme'
-import PoppinsRegularWoff from './fonts/poppins-regular.woff'
-import PoppinsRegularWoff2 from './fonts/poppins-regular.woff2'
+import poppins from './fonts/poppins'
 
-const fontStyles = css`
+const fontStyles = `
   @font-face {
     font-family: Poppins;
     font-style: normal;
     font-weight: 400;
-    src: url('${PoppinsRegularWoff}') format('woff'), url('${PoppinsRegularWoff2}') format('woff2');
+    src: url(${poppins});
   }
 `
 
