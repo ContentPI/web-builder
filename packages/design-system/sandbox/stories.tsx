@@ -3,6 +3,7 @@ import AvatarStories from '../src/components/Avatar/Avatar.stories'
 import BadgeStories from '../src/components/Badge/Badge.stories'
 import BreadcrumbStories from '../src/components/Breadcrumb/Breadcrumb.stories'
 import ButtonStories from '../src/components/Button/Button.stories'
+import CalendarStories from '../src/components/Calendar/Calendar.stories'
 import CheckboxStories from '../src/components/Checkbox/Checkbox.stories'
 import DialogStories from '../src/components/Dialog/Dialog.stories'
 import InputStories from '../src/components/Input/Input.stories'
@@ -25,6 +26,7 @@ const stories: any = {
   badge: BadgeStories,
   breadcrumb: BreadcrumbStories,
   button: ButtonStories,
+  calendar: CalendarStories,
   checkbox: CheckboxStories,
   dialog: DialogStories,
   input: InputStories,

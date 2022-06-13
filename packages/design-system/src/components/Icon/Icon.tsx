@@ -46,13 +46,20 @@ const Icon: FC<Props> = ({
 
   if (children) {
     return (
-      <i style={style} {...iconProps} className={cx.join('Icon', className)}>
+      <i onClick={onClick} style={style} {...iconProps} className={cx.join('Icon', className)}>
         {children}
       </i>
     )
   }
 
-  return <i style={style} {...iconProps} className={cx.join('Icon', `${type} ${className}`)} />
+  return (
+    <i
+      onClick={onClick}
+      style={style}
+      {...iconProps}
+      className={cx.join('Icon', `${type} ${className}`)}
+    />
+  )
 }
 
 export default Icon
