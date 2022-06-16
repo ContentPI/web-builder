@@ -64,6 +64,9 @@ export namespace CSS {
       '.event': {
         background: '#2EA1F8'
       },
+      '.same:not(:first-child) ': {
+        color: 'transparent'
+      },
       '.nextEvent': {
         background: '#002F52'
       }
