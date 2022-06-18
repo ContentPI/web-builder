@@ -41,7 +41,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
       return dateClick(existingEvent)
     }
 
-    return null
+    return dateClick()
   }
 
   const renderEvents = ({
