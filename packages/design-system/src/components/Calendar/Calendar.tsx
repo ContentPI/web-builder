@@ -75,12 +75,41 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
     return dateClick()
   }
 
+  const renderEvents = ({
+    x,
+    isToday,
+    currentDate,
+    existingEvents
+  }: {
+    x: number
+    isToday: boolean
+    currentDate: string
+    existingEvents: Event[]
+  }) => (
+    <li
+      className={isToday ? 'today' : 'day'}
+      onClick={() => handleDayClick(existingEvents)}
+      id={currentDate}
+      key={currentDate}
+    >
+      <span className="dayNumber">{x}</span>
+      {existingEvents.map((event: Event, i: number) => (
+        <div
+          className={cx.join('event', `event${i + 1}`)}
+          style={event.color ? { background: event.color } : {}}
+        >
+          {event.title}
+        </div>
+      ))}
+    </li>
+  )
+
   const renderDays = () => {
     const daysArr = []
 
     for (let h = firstDayIndex; h > 0; h -= 1) {
       const currentDay = previousLastDay - h + 1
-      const month = currentMonth - 1
+      const month = currentMonth
       const currentDate: string = `${
         month === -1 ? currentYear - 1 : currentYear
       }-${getTwoDigitsMonth(month === -1 ? 12 : month)}-${getTwoDigitsDay(currentDay)}`
@@ -95,7 +124,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
       })
 
       daysArr.push(
-        <li className="previousMonth" id={currentDate}>
+        <li className="previousMonth" id={currentDate} key={currentDate}>
           <span className="dayNumber">{currentDay}</span>
           {existingEvent ? (
             <div
@@ -118,33 +147,31 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
       const currentDate: string = `${currentYear}-${getTwoDigitsMonth(
         currentMonth + 1
       )}-${getTwoDigitsDay(i)}`
-      console.log('CURRENT DATE===', currentDate)
+
       const initialDate = new Date(currentDate).getTime()
 
-      const existingEvent = events.find((event: Event) => {
+      const existingEvents = events.filter((event: Event) => {
         const start = new Date(event.startDate).getTime()
         const end = new Date(event.endDate).getTime()
+        const isInRange = initialDate >= start && initialDate <= end
 
-        return initialDate >= start && initialDate <= end
+        return isInRange
       })
 
-      daysArr.push(
-        <li
-          className={isToday ? 'today' : 'day'}
-          onClick={() => handleDayClick(existingEvent || currentDate)}
-          id={currentDate}
-        >
-          <span className="dayNumber">{i}</span>
-          {existingEvent ? (
-            <div
-              className="event"
-              style={existingEvent.color ? { background: existingEvent.color } : {}}
-            >
-              {existingEvent.title}
-            </div>
-          ) : null}
-        </li>
-      )
+      if (existingEvents.length > 0) {
+        daysArr.push(renderEvents({ x: i, currentDate, isToday, existingEvents }))
+      } else {
+        daysArr.push(
+          <li
+            className={isToday ? 'today' : 'day'}
+            onClick={() => handleDayClick(currentDate)}
+            id={currentDate}
+            key={currentDate}
+          >
+            <span className="dayNumber">{i}</span>
+          </li>
+        )
+      }
     }
 
     for (let j = 1; j < nextDays; j += 1) {
@@ -163,7 +190,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
       })
 
       daysArr.push(
-        <li className="nextMonth" id={currentDate}>
+        <li className="nextMonth" id={currentDate} key={currentDate}>
           <span className="dayNumber">{j}</span>
           {existingEvent ? (
             <div
