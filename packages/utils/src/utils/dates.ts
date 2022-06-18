@@ -17,6 +17,14 @@ const dates = {
     currentDay === new Date().getDate() &&
     currentDate.getMonth() === new Date().getMonth() &&
     currentDate.getFullYear() === new Date().getFullYear(),
+  getExistingEvents: (events: any, initialDate: number) =>
+    events.filter((event: any) => {
+      const start = new Date(event.startDate).getTime()
+      const end = new Date(event.endDate).getTime()
+      const isInRange = initialDate >= start && initialDate <= end
+
+      return isInRange
+    }),
   months: [
     'January',
     'February',

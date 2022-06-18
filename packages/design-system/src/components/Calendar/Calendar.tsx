@@ -116,13 +116,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
 
       const initialDate = new Date(currentDate).getTime()
 
-      const existingEvents = events.filter((event: Event) => {
-        const start = new Date(event.startDate).getTime()
-        const end = new Date(event.endDate).getTime()
-        const isInRange = initialDate >= start && initialDate <= end
-
-        return isInRange
-      })
+      const existingEvents = dates.getExistingEvents(events, initialDate)
 
       if (existingEvents.length > 0) {
         daysArr.push(renderEvents({ x: i, currentDate, isToday, existingEvents }))
@@ -172,6 +166,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
 
     setDays(daysArr)
   }
+
   const updateStates = ({ year, month, firstDay, last, prevLastDay, lastIndex }: any) => {
     setCurrentYear(year)
     setCurrentMonth(month)
