@@ -175,6 +175,18 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
 
     setDays(daysArr)
   }
+  const updateStates = ({ year, month, firstDay, last, prevLastDay, lastIndex }: any) => {
+    setCurrentYear(year)
+    setCurrentMonth(month)
+    setFirstDayIndex(firstDay)
+    setLastDay(last)
+    setPreviousLastDay(prevLastDay)
+    setNextDays(7 - lastIndex)
+    setLastDayIndex(lastIndex)
+
+    date.setDate(1)
+    renderDays()
+  }
 
   const handlePreviousMonth = () => {
     const prevMonth = date.getMonth() - 1
@@ -184,17 +196,14 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
     date.setMonth(isPrevYear ? 11 : prevMonth)
     date.setFullYear(prevYear)
 
-    setCurrentYear(prevYear)
-
-    setCurrentMonth(prevMonth === -1 ? 11 : prevMonth)
-    setFirstDayIndex(date.getDay())
-    setLastDay(new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate())
-    setPreviousLastDay(new Date(date.getFullYear(), date.getMonth(), 0).getDate())
-    setLastDayIndex(new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay())
-    setNextDays(7 - lastDayIndex)
-
-    date.setDate(1)
-    renderDays()
+    updateStates({
+      year: prevYear,
+      month: prevMonth === -1 ? 11 : prevMonth,
+      firstDay: date.getDay(),
+      last: new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(),
+      prevLastDay: new Date(date.getFullYear(), date.getMonth(), 0).getDate(),
+      lastIndex: new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay()
+    })
   }
 
   const handleNextMonth = () => {
@@ -205,17 +214,14 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
     date.setMonth(isNextYear ? 0 : nextMonth)
     date.setFullYear(nextYear)
 
-    setCurrentYear(nextYear)
-
-    setCurrentMonth(nextMonth === 12 ? 0 : nextMonth)
-    setFirstDayIndex(date.getDay())
-    setLastDay(new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate())
-    setPreviousLastDay(new Date(date.getFullYear(), date.getMonth(), 0).getDate())
-    setLastDayIndex(new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay())
-    setNextDays(7 - lastDayIndex)
-    date.setDate(1)
-
-    renderDays()
+    updateStates({
+      year: nextYear,
+      month: nextMonth === 12 ? 0 : nextMonth,
+      firstDay: date.getDay(),
+      last: new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(),
+      prevLastDay: new Date(date.getFullYear(), date.getMonth(), 0).getDate(),
+      lastIndex: new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay()
+    })
   }
 
   useEffect(() => {
