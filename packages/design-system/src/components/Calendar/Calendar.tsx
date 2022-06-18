@@ -108,10 +108,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
     }
 
     for (let i = 1; i <= lastDay; i += 1) {
-      const isToday =
-        i === new Date().getDate() &&
-        date.getMonth() === new Date().getMonth() &&
-        date.getFullYear() === new Date().getFullYear()
+      const isToday = dates.getIsToday(date, i)
 
       const currentDate: string = `${currentYear}-${dates.getTwoDigitsMonth(
         currentMonth + 1
@@ -241,27 +238,9 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
       </header>
 
       <ul className="weekdays">
-        <li>
-          <abbr title="S">Sunday</abbr>
-        </li>
-        <li>
-          <abbr title="M">Monday</abbr>
-        </li>
-        <li>
-          <abbr title="T">Tuesday</abbr>
-        </li>
-        <li>
-          <abbr title="W">Wednesday</abbr>
-        </li>
-        <li>
-          <abbr title="T">Thursday</abbr>
-        </li>
-        <li>
-          <abbr title="F">Friday</abbr>
-        </li>
-        <li>
-          <abbr title="S">Saturday</abbr>
-        </li>
+        {dates.days.map((day: string) => (
+          <li>{day}</li>
+        ))}
       </ul>
 
       <ol className="dayGrid">{days}</ol>

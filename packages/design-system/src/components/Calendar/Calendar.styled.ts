@@ -34,7 +34,10 @@ export namespace CSS {
       fontSize: 'calc(16px + (21 - 16) * ((100vw - 300px) / (1600 - 300)))'
     },
     'ul.weekdays': {
-      marginBottom: '1em'
+      marginBottom: '1em',
+      border: 'none',
+      fontWeight: 800,
+      textDecoration: 'none'
     },
     'ol.dayGrid li': {
       backgroundColor: '#fff',
@@ -82,11 +85,6 @@ export namespace CSS {
     },
     'ol.dayGrid li.previousMonth, ol.dayGrid li.nextMonth': {
       opacity: '0.5'
-    },
-    'ul.weekdays abbr[title]': {
-      border: 'none',
-      fontWeight: 800,
-      textDecoration: 'none'
     }
   })
 }

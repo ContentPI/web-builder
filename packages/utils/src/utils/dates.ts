@@ -13,6 +13,10 @@ const dates = {
 
     return month
   },
+  getIsToday: (currentDate: any, currentDay: number) =>
+    currentDay === new Date().getDate() &&
+    currentDate.getMonth() === new Date().getMonth() &&
+    currentDate.getFullYear() === new Date().getFullYear(),
   months: [
     'January',
     'February',
@@ -26,7 +30,8 @@ const dates = {
     'October',
     'November',
     'December'
-  ]
+  ],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 }
 
 export default dates
