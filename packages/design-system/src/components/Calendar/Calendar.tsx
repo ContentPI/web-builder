@@ -1,41 +1,10 @@
-import { cx } from '@web-builder/utils'
+import { cx, dates } from '@web-builder/utils'
 import React, { FC, useEffect, useState } from 'react'
 
 import Icon from '../Icon'
 import { CSS } from './Calendar.styled'
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-]
-
 const date = new Date()
-
-const getTwoDigitsDay = (day: number) => {
-  if (day <= 9) {
-    return `0${day}`
-  }
-
-  return day
-}
-
-const getTwoDigitsMonth = (month: number) => {
-  if (month <= 9) {
-    return `0${month}`
-  }
-
-  return month
-}
 
 type Event = {
   startDate: string
@@ -112,7 +81,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
       const month = currentMonth
       const currentDate: string = `${
         month === -1 ? currentYear - 1 : currentYear
-      }-${getTwoDigitsMonth(month === -1 ? 12 : month)}-${getTwoDigitsDay(currentDay)}`
+      }-${dates.getTwoDigitsMonth(month === -1 ? 12 : month)}-${dates.getTwoDigitsDay(currentDay)}`
 
       const initialDate = new Date(currentDate).getTime()
 
@@ -144,9 +113,9 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
         date.getMonth() === new Date().getMonth() &&
         date.getFullYear() === new Date().getFullYear()
 
-      const currentDate: string = `${currentYear}-${getTwoDigitsMonth(
+      const currentDate: string = `${currentYear}-${dates.getTwoDigitsMonth(
         currentMonth + 1
-      )}-${getTwoDigitsDay(i)}`
+      )}-${dates.getTwoDigitsDay(i)}`
 
       const initialDate = new Date(currentDate).getTime()
 
@@ -178,7 +147,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
       const month = currentMonth + 2
       const currentDate: string = `${
         month === 13 ? currentYear + 1 : currentYear
-      }-${getTwoDigitsMonth(month === 13 ? 1 : month)}-${getTwoDigitsDay(j)}`
+      }-${dates.getTwoDigitsMonth(month === 13 ? 1 : month)}-${dates.getTwoDigitsDay(j)}`
 
       const initialDate = new Date(currentDate).getTime()
 
@@ -259,7 +228,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
         <Icon type="fas fa-chevron-left" onClick={handlePreviousMonth} />
         <div className="currentDate">
           <h2>
-            {months[currentMonth]} {currentYear}
+            {dates.months[currentMonth]} {currentYear}
           </h2>
         </div>
         <Icon type="fas fa-chevron-right" onClick={handleNextMonth} />
