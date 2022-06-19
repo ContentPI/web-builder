@@ -19,10 +19,10 @@ type Props = {
   t?: any
 }
 
+let translate = (text: string) => text
+
 const Calendar: FC<Props> = ({ events, dateClick, t }) => {
   date.setDate(1)
-
-  let translate = (text: string) => text
 
   if (t) {
     translate = t
