@@ -18,8 +18,7 @@ export namespace CSS {
       paddingLeft: '20px',
       paddingRight: '20px',
       marginBottom: '2em',
-      background: '#000',
-      color: '#fff',
+      color: '#111',
       minHeight: '10vh',
       textAlign: 'center'
     },
@@ -66,7 +65,10 @@ export namespace CSS {
         display: 'flex'
       },
       '.event': {
-        background: '#2EA1F8'
+        background: '#FF960F'
+      },
+      '.start': {
+        marginLeft: '4px'
       },
       '.start b': {
         alignItems: 'center',
@@ -80,8 +82,8 @@ export namespace CSS {
         textIndent: '5px',
         marginRight: '5px'
       },
-      '.oneDay': {
-        marginLeft: '4px'
+      '.past': {
+        background: '#4FCA0C'
       },
       '.same:not(:first-child) ': {
         color: 'transparent'

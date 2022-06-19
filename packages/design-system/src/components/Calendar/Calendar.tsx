@@ -77,12 +77,12 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
         <span className="dayNumber">{day}</span>
 
         {existingEvents.map((event: Event, i: number) => {
+          const nowDateTime = new Date().getTime()
           const currentDateTime = new Date(currentDate).getTime()
           const eventStartDateTime = new Date(event.startDate).getTime()
           const eventEndDateTime = new Date(event.endDate).getTime()
           const isStartDate = currentDateTime === eventStartDateTime
-          const isEndDate = currentDateTime === eventEndDateTime
-          const isOnlyOneDay = isStartDate && isEndDate
+          const isPastDate = nowDateTime > eventEndDateTime
 
           return (
             <div
@@ -90,11 +90,11 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
                 'event',
                 `event${i + 1}`,
                 isStartDate ? 'start' : '',
-                isEndDate ? 'end' : '',
-                isOnlyOneDay ? 'oneDay' : ''
+                isPastDate ? 'past' : ''
               )}
               style={event.color ? { background: event.color } : {}}
               key={`event-${i}`}
+              title={`${event.title} From: ${event.startDate} To: ${event.endDate}`}
             >
               {isStartDate ? (
                 <>
@@ -131,15 +131,23 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
     for (let h = firstDayIndex; h > 0; h -= 1) {
       const currentDay = previousLastDay - h + 1
       const month = currentMonth
-      const currentDate: string = `${
-        month === -1 ? currentYear - 1 : currentYear
-      }-${dates.getTwoDigitsMonth(month === -1 ? 12 : month)}-${dates.getTwoDigitsDay(currentDay)}`
+      let fullYear = month === -1 ? currentYear - 1 : currentYear
+      let twoDigitsMonth = dates.getTwoDigitsMonth(month === -1 ? 12 : month)
+      const twoDigitsDay = dates.getTwoDigitsDay(currentDay)
 
+      if (twoDigitsMonth === '00') {
+        fullYear -= 1
+        twoDigitsMonth = '12'
+      }
+
+      const currentDate: string = `${fullYear}-${twoDigitsMonth}-${twoDigitsDay}`
       const initialDate = new Date(currentDate).getTime()
       const existingEvents = dates.getExistingEvents(events, initialDate)
 
       if (existingEvents.length > 0) {
-        daysArr.push(renderEvents({ day: h, currentDate, isPreviousMonth: true, existingEvents }))
+        daysArr.push(
+          renderEvents({ day: currentDay, currentDate, isPreviousMonth: true, existingEvents })
+        )
       } else {
         daysArr.push(renderDay('previousMonth', currentDate, currentDay))
       }

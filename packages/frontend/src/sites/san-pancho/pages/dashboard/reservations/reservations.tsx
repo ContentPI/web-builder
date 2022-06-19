@@ -1,4 +1,4 @@
-import { Button, Calendar, Switcher } from '@web-builder/design-system'
+import { Calendar } from '@web-builder/design-system'
 import React, { FC, useEffect, useState } from 'react'
 
 import ApolloConnector from '~/components/ApolloConnector'
@@ -34,10 +34,9 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
         const hasCrib = `${crib ? '- C ' : ''}`
 
         newEvents.push({
-          startDate,
-          endDate,
-          title: `${guestName} ${hasDeposit} ${cost} ${people} ${hasCrib}`,
-          color: 'red'
+          startDate: startDate.split('T')[0],
+          endDate: endDate.split('T')[0],
+          title: `${guestName} ${hasDeposit} ${cost} ${people} ${hasCrib}`
         })
       })
 
