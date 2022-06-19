@@ -29,7 +29,7 @@ const dynamicPages: Record<string, Record<string, any>> = {
       guests: dynamic(() => import('../sites/san-pancho/pages/dashboard/guests/list')),
       profile: dynamic(() => import('../sites/san-pancho/pages/dashboard/guests/profile')),
       reservations: dynamic(
-        () => import('../sites/san-pancho/pages/dashboard/reservations/calendar')
+        () => import('../sites/san-pancho/pages/dashboard/reservations/reservations')
       )
     }
   }

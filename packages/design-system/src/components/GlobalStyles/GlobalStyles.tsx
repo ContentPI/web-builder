@@ -10,6 +10,10 @@ const fontStyles = `
   }
 `
 
+const externalStyles = `
+  @import url('https://use.fontawesome.com/releases/v5.6.3/css/all.css');
+`
+
 const htmlReset = `
   * {
     outline: none;
@@ -46,6 +50,7 @@ const keyframes = `
 `
 
 const GlobalStyles = `
+  ${externalStyles}
   ${htmlReset}
   ${fontStyles}
   ${keyframes}

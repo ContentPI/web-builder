@@ -62,10 +62,26 @@ export namespace CSS {
         marginTop: '-100px',
         padding: '5px',
         textOverflow: 'ellipsis',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        display: 'flex'
       },
       '.event': {
         background: '#2EA1F8'
+      },
+      '.start b': {
+        alignItems: 'center',
+        lineHeight: '45px',
+        background: '#003A66',
+        display: 'inline-block',
+        width: '30px',
+        height: '60px',
+        marginTop: '-5px',
+        marginLeft: '-5px',
+        textIndent: '5px',
+        marginRight: '5px'
+      },
+      '.oneDay': {
+        marginLeft: '4px'
       },
       '.same:not(:first-child) ': {
         color: 'transparent'
@@ -83,7 +99,7 @@ export namespace CSS {
     'ol.dayGrid li.nextMonth .dayNumber': {
       color: '#999'
     },
-    'ol.dayGrid li.previousMonth, ol.dayGrid li.nextMonth': {
+    'ol.dayGrid li.previousMonth, ol.dayGrid li.nextMonth .event': {
       opacity: '0.5'
     }
   })

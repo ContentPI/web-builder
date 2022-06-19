@@ -75,15 +75,40 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
         key={currentDate}
       >
         <span className="dayNumber">{day}</span>
-        {existingEvents.map((event: Event, i: number) => (
-          <div
-            className={cx.join('event', `event${i + 1}`)}
-            style={event.color ? { background: event.color } : {}}
-            key={`event-${i}`}
-          >
-            {event.title}
-          </div>
-        ))}
+
+        {existingEvents.map((event: Event, i: number) => {
+          const currentDateTime = new Date(currentDate).getTime()
+          const eventStartDateTime = new Date(event.startDate).getTime()
+          const eventEndDateTime = new Date(event.endDate).getTime()
+          const isStartDate = currentDateTime === eventStartDateTime
+          const isEndDate = currentDateTime === eventEndDateTime
+          const isOnlyOneDay = isStartDate && isEndDate
+
+          return (
+            <div
+              className={cx.join(
+                'event',
+                `event${i + 1}`,
+                isStartDate ? 'start' : '',
+                isEndDate ? 'end' : '',
+                isOnlyOneDay ? 'oneDay' : ''
+              )}
+              style={event.color ? { background: event.color } : {}}
+              key={`event-${i}`}
+            >
+              {isStartDate ? (
+                <>
+                  <b>
+                    <Icon type="fas fa-chevron-right" />
+                  </b>{' '}
+                  {event.title}
+                </>
+              ) : (
+                ''
+              )}
+            </div>
+          )
+        })}
       </li>
     )
   }

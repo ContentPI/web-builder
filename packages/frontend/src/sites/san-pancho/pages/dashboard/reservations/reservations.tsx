@@ -1,0 +1,69 @@
+import { Button, Calendar, Switcher } from '@web-builder/design-system'
+import React, { FC, useEffect, useState } from 'react'
+
+import ApolloConnector from '~/components/ApolloConnector'
+import DashboardLayout from '~/components/Dashboard/Layout'
+import query from './getReservationsAndGuests.query'
+
+const Reservations: FC<any> = ({ reservations, guests }) => {
+  const [reservationType, setReservationType] = useState('stone')
+  const [events, setEvents] = useState<any>([])
+
+  useEffect(() => {
+    if (reservations) {
+      const filteredReservations = reservations.filter(
+        (r: any) => r.reservationType === reservationType
+      )
+
+      const newEvents: any = []
+
+      filteredReservations.forEach((reservation: any) => {
+        const {
+          startDate,
+          endDate,
+          guestId,
+          deposit,
+          reservationCost,
+          guests: guestCount,
+          crib
+        } = reservation
+        const guestName = guests && guests.find((guest: any) => guest.id === guestId).fullName
+        const hasDeposit = deposit ? '- DEP -' : '-'
+        const cost = `$${reservationCost} - `
+        const people = `${guestCount}A `
+        const hasCrib = `${crib ? '- C ' : ''}`
+
+        newEvents.push({
+          startDate,
+          endDate,
+          title: `${guestName} ${hasDeposit} ${cost} ${people} ${hasCrib}`,
+          color: 'red'
+        })
+      })
+
+      setEvents(newEvents)
+    }
+  }, [reservations, guests, reservationType])
+
+  return (
+    <DashboardLayout>
+      <>
+        <h1>
+          Reservaciones: {reservationType === 'stone' && 'Cabaña de piedra'}{' '}
+          {reservationType === 'big-house' && 'Cabaña Grande'}{' '}
+          {reservationType === 'camping' && 'Area de camping'}
+        </h1>
+
+        <Calendar events={events} dateClick={(args: any) => console.log('ARGS===', args)} />
+      </>
+    </DashboardLayout>
+  )
+}
+
+const onSuccess: FC<any> = (data: any) => (
+  <Reservations reservations={data.getReservations} guests={data.getGuests} />
+)
+
+const Connector: FC = () => <ApolloConnector query={query} onSuccess={onSuccess} />
+
+export default Connector

@@ -98,7 +98,6 @@ const buttonStyles: CSSObject = {
     marginRight: '0.25rem',
     marginBottom: '0.5rem',
     padding: '0.75rem 1.5rem',
-    borderRadius: '0.8rem',
     fontWeight: 400,
     fontSize: '1rem',
     display: 'inline-block',
@@ -128,7 +127,7 @@ const buttonStyles: CSSObject = {
 
 // Shape
 const shapeStyles: CSSObject = {
-  borderRadius: '0.25rem',
+  borderRadius: '10px',
   [`&.${getClass(BASE_CLASS_NAME, Shape.round)}`]: {
     borderRadius: '2rem'
   },

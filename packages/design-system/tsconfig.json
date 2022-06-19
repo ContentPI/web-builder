@@ -30,6 +30,7 @@
     "src/components/Text/index.ts",
     "src/components/TextArea/index.ts",
     "src/components/TextField/index.ts",
+    "src/components/Calendar/index.ts",
     "src/index.ts"
   ],
   "include": ["src/**/*"]
