@@ -1,4 +1,5 @@
 import { Calendar } from '@web-builder/design-system'
+import { useI18n } from '@web-builder/i18n'
 import React, { FC, useEffect, useState } from 'react'
 
 import ApolloConnector from '~/components/ApolloConnector'
@@ -8,6 +9,8 @@ import query from './getReservationsAndGuests.query'
 const Reservations: FC<any> = ({ reservations, guests }) => {
   const [reservationType, setReservationType] = useState('stone')
   const [events, setEvents] = useState<any>([])
+
+  const { t } = useI18n()
 
   useEffect(() => {
     if (reservations) {
@@ -53,7 +56,7 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
           {reservationType === 'camping' && 'Area de camping'}
         </h1>
 
-        <Calendar events={events} dateClick={(args: any) => console.log('ARGS===', args)} />
+        <Calendar t={t} events={events} dateClick={(args: any) => console.log('ARGS===', args)} />
       </>
     </DashboardLayout>
   )

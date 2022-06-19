@@ -158,6 +158,158 @@ const translations: Record<string, Record<string, string>> = {
     'fr-fr': 'Maison en Pierre',
     'it-it': 'Casa di Pietra',
     'ja-jp': 'ストーンハウス'
+  },
+  January: {
+    ar: 'يناير',
+    'en-us': 'January',
+    'es-mx': 'Enero',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  February: {
+    ar: 'يناير',
+    'en-us': 'February',
+    'es-mx': 'Febrero',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  March: {
+    ar: 'يناير',
+    'en-us': 'March',
+    'es-mx': 'Marzo',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  April: {
+    ar: 'يناير',
+    'en-us': 'April',
+    'es-mx': 'Abril',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  May: {
+    ar: 'يناير',
+    'en-us': 'May',
+    'es-mx': 'Mayo',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  June: {
+    ar: 'يناير',
+    'en-us': 'June',
+    'es-mx': 'Junio',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  July: {
+    ar: 'يناير',
+    'en-us': 'July',
+    'es-mx': 'Junio',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  August: {
+    ar: 'يناير',
+    'en-us': 'August',
+    'es-mx': 'Agosto',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  September: {
+    ar: 'يناير',
+    'en-us': 'September',
+    'es-mx': 'Septiembre',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  October: {
+    ar: 'يناير',
+    'en-us': 'October',
+    'es-mx': 'Octubre',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  November: {
+    ar: 'يناير',
+    'en-us': 'November',
+    'es-mx': 'Noviembre',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  December: {
+    ar: 'يناير',
+    'en-us': 'December',
+    'es-mx': 'Diciembre',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  Sunday: {
+    ar: 'يناير',
+    'en-us': 'Sunday',
+    'es-mx': 'Domingo',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  Monday: {
+    ar: 'يناير',
+    'en-us': 'Monday',
+    'es-mx': 'Lunes',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  Tuesday: {
+    ar: 'يناير',
+    'en-us': 'Tuesday',
+    'es-mx': 'Martes',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  Wednesday: {
+    ar: 'يناير',
+    'en-us': 'Wednesday',
+    'es-mx': 'Miércoles',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  Thursday: {
+    ar: 'يناير',
+    'en-us': 'Thursday',
+    'es-mx': 'Jueves',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  Friday: {
+    ar: 'يناير',
+    'en-us': 'Friday',
+    'es-mx': 'Viernes',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
+  },
+  Saturday: {
+    ar: 'يناير',
+    'en-us': 'Saturday',
+    'es-mx': 'Sábado',
+    'fr-fr': 'Janvier',
+    'it-it': 'Gennaio',
+    'ja-jp': '1月'
   }
 }
 

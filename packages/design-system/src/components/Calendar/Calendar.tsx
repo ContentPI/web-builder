@@ -16,10 +16,17 @@ type Event = {
 type Props = {
   events: Event[]
   dateClick?: any
+  t?: any
 }
 
-const Calendar: FC<Props> = ({ events, dateClick }) => {
+const Calendar: FC<Props> = ({ events, dateClick, t }) => {
   date.setDate(1)
+
+  let translate = (text: string) => text
+
+  if (t) {
+    translate = t
+  }
 
   const [firstDayIndex, setFirstDayIndex] = useState(date.getDay())
   const [currentMonth, setCurrentMonth] = useState<any>(date.getMonth())
@@ -250,7 +257,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
         <Icon type="fas fa-chevron-left" onClick={handlePreviousMonth} />
         <div className="currentDate">
           <h2>
-            {dates.months[currentMonth]} {currentYear}
+            {translate(dates.months[currentMonth])} {currentYear}
           </h2>
         </div>
         <Icon type="fas fa-chevron-right" onClick={handleNextMonth} />
@@ -258,7 +265,7 @@ const Calendar: FC<Props> = ({ events, dateClick }) => {
 
       <ul className="weekdays">
         {dates.days.map((day: string) => (
-          <li key={day}>{day}</li>
+          <li key={day}>{translate(day)}</li>
         ))}
       </ul>
 
