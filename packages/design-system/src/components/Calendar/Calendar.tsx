@@ -265,7 +265,9 @@ const Calendar: FC<Props> = ({ events, dateClick, t }) => {
 
       <ul className="weekdays">
         {dates.days.map((day: string) => (
-          <li key={day}>{translate(day)}</li>
+          <li key={day} title={translate(day)}>
+            {day[0]}
+          </li>
         ))}
       </ul>
 
