@@ -1,4 +1,4 @@
-const sidebar = {
+const sidebar = (locale = 'en-us') => ({
   title: 'menu',
   menu: [
     {
@@ -8,35 +8,35 @@ const sidebar = {
       subMenu: [
         {
           title: 'sidebar.stoneHouse',
-          url: 'reservations'
+          url: `/${locale}/dashboard/reservations`
         },
         {
           title: 'sidebar.camping',
-          url: 'dashboard/reservations/camping'
+          url: `/${locale}/dashboard/reservations/camping`
         }
       ]
     },
     {
       title: 'sidebar.guests',
       icon: 'briefcase',
-      url: 'dashboard/guests'
+      url: `/${locale}/dashboard/guests`
     },
     {
       title: 'sidebar.reports',
       icon: 'clipboard',
-      url: '/reports'
+      url: `/${locale}/dashboard/reports`
     },
     {
       title: 'sidebar.information',
       icon: 'book-open',
-      url: '/information'
+      url: `/${locale}/dashboard/information`
     },
     {
       title: 'logout',
       icon: 'log-out',
-      url: '/logout'
+      url: `/${locale}/logout`
     }
   ]
-}
+})
 
 export { sidebar }

@@ -20,7 +20,7 @@ const FormProvider: FC<Props> = ({ children }) => {
     const {
       target: { name, value }
     } = e
-    console.log('CHANGE=====')
+
     if (name) {
       setState((prevState: any) => ({
         ...prevState,

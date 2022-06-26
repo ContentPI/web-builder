@@ -10,8 +10,9 @@ const { sidebar } = require(`~/sites/${Config.site}/data/dashboard/sidebar`)
 
 const Sidebar: FC = () => {
   const [activeSection, setActiveSection] = useState('')
+  const { t, locale } = useI18n()
 
-  const { t } = useI18n()
+  const { title, menu } = sidebar(locale)
 
   const openMenu = (section: string) => {
     setActiveSection(activeSection !== section ? section : '')
@@ -29,10 +30,10 @@ const Sidebar: FC = () => {
         <span className="role">God</span>
       </div>
 
-      <h4>{t(sidebar.title)}</h4>
+      <h4>{t(title)}</h4>
 
       <ul className="menu">
-        {sidebar.menu.map((item: any) => (
+        {menu.map((item: any) => (
           <li key={item.title}>
             <a href={item.url} onClick={() => openMenu(item.title)}>
               {item.icon && (
