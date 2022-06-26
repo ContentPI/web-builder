@@ -246,6 +246,7 @@ const DayPicker: FC<Props> = ({ events, t, label, onClick }) => {
           placeholder="Select date"
           onClick={handlePicker}
           value={targetDay}
+          onChange={() => null}
         />
       </CSS.CalendarInput>
 

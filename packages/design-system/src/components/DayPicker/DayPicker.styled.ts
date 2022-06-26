@@ -90,10 +90,7 @@ export namespace CSS {
       background: '#FFEBBD'
     },
     'ol.dayGrid li.previousMonth .dayNumber': {
-      color: '#999',
-      '&:hover': {
-        color: 'red !important'
-      }
+      color: '#999'
     },
     'ol.dayGrid li.nextMonth .dayNumber': {
       color: '#999'
