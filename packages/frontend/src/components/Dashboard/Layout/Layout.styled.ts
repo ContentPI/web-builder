@@ -40,7 +40,7 @@ export namespace CSS {
     marginTop: '20px',
     padding: '20px',
     marginRight: '10px',
-    height: '100vh',
+    height: '100%',
     width: '100%'
   })
 }

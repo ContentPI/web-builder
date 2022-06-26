@@ -29,6 +29,7 @@ export default gql`
   type Mutation {
     createGuest(input: CreateGuestInput): Guest!
     editGuest(id: UUID!, input: CreateGuestInput): Guest!
+    importGuests(refreshToken: String!): [Guest]!
   }
 
   input CreateGuestInput {

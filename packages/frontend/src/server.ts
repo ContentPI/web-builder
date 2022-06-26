@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser'
 import express, { Application, NextFunction, Request, Response } from 'express'
 import nextJS from 'next'
 import path from 'path'
+import { google } from 'googleapis'
 
 import Config from './config'
 import { isConnected } from './lib/middlewares/user'
@@ -19,12 +20,83 @@ nextApp.prepare().then(() => {
   // Express application
   const app: Application = express()
 
+  // Google API
+  const { OAuth2 } = google.auth
+
   // Cookies
   app.use(cookieParser())
 
   // Sites static directories
   app.use(express.static(path.join(__dirname, '../public')))
   app.use(express.static(path.join(__dirname, `./sites/${Config.site}/static`)))
+
+  app.get('/dashboard/import/contacts', async (req: Request, res: Response) => {
+    const clientId = process.env.GOOGLE_API_CLIENT_ID
+    const clientSecret = process.env.GOOGLE_API_CLIENT_SECRET
+    const refreshToken = process.env.GOOGLE_API_REFRESH_TOKEN
+
+    try {
+      console.log('CLIENT', clientId)
+      console.log('SECRET=', clientSecret)
+      console.log('TOKEN', refreshToken)
+      const oAuth2Client = new OAuth2(clientId, clientSecret)
+
+      oAuth2Client.setCredentials({
+        refresh_token: refreshToken
+      })
+
+      const googleApi = google.people({ version: 'v1', auth: oAuth2Client })
+
+      const response: any = await googleApi.people.connections.list({
+        personFields:
+          'names,emailAddresses,phoneNumbers,birthdays,urls,photos,addresses,userDefined,biographies,metadata,organizations',
+        resourceName: 'people/me',
+        sortOrder: 'FIRST_NAME_ASCENDING'
+      })
+
+      const contacts: any = []
+
+      response.data.connections?.forEach((contact: any) => {
+        const {
+          names = [{}],
+          emailAddresses = [{}],
+          photos = [{}],
+          phoneNumbers = [{}],
+          urls = [{}],
+          addresses = [{}],
+          userDefined = [{}],
+          biographies = [{}],
+          metadata = [{}],
+          organizations = [{}],
+          birthdays = [{}]
+        } = contact
+
+        const guest = {
+          googleContactId: metadata.sources[0].id,
+          fullName: names[0].displayName,
+          email: emailAddresses[0].value,
+          photo: photos[0].url.replace('=s100', '') || '',
+          phone:
+            phoneNumbers[0].canonicalForm ||
+            phoneNumbers[0].value ||
+            phoneNumbers[0].formattedType ||
+            '+52',
+          socialMedia: urls[0].value || '',
+          location: addresses[0].city || '',
+          gender: userDefined[0].value || '',
+          organization: organizations[0].name || '',
+          note: biographies[0].value || '',
+          birthday: birthdays[0].text || ''
+        }
+
+        contacts.push(guest)
+      })
+
+      res.send(contacts)
+    } catch (e) {
+      res.send(e)
+    }
+  })
 
   // Custom Routes
   app.get(

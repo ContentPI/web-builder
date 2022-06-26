@@ -1,3 +1,7 @@
+import fetch from 'isomorphic-fetch'
+
+const isProduction = process.env.NODE_ENV === 'production'
+
 export default {
   Query: {
     getGuests: (_: any, _args: any, { models }: { models: any }): any[] =>
@@ -96,6 +100,39 @@ export default {
       }
 
       return {}
+    },
+    importGuests: async (
+      _: any,
+      { refreshToken }: { refreshToken: string },
+      { models }: { models: any }
+    ): Promise<any> => {
+      const baseDomain = isProduction ? 'https://ranchosanpancho.com' : 'http://localhost:3000'
+      const response = await fetch(`${baseDomain}/dashboard/import/contacts?token=${refreshToken}`)
+      const guests: any = []
+
+      if (response.ok) {
+        const googleContacts: any = await response.json()
+
+        if (googleContacts.length > 0) {
+          // Remove all guests to sync
+          await models.Guest.truncate({ cascade: true })
+
+          googleContacts.forEach(async (contact: any) => {
+            const contactExists = await models.Guest.findAll({
+              where: { googleContactId: contact.googleContactId }
+            })
+
+            if (contactExists.length === 0 && contact.email) {
+              const createdGuest = await models.Guest.create(contact)
+              guests.push(createdGuest)
+            }
+          })
+        }
+
+        return guests
+      }
+
+      return guests
     }
   }
 }

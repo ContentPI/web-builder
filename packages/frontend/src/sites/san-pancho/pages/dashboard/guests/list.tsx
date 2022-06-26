@@ -44,7 +44,7 @@ const Guests: FC<any> = ({ guests }) => {
 
     return filteredGuests.map((prop: any) => [
       <p>
-        <a href={`./clients/${prop.id}`}>{prop.fullName}</a>
+        <a href={`./guests/${prop.id}`}>{prop.fullName}</a>
       </p>,
       <p>{prop.email}</p>,
       <a href={`${prop.socialMedia}`} target="_blank" rel="noreferrer">
@@ -79,7 +79,7 @@ const Guests: FC<any> = ({ guests }) => {
           page={pages}
           total={guests ? guests.length : 0}
           rowsPerPage={8}
-          href="./clients?page="
+          href="./guests?page="
         />
       </>
     </DashboardLayout>
