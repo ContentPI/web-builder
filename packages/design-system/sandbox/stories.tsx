@@ -5,6 +5,7 @@ import BreadcrumbStories from '../src/components/Breadcrumb/Breadcrumb.stories'
 import ButtonStories from '../src/components/Button/Button.stories'
 import CalendarStories from '../src/components/Calendar/Calendar.stories'
 import CheckboxStories from '../src/components/Checkbox/Checkbox.stories'
+import DayPickerStories from '../src/components/DayPicker/DayPicker.stories'
 import DialogStories from '../src/components/Dialog/Dialog.stories'
 import InputStories from '../src/components/Input/Input.stories'
 import NotificationStories from '../src/components/Notification/Notification.stories'
@@ -28,6 +29,7 @@ const stories: any = {
   button: ButtonStories,
   calendar: CalendarStories,
   checkbox: CheckboxStories,
+  daypicker: DayPickerStories,
   dialog: DialogStories,
   input: InputStories,
   notification: NotificationStories,
