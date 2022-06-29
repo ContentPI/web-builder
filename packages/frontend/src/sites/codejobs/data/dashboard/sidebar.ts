@@ -1,4 +1,4 @@
-const sidebar = {
+const sidebar = (locale = 'en-us') => ({
   title: 'menu',
   menu: [
     {
@@ -27,6 +27,6 @@ const sidebar = {
       icon: 'log-out'
     }
   ]
-}
+})
 
 export { sidebar }

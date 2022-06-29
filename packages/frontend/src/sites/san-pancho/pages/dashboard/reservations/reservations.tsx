@@ -1,16 +1,26 @@
-import { Calendar } from '@web-builder/design-system'
+import { Button, Calendar } from '@web-builder/design-system'
 import { useI18n } from '@web-builder/i18n'
 import React, { FC, useEffect, useState } from 'react'
 
 import ApolloConnector from '~/components/ApolloConnector'
 import DashboardLayout from '~/components/Dashboard/Layout'
+import CreateReservationModal from '../../../components/Modals/CreateReservationModal'
 import query from './getReservationsAndGuests.query'
 
 const Reservations: FC<any> = ({ reservations, guests }) => {
   const [reservationType, setReservationType] = useState('stone')
   const [events, setEvents] = useState<any>([])
+  const [openCreateReservationModal, setOpenCreateReservationModal] = useState(false)
 
   const { t } = useI18n()
+
+  const handleCreateReservationModal = () => {
+    setOpenCreateReservationModal(true)
+  }
+
+  const onClose = () => {
+    setOpenCreateReservationModal(false)
+  }
 
   useEffect(() => {
     if (reservations) {
@@ -55,6 +65,18 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
           {reservationType === 'big-house' && 'Cabaña Grande'}{' '}
           {reservationType === 'camping' && 'Area de camping'}
         </h1>
+
+        <p>
+          <Button onClick={handleCreateReservationModal}>Crear Reservación</Button>
+        </p>
+
+        <CreateReservationModal
+          isOpen={openCreateReservationModal}
+          onClose={onClose}
+          label="Nueva Reservación"
+          data={[]}
+          type={reservationType}
+        />
 
         <Calendar t={t} events={events} dateClick={(args: any) => console.log('ARGS===', args)} />
       </>
