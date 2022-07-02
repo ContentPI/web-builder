@@ -1,4 +1,5 @@
 import React, { FC, ReactElement } from 'react'
+import { createPortal } from 'react-dom'
 
 import { CSS, GlobalStyle } from './Dialog.styled'
 
@@ -25,7 +26,6 @@ const DialogComponent: FC<Props> = ({
 }) => {
   let width = '500px'
   let height = ''
-  const margin = `${options.position === 'top' ? '0.5%' : '14%'} auto`
 
   if (!open) {
     return null
@@ -43,12 +43,12 @@ const DialogComponent: FC<Props> = ({
     height = options.height
   }
 
-  return (
+  return createPortal(
     <>
       <GlobalStyle />
 
       <CSS.Dialog className="Modal">
-        <CSS.Container maxWidth={width} height={height} margin={margin}>
+        <CSS.Container maxWidth={width} height={height}>
           <CSS.Close onClick={handleClose}>
             <CSS.Img alt="Close" src={require('./icons/close.svg')} />
           </CSS.Close>
@@ -59,7 +59,8 @@ const DialogComponent: FC<Props> = ({
           </CSS.Content>
         </CSS.Container>
       </CSS.Dialog>
-    </>
+    </>,
+    document.body
   )
 }
 
