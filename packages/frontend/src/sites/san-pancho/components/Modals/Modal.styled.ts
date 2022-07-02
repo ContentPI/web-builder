@@ -57,7 +57,7 @@ export namespace CSS {
       textTransform: 'capitalize',
       width: '98.9%',
       margin: 'auto 0.5rem',
-      marginTop: '50px',
+      marginTop: '25%',
       '&.center': {
         justifyContent: 'space-between'
       }

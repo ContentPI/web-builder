@@ -57,8 +57,8 @@ const AddField: FC<AddInputProps> = ({ label, name, placeholder, value, onChange
 )
 const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType }) => {
   // Data
-  const { selectedDay } = data
-
+  const { selectedDay, guests } = data
+  console.log('guests===', guests)
   const [values, setValues] = useState<any>({
     deposit: false,
     endDate: null,
@@ -170,6 +170,13 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
     })
   }
 
+  const options =
+    guests &&
+    guests.map((guest: any) => ({
+      option: `${guest.fullName}`,
+      value: `${guest.googleContactId}`
+    }))
+
   return (
     <Dialog
       open={isOpen}
@@ -194,6 +201,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
                     setValues({ ...values, guestId: value })
                   }
                 }}
+                options={options}
               />
             </div>
 
@@ -301,12 +309,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
             Cancelar
           </ModalBtn>
           &nbsp;
-          <ModalBtn
-            color="success"
-            onClick={handleSubmit}
-            isLoading={loading}
-            loadingText="Creando Reservación..."
-          >
+          <ModalBtn onClick={handleSubmit} isLoading={loading} loadingText="Creando Reservación...">
             Crear Reservación
           </ModalBtn>
         </div>

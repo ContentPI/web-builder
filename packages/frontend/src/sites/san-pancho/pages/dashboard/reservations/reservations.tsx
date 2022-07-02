@@ -74,7 +74,7 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
           isOpen={openCreateReservationModal}
           onClose={onClose}
           label="Nueva Reservación"
-          data={[]}
+          data={{ guests }}
           type={reservationType}
         />
 
