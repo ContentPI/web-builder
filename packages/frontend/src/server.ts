@@ -71,7 +71,7 @@ nextApp.prepare().then(() => {
       const { people } = google.people({ version: 'v1', auth: oAuth2Client })
       const contacts: any = []
       const response = await getAllGoogleContacts(people)
-      console.log('contacts=====', response)
+
       response.forEach((contact: any) => {
         const {
           names = [{}],
