@@ -1,9 +1,9 @@
 import { availableLocales, getUserLanguage } from '@web-builder/i18n'
 import cookieParser from 'cookie-parser'
 import express, { Application, NextFunction, Request, Response } from 'express'
+import { google } from 'googleapis'
 import nextJS from 'next'
 import path from 'path'
-import { google } from 'googleapis'
 
 import Config from './config'
 import { isConnected } from './lib/middlewares/user'
@@ -30,33 +30,49 @@ nextApp.prepare().then(() => {
   app.use(express.static(path.join(__dirname, '../public')))
   app.use(express.static(path.join(__dirname, `./sites/${Config.site}/static`)))
 
+  const getAllGoogleContacts = async (
+    googleApi: any,
+    current: string[] = [],
+    pageToken = undefined
+  ): Promise<any> => {
+    const {
+      data: { connections, nextPageToken, totalItems }
+    } = await googleApi.connections.list({
+      resourceName: 'people/me',
+      pageSize: 1000,
+      personFields:
+        'names,emailAddresses,phoneNumbers,birthdays,urls,photos,addresses,userDefined,biographies,metadata,organizations',
+      ...(pageToken ? { pageToken } : {}),
+      sortOrder: 'FIRST_NAME_ASCENDING'
+    })
+
+    // merge contacts from this request with data from your previous requests
+    const contacts = [...current, ...connections]
+
+    if (nextPageToken && contacts.length < totalItems) {
+      return getAllGoogleContacts(googleApi, contacts, nextPageToken)
+    }
+
+    return contacts
+  }
+
   app.get('/dashboard/import/contacts', async (req: Request, res: Response) => {
     const clientId = process.env.GOOGLE_API_CLIENT_ID
     const clientSecret = process.env.GOOGLE_API_CLIENT_SECRET
     const refreshToken = process.env.GOOGLE_API_REFRESH_TOKEN
 
     try {
-      console.log('CLIENT', clientId)
-      console.log('SECRET=', clientSecret)
-      console.log('TOKEN', refreshToken)
       const oAuth2Client = new OAuth2(clientId, clientSecret)
 
       oAuth2Client.setCredentials({
         refresh_token: refreshToken
       })
 
-      const googleApi = google.people({ version: 'v1', auth: oAuth2Client })
-
-      const response: any = await googleApi.people.connections.list({
-        personFields:
-          'names,emailAddresses,phoneNumbers,birthdays,urls,photos,addresses,userDefined,biographies,metadata,organizations',
-        resourceName: 'people/me',
-        sortOrder: 'FIRST_NAME_ASCENDING'
-      })
-
+      const { people } = google.people({ version: 'v1', auth: oAuth2Client })
       const contacts: any = []
-
-      response.data.connections?.forEach((contact: any) => {
+      const response = await getAllGoogleContacts(people)
+      console.log('contacts=====', response)
+      response.forEach((contact: any) => {
         const {
           names = [{}],
           emailAddresses = [{}],
