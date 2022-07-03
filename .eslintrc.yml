@@ -99,6 +99,8 @@ rules:
   function-paren-newline: 'off'
   # We don't need consistent returns
   consistent-return: 'off'
+  # Prettier
+  react/jsx-curly-newline: 'off'
 
   # ⭐ JSX-A11Y rules
   jsx-a11y/no-noninteractive-element-interactions: 'off'

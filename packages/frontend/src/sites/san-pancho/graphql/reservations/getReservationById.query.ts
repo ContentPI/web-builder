@@ -6,7 +6,7 @@ export default gql`
       id
       startDate
       endDate
-      guestId
+      googleContactId
       nightss
       guests
       freeNights

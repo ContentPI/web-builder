@@ -7,7 +7,7 @@ export const getReservationsQuery = `
     id
     startDate
     endDate
-    guestId
+    googleContactId
     nights
     guests
     freeNights

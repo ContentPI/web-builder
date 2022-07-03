@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 export default gql`
   type Reservation {
     id: UUID!
-    guestId: UUID!
+    googleContactId: UUID!
     startDate: Datetime!
     endDate: Datetime!
     nights: Int!
@@ -32,7 +32,7 @@ export default gql`
   }
 
   input ReservationInput {
-    guestId: UUID!
+    googleContactId: UUID!
     startDate: Datetime!
     endDate: Datetime!
     nights: Int!

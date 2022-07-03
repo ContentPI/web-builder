@@ -1,4 +1,5 @@
 import { availableLocales, getUserLanguage } from '@web-builder/i18n'
+import { googleContactIdToUUID } from '@web-builder/utils'
 import cookieParser from 'cookie-parser'
 import express, { Application, NextFunction, Request, Response } from 'express'
 import { google } from 'googleapis'
@@ -57,9 +58,11 @@ nextApp.prepare().then(() => {
   }
 
   app.get('/dashboard/import/contacts', async (req: Request, res: Response) => {
+    const refreshTokenFromParam: string = req.query.token as string
+
     const clientId = process.env.GOOGLE_API_CLIENT_ID
     const clientSecret = process.env.GOOGLE_API_CLIENT_SECRET
-    const refreshToken = process.env.GOOGLE_API_REFRESH_TOKEN
+    const refreshToken = refreshTokenFromParam || process.env.GOOGLE_API_REFRESH_TOKEN
 
     try {
       const oAuth2Client = new OAuth2(clientId, clientSecret)
@@ -88,7 +91,7 @@ nextApp.prepare().then(() => {
         } = contact
 
         const guest = {
-          googleContactId: metadata.sources[0].id,
+          googleContactId: googleContactIdToUUID(metadata.sources[0].id),
           fullName: names[0].displayName,
           email: emailAddresses[0].value,
           photo: photos[0].url.replace('=s100', '') || '',

@@ -103,9 +103,10 @@ export default {
     },
     importGuests: async (
       _: any,
-      { refreshToken }: { refreshToken: string },
+      { input }: { input: any },
       { models }: { models: any }
     ): Promise<any> => {
+      const { refreshToken } = input
       const baseDomain = isProduction ? 'https://ranchosanpancho.com' : 'http://localhost:3000'
       const response = await fetch(`${baseDomain}/dashboard/import/contacts?token=${refreshToken}`)
       const guests: any = []

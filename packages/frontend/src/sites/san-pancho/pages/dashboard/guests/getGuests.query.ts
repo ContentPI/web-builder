@@ -2,7 +2,6 @@ import { gql } from '@apollo/client'
 
 export const getGuestsQuery = `
   getGuests {
-    id
     googleContactId
     fullName
     email

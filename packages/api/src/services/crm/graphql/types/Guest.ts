@@ -2,8 +2,7 @@ import gql from 'graphql-tag'
 
 export default gql`
   type Guest {
-    id: UUID!
-    googleContactId: String!
+    googleContactId: UUID!
     fullName: String!
     email: String!
     photo: String!
@@ -29,11 +28,15 @@ export default gql`
   type Mutation {
     createGuest(input: CreateGuestInput): Guest!
     editGuest(id: UUID!, input: CreateGuestInput): Guest!
-    importGuests(refreshToken: String!): [Guest]!
+    importGuests(input: RefreshTokenInput): [Guest]!
+  }
+
+  input RefreshTokenInput {
+    refreshToken: String!
   }
 
   input CreateGuestInput {
-    googleContactId: String!
+    googleContactId: UUID!
     fullName: String!
     email: String!
     photo: String!

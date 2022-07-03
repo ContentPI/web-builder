@@ -2,15 +2,10 @@ import { DataType } from '../../../types'
 
 export default (sequelize: any, DataTypes: DataType) => {
   const Guest = sequelize.define('Guest', {
-    id: {
+    googleContactId: {
       primaryKey: true,
       allowNull: false,
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4()
-    },
-    googleContactId: {
-      allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.UUID
     },
     fullName: {
       type: DataTypes.STRING,
@@ -58,8 +53,8 @@ export default (sequelize: any, DataTypes: DataType) => {
   Guest.associate = (models: any): void => {
     Guest.hasMany(models.Reservation, {
       foreignKey: {
-        name: 'guestId',
-        field: 'guest_id'
+        name: 'googleContactId',
+        field: 'googleContactId'
       },
       as: 'reservations'
     })
@@ -74,8 +69,8 @@ export default (sequelize: any, DataTypes: DataType) => {
 
     Guest.hasMany(models.Invoice, {
       foreignKey: {
-        name: 'guestId',
-        field: 'guest_id'
+        name: 'googleContactId',
+        field: 'googleContactId'
       },
       as: 'invoice'
     })

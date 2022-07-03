@@ -1,15 +1,22 @@
-import { Icon, Input, Pagination, Table } from '@web-builder/design-system'
+import { useMutation } from '@apollo/client'
+import { Button, Icon, Input, Pagination, Table } from '@web-builder/design-system'
+import { redirectTo } from '@web-builder/utils'
 import React, { FC, useEffect, useState } from 'react'
 
 import ApolloConnector from '~/components/ApolloConnector'
 import DashboardLayout from '~/components/Dashboard/Layout'
 import query from './getGuests.query'
+import IMPORT_GUESTS_MUTATION from './importGuests.mutation'
 
 const Guests: FC<any> = ({ guests }) => {
   const [filteredGuests, setFilteredGuests] = useState([])
   const [pages, setPage] = useState(1)
   const [search, setSearch] = useState<string>('')
+  const [token, setToken] = useState<string>('')
   const [openCreateGuestModal, setOpenCreateGuestModal] = useState(false)
+
+  // Mutations
+  const [importGuestsMutation] = useMutation(IMPORT_GUESTS_MUTATION)
 
   useEffect(() => {
     if (guests) {
@@ -20,6 +27,18 @@ const Guests: FC<any> = ({ guests }) => {
       setFilteredGuests(filtered)
     }
   }, [guests, pages, search])
+
+  const handleImportContacts = async () => {
+    const variables = {
+      refreshToken: token
+    }
+
+    await importGuestsMutation({
+      variables
+    })
+
+    redirectTo('_self')
+  }
 
   const _changeHandler = (e: any): any => {
     setSearch(e.target.value)
@@ -60,13 +79,26 @@ const Guests: FC<any> = ({ guests }) => {
   return (
     <DashboardLayout>
       <>
-        <Input
-          value={search}
-          type="text"
-          placeholder="Buscar por nombre"
-          leftIcon={icon}
-          onChange={_changeHandler}
-        />
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Input
+            value={search}
+            type="text"
+            placeholder="Buscar por nombre"
+            leftIcon={icon}
+            onChange={_changeHandler}
+          />
+
+          <div style={{ display: 'flex' }}>
+            <Input
+              value={token}
+              type="text"
+              placeholder="Refresh token"
+              onChange={(e: any) => setToken(e.target.value)}
+            />
+            &nbsp;
+            <Button onClick={handleImportContacts}>Import Contacts</Button>
+          </div>
+        </div>
 
         <Table
           data={{
