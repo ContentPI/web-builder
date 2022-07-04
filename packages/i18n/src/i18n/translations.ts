@@ -210,7 +210,7 @@ const translations: Record<string, Record<string, string>> = {
   July: {
     ar: 'يناير',
     'en-us': 'July',
-    'es-mx': 'Junio',
+    'es-mx': 'Julio',
     'fr-fr': 'Janvier',
     'it-it': 'Gennaio',
     'ja-jp': '1月'

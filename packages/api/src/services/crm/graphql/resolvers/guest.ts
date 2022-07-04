@@ -115,9 +115,6 @@ export default {
         const googleContacts: any = await response.json()
 
         if (googleContacts.length > 0) {
-          // Remove all guests to sync
-          await models.Guest.truncate({ cascade: true })
-
           googleContacts.forEach(async (contact: any) => {
             const contactExists = await models.Guest.findAll({
               where: { googleContactId: contact.googleContactId }

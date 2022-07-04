@@ -34,13 +34,14 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
         const {
           startDate,
           endDate,
-          guestId,
+          googleContactId,
           deposit,
           reservationCost,
           guests: guestCount,
           crib
         } = reservation
-        const guestName = guests && guests.find((guest: any) => guest.id === guestId).fullName
+        const guestName =
+          guests && guests.find((guest: any) => guest.googleContactId === googleContactId).fullName
         const hasDeposit = deposit ? '- DEP -' : '-'
         const cost = `$${reservationCost} - `
         const people = `${guestCount}A `
@@ -57,27 +58,43 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
     }
   }, [reservations, guests, reservationType])
 
+  const renderHeader = (
+    <>
+      <h1>
+        Reservaciones: {reservationType === 'stone' && 'Cabaña de piedra'}{' '}
+        {reservationType === 'big-house' && 'Cabaña Grande'}{' '}
+        {reservationType === 'camping' && 'Area de camping'}
+      </h1>
+
+      <p>
+        <Button onClick={handleCreateReservationModal}>Crear Reservación</Button>
+      </p>
+    </>
+  )
+
+  if (events.length === 0) {
+    return (
+      <DashboardLayout>
+        <>
+          {renderHeader}
+          <h3>No hay reservaciones, crea una para poder ver el calendario</h3>
+
+          <CreateReservationModal
+            isOpen={openCreateReservationModal}
+            onClose={onClose}
+            label="Nueva Reservación"
+            data={{ guests }}
+            type={reservationType}
+          />
+        </>
+      </DashboardLayout>
+    )
+  }
+
   return (
     <DashboardLayout>
       <>
-        <h1>
-          Reservaciones: {reservationType === 'stone' && 'Cabaña de piedra'}{' '}
-          {reservationType === 'big-house' && 'Cabaña Grande'}{' '}
-          {reservationType === 'camping' && 'Area de camping'}
-        </h1>
-
-        <p>
-          <Button onClick={handleCreateReservationModal}>Crear Reservación</Button>
-        </p>
-
-        <CreateReservationModal
-          isOpen={openCreateReservationModal}
-          onClose={onClose}
-          label="Nueva Reservación"
-          data={{ guests }}
-          type={reservationType}
-        />
-
+        {renderHeader}
         <Calendar t={t} events={events} dateClick={(args: any) => console.log('ARGS===', args)} />
       </>
     </DashboardLayout>
