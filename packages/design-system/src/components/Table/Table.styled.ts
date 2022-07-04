@@ -19,8 +19,12 @@ export namespace CSS {
 
   export const TableRow = styled.tr({
     ...tableStyle,
-    '&:nth-child(even)': {
+    '&:nth-child(odd)': {
       backgroundColor: '#F1F5F7'
+    },
+    '&.header': {
+      backgroundColor: '#fff',
+      color: '#222'
     }
   })
 
@@ -31,6 +35,7 @@ export namespace CSS {
 
   export const TableBody = styled.tbody({
     fontSize: '15px',
+    color: '#222',
     a: {
       color: '#3bafda',
       textDecoration: 'none',

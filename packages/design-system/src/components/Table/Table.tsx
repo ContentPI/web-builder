@@ -12,7 +12,7 @@ interface IProps {
 const Table: FC<IProps> = ({ data }) => (
   <CSS.TableBase>
     <CSS.TableHeader>
-      <CSS.TableRow>
+      <CSS.TableRow className="header">
         {data.columns.map((header) => (
           <CSS.TableHeaderCol key={`header-${header}`}>
             <strong>{header}</strong>
