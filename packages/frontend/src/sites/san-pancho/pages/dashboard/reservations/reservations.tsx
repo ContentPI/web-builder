@@ -61,14 +61,23 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
   const renderHeader = (
     <>
       <h1>
-        Reservaciones: {reservationType === 'stone' && 'Cabaña de piedra'}{' '}
-        {reservationType === 'big-house' && 'Cabaña Grande'}{' '}
-        {reservationType === 'camping' && 'Area de camping'}
+        {t('reservations')}: {reservationType === 'stone' && t('stoneHouse')}{' '}
+        {reservationType === 'lake-hose' && t('lakeViewHouse')}{' '}
+        {reservationType === 'river-house' && t('riverViewHouse')}{' '}
+        {reservationType === 'camping' && t('camping')}
       </h1>
 
       <p>
-        <Button onClick={handleCreateReservationModal}>Crear Reservación</Button>
+        <Button onClick={handleCreateReservationModal}>{t('createReservation')}</Button>
       </p>
+
+      <CreateReservationModal
+        isOpen={openCreateReservationModal}
+        onClose={onClose}
+        label={t('newReservation')}
+        data={{ guests }}
+        type={reservationType}
+      />
     </>
   )
 
@@ -77,15 +86,7 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
       <DashboardLayout>
         <>
           {renderHeader}
-          <h3>No hay reservaciones, crea una para poder ver el calendario</h3>
-
-          <CreateReservationModal
-            isOpen={openCreateReservationModal}
-            onClose={onClose}
-            label="Nueva Reservación"
-            data={{ guests }}
-            type={reservationType}
-          />
+          <h3>{t('noReservations')}</h3>
         </>
       </DashboardLayout>
     )

@@ -8,6 +8,7 @@ import {
   Input,
   Select
 } from '@web-builder/design-system'
+import { useI18n } from '@web-builder/i18n'
 import {
   getEmptyValues,
   googleContactIdToUUID,
@@ -26,7 +27,6 @@ import React, {
 } from 'react'
 import NumberFormat from 'react-number-format'
 
-// Mutation
 import CREATE_RESERVATION_MUTATION from './createReservation.mutation'
 import { CSS } from './Modal.styled'
 
@@ -69,12 +69,15 @@ const AddField: FC<AddInputProps> = ({ label, name, placeholder, value, onChange
     )}
   </div>
 )
+
 const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType }) => {
-  // Data
+  const { t } = useI18n()
   const { selectedDay, guests } = data
 
   const startDateRef = useRef('')
   const endDateRef = useRef('')
+
+  const Required = <Badge color="danger">{t('required')}</Badge>
 
   const [values, setValues] = useState<any>({
     deposit: false,
@@ -196,13 +199,13 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
         <div className="modalRows">
           <div className="modalRow">
             <label htmlFor="googleContactId">
-              Huésped {required.googleContactId && <Badge color="danger">Requerido</Badge>}
+              {t('guest')} {required.googleContactId && Required}
             </label>
 
             <div>
               <Select
                 name="googleContactId"
-                label="Seleccionar Huésped"
+                label={t('selectGuest')}
                 size="xLarge"
                 onClick={({ value }: { option: string; value: any }) => {
                   if (value) {
@@ -215,10 +218,12 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
 
             <AddField
               label={
-                <>Número de personas {required.guests && <Badge color="danger">Requerido</Badge>}</>
+                <>
+                  {t('numberOfPeople')} {required.guests && Required}
+                </>
               }
               name="guests"
-              placeholder="Número de personas"
+              placeholder={t('numberOfPeople')}
               onChange={onChange}
               value={values.guests}
             />
@@ -226,7 +231,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
             <div>
               {reservationType !== 'camping' && (
                 <Checkbox
-                  label="¿Necesita una cuna?"
+                  label={t('needCrib')}
                   name="needCrib"
                   onChange={onChange}
                   value={values.needCrib.toString()}
@@ -234,19 +239,19 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
               )}
 
               <Checkbox
-                label="¿Pago deposito?"
+                label={t('isDepositPaid')}
                 name="deposit"
                 onChange={onChange}
                 value={values.deposit.toString()}
               />
               {reservationType !== 'camping' && (
-                <Checkbox label="¿Agregar noche gratis?" name="freeNight" value={0} />
+                <Checkbox label={t('addFreeNight')} name="freeNight" value="0" />
               )}
             </div>
 
             <div>
               <div>
-                Fecha de entrada {required.startDate && <Badge color="danger">Requerido</Badge>}
+                {t('entryDate')} {required.startDate && Required}
               </div>
               <DayPicker
                 events={[]}
@@ -258,7 +263,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
 
             <div>
               <div>
-                Fecha de salida {required.endDate && <Badge color="danger">Requerido</Badge>}
+                {t('departureDate')} {required.endDate && Required}
               </div>
               <DayPicker
                 events={[]}
@@ -272,10 +277,12 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
           <div className="modalRow">
             <AddField
               label={
-                <>Noches pagadas {required.nights && <Badge color="danger">Requerido</Badge>}</>
+                <>
+                  {t('paidNights')} {required.nights && Required}
+                </>
               }
               name="nights"
-              placeholder="Noches pagadas"
+              placeholder={t('paidNights')}
               onChange={onChange}
               value={values.nights}
             />
@@ -284,11 +291,11 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
               <AddField
                 label={
                   <>
-                    Noches gratis {required.freeNights && <Badge color="danger">Requerido</Badge>}
+                    {t('freeNights')} {required.freeNights && Required}
                   </>
                 }
                 name="freeNights"
-                placeholder="Noches gratis"
+                placeholder={t('freeNights')}
                 onChange={onChange}
                 value={values.freeNights}
               />
@@ -296,7 +303,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
 
             <AddField
               isNumber
-              label="Debe ($0 = Pagado)"
+              label={t('pendingAmount')}
               name="pendingAmount"
               placeholder="$0,000"
               onChange={onChange}
@@ -307,7 +314,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
               isNumber
               label={
                 <>
-                  Costo total {required.reservationCost && <Badge color="danger">Requerido</Badge>}
+                  {t('totalCost')} {required.reservationCost && Required}
                 </>
               }
               name="reservationCost"
@@ -317,9 +324,9 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
             />
 
             <AddField
-              label="Nota"
+              label={t('note')}
               name="note"
-              placeholder="Nota"
+              placeholder={t('note')}
               onChange={onChange}
               value={values.note}
             />
@@ -328,11 +335,11 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
 
         <div className="actions">
           <ModalBtn color="danger" onClick={onClose}>
-            Cancelar
+            {t('cancel')}
           </ModalBtn>
           &nbsp;
           <ModalBtn onClick={handleSubmit} isLoading={loading} loadingText="Creando Reservación...">
-            Crear Reservación
+            {t('createReservation')}
           </ModalBtn>
         </div>
       </CSS.Modal>

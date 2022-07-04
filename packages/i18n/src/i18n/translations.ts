@@ -310,6 +310,182 @@ const translations: Record<string, Record<string, string>> = {
     'fr-fr': 'Janvier',
     'it-it': 'Gennaio',
     'ja-jp': '1月'
+  },
+  reservations: {
+    ar: '',
+    'en-us': 'Reservations',
+    'es-mx': 'Reservaciones',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  stoneHouse: {
+    ar: '',
+    'en-us': 'Stone House',
+    'es-mx': 'Cabaña de Piedra',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  lakeViewHouse: {
+    ar: '',
+    'en-us': 'Lake View House',
+    'es-mx': 'Cabaña Vista del Lago',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  riverViewHouse: {
+    ar: '',
+    'en-us': 'River View House',
+    'es-mx': 'Cabaña Vista del Río',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  camping: {
+    ar: '',
+    'en-us': 'Camping',
+    'es-mx': 'Área de Campamento',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  createReservation: {
+    ar: '',
+    'en-us': 'Create Reservation',
+    'es-mx': 'Crear Reservación',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  noReservations: {
+    ar: '',
+    'en-us': 'There are no reservations, create one to see the calendar',
+    'es-mx': 'No hay reservaciones, crea una para poder ver el calendario',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  newReservation: {
+    ar: '',
+    'en-us': 'New Reservation',
+    'es-mx': 'Nueva Reservación',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  guest: {
+    ar: '',
+    'en-us': 'Guest',
+    'es-mx': 'Huésped',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  selectGuest: {
+    ar: '',
+    'en-us': 'Select Guest',
+    'es-mx': 'Seleccionar Huésped',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  numberOfPeople: {
+    ar: '',
+    'en-us': 'Number of People',
+    'es-mx': 'Número de personas',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  needCrib: {
+    ar: '',
+    'en-us': 'Do you need a crib?',
+    'es-mx': '¿Necesita una cuna?',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  isDepositPaid: {
+    ar: '',
+    'en-us': 'Is deposit paid?',
+    'es-mx': '¿Pago depósito?',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  addFreeNight: {
+    ar: '',
+    'en-us': 'Add free night?',
+    'es-mx': '¿Agregar noche gratis?',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  entryDate: {
+    ar: '',
+    'en-us': 'Entry date',
+    'es-mx': 'Fecha de entrada',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  departureDate: {
+    ar: '',
+    'en-us': 'Departure date',
+    'es-mx': 'Fecha de salida',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  paidNights: {
+    ar: '',
+    'en-us': 'Departure date',
+    'es-mx': 'Fecha de salida',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  freeNights: {
+    ar: '',
+    'en-us': 'Free night',
+    'es-mx': 'Noches gratis',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  pendingAmount: {
+    ar: '',
+    'en-us': 'Pending amount',
+    'es-mx': 'Pago pendiente ($0 = Pagado)',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  totalCost: {
+    ar: '',
+    'en-us': 'Total cost',
+    'es-mx': 'Costo total',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  note: {
+    ar: '',
+    'en-us': 'Note',
+    'es-mx': 'Nota',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
+  },
+  cancel: {
+    ar: '',
+    'en-us': 'Cancel',
+    'es-mx': 'Cancelar',
+    'fr-fr': '',
+    'it-it': '',
+    'ja-jp': ''
   }
 }
 
