@@ -312,180 +312,228 @@ const translations: Record<string, Record<string, string>> = {
     'ja-jp': '1月'
   },
   reservations: {
-    ar: '',
+    ar: 'التحفظات',
     'en-us': 'Reservations',
     'es-mx': 'Reservaciones',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Réservations',
+    'it-it': 'Prenotazioni',
+    'ja-jp': '予約'
   },
   stoneHouse: {
-    ar: '',
+    ar: 'منزل حجري',
     'en-us': 'Stone House',
     'es-mx': 'Cabaña de Piedra',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Maison en Pierre',
+    'it-it': 'Casa di Pietra',
+    'ja-jp': 'ストーンハウス'
   },
   lakeViewHouse: {
-    ar: '',
+    ar: 'ليك فيو هاوس',
     'en-us': 'Lake View House',
     'es-mx': 'Cabaña Vista del Lago',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Maison avec vue sur le lac',
+    'it-it': 'Casa Vista Lago',
+    'ja-jp': 'レイクビューハウス'
   },
   riverViewHouse: {
-    ar: '',
+    ar: 'ريفر فيو هاوس',
     'en-us': 'River View House',
     'es-mx': 'Cabaña Vista del Río',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Maison avec vue sur la rivière',
+    'it-it': 'Casa vista fiume',
+    'ja-jp': 'リバービューハウス'
   },
   camping: {
-    ar: '',
+    ar: 'تخييم',
     'en-us': 'Camping',
     'es-mx': 'Área de Campamento',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Camping',
+    'it-it': 'Campeggio',
+    'ja-jp': 'キャンプ'
   },
   createReservation: {
-    ar: '',
+    ar: 'إنشاء الحجز',
     'en-us': 'Create Reservation',
     'es-mx': 'Crear Reservación',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Créer une Réservation',
+    'it-it': 'Crea Prenotazione',
+    'ja-jp': '予約の作成'
   },
   noReservations: {
-    ar: '',
+    ar: 'لا توجد حجوزات ، قم بإنشاء واحد لرؤية التقويم',
     'en-us': 'There are no reservations, create one to see the calendar',
     'es-mx': 'No hay reservaciones, crea una para poder ver el calendario',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': "Il n'y a pas de réservations, créez-en une pour voir le calendrier",
+    'it-it': 'Non ci sono prenotazioni, creane una per vedere il calendario',
+    'ja-jp': '予約はありません。カレンダーを表示するには予約を作成してください'
   },
   newReservation: {
-    ar: '',
+    ar: 'حجز جديد',
     'en-us': 'New Reservation',
     'es-mx': 'Nueva Reservación',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Nouvelle réservation',
+    'it-it': 'Nuova prenotazione',
+    'ja-jp': '新規予約'
   },
   guest: {
-    ar: '',
+    ar: 'زائر',
     'en-us': 'Guest',
     'es-mx': 'Huésped',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Invité',
+    'it-it': 'Ospite',
+    'ja-jp': 'ゲスト'
   },
   selectGuest: {
-    ar: '',
+    ar: 'حدد الضيف',
     'en-us': 'Select Guest',
     'es-mx': 'Seleccionar Huésped',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': "Sélectionnez l'invité",
+    'it-it': 'Seleziona Ospite',
+    'ja-jp': 'ゲストを選択'
   },
   numberOfPeople: {
-    ar: '',
+    ar: 'عدد الاشخاص',
     'en-us': 'Number of People',
     'es-mx': 'Número de personas',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Nombre de personnes',
+    'it-it': 'Numero di persone',
+    'ja-jp': '人々の数'
   },
   needCrib: {
-    ar: '',
+    ar: 'هل تحتاج إلى سرير؟',
     'en-us': 'Do you need a crib?',
     'es-mx': '¿Necesita una cuna?',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': "Avez-vous besoin d'un berceau?",
+    'it-it': 'Hai bisogno di una culla?',
+    'ja-jp': 'ベビーベッドが必要ですか？'
   },
   isDepositPaid: {
-    ar: '',
-    'en-us': 'Is deposit paid?',
+    ar: 'هل الوديعة مدفوعة؟',
+    'en-us': 'Is the deposit paid?',
     'es-mx': '¿Pago depósito?',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': "l'acompte est-il payé?",
+    'it-it': 'Il deposito è pagato?',
+    'ja-jp': '保証金は支払われますか？'
   },
   addFreeNight: {
-    ar: '',
+    ar: 'أضف ليلة مجانية',
     'en-us': 'Add free night?',
     'es-mx': '¿Agregar noche gratis?',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Ajouter une nuit gratuite',
+    'it-it': 'Aggiungi notte gratis',
+    'ja-jp': '無料宿泊を追加'
   },
   entryDate: {
-    ar: '',
+    ar: 'موعد الدخول',
     'en-us': 'Entry date',
     'es-mx': 'Fecha de entrada',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': "Date d'entrée",
+    'it-it': 'Data di ingresso',
+    'ja-jp': '申込日'
   },
   departureDate: {
-    ar: '',
+    ar: 'تاريخ المغادرة',
     'en-us': 'Departure date',
     'es-mx': 'Fecha de salida',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Date de départ',
+    'it-it': 'Data di partenza',
+    'ja-jp': '出発日'
   },
   paidNights: {
-    ar: '',
+    ar: 'ليالي مدفوعة الأجر',
     'en-us': 'Departure date',
     'es-mx': 'Fecha de salida',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Nuits payées',
+    'it-it': 'Notti pagate',
+    'ja-jp': '有料宿泊'
   },
   freeNights: {
-    ar: '',
+    ar: 'ليال مجانية',
     'en-us': 'Free night',
     'es-mx': 'Noches gratis',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Nuits gratuites',
+    'it-it': 'Notti libere',
+    'ja-jp': '無料宿泊'
   },
   pendingAmount: {
-    ar: '',
+    ar: 'المبلغ المعلق',
     'en-us': 'Pending amount',
     'es-mx': 'Pago pendiente ($0 = Pagado)',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Montant en attente',
+    'it-it': 'Importo in sospeso',
+    'ja-jp': '保留額'
   },
   totalCost: {
-    ar: '',
+    ar: 'التكلفة الإجمالية',
     'en-us': 'Total cost',
     'es-mx': 'Costo total',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Coût total',
+    'it-it': 'Costo totale',
+    'ja-jp': '総費用'
   },
   note: {
-    ar: '',
+    ar: 'ملاحظة',
     'en-us': 'Note',
     'es-mx': 'Nota',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Note',
+    'it-it': 'Nota',
+    'ja-jp': 'ノート'
   },
   cancel: {
-    ar: '',
+    ar: 'إلغاء',
     'en-us': 'Cancel',
     'es-mx': 'Cancelar',
-    'fr-fr': '',
-    'it-it': '',
-    'ja-jp': ''
+    'fr-fr': 'Annuler',
+    'it-it': 'Annulla',
+    'ja-jp': 'キャンセル'
+  },
+  Arabic: {
+    ar: 'عربي',
+    'en-us': 'Arabic',
+    'es-mx': 'Árabe',
+    'fr-fr': 'Arabe',
+    'it-it': 'Arabo',
+    'ja-jp': 'アラビア語'
+  },
+  English: {
+    ar: 'إنجليزي',
+    'en-us': 'English',
+    'es-mx': 'Inglés',
+    'fr-fr': 'Anglais',
+    'it-it': 'Inglese',
+    'ja-jp': '英語'
+  },
+  Spanish: {
+    ar: 'الأسبانية',
+    'en-us': 'Spanish',
+    'es-mx': 'Español',
+    'fr-fr': 'Espagnol',
+    'it-it': 'Spagnolo',
+    'ja-jp': 'スペイン語'
+  },
+  French: {
+    ar: 'فرنسي',
+    'en-us': 'French',
+    'es-mx': 'Francés',
+    'fr-fr': 'Français',
+    'it-it': 'Francese',
+    'ja-jp': 'フランス語'
+  },
+  Italian: {
+    ar: 'إيطالي',
+    'en-us': 'Italian',
+    'es-mx': 'Italiano',
+    'fr-fr': 'Italien',
+    'it-it': 'Italien',
+    'ja-jp': 'イタリアの'
+  },
+  Japanese: {
+    ar: 'اليابانية',
+    'en-us': 'Japanese',
+    'es-mx': 'Japonés',
+    'fr-fr': 'Japonais',
+    'it-it': 'Giapponese',
+    'ja-jp': '日本'
   }
 }
 
