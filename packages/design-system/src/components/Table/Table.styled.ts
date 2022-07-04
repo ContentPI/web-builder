@@ -4,9 +4,7 @@ import styled, { CSSObject } from 'styled-components'
 export const BASE_CLASS_NAME = 'table'
 
 export const tableStyle: CSSObject = {
-  border: '1px solid #D0C9D6',
-  borderLeft: 'none',
-  borderRight: 'none'
+  border: '1px solid #D0C9D6'
 }
 
 export namespace CSS {
@@ -20,7 +18,10 @@ export namespace CSS {
   })
 
   export const TableRow = styled.tr({
-    ...tableStyle
+    ...tableStyle,
+    '&:nth-child(even)': {
+      backgroundColor: '#F1F5F7'
+    }
   })
 
   export const TableHeaderCol = styled.th({
@@ -28,7 +29,16 @@ export namespace CSS {
     padding: '1rem'
   })
 
-  export const TableBody = styled.tbody({})
+  export const TableBody = styled.tbody({
+    fontSize: '15px',
+    a: {
+      color: '#3bafda',
+      textDecoration: 'none',
+      '&:hover': {
+        color: '#2e89aa'
+      }
+    }
+  })
 
   export const TableCol = styled.td({
     textAlign: 'center',

@@ -14,7 +14,9 @@ const Table: FC<IProps> = ({ data }) => (
     <CSS.TableHeader>
       <CSS.TableRow>
         {data.columns.map((header) => (
-          <CSS.TableHeaderCol key={`header-${header}`}>{header}</CSS.TableHeaderCol>
+          <CSS.TableHeaderCol key={`header-${header}`}>
+            <strong>{header}</strong>
+          </CSS.TableHeaderCol>
         ))}
       </CSS.TableRow>
     </CSS.TableHeader>
