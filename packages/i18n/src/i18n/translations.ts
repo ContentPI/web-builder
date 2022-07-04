@@ -534,6 +534,62 @@ const translations: Record<string, Record<string, string>> = {
     'fr-fr': 'Japonais',
     'it-it': 'Giapponese',
     'ja-jp': '日本'
+  },
+  name: {
+    ar: 'اسم',
+    'en-us': 'Name',
+    'es-mx': 'Nombre',
+    'fr-fr': 'Nom',
+    'it-it': 'Nome',
+    'ja-jp': '名前'
+  },
+  socialMedia: {
+    ar: 'وسائل التواصل الاجتماعي',
+    'en-us': 'Social Media',
+    'es-mx': 'Redes Sociales',
+    'fr-fr': 'Des médias sociaux',
+    'it-it': 'Social Media',
+    'ja-jp': 'ソーシャルメディア'
+  },
+  gender: {
+    ar: 'جنس',
+    'en-us': 'Gender',
+    'es-mx': 'Género',
+    'fr-fr': 'Le Genre',
+    'it-it': 'Genere',
+    'ja-jp': '性別'
+  },
+  location: {
+    ar: 'موقع',
+    'en-us': 'Location',
+    'es-mx': 'Ubicación',
+    'fr-fr': 'Localisation',
+    'it-it': 'Localizzazione',
+    'ja-jp': '位置'
+  },
+  refreshToken: {
+    ar: 'تحديث الرمز',
+    'en-us': 'Refresh Token',
+    'es-mx': 'Refresh Token',
+    'fr-fr': 'Actualiser le jeton',
+    'it-it': 'Aggiorna token',
+    'ja-jp': 'トークンを更新'
+  },
+  importContacts: {
+    ar: 'استيراد جهات الاتصال',
+    'en-us': 'Import Contacts',
+    'es-mx': 'Importar Contactos',
+    'fr-fr': "Contacts d'importation",
+    'it-it': 'Importa Contatti',
+    'ja-jp': '連絡先のインポート'
+  },
+  searchByName: {
+    ar: 'البحث عن طريق الإسم',
+    'en-us': 'Search by Name',
+    'es-mx': 'Buscar por Nombre',
+    'fr-fr': 'Rechercher par Nom',
+    'it-it': 'Ricerca per Nome',
+    'ja-jp': '名前で検索'
   }
 }
 

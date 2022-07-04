@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client'
 import { Button, Icon, Input, Pagination, Table } from '@web-builder/design-system'
+import { useI18n } from '@web-builder/i18n'
 import { redirectTo } from '@web-builder/utils'
 import React, { FC, useEffect, useState } from 'react'
 
@@ -9,6 +10,8 @@ import query from './getGuests.query'
 import IMPORT_GUESTS_MUTATION from './importGuests.mutation'
 
 const Guests: FC<any> = ({ guests }) => {
+  const { t } = useI18n()
+
   const [filteredGuests, setFilteredGuests] = useState([])
   const [pages, setPage] = useState(1)
   const [search, setSearch] = useState<string>('')
@@ -83,7 +86,7 @@ const Guests: FC<any> = ({ guests }) => {
           <Input
             value={search}
             type="text"
-            placeholder="Buscar por nombre"
+            placeholder={t('searchByName')}
             leftIcon={icon}
             onChange={_changeHandler}
           />
@@ -92,19 +95,19 @@ const Guests: FC<any> = ({ guests }) => {
             <Input
               value={token}
               type="text"
-              placeholder="Refresh token"
+              placeholder={t('refreshToken')}
               onChange={(e: any) => setToken(e.target.value)}
             />
             &nbsp;&nbsp;
             <Button size="large" onClick={handleImportContacts}>
-              Import Contacts
+              {t('importContacts')}
             </Button>
           </div>
         </div>
 
         <Table
           data={{
-            columns: ['Nombre', 'Email', 'Social Media ', 'Gender', 'Location'],
+            columns: [t('name'), t('email'), t('socialMedia'), t('gender'), t('location')],
             rows: getRows()
           }}
         />
