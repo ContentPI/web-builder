@@ -11,6 +11,7 @@ export const config: SiteConfiguration = {
   },
   i18n: {
     locales: ['ar', 'en-us', 'es-mx', 'fr-fr', 'it-it', 'ja-jp'],
+    languages: ['Arabic', 'English', 'Spanish', 'French', 'Italian', 'Japanese'],
     defaultLocale: 'es-mx'
   },
   pages: ['index', 'login'],

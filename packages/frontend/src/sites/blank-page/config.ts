@@ -8,6 +8,7 @@ export const config: SiteConfiguration = {
   },
   i18n: {
     locales: ['en-us'],
+    languages: ['English'],
     defaultLocale: 'en-us'
   },
   pages: ['index']

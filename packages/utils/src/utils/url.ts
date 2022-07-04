@@ -4,6 +4,10 @@ export function getLocation(req?: any): any {
   return typeof window !== 'undefined' ? window.location : { pathname: req && req.url }
 }
 
+export function getCurrentUrl(): string {
+  return getLocation().pathname
+}
+
 export function getParams(url: string, index = 0): string | string[] {
   if (!url) {
     url = getLocation().pathname
@@ -37,7 +41,7 @@ export function getParams(url: string, index = 0): string | string[] {
   return ''
 }
 
-export const getCurrentLanguage = (url?: string, defaultLanguage = 'en-US') => {
+export const getCurrentLocale = (url?: string, defaultLanguage = 'en-US') => {
   const params = getParams(url || '')
   return params && is.Language(params[0]) ? params[0] : defaultLanguage
 }
@@ -45,7 +49,7 @@ export const getCurrentLanguage = (url?: string, defaultLanguage = 'en-US') => {
 export function redirectTo(url = '/', includeLanguage?: any): void {
   if (is.Browser()) {
     const { pathname } = window.location
-    const language = getCurrentLanguage()
+    const locale = getCurrentLocale()
     let slash = '/'
 
     if (url === '_self') {
@@ -65,7 +69,7 @@ export function redirectTo(url = '/', includeLanguage?: any): void {
         slash = ''
       }
 
-      window.location.href = `/${language}${slash}${url}`
+      window.location.href = `/${locale}${slash}${url}`
     } else {
       window.location.href = url
     }

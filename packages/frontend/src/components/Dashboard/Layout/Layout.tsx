@@ -1,6 +1,7 @@
 import { cx } from '@web-builder/utils'
 import React, { FC, ReactElement, useState } from 'react'
 
+import Footer from './Footer'
 import Header from './Header'
 import { CSS } from './Layout.styled'
 import Sidebar from './Sidebar'
@@ -25,7 +26,10 @@ const DashboardLayout: FC<Props> = ({ children }) => {
           </div>
 
           <div className={cx.join('blocks', openMenu ? 'wrapper' : 'full')}>
-            <CSS.Content>{children}</CSS.Content>
+            <CSS.Content>
+              {children}
+              <Footer />
+            </CSS.Content>
           </div>
         </CSS.FlexWrapper>
       </CSS.DashboardLayout>

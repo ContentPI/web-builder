@@ -30,6 +30,7 @@ export interface SiteConfiguration {
   }
   i18n: {
     locales: Locale[]
+    languages: string[]
     defaultLocale: Locale
   }
   pages: string[]
