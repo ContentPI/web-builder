@@ -88,15 +88,17 @@ const Guests: FC<any> = ({ guests }) => {
             onChange={_changeHandler}
           />
 
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start' }}>
             <Input
               value={token}
               type="text"
               placeholder="Refresh token"
               onChange={(e: any) => setToken(e.target.value)}
             />
-            &nbsp;
-            <Button onClick={handleImportContacts}>Import Contacts</Button>
+            &nbsp;&nbsp;
+            <Button size="large" onClick={handleImportContacts}>
+              Import Contacts
+            </Button>
           </div>
         </div>
 

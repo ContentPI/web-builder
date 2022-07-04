@@ -97,7 +97,6 @@ const buttonStyles: CSSObject = {
     minWidth: '6.875rem',
     marginRight: '0.25rem',
     marginBottom: '0.5rem',
-    padding: '0.75rem 1.5rem',
     fontWeight: 400,
     fontSize: '1rem',
     display: 'inline-block',
