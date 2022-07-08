@@ -1,13 +1,31 @@
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+
 const dates = {
   isWeekend: (date?: string) => {
     const newDate = new Date(date || '')
 
     return newDate.getDay() === 6 || newDate.getDay() === 0
   },
-  weekday: (date?: string) => {
+  weekday: (date?: string, returnStr = false) => {
     const newDate = new Date(date || '')
+    const day = newDate.getDay() + 1
+    const dayIndex = day === 7 ? 0 : day
 
-    return newDate.getDay()
+    return returnStr ? days[dayIndex] : dayIndex
   },
   getDaysDifference: (date1: string, date2: string) => {
     const difference = new Date(date2).getTime() - new Date(date1).getTime()
@@ -41,21 +59,8 @@ const dates = {
 
       return isInRange
     }),
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  months,
+  days
 }
 
 export default dates
