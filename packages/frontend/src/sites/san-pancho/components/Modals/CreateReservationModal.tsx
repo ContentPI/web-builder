@@ -5,21 +5,13 @@ import {
   Checkbox,
   DayPicker,
   Dialog,
-  Input,
   Select
 } from '@web-builder/design-system'
 import { useI18n } from '@web-builder/i18n'
-import {
-  dates,
-  getEmptyValues,
-  googleContactIdToUUID,
-  redirectTo,
-  uuidToGoogleCon,
-  waitFor
-} from '@web-builder/utils'
-import React, { FC, ReactElement, useCallback, useContext, useEffect, useState } from 'react'
-import NumberFormat from 'react-number-format'
+import { dates, getEmptyValues, redirectTo, waitFor } from '@web-builder/utils'
+import React, { FC, useEffect, useState } from 'react'
 
+import AddField from './AddField'
 import CREATE_RESERVATION_MUTATION from './createReservation.mutation'
 import { CSS } from './Modal.styled'
 
@@ -30,38 +22,6 @@ type Props = {
   data?: any
   type: any
 }
-
-type AddInputProps = {
-  label: ReactElement | string
-  name: string
-  placeholder: string
-  value: string
-  onChange: any
-  isNumber?: boolean
-}
-
-const AddField: FC<AddInputProps> = ({ label, name, placeholder, value, onChange, isNumber }) => (
-  <div>
-    <label htmlFor={name}>{label}</label>
-
-    {!isNumber && (
-      <Input name={name} placeholder={placeholder} value={value} fullWidth onChange={onChange} />
-    )}
-    {isNumber && (
-      <div className="InputWrapper">
-        <NumberFormat
-          name={name}
-          placeholder="$0,000"
-          onChange={onChange}
-          value={value}
-          className="moneyInput"
-          thousandSeparator
-          prefix="$"
-        />
-      </div>
-    )}
-  </div>
-)
 
 const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType }) => {
   const { t } = useI18n()
