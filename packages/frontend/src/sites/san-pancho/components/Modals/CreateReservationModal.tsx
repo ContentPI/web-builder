@@ -72,7 +72,7 @@ const AddField: FC<AddInputProps> = ({ label, name, placeholder, value, onChange
 
 const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType }) => {
   const { t } = useI18n()
-  const { selectedDay, guests } = data
+  const { selectedDate, guests } = data
 
   const startDateRef = useRef('')
   const endDateRef = useRef('')
@@ -255,6 +255,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
               </div>
               <DayPicker
                 events={[]}
+                defaultValue={selectedDate}
                 onClick={(currentDate: string) => {
                   startDateRef.current = currentDate
                 }}

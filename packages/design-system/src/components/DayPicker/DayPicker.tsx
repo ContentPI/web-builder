@@ -18,12 +18,13 @@ type Props = {
   events: Event[]
   label?: string
   onClick?: any
+  defaultValue?: string
   t?: any
 }
 
 let translate = (text: string) => text
 
-const DayPicker: FC<Props> = ({ events, t, label, onClick }) => {
+const DayPicker: FC<Props> = ({ events, t, label, onClick, defaultValue }) => {
   date.setDate(1)
 
   if (t) {
@@ -31,7 +32,7 @@ const DayPicker: FC<Props> = ({ events, t, label, onClick }) => {
   }
 
   const [showPicker, setShowPicker] = useState(false)
-  const [targetDay, setTargetDay] = useState('')
+  const [targetDay, setTargetDay] = useState(defaultValue)
   const [firstDayIndex, setFirstDayIndex] = useState(date.getDay())
   const [currentMonth, setCurrentMonth] = useState<any>(date.getMonth())
   const [currentYear, setCurrentYear] = useState(date.getFullYear())

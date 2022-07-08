@@ -1,5 +1,6 @@
 import { Button, Calendar } from '@web-builder/design-system'
 import { useI18n } from '@web-builder/i18n'
+import { is } from '@web-builder/utils'
 import React, { FC, useEffect, useState } from 'react'
 
 import ApolloConnector from '~/components/ApolloConnector'
@@ -11,6 +12,7 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
   const [reservationType, setReservationType] = useState('stone')
   const [events, setEvents] = useState<any>([])
   const [openCreateReservationModal, setOpenCreateReservationModal] = useState(false)
+  const [selectedDate, setSelectedDate] = useState('')
 
   const { t } = useI18n()
 
@@ -20,6 +22,13 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
 
   const onClose = () => {
     setOpenCreateReservationModal(false)
+  }
+
+  const handleDateClick = (date: any) => {
+    if (is.String(date)) {
+      setSelectedDate(date)
+      setOpenCreateReservationModal(true)
+    }
   }
 
   useEffect(() => {
@@ -75,7 +84,7 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
         isOpen={openCreateReservationModal}
         onClose={onClose}
         label={t('newReservation')}
-        data={{ guests }}
+        data={{ guests, selectedDate }}
         type={reservationType}
       />
     </>
@@ -96,7 +105,7 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
     <DashboardLayout>
       <>
         {renderHeader}
-        <Calendar t={t} events={events} dateClick={(args: any) => console.log('ARGS===', args)} />
+        <Calendar t={t} events={events} dateClick={handleDateClick} />
       </>
     </DashboardLayout>
   )
