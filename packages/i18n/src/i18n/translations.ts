@@ -590,6 +590,14 @@ const translations: Record<string, Record<string, string>> = {
     'fr-fr': 'Rechercher par Nom',
     'it-it': 'Ricerca per Nome',
     'ja-jp': '名前で検索'
+  },
+  selectDate: {
+    ar: 'حدد تاريخ',
+    'en-us': 'Select Date',
+    'es-mx': 'Seleccione fecha',
+    'fr-fr': 'Sélectionner une date',
+    'it-it': 'Seleziona la data',
+    'ja-jp': '日付を選択'
   }
 }
 

@@ -19,12 +19,13 @@ type Props = {
   label?: string
   onClick?: any
   defaultValue?: string
+  disabled?: boolean
   t?: any
 }
 
 let translate = (text: string) => text
 
-const DayPicker: FC<Props> = ({ events, t, label, onClick, defaultValue }) => {
+const DayPicker: FC<Props> = ({ events, t, label, onClick, defaultValue, disabled }) => {
   date.setDate(1)
 
   if (t) {
@@ -62,10 +63,6 @@ const DayPicker: FC<Props> = ({ events, t, label, onClick, defaultValue }) => {
     if (!target.classList.contains('taken')) {
       setTargetDay(selectedDate)
       setShowPicker(false)
-
-      if (onClick) {
-        onClick(selectedDate)
-      }
     }
   }
 
@@ -235,8 +232,13 @@ const DayPicker: FC<Props> = ({ events, t, label, onClick, defaultValue }) => {
   }
 
   useEffect(() => {
+    if (targetDay && onClick) {
+      onClick(targetDay)
+    }
+
     renderDays()
-  }, [currentMonth])
+  }, [currentMonth, targetDay])
+
   return (
     <>
       <CSS.CalendarInput>
@@ -244,10 +246,11 @@ const DayPicker: FC<Props> = ({ events, t, label, onClick, defaultValue }) => {
         <Input
           id="dayPicker"
           name="dayPicker"
-          placeholder="Select date"
+          placeholder={translate('selectDate')}
           onClick={handlePicker}
           value={targetDay}
           onChange={() => null}
+          disabled={disabled}
         />
       </CSS.CalendarInput>
 

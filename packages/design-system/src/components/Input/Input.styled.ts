@@ -25,6 +25,9 @@ export namespace CSS {
     boxShadow: '0px 7px 64px rgba(0, 0, 0, 0.07)',
     borderRadius: calc(CalcType.spacing, 2),
     width: '250px',
+    '&.disabled': {
+      background: '#eee'
+    },
     '&::placeholder': {
       color: Base.WHITE,
       opacity: 1
@@ -52,7 +55,10 @@ export namespace CSS {
     lineHeight: '20px',
     outline: 'none',
     resize: 'none',
-    ...colorStyles
+    ...colorStyles,
+    '&:disabled': {
+      background: '#eee'
+    }
   })
 
   export const InputIcon = styled.div({

@@ -10,21 +10,14 @@ import {
 } from '@web-builder/design-system'
 import { useI18n } from '@web-builder/i18n'
 import {
+  dates,
   getEmptyValues,
   googleContactIdToUUID,
   redirectTo,
-  uuidToGoogleContactId,
+  uuidToGoogleCon,
   waitFor
 } from '@web-builder/utils'
-import React, {
-  FC,
-  ReactElement,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState
-} from 'react'
+import React, { FC, ReactElement, useCallback, useContext, useEffect, useState } from 'react'
 import NumberFormat from 'react-number-format'
 
 import CREATE_RESERVATION_MUTATION from './createReservation.mutation'
@@ -74,12 +67,9 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
   const { t } = useI18n()
   const { selectedDate, guests } = data
 
-  const startDateRef = useRef('')
-  const endDateRef = useRef('')
-
   const Required = <Badge color="danger">{t('required')}</Badge>
 
-  const [values, setValues] = useState<any>({
+  const initialValues = {
     deposit: false,
     endDate: null,
     freeNights: null,
@@ -92,7 +82,9 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
     startDate: null,
     note: null,
     type: reservationType
-  })
+  }
+
+  const [values, setValues] = useState<any>(initialValues)
 
   const [required, setRequired] = useState<any>({
     googleContactId: false,
@@ -106,6 +98,20 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
     needCrib: false
   })
 
+  const setStartDate = (startDate: string) => {
+    setValues({
+      ...values,
+      startDate
+    })
+  }
+
+  const setEndDate = (endDate: string) => {
+    setValues({
+      ...values,
+      endDate
+    })
+  }
+
   const [loading, setLoading] = useState(false)
 
   // Mutations
@@ -113,9 +119,8 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
 
   // Methods
   const handleSubmit = async (): Promise<void> => {
-    const newValues = { ...values, startDate: startDateRef.current, endDate: endDateRef.current }
-    const variables = { ...newValues }
-    const emptyValues = getEmptyValues(newValues, [
+    const variables = { ...values }
+    const emptyValues = getEmptyValues(values, [
       'googleContactId',
       'startDate',
       'endDate',
@@ -181,6 +186,42 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
     })
   }
 
+  const closeModal = () => {
+    setValues(initialValues)
+    onClose()
+  }
+
+  useEffect(() => {
+    if (values.startDate && values.endDate) {
+      const rawNights = dates.getDaysDifference(values.startDate, values.endDate)
+      const isFreeNight =
+        dates.weekday(values.startDate) >= 0 && dates.weekday(values.startDate) < 4
+      const isValidNightCount = rawNights > 0
+      const freeNights = isValidNightCount && isFreeNight ? 1 : '0'
+      const isWeekend = dates.weekday(values.startDate) === 5 && dates.weekday(values.endDate) === 6
+      let reservationCost: number = isWeekend ? 5000 : 3500
+
+      let nights = isValidNightCount ? rawNights + 1 : 0
+
+      if (freeNights > 0 && nights > 0) {
+        nights -= 1
+      }
+
+      if (!isWeekend && nights >= 2) {
+        reservationCost = nights * 2500
+      }
+
+      setValues({
+        ...values,
+        nights,
+        freeNights,
+        reservationCost,
+        pendingAmount: reservationCost,
+        type: reservationType
+      })
+    }
+  }, [values.startDate, values.endDate])
+
   const options =
     guests &&
     guests.map((guest: any) => ({
@@ -241,37 +282,24 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
               <Checkbox
                 label={t('isDepositPaid')}
                 name="deposit"
+                checked
                 onChange={onChange}
                 value={values.deposit.toString()}
               />
-              {reservationType !== 'camping' && (
-                <Checkbox label={t('addFreeNight')} name="freeNight" value="0" />
-              )}
             </div>
 
             <div>
               <div>
                 {t('entryDate')} {required.startDate && Required}
               </div>
-              <DayPicker
-                events={[]}
-                defaultValue={selectedDate}
-                onClick={(currentDate: string) => {
-                  startDateRef.current = currentDate
-                }}
-              />
+              <DayPicker events={[]} defaultValue={selectedDate} onClick={setStartDate} />
             </div>
 
             <div>
               <div>
                 {t('departureDate')} {required.endDate && Required}
               </div>
-              <DayPicker
-                events={[]}
-                onClick={(currentDate: string) => {
-                  endDateRef.current = currentDate
-                }}
-              />
+              <DayPicker events={[]} onClick={setEndDate} disabled={!values.startDate} t={t} />
             </div>
           </div>
 
@@ -335,7 +363,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
         </div>
 
         <div className="actions">
-          <ModalBtn color="danger" onClick={onClose}>
+          <ModalBtn color="danger" onClick={closeModal}>
             {t('cancel')}
           </ModalBtn>
           &nbsp;

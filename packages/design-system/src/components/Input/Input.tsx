@@ -19,6 +19,7 @@ const Input: FC<Props> = ({
   rightIcon,
   fullWidth = false,
   value = '',
+  disabled = false,
   ...restProps
 }) => {
   const [hasFocus, setHasFocus] = useState(false)
@@ -50,7 +51,7 @@ const Input: FC<Props> = ({
   const RightIcon = (isPassword && (showValue ? eye : eyeOff)) || rightIcon
 
   return (
-    <CSS.InputWrapper className={classNames}>
+    <CSS.InputWrapper className={cx.join(classNames, disabled ? 'disabled' : '')}>
       {LeftIcon && (
         <CSS.InputIcon className="icon-left">
           <LeftIcon {...iconProps} />
@@ -61,6 +62,7 @@ const Input: FC<Props> = ({
         onFocus={() => setHasFocus(true)}
         onBlur={() => setHasFocus(false)}
         value={value || ''}
+        disabled={disabled}
         {...restProps}
       />
       {RightIcon &&

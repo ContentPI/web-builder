@@ -1,4 +1,20 @@
 const dates = {
+  isWeekend: (date?: string) => {
+    const newDate = new Date(date || '')
+
+    return newDate.getDay() === 6 || newDate.getDay() === 0
+  },
+  weekday: (date?: string) => {
+    const newDate = new Date(date || '')
+
+    return newDate.getDay()
+  },
+  getDaysDifference: (date1: string, date2: string) => {
+    const difference = new Date(date2).getTime() - new Date(date1).getTime()
+    const totalDays = Math.ceil(difference / (1000 * 3600 * 24))
+
+    return totalDays < 0 ? totalDays * -1 : totalDays
+  },
   getTwoDigitsDay: (day: number) => {
     if (day <= 9) {
       return `0${day}`
