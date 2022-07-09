@@ -1,10 +1,12 @@
 import { getUserData } from '@web-builder/authentication'
 import { NextFunction, Request, Response } from 'express'
 
+import Config from '../../config'
+
 export const isConnected =
   (isLogged = true, roles = ['user'], redirectTo = '/') =>
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    const user = await getUserData(req.cookies.at)
+    const user = await getUserData(req.cookies[`at-${Config.site}`])
 
     if (!user && !isLogged) {
       return next()

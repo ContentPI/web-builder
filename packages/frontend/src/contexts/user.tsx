@@ -3,6 +3,7 @@ import { getGraphQlError, parseDebugData, redirectTo } from '@web-builder/utils'
 import React, { createContext, FC, ReactElement, useEffect, useMemo, useState } from 'react'
 import { useCookies } from 'react-cookie'
 
+import Config from '~/config'
 import GET_USER_QUERY from '~/graphql/user/getUser.query'
 import LOGIN_MUTATION from '~/graphql/user/login.mutation'
 
@@ -33,7 +34,7 @@ const UserProvider: FC<Props> = ({ children }) => {
   // Queries
   const { data: dataUser } = useQuery(GET_USER_QUERY, {
     variables: {
-      at: cookies.at || ''
+      at: cookies[`at-${Config.site}`] || ''
     }
   })
 
@@ -60,7 +61,7 @@ const UserProvider: FC<Props> = ({ children }) => {
       })
 
       if (dataLogin) {
-        setCookie('at', dataLogin.login.token, { path: '/', maxAge: 45 * 60 * 1000 })
+        setCookie(`at-${Config.site}`, dataLogin.login.token, { path: '/', maxAge: 45 * 60 * 1000 })
 
         return dataLogin.login.token
       }

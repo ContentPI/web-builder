@@ -130,7 +130,7 @@ nextApp.prepare().then(() => {
 
   app.get([`/:locale(${availableLocales()})/logout`, '/logout'], (req: Request, res: Response) => {
     const redirect: any = req.query.redirectTo || '/'
-    res.clearCookie('at')
+    res.clearCookie(`at-${Config.site}`)
     res.redirect(redirect)
   })
 
