@@ -24,8 +24,9 @@ const DialogComponent: FC<Props> = ({
   title,
   options = {}
 }) => {
-  let width = '500px'
-  let height = ''
+  const width = options.width || '500px'
+  const height = options.height || ''
+  const position = options.position || 'center'
 
   if (!open) {
     return null
@@ -35,20 +36,12 @@ const DialogComponent: FC<Props> = ({
     onOpen()
   }
 
-  if (options.width) {
-    width = options.width
-  }
-
-  if (options.height) {
-    height = options.height
-  }
-
   return createPortal(
     <>
       <GlobalStyle />
 
       <CSS.Dialog className="Modal">
-        <CSS.Container maxWidth={width} height={height}>
+        <CSS.Container position={position} maxWidth={width} height={height}>
           <CSS.Close onClick={handleClose}>
             <CSS.Img alt="Close" src={require('./icons/close.svg')} />
           </CSS.Close>

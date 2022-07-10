@@ -6,7 +6,7 @@ import React, { FC, useEffect, useState } from 'react'
 
 import ApolloConnector from '~/components/ApolloConnector'
 import DashboardLayout from '~/components/Dashboard/Layout'
-import query from './getGuests.query'
+import GET_GUESTS_QUERY from './getGuests.query'
 import IMPORT_GUESTS_MUTATION from './importGuests.mutation'
 
 const Guests: FC<any> = ({ guests }) => {
@@ -124,6 +124,6 @@ const Guests: FC<any> = ({ guests }) => {
 }
 
 const onSuccess: FC<any> = (data: any) => <Guests guests={data.getGuests} />
-const Connector: FC = () => <ApolloConnector query={query} onSuccess={onSuccess} />
+const Connector: FC = () => <ApolloConnector query={GET_GUESTS_QUERY} onSuccess={onSuccess} />
 
 export default Connector

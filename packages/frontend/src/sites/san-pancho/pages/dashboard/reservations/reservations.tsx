@@ -6,7 +6,7 @@ import React, { FC, useEffect, useState } from 'react'
 import ApolloConnector from '~/components/ApolloConnector'
 import DashboardLayout from '~/components/Dashboard/Layout'
 import CreateReservationModal from '../../../components/Modals/CreateReservationModal'
-import query from './getReservationsAndGuests.query'
+import GET_RESERVATIONS_AND_GUESTS_QUERY from './getReservationsAndGuests.query'
 
 const Reservations: FC<any> = ({ reservations, guests }) => {
   const [reservationType, setReservationType] = useState('stone')
@@ -115,6 +115,8 @@ const onSuccess: FC<any> = (data: any) => (
   <Reservations reservations={data.getReservations} guests={data.getGuests} />
 )
 
-const Connector: FC = () => <ApolloConnector query={query} onSuccess={onSuccess} />
+const Connector: FC = () => (
+  <ApolloConnector query={GET_RESERVATIONS_AND_GUESTS_QUERY} onSuccess={onSuccess} />
+)
 
 export default Connector

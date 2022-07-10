@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import DashboardLayout from '~/components/Dashboard/Layout'
-import query from './getGuestById.query'
+import GET_GUEST_BY_ID_QUERY from './getGuestById.query'
 
 type Props = {
   params?: string[]

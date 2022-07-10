@@ -46,7 +46,7 @@ const UserProvider: FC<Props> = ({ children }) => {
       if (!dataUser.getUser.id && debug.hasCookie) {
         redirectTo('/logout?redirectTo=/dashboard')
       } else {
-        setUser(dataUser.getUserData)
+        setUser(dataUser.getUser)
       }
     }
   }, [dataUser])

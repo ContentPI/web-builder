@@ -18,6 +18,9 @@ export default {
       }),
     getAppById: async (
       _: any,
+      { id }: { id: string },
+      { models }: { models: any }
+    ): Promise<any> => {
       const data = await models.App.findAll({
         where: {
           id

@@ -45,9 +45,10 @@ export namespace CSS {
     height?: string
     margin?: string
     maxWidth?: string
+    position?: string
   }
 
-  export const Container = styled.div<IContainerProps>(({ maxWidth, height, margin }) => {
+  export const Container = styled.div<IContainerProps>(({ position, maxWidth, height, margin }) => {
     const css: CSSObject = {
       position: 'relative',
       backgroundColor: Base.WHITE,
@@ -72,6 +73,11 @@ export namespace CSS {
 
     if (margin) {
       css.margin = margin
+    }
+
+    if (position === 'center') {
+      css.margin = '0 auto'
+      css.marginTop = '15%'
     }
 
     return css

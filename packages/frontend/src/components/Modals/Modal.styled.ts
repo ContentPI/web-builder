@@ -4,6 +4,11 @@ export namespace CSS {
   export const Modal = styled.div({
     padding: '1rem',
     borderRadius: '15px',
+    '.modalColumns': {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center'
+    },
     '.modalRows': {
       display: 'flex',
       flexDirection: 'row',
@@ -57,7 +62,6 @@ export namespace CSS {
       textTransform: 'capitalize',
       width: '98.9%',
       margin: 'auto 0.5rem',
-      marginTop: '100px',
       '&.center': {
         justifyContent: 'space-between'
       }

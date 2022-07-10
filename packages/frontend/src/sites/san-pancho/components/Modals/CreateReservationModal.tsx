@@ -11,9 +11,9 @@ import { useI18n } from '@web-builder/i18n'
 import { dates, getEmptyValues, redirectTo, waitFor } from '@web-builder/utils'
 import React, { FC, useEffect, useState } from 'react'
 
-import AddField from './AddField'
+import AddField from '~/components/Modals/AddField'
+import { CSS } from '~/components/Modals/Modal.styled'
 import CREATE_RESERVATION_MUTATION from './createReservation.mutation'
-import { CSS } from './Modal.styled'
 
 type Props = {
   isOpen: boolean
@@ -137,7 +137,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
         [name]: !val
       })
 
-      return
+      return null
     }
 
     setValues({
