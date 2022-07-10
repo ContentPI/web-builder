@@ -8,17 +8,17 @@ const sidebar = (locale = 'en-us') => ({
       subMenu: [
         {
           title: 'blog.create',
-          url: '/dashboard/blog/create'
+          url: `/${locale}/dashboard/blog/create`
         },
         {
           title: 'blog.list',
-          url: '/dashboard/blog'
+          url: `/${locale}/dashboard/blog`
         }
       ]
     },
     {
       title: 'media',
-      url: '/dashboard/media',
+      url: `/${locale}/dashboard/media`,
       icon: 'image'
     },
     {
