@@ -1,6 +1,8 @@
-import { resolve } from 'path'
+import { keys, ts } from '@web-builder/utils'
+import pg from 'pg'
+import { Sequelize } from 'sequelize'
 
-import { db, getRelationships, requireModel } from '../../../db'
+import Config from '../../../config'
 import { Model } from '../../../types'
 
 interface Models extends Model {
@@ -14,23 +16,37 @@ interface Models extends Model {
   Value: any
 }
 
+// Db Connection
+const { engine, port, host, database, username, password } = Config.database ?? {}
+
+const uri = `${engine}://${username}:${password}@${host}:${port}/${database}`
+const sequelize = new Sequelize(uri, {
+  dialectModule: pg
+})
+
 // Models
-const dir = (path: string) => resolve(__dirname, path)
+const addModel = (path: string) => require(path).default(sequelize, Sequelize)
 
 const models: Models = {
-  User: requireModel(dir('../../../models/User')),
-  App: requireModel(dir('./App')),
-  Declaration: requireModel(dir('./Declaration')),
-  Enumeration: requireModel(dir('./Enumeration')),
-  Field: requireModel(dir('./Field')),
-  I18n: requireModel(dir('./I18n')),
-  Model: requireModel(dir('./Model')),
-  Reference: requireModel(dir('./Reference')),
-  Value: requireModel(dir('./Value')),
-  sequelize: db
+  User: addModel('../../../models/User'),
+  App: addModel('./App'),
+  Declaration: addModel('./Declaration'),
+  Enumeration: addModel('./Enumeration'),
+  Field: addModel('./Field'),
+  I18n: addModel('./I18n'),
+  Model: addModel('./Model'),
+  Reference: addModel('./Reference'),
+  Value: addModel('./Value'),
+  sequelize
 }
 
 // Relationships
-const relationships = getRelationships(models)
+keys(models).forEach((modelName: string) => {
+  if (ts.hasKey(models, modelName)) {
+    if (models[modelName].associate) {
+      models[modelName].associate(models)
+    }
+  }
+})
 
-export default relationships
+export default models
