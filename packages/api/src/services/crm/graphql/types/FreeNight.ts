@@ -17,11 +17,11 @@ export default gql`
   }
 
   type Mutation {
-    createFreeNight(input: CreateFreeNightInput): FreeNight!
-    editFreeNight(id: UUID!, input: CreateFreeNightInput): FreeNight!
+    createFreeNight(input: FreeNightInput): FreeNight!
+    editFreeNight(id: UUID!, input: FreeNightInput): FreeNight!
   }
 
-  input CreateFreeNightInput {
+  input FreeNightInput {
     userId: UUID!
     isUsed: Boolean!
     dateOfUse: Datetime

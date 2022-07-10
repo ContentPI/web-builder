@@ -1,13 +1,13 @@
 export default {
   Query: {
     getFreeNights: (_: any, _args: any, { models }: { models: any }): any[] =>
-      models.FreeNights.findAll({}),
+      models.FreeNight.findAll({}),
     getFreeNightsById: async (
       _: any,
       { id }: { id: string },
       { models }: { models: any }
     ): Promise<any> => {
-      const data = await models.FreeNights.findAll({
+      const data = await models.FreeNight.findAll({
         where: {
           id
         }
@@ -22,7 +22,7 @@ export default {
       { input }: { input: any },
       { models }: { models: any }
     ): Promise<any> => {
-      const createdFreeNight = await models.FreeNights.create({ ...input })
+      const createdFreeNight = await models.FreeNight.create({ ...input })
       return createdFreeNight
     },
     editFreeNight: async (
@@ -30,10 +30,10 @@ export default {
       { id, input }: { id: string; input: any },
       { models }: { models: any }
     ): Promise<any> => {
-      const FreeNightToEdit = await models.FreeNights.findByPk(id)
+      const freeNightToEdit = await models.FreeNight.findByPk(id)
 
-      if (FreeNightToEdit) {
-        const updatedFreeNight = await FreeNightToEdit.update({ ...input }, { where: { id } })
+      if (freeNightToEdit) {
+        const updatedFreeNight = await freeNightToEdit.update({ ...input }, { where: { id } })
 
         return updatedFreeNight
       }

@@ -1,12 +1,12 @@
 export default {
   Query: {
-    getExpenses: (_: any, _args: any, { models }: { models: any }) => models.Expenses.findAll({}),
+    getExpenses: (_: any, _args: any, { models }: { models: any }) => models.Expense.findAll({}),
     getExpensesById: async (
       _: any,
       { id }: { id: string },
       { models }: { models: any }
     ): Promise<any> => {
-      const data = await models.Expenses.findAll({
+      const data = await models.Expense.findAll({
         where: {
           id
         }
@@ -21,7 +21,7 @@ export default {
       { input }: { input: any },
       { models }: { models: any }
     ): Promise<any> => {
-      const createdExpense = await models.Expenses.create({ ...input })
+      const createdExpense = await models.Expense.create({ ...input })
       return createdExpense
     },
     editExpense: async (
@@ -29,10 +29,10 @@ export default {
       { id, input }: { id: string; input: any },
       { models }: { models: any }
     ): Promise<any> => {
-      const ExpenseToEdit = await models.Expenses.findByPk(id)
+      const expenseToEdit = await models.Expense.findByPk(id)
 
-      if (ExpenseToEdit) {
-        const updatedExpense = await ExpenseToEdit.update({ ...input }, { where: { id } })
+      if (expenseToEdit) {
+        const updatedExpense = await expenseToEdit.update({ ...input }, { where: { id } })
 
         return updatedExpense
       }

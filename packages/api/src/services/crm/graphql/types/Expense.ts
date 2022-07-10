@@ -16,11 +16,11 @@ export default gql`
   }
 
   type Mutation {
-    createExpense(input: CreateExpenseInput): Expense!
-    editExpense(id: UUID!, input: CreateExpenseInput): Expense!
+    createExpense(input: ExpenseInput): Expense!
+    editExpense(id: UUID!, input: ExpenseInput): Expense!
   }
 
-  input CreateExpenseInput {
+  input ExpenseInput {
     amount: Int!
     concept: String!
     date: Datetime!

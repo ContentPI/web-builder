@@ -21,13 +21,10 @@ export default gql`
 
   type Query {
     getGuests: [Guest!]
-    getGuestbyId(id: String!): Guest!
-    getGuestbyEmail(email: String!): Guest!
+    getGuestByEmail(email: String!): Guest!
   }
 
   type Mutation {
-    createGuest(input: CreateGuestInput): Guest!
-    editGuest(id: UUID!, input: CreateGuestInput): Guest!
     importGuests(input: RefreshTokenInput): [Guest]!
   }
 

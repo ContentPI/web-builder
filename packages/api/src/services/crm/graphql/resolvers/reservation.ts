@@ -1,11 +1,9 @@
 export default {
   Query: {
-    getReservations: (_: any, _args: any, { models }: { models: any }): any[] => {
-      console.log('MODELS====', models)
-      return models.Reservation.findAll({
+    getReservations: (_: any, _args: any, { models }: { models: any }): any[] =>
+      models.Reservation.findAll({
         order: [['startDate', 'ASC']]
-      })
-    },
+      }),
     getReservationById: (_: any, { id }: { id: string }, { models }: { models: any }): any[] =>
       models.Reservation.findAll({
         where: {

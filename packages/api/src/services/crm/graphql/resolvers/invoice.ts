@@ -55,6 +55,7 @@ export default {
       { models }: { models: any }
     ): Promise<any> => {
       const createdInvoice = await models.Invoice.create({ ...input })
+
       return createdInvoice
     },
     editInvoice: async (

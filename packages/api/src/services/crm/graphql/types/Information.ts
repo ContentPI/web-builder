@@ -15,11 +15,11 @@ export default gql`
   }
 
   type Mutation {
-    createInformation(input: CreateInformationInput): Information!
-    editInformation(id: UUID!, input: CreateInformationInput): Information!
+    createInformation(input: InformationInput): Information!
+    editInformation(id: UUID!, input: InformationInput): Information!
   }
 
-  input CreateInformationInput {
+  input InformationInput {
     title: String!
     body: JSON!
     cabin: String!

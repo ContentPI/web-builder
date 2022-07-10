@@ -19,11 +19,11 @@ export default gql`
   }
 
   type Mutation {
-    createInvoiceElement(input: CreateInvoiceElementInput): InvoiceElement!
-    editInvoiceElement(id: UUID!, input: CreateInvoiceElementInput): InvoiceElement!
+    createInvoiceElement(input: InvoiceElementInput): InvoiceElement!
+    editInvoiceElement(id: UUID!, input: InvoiceElementInput): InvoiceElement!
   }
 
-  input CreateInvoiceElementInput {
+  input InvoiceElementInput {
     invoiceId: UUID!
     description: String!
     quantity: Int!
