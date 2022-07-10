@@ -22,7 +22,6 @@ export default gql`
       identifier
       icon
       description
-      userId
     }
   }
 `
