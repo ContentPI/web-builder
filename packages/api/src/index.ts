@@ -7,14 +7,14 @@ import express from 'express'
 import expressJwt from 'express-jwt'
 import { applyMiddleware } from 'graphql-middleware'
 
-import resolversBlog from './services/blog/graphql/resolvers'
-import typeDefsBlog from './services/blog/graphql/types'
-import modelsBlog from './services/blog/models'
-import setInitialSeedsBlog from './services/blog/seeds'
 import resolversCMS from './services/cms/graphql/resolvers'
 import typeDefsCMS from './services/cms/graphql/types'
 import modelsCMS from './services/cms/models'
 import setInitialSeedsCMS from './services/cms/seeds'
+import resolversContentPI from './services/contentpi/graphql/resolvers'
+import typeDefsContentPI from './services/contentpi/graphql/types'
+import modelsContentPI from './services/contentpi/models'
+import setInitialSeedsContentPI from './services/contentpi/seeds'
 import resolversCRM from './services/crm/graphql/resolvers'
 import typeDefsCRM from './services/crm/graphql/types'
 import modelsCRM from './services/crm/models'
@@ -25,25 +25,25 @@ const service = process.env.SERVICE ?? 'default'
 const seeds: any = {
   cms: setInitialSeedsCMS,
   crm: setInitialSeedsCRM,
-  blog: setInitialSeedsBlog
+  contentpi: setInitialSeedsContentPI
 }
 
 const models: any = {
   cms: modelsCMS,
   crm: modelsCRM,
-  blog: modelsBlog
+  contentpi: modelsContentPI
 }
 
 const resolvers: any = {
   cms: resolversCMS,
   crm: resolversCRM,
-  blog: resolversBlog
+  contentpi: resolversContentPI
 }
 
 const typeDefs: any = {
   cms: typeDefsCMS,
   crm: typeDefsCRM,
-  blog: typeDefsBlog
+  contentpi: typeDefsContentPI
 }
 
 const app = express()
