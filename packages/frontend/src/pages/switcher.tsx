@@ -17,6 +17,17 @@ const dynamicPages: Record<string, Record<string, any>> = {
       index: dynamic(() => import('../sites/codejobs/pages/dashboard'))
     }
   },
+  [Site.ContentPI]: {
+    index: {
+      index: dynamic(() => import('../sites/contentpi/pages/index'))
+    },
+    login: {
+      index: dynamic(() => import('../sites/contentpi/pages/login'))
+    },
+    dashboard: {
+      index: dynamic(() => import('../sites/contentpi/pages/dashboard'))
+    }
+  },
   [Site.SanPancho]: {
     index: {
       index: dynamic(() => import('../sites/san-pancho/pages/index'))

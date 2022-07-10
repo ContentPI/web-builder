@@ -2,6 +2,7 @@ import { is } from '@web-builder/utils'
 
 import { config as blankPageConfig } from './sites/blank-page/config'
 import { config as codejobsConfig } from './sites/codejobs/config'
+import { config as contentpiConfig } from './sites/contentpi/config'
 import { config as sanPanchoConfig } from './sites/san-pancho/config'
 import { Site, SiteBuilderConfiguration, SiteConfiguration } from './types/config'
 
@@ -11,6 +12,8 @@ const getSiteConfig = (site: Site): SiteConfiguration => {
   switch (site) {
     case Site.CodeJobs:
       return codejobsConfig
+    case Site.ContentPI:
+      return contentpiConfig
     case Site.SanPancho:
       return sanPanchoConfig
     default:

@@ -3,6 +3,7 @@ import { ValueOf } from '@web-builder/utils'
 
 export const Site = {
   CodeJobs: 'codejobs',
+  ContentPI: 'contentpi',
   SanPancho: 'san-pancho',
   BlankPage: 'blank-page'
 } as const
