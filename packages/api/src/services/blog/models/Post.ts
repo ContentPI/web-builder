@@ -1,26 +1,42 @@
 import { DataType } from '../../../types'
 
 export default (sequelize: any, DataTypes: DataType) => {
-  const I18n = sequelize.define('I18n', {
+  const Post = sequelize.define('Post', {
     id: {
       primaryKey: true,
       allowNull: false,
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4()
     },
-    key: {
+    author: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    value: {
+    poster: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    category: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    language: {
+    title: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    slug: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    content: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    codes: {
+      type: DataTypes.TEXT,
       allowNull: false
     }
   })
 
-  return I18n
+  return Post
 }

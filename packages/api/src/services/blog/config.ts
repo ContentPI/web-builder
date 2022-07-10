@@ -1,9 +1,9 @@
 import { ServiceConfiguration } from '../../types/config'
 
 export const config: ServiceConfiguration = {
-  domainName: 'contentpi.com',
+  domainName: 'blog.com',
   port: 4000,
   database: {
-    database: 'contentpi'
+    database: 'blog'
   }
 }

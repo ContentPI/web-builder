@@ -3,7 +3,7 @@ import { ValueOf } from '@web-builder/utils'
 export const Service = {
   CMS: 'cms',
   CRM: 'crm',
-  ContentPI: 'contentpi'
+  Blog: 'blog'
 } as const
 
 export type Service = ValueOf<typeof Service>
