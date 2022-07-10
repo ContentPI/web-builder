@@ -5,6 +5,10 @@ import { Sequelize } from 'sequelize'
 import Config from '../../../config'
 import { Model } from '../../../types'
 
+interface Models extends Model {
+  Post: any
+}
+
 // Db Connection
 const { engine, port, host, database, username, password } = Config.database ?? {}
 
@@ -16,7 +20,7 @@ const sequelize = new Sequelize(uri, {
 // Models
 const addModel = (path: string) => require(path).default(sequelize, Sequelize)
 
-const models: Model = {
+const models: Models = {
   User: require('../../../models/User').default(sequelize, Sequelize),
   Post: addModel('./Post'),
   sequelize

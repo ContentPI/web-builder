@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 
 import { config as cmsConfig } from './services/cms/config'
+import { config as contentPIConfig } from './services/contentpi/config'
 import { config as crmConfig } from './services/crm/config'
 import { config as blankServiceConfig } from './services/default/config'
 import { Service, ServiceBuilderConfiguration, ServiceConfiguration } from './types/config'
@@ -14,6 +15,8 @@ const getServiceConfig = (service: Service): ServiceConfiguration => {
       return cmsConfig
     case Service.CRM:
       return crmConfig
+    case Service.ContentPI:
+      return contentPIConfig
     default:
       return blankServiceConfig
   }

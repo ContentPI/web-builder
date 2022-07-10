@@ -11,6 +11,10 @@ import resolversCMS from './services/cms/graphql/resolvers'
 import typeDefsCMS from './services/cms/graphql/types'
 import modelsCMS from './services/cms/models'
 import setInitialSeedsCMS from './services/cms/seeds'
+import resolversContentPI from './services/contentpi/graphql/resolvers'
+import typeDefsContentPI from './services/contentpi/graphql/types'
+import modelsContentPI from './services/contentpi/models'
+import setInitialSeedsContentPI from './services/contentpi/seeds'
 import resolversCRM from './services/crm/graphql/resolvers'
 import typeDefsCRM from './services/crm/graphql/types'
 import modelsCRM from './services/crm/models'
@@ -20,22 +24,26 @@ const service = process.env.SERVICE ?? 'default'
 
 const seeds: any = {
   cms: setInitialSeedsCMS,
-  crm: setInitialSeedsCRM
+  crm: setInitialSeedsCRM,
+  contentpi: setInitialSeedsContentPI
 }
 
 const models: any = {
   cms: modelsCMS,
-  crm: modelsCRM
+  crm: modelsCRM,
+  contentpi: modelsContentPI
 }
 
 const resolvers: any = {
   cms: resolversCMS,
-  crm: resolversCRM
+  crm: resolversCRM,
+  contenpi: resolversContentPI
 }
 
 const typeDefs: any = {
   cms: typeDefsCMS,
-  crm: typeDefsCRM
+  crm: typeDefsCRM,
+  contentpi: typeDefsContentPI
 }
 
 const app = express()
@@ -85,7 +93,7 @@ const apolloServer = new ApolloServer({
 })
 
 const alter = true
-const force = false
+const force = true
 
 if (!models[service]) {
   throw 'Invalid service'
