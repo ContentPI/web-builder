@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-import { customThemesCssVars, themeRootVars } from '../src/theme'
+import { customThemesCssVars } from '../src/theme'
 import poppins from './fonts/poppins'
 
 const fontStyles = `
@@ -36,7 +36,6 @@ const htmlReset = `
 const GlobalStyles = createGlobalStyle`
   ${htmlReset}
   ${fontStyles}
-  ${themeRootVars}
   ${customThemesCssVars}
 `
 

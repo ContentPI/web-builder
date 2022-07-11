@@ -50,3 +50,5 @@ export enum Yellow {
   V200 = '#FB9F44',
   V250 = '#976f1a'
 }
+
+export type ColorPalette = Base | Blue | Gray | Green | Red | Yellow

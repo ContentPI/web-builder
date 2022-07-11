@@ -1,4 +1,4 @@
-import { globalStyles, updateTheme } from '@web-builder/design-system'
+import { globalStyles, Gray, updateTheme } from '@web-builder/design-system'
 import { createGlobalStyle } from 'styled-components'
 
 import Config from '~/config'
@@ -9,11 +9,11 @@ const bodyBg = `
   height: 100vh;
 `
 
-const updatedThemeVars = updateTheme({
+const updatedThemeVars = updateTheme('dark', {
   palette: {
     primary: {
       common: {
-        main: '#DDDDDD'
+        main: Gray.V300
       }
     }
   }

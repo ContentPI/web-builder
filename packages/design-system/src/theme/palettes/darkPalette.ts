@@ -1,8 +1,6 @@
 import { ValueOf } from '@web-builder/utils'
 
-import { Base, Blue, Gray, Green, Red, Yellow } from './color'
-
-export type ColorPalette = Base | Blue | Gray | Green | Red | Yellow
+import { Base, Blue, ColorPalette, Gray, Green, Red, Yellow } from '../color'
 
 type Palette = {
   alert?: {

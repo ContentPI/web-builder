@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
         </Head>
-        <body>
+        <body data-theme="light">
           <Main />
           <NextScript />
         </body>

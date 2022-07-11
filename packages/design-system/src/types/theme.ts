@@ -1,4 +1,4 @@
-import { IPalette } from '../theme/palette'
+import { IPalette } from '../theme/palettes/lightPalette'
 import { ITypography } from './typography'
 
 export interface Theme {

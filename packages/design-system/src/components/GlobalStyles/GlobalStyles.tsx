@@ -1,4 +1,4 @@
-import { customThemesCssVars, themeRootVars } from '../../theme'
+import { customThemesCssVars } from '../../theme'
 import poppins from './fonts/poppins'
 
 const fontStyles = `
@@ -54,7 +54,6 @@ const GlobalStyles = `
   ${htmlReset}
   ${fontStyles}
   ${keyframes}
-  ${themeRootVars}
   ${customThemesCssVars}
 `
 

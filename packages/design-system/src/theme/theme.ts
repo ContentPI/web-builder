@@ -1,22 +1,33 @@
 import { merge } from '@web-builder/utils'
 
 import { Theme } from '../types'
-import palette from './palette'
+import darkPalette from './palettes/darkPalette'
+import lightPalette from './palettes/lightPalette'
 import typography from './typography'
 import { generateThemeVars, generateVarNames, getRootVars } from './utils'
 
-const theme: Theme = {
+const lightTheme: Theme = {
   typography,
-  palette
+  palette: lightPalette
 }
 
-export const themeCssVars = generateVarNames({ values: theme })
-export const themeRootVars = getRootVars(theme)
-export const customThemesCssVars = generateThemeVars({})
+const darkTheme: Theme = {
+  ...lightPalette,
+  palette: darkPalette
+}
 
-export const updateTheme = (updatedTheme: any) => {
+export const themeCssVars = generateVarNames({ values: lightTheme })
+export const customThemesCssVars = generateThemeVars({
+  light: lightTheme,
+  dark: darkTheme
+})
+
+type ThemeName = 'light' | 'dark'
+
+export const updateTheme = (themeName: ThemeName, updatedTheme: any) => {
+  const theme = themeName === 'light' ? lightTheme : darkTheme
   const mergedTheme: Theme = merge(theme, updatedTheme)
-  const cssVars = generateThemeVars({ values: mergedTheme })
+  const cssVars = generateThemeVars({ light: mergedTheme })
   const rootVars = getRootVars(mergedTheme)
 
   return `
@@ -25,4 +36,7 @@ export const updateTheme = (updatedTheme: any) => {
   `
 }
 
-export default theme
+export default {
+  lightTheme,
+  darkTheme
+}
