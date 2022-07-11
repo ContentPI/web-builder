@@ -1,4 +1,4 @@
-import { globalStyles } from '@web-builder/design-system'
+import { globalStyles, updateTheme } from '@web-builder/design-system'
 import { createGlobalStyle } from 'styled-components'
 
 import Config from '~/config'
@@ -8,6 +8,16 @@ const bodyBg = `
   animation: gradient 15s ease infinite;
   height: 100vh;
 `
+
+const updatedThemeVars = updateTheme({
+  palette: {
+    primary: {
+      common: {
+        main: '#DDDDDD'
+      }
+    }
+  }
+})
 
 let loginBackground = ''
 
@@ -22,6 +32,7 @@ if (Config.theme?.brandColors) {
 
 const GlobalStyle = createGlobalStyle`
   ${globalStyles}
+  ${updatedThemeVars}
 
   body {
     ${loginBackground}

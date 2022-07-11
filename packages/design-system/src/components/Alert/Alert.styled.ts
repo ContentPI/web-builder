@@ -45,16 +45,16 @@ const alignmentStyles: CSSObject = {
 
 // Component
 export namespace CSS {
-  export const Alert = styled.div({
-    border: '1px solid transparent',
-    borderRadius: '0.25rem',
-    fontSize: FontSize.regular,
-    marginBottom: '1rem',
-    padding: '0.75rem 1.25rem',
-    position: 'relative',
-    width: '100%',
-    ...alignmentStyles,
-    ...colorStyles,
-    ...shapeStyles
-  })
+  export const Alert = styled.div`
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: ${FontSize.regular};
+    margin-bottom: 1rem;
+    padding: 0.75rem 1.25rem;
+    position: relative;
+    width: 100%;
+    ${alignmentStyles}
+    ${colorStyles}
+    ${shapeStyles}
+  `
 }

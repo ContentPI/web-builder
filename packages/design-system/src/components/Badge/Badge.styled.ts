@@ -26,18 +26,18 @@ const shapeStyles: CSSObject = {
 
 // Styles
 export namespace CSS {
-  export const Badge = styled.span({
-    border: '1px solid inherit',
-    borderRadius: '0.25rem',
-    display: 'inline-block',
-    fontSize: '75%',
-    fontWeight: FontWeight.normal,
-    lineHeight: 1,
-    padding: '0.3em 0.45em',
-    verticalAlign: 'baseline',
-    textAlign: 'center',
-    whiteSpace: 'nowrap',
-    ...colorStyles,
-    ...shapeStyles
-  })
+  export const Badge = styled.span`
+    border: 1px solid inherit;
+    border-radius: 0.25rem;
+    display: inline-block;
+    font-size: 75%;
+    font-weight: ${FontWeight.normal};
+    line-height: 1;
+    padding: 0.3em 0.45em;
+    vertical-align: baseline;
+    text-align: center;
+    white-space: nowrap;
+    ${colorStyles}
+    ${shapeStyles}
+  `
 }
