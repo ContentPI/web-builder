@@ -7,44 +7,12 @@ import express from 'express'
 import expressJwt from 'express-jwt'
 import { applyMiddleware } from 'graphql-middleware'
 
-import resolversCMS from './services/cms/graphql/resolvers'
-import typeDefsCMS from './services/cms/graphql/types'
-import modelsCMS from './services/cms/models'
-import setInitialSeedsCMS from './services/cms/seeds'
-import resolversContentPI from './services/contentpi/graphql/resolvers'
-import typeDefsContentPI from './services/contentpi/graphql/types'
-import modelsContentPI from './services/contentpi/models'
-import setInitialSeedsContentPI from './services/contentpi/seeds'
-import resolversCRM from './services/crm/graphql/resolvers'
-import typeDefsCRM from './services/crm/graphql/types'
-import modelsCRM from './services/crm/models'
-import setInitialSeedsCRM from './services/crm/seeds'
+const service = process.env.SERVICE ?? 'blank-service'
 
-const service = process.env.SERVICE ?? 'default'
-
-const seeds: any = {
-  cms: setInitialSeedsCMS,
-  crm: setInitialSeedsCRM,
-  contentpi: setInitialSeedsContentPI
-}
-
-const models: any = {
-  cms: modelsCMS,
-  crm: modelsCRM,
-  contentpi: modelsContentPI
-}
-
-const resolvers: any = {
-  cms: resolversCMS,
-  crm: resolversCRM,
-  contentpi: resolversContentPI
-}
-
-const typeDefs: any = {
-  cms: typeDefsCMS,
-  crm: typeDefsCRM,
-  contentpi: typeDefsContentPI
-}
+const resolvers = require(`./services/${service}/graphql/resolvers`).default
+const typeDefs = require(`./services/${service}/graphql/types`).default
+const models = require(`./services/${service}/models`).default
+const seeds = require(`./services/${service}/seeds`).default
 
 const app = express()
 
@@ -74,8 +42,8 @@ app.use((req, res, next) => {
 // Schema
 const schema = applyMiddleware(
   makeExecutableSchema({
-    typeDefs: typeDefs[service],
-    resolvers: resolvers[service]
+    typeDefs,
+    resolvers
   })
 )
 
@@ -95,18 +63,18 @@ const apolloServer = new ApolloServer({
 const alter = true
 const force = false
 
-if (!models[service]) {
+if (!service) {
   throw 'Invalid service'
 }
 
-models[service].sequelize.sync({ alter, force }).then(() => {
+models.sequelize.sync({ alter, force }).then(() => {
   apolloServer.start().then(() => {
     apolloServer.applyMiddleware({ app, path: '/graphql', cors: corsOptions })
 
     app.listen({ port: 4000 }, () => {
       // Setting up initial seeds
       console.log('Initializing Seeds...')
-      seeds[service]()
+      seeds()
 
       // eslint-disable-next-line no-console
       console.log('Running on http://localhost:4000')
