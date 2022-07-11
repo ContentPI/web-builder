@@ -1,5 +1,6 @@
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import { secretKey } from '@web-builder/authentication'
+import { ts } from '@web-builder/utils'
 import { ApolloServer } from 'apollo-server-express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
@@ -7,7 +8,13 @@ import express from 'express'
 import expressJwt from 'express-jwt'
 import { applyMiddleware } from 'graphql-middleware'
 
-const service = process.env.SERVICE ?? 'blank-service'
+import { Service } from './types/config'
+
+const service: any = process.env.SERVICE ?? 'blank-service'
+
+if (!ts.includes(Service, service)) {
+  throw 'Invalid service'
+}
 
 const resolvers = require(`./services/${service}/graphql/resolvers`).default
 const typeDefs = require(`./services/${service}/graphql/types`).default
@@ -62,10 +69,6 @@ const apolloServer = new ApolloServer({
 
 const alter = true
 const force = false
-
-if (!service) {
-  throw 'Invalid service'
-}
 
 models.sequelize.sync({ alter, force }).then(() => {
   apolloServer.start().then(() => {
