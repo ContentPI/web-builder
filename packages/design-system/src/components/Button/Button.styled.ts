@@ -141,8 +141,8 @@ export namespace CSS {
     position: 'relative',
     img: {
       position: 'absolute',
-      left: '15px',
-      top: '15px',
+      left: '10px',
+      top: '12px',
       "*[dir='rtl'] &": {
         right: '15px'
       }
