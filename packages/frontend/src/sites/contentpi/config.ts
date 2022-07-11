@@ -4,7 +4,7 @@ export const config: SiteConfiguration = {
   siteTitle: 'ContentPI',
   domainName: 'contentpi.com',
   theme: {
-    brandColors: ['#465f95', '#537f6b', '#ffcd44', '#7f7171']
+    brandColors: ['#0499dc', '#00bde5', '#212121', '#000000']
   },
   api: {
     uri: 'https://contentpi.com/graphql'
