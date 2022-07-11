@@ -16,7 +16,6 @@
     "build:authentication": "cd ./packages/authentication && npm run build",
     "build:design-system": "cd ./packages/design-system && npm run build",
     "build:api": "cd ./packages/api && npm run build",
-    "build:frontend": "cd ./packages/frontend && npm run build",
     "webdriver:wdio": "cd ./packages/webdriver && npm run wdio",
     "api:webpack:production": "webpack --config=webpack.config.ts --env mode=production --env type=api --env packageName=api",
     "api:webpack:development": "webpack --config=webpack.config.ts --env mode=development --env type=api --env packageName=api",
