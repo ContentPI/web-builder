@@ -61,7 +61,7 @@ const apolloServer = new ApolloServer({
     const user: any = req.user || null
 
     return {
-      models: models[service],
+      models,
       user
     }
   }
