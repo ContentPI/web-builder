@@ -1,11 +1,9 @@
 import { makeExecutableSchema } from '@graphql-tools/schema'
-import { secretKey } from '@web-builder/authentication'
 import { ts } from '@web-builder/utils'
 import { ApolloServer } from 'apollo-server-express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express from 'express'
-import { expressjwt } from 'express-jwt'
 import { applyMiddleware } from 'graphql-middleware'
 
 import { Service } from './types/config'
@@ -32,14 +30,6 @@ app.use(cors(corsOptions))
 
 app.use(cookieParser())
 
-// app.use(
-//   expressjwt({
-//     secret: secretKey,
-//     algorithms: ['HS256'],
-//     credentialsRequired: false
-//   })
-// )
-
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
@@ -57,14 +47,9 @@ const schema = applyMiddleware(
 // Apollo Server
 const apolloServer = new ApolloServer({
   schema,
-  context: async ({ req }: any) => {
-    const user: any = req.user || null
-
-    return {
-      models,
-      user
-    }
-  }
+  context: async () => ({
+    models
+  })
 })
 
 const alter = true
