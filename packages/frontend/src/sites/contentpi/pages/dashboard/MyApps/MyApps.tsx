@@ -9,7 +9,7 @@ const MyApps: FC<any> = ({ apps }) => (
   <CSS.MyApps>
     <div className="header">
       <div className="logo">
-        <img src="/images/logo.png" alt="Logo" />
+        <img src="/images/isotype.png" alt="Logo" />
       </div>
     </div>
 

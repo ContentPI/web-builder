@@ -9,7 +9,8 @@ const { engine, port, host, database, username, password } = Config.database ?? 
 
 const uri = `${engine}://${username}:${password}@${host}:${port}/${database}`
 const sequelize = new Sequelize(uri, {
-  dialectModule: pg
+  dialectModule: pg,
+  logging: process.env.LOGGING !== 'false'
 })
 
 // Models
