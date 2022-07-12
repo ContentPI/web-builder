@@ -1,9 +1,8 @@
 import { gql } from '@apollo/client'
 
 export default gql`
-  query getGuestById($id: String!) {
-    getGuestbyId(id: $id) {
-      id
+  query getGuestByGoogleContactId($googleContactId: String!) {
+    getGuestByGoogleContactId(googleContactId: $googleContactId) {
       googleContactId
       fullName
       email

@@ -22,6 +22,33 @@ export default {
         ],
         order: [['fullName', 'ASC']]
       }),
+    getGuestByGoogleContactId: async (
+      _: any,
+      { googleContactId }: { googleContactId: string },
+      { models }: { models: any }
+    ): Promise<any> => {
+      const data = await models.Guest.findAll({
+        where: {
+          googleContactId
+        },
+        include: [
+          {
+            model: models.Reservation,
+            as: 'reservations'
+          },
+          {
+            model: models.FreeNight,
+            as: 'freeNights'
+          },
+          {
+            model: models.Invoice,
+            as: 'invoice'
+          }
+        ]
+      })
+
+      return data[0]
+    },
     getGuestByEmail: async (
       _: any,
       { email }: { email: string },

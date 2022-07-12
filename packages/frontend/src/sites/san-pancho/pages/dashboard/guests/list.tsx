@@ -9,14 +9,15 @@ import DashboardLayout from '~/components/Dashboard/Layout'
 import GET_GUESTS_QUERY from './getGuests.query'
 import IMPORT_GUESTS_MUTATION from './importGuests.mutation'
 
-const Guests: FC<any> = ({ guests }) => {
+const Guests: FC<any> = ({ data }) => {
   const { t } = useI18n()
+
+  const { getGuests: guests } = data
 
   const [filteredGuests, setFilteredGuests] = useState([])
   const [pages, setPage] = useState(1)
   const [search, setSearch] = useState<string>('')
   const [token, setToken] = useState<string>('')
-  const [openCreateGuestModal, setOpenCreateGuestModal] = useState(false)
 
   // Mutations
   const [importGuestsMutation] = useMutation(IMPORT_GUESTS_MUTATION)
@@ -66,7 +67,7 @@ const Guests: FC<any> = ({ guests }) => {
 
     return filteredGuests.map((prop: any) => [
       <p>
-        <a href={`./guests/${prop.googleContactId}`}>{prop.fullName}</a>
+        <a href={`./profile/${prop.googleContactId}`}>{prop.fullName}</a>
       </p>,
       <p>{prop.email}</p>,
       <a href={`${prop.socialMedia}`} target="_blank" rel="noreferrer">
@@ -123,7 +124,7 @@ const Guests: FC<any> = ({ guests }) => {
   )
 }
 
-const onSuccess: FC<any> = (data: any) => <Guests guests={data.getGuests} />
+const onSuccess: FC<any> = (props: any) => <Guests {...props} />
 const Connector: FC = () => <ApolloConnector query={GET_GUESTS_QUERY} onSuccess={onSuccess} />
 
 export default Connector

@@ -22,6 +22,7 @@ export default gql`
   type Query {
     getGuests: [Guest!]
     getGuestByEmail(email: String!): Guest!
+    getGuestByGoogleContactId(googleContactId: String!): Guest!
   }
 
   type Mutation {
