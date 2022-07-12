@@ -5,7 +5,7 @@ export default (sequelize: any, DataTypes: DataType) => {
     googleContactId: {
       primaryKey: true,
       allowNull: false,
-      type: DataTypes.UUID
+      type: DataTypes.STRING
     },
     fullName: {
       type: DataTypes.STRING,
