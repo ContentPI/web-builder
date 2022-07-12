@@ -44,13 +44,7 @@ const ButtonComponent: FC<Props> = ({
   })
 
   if (isLoading) {
-    buttonText = (
-      <>
-        <Spinner style={{ width: '18px' }} />
-        &nbsp;&nbsp;&nbsp;
-        {loadingText}
-      </>
-    )
+    buttonText = <span className="loading">{loadingText}...</span>
   }
 
   if (href) {
