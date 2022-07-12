@@ -8,7 +8,9 @@ import DashboardLayout from '~/components/Dashboard/Layout'
 import CreateReservationModal from '../../../components/Modals/CreateReservationModal'
 import GET_RESERVATIONS_AND_GUESTS_QUERY from './getReservationsAndGuests.query'
 
-const Reservations: FC<any> = ({ reservations, guests }) => {
+const Reservations: FC<any> = ({ data }) => {
+  const { getReservations: reservations, getGuests: guests } = data
+
   const [reservationType, setReservationType] = useState('stone')
   const [events, setEvents] = useState<any>([])
   const [openCreateReservationModal, setOpenCreateReservationModal] = useState(false)
@@ -111,9 +113,7 @@ const Reservations: FC<any> = ({ reservations, guests }) => {
   )
 }
 
-const onSuccess: FC<any> = (data: any) => (
-  <Reservations reservations={data.getReservations} guests={data.getGuests} />
-)
+const onSuccess: FC<any> = (props: any) => <Reservations {...props} />
 
 const Connector: FC = () => (
   <ApolloConnector query={GET_RESERVATIONS_AND_GUESTS_QUERY} onSuccess={onSuccess} />

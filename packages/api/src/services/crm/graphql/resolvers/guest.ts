@@ -22,14 +22,14 @@ export default {
         ],
         order: [['fullName', 'ASC']]
       }),
-    getGuestByEmail: async (
+    getGuestByGoogleContactId: async (
       _: any,
-      { email }: { email: string },
+      { googleContactId }: { googleContactId: string },
       { models }: { models: any }
     ): Promise<any> => {
       const data = await models.Guest.findAll({
         where: {
-          email
+          googleContactId
         },
         include: [
           {

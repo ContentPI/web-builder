@@ -2,7 +2,6 @@ import { cx } from '@web-builder/utils'
 import React, { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
 
 import { ButtonVariant, Color, Shape, Size, Variant } from '../../types'
-import Spinner from '../Spinner'
 import { BASE_CLASS_NAME, CSS } from './Button.styled'
 
 interface Props extends ComponentPropsWithoutRef<'button'> {

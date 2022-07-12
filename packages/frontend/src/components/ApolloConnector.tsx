@@ -5,9 +5,15 @@ type ApolloConnectorProps = {
   query: DocumentNode
   variables?: Record<string, any>
   onSuccess: (data: any) => any
+  props?: any
 }
 
-const ApolloConnector: FC<ApolloConnectorProps> = ({ query, variables = {}, onSuccess }) => {
+const ApolloConnector: FC<ApolloConnectorProps> = ({
+  query,
+  variables = {},
+  onSuccess,
+  props = {}
+}) => {
   const queryOptions: OperationVariables = {
     variables: {
       ...variables
@@ -22,7 +28,7 @@ const ApolloConnector: FC<ApolloConnectorProps> = ({ query, variables = {}, onSu
   }
 
   if (data) {
-    return onSuccess(data)
+    return onSuccess({ data, ...props })
   }
 
   return <div />

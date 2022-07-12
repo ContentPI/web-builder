@@ -8,6 +8,7 @@ export default gql`
     photo: String!
     socialMedia: String!
     location: String!
+    phone: String!
     gender: String!
     birthday: String
     organization: String!
@@ -21,7 +22,7 @@ export default gql`
 
   type Query {
     getGuests: [Guest!]
-    getGuestByEmail(email: String!): Guest!
+    getGuestByGoogleContactId(googleContactId: String!): Guest!
   }
 
   type Mutation {
@@ -30,18 +31,5 @@ export default gql`
 
   input RefreshTokenInput {
     refreshToken: String!
-  }
-
-  input CreateGuestInput {
-    googleContactId: UUID!
-    fullName: String!
-    email: String!
-    photo: String!
-    socialMedia: String!
-    location: String!
-    gender: String!
-    birthday: String
-    organization: String!
-    note: String!
   }
 `
