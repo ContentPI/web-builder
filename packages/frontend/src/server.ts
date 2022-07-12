@@ -157,14 +157,17 @@ nextApp.prepare().then(() => {
     }
   )
 
-  // Traffic handling
-  app.all('*', (req: Request, res: Response) => {
+  // Setting userLanguage cookie
+  app.use((req: Request, res: Response, next: NextFunction) => {
     const userLanguage = getUserLanguage(req.headers['accept-language'] || '', Config.i18n.locales)
 
     res.cookie('userLanguage', userLanguage.toLowerCase())
 
-    handle(req, res)
+    next()
   })
+
+  // Traffic handling
+  app.all('*', (req: Request, res: Response) => handle(req, res))
 
   // Listening...
   app.listen(3000)
