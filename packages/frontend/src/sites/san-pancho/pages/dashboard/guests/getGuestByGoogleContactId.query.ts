@@ -6,6 +6,7 @@ export default gql`
       googleContactId
       fullName
       email
+      phone
       photo
       socialMedia
       location
