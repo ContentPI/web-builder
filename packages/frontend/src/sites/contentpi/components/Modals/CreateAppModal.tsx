@@ -27,7 +27,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose }) => {
     identifier: '',
     icon: '',
     description: '',
-    userId: user && user.id
+    userId: ''
   }
 
   const [values, setValues] = useState<any>(initialValues)
@@ -44,7 +44,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose }) => {
 
   // Methods
   const handleSubmit = async (): Promise<void> => {
-    const variables = { ...values }
+    const variables = { ...values, userId: user.id }
     const emptyValues = getEmptyValues(values, ['appName', 'identifier'])
 
     if (emptyValues) {
