@@ -12,11 +12,14 @@ type Props = {
 
 const Page: FC<Props> = ({ site, siteTitle }) => {
   const router = useRouter()
-  const { page = 'index', params = [] } = router.query
+  const { page = 'index', params = [], pageNumber } = router.query
 
   const route = {
     page: page as string,
-    params: params as string[]
+    urlParams: params as string[],
+    queryParams: {
+      ...(pageNumber && { pageNumber: pageNumber as string })
+    }
   }
 
   return <SwitcherPage site={site} route={route} siteTitle={siteTitle} />

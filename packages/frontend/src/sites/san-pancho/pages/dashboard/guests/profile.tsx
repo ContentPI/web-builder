@@ -4,12 +4,15 @@ import ApolloConnector from '~/components/ApolloConnector'
 import DashboardLayout from '~/components/Dashboard/Layout'
 import GET_GUEST_BY_GOOGLE_CONTACT_ID_QUERY from './getGuestByGoogleContactId.query'
 
-type Props = {
-  params?: string[]
+type ProfileProps = {
   data?: any
 }
 
-const Profile: FC<Props> = ({ data }) => {
+type ConnectorProps = {
+  urlParams: string[]
+}
+
+const Profile: FC<ProfileProps> = ({ data }) => {
   const { getGuestByGoogleContactId: profile } = data
 
   return (
@@ -29,8 +32,8 @@ const Profile: FC<Props> = ({ data }) => {
   )
 }
 const onSuccess: FC<any> = (props: any) => <Profile {...props} />
-const Connector: FC<Props> = ({ params = [] }) => {
-  const [googleContactId] = params
+const Connector: FC<ConnectorProps> = ({ urlParams }) => {
+  const [googleContactId] = urlParams
 
   return (
     <ApolloConnector
@@ -39,7 +42,7 @@ const Connector: FC<Props> = ({ params = [] }) => {
       variables={{
         googleContactId
       }}
-      props={{ params }}
+      props={{}}
     />
   )
 }
