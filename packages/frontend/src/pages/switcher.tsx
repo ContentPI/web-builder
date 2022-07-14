@@ -49,7 +49,8 @@ const dynamicPages: Record<string, Record<string, any>> = {
 type Route = {
   page: string
   section?: string
-  params?: string[]
+  urlParams?: string[]
+  queryParams?: Record<string, string>
 }
 
 type Props = {
@@ -60,8 +61,13 @@ type Props = {
 }
 
 const Switcher: FC<Props> = ({ site, route, props = {}, siteTitle }) => {
-  const { page, params = [] } = route
-  const [section = 'index', ...moreParams] = params
+  const { page, urlParams = [], queryParams = {} } = route
+  const [section = 'index', ...urlMoreParams] = urlParams
+  const mergedParams = {
+    urlParams: urlMoreParams,
+    queryParams
+  }
+
   let PageToRender
 
   if (page) {
@@ -76,7 +82,7 @@ const Switcher: FC<Props> = ({ site, route, props = {}, siteTitle }) => {
     <>
       <Helmet title={page as string} site={siteTitle || ''} />
 
-      <PageToRender {...props} params={moreParams} />
+      <PageToRender {...props} {...mergedParams} />
     </>
   )
 }
