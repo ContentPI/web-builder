@@ -1,4 +1,5 @@
 import { Icon } from '@web-builder/design-system'
+import { useI18n } from '@web-builder/i18n'
 import React, { FC, useState } from 'react'
 
 import CreateAppModal from '~/sites/contentpi/components/Modals/CreateAppModal'
@@ -23,6 +24,9 @@ type Props = {
   items: any[]
 }
 const Cards: FC<Props> = ({ items = [] }) => {
+  // Contexts
+  const { t } = useI18n()
+
   // Local state
   const [isOpen, setIsOpen] = useState(false)
 
@@ -31,9 +35,9 @@ const Cards: FC<Props> = ({ items = [] }) => {
 
   return (
     <CSS.Cards>
-      <h1>My Apps</h1>
+      <h1>{t('myApps')}</h1>
 
-      <CreateAppModal label="Create New App" isOpen={isOpen} onClose={handleModal} />
+      <CreateAppModal label={t('createNewApp')} isOpen={isOpen} onClose={handleModal} />
 
       <ul>
         {items.map((app) => (
@@ -52,7 +56,7 @@ const Cards: FC<Props> = ({ items = [] }) => {
               <Icon type="fas fa-plus" />
             </section>
 
-            <span className="createNewApp">Create New App</span>
+            <span className="createNewApp">{t('createNewApp')}</span>
           </section>
         </li>
       </ul>
