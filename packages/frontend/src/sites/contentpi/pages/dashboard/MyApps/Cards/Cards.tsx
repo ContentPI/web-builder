@@ -22,7 +22,7 @@ const AppIcon: FC<AppIconProps> = ({ app, hideName }) => (
 type Props = {
   items: any[]
 }
-const Cards: FC<Props> = ({ items }) => {
+const Cards: FC<Props> = ({ items = [] }) => {
   // Local state
   const [isOpen, setIsOpen] = useState(false)
 
