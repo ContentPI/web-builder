@@ -25,7 +25,8 @@ const dynamicPages: Record<string, Record<string, any>> = {
       index: dynamic(() => import('../sites/contentpi/pages/login'))
     },
     dashboard: {
-      index: dynamic(() => import('../sites/contentpi/pages/dashboard'))
+      index: dynamic(() => import('../sites/contentpi/pages/dashboard')),
+      app: dynamic(() => import('../sites/contentpi/pages/dashboard/App/index'))
     }
   },
   [Site.SanPancho]: {
@@ -51,31 +52,39 @@ type Route = {
   section?: string
   urlParams?: string[]
   queryParams?: Record<string, string>
+  appId?: string
 }
 
 type Props = {
   site: Site
-  route: Route
+  routeParams: Route
   siteTitle: string
   props?: Record<string, any>
 }
 
-const Switcher: FC<Props> = ({ site, route, props = {}, siteTitle }) => {
-  const { page, urlParams = [], queryParams = {} } = route
+const Switcher: FC<Props> = ({ site, routeParams, props = {}, siteTitle }) => {
+  const { page, urlParams = [], queryParams = {}, appId, stage } = routeParams
   const [section = 'index', ...urlMoreParams] = urlParams
   const mergedParams = {
     urlParams: urlMoreParams,
     queryParams
   }
 
+  let pageName = page
+  let sectionName = section
   let PageToRender
 
-  if (page) {
-    PageToRender = dynamicPages[site][page]
+  if (appId) {
+    pageName = 'dashboard'
+    sectionName = 'app'
   }
 
-  if (page && section) {
-    PageToRender = dynamicPages[site][page][section]
+  if (pageName) {
+    PageToRender = dynamicPages[site][pageName]
+  }
+
+  if (pageName && sectionName) {
+    PageToRender = dynamicPages[site][pageName][sectionName]
   }
 
   return (

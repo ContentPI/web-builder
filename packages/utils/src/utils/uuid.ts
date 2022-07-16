@@ -24,3 +24,14 @@ export function uuidToGoogleContactId(uuid: string): string {
 
   return `${firstChunk}${secondChunk}`
 }
+
+export function isUUID(uuid: string) {
+  const parts = uuid.split('-')
+  const firstChunk = parts[0].length === 8
+  const secondChunk = parts[1].length === 4
+  const thirdChunk = parts[2].length === 4
+  const fourthChunk = parts[3].length === 4
+  const fifthChunk = parts[4].length === 12
+
+  return firstChunk && secondChunk && thirdChunk && fourthChunk && fifthChunk
+}

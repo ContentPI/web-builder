@@ -14,11 +14,11 @@ const Page: FC<Props> = ({ site, siteTitle }) => {
   const router = useRouter()
   const { page = 'index' } = router.query
 
-  const route = {
+  const routeParams = {
     page: page as string
   }
 
-  return <SwitcherPage site={site} route={route} siteTitle={siteTitle} />
+  return <SwitcherPage site={site} routeParams={routeParams} siteTitle={siteTitle} />
 }
 
 export const getServerSideProps = async () => ({
