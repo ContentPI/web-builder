@@ -18,7 +18,7 @@ const Page: FC<Props> = ({ site, siteTitle }) => {
     page: page as string
   }
 
-  return <SwitcherPage site={site} route={route} siteTitle={siteTitle} />
+  return <SwitcherPage site={site} routeParams={route} siteTitle={siteTitle} />
 }
 
 export const getServerSideProps = async () => ({

@@ -25,8 +25,17 @@ export function uuidToGoogleContactId(uuid: string): string {
   return `${firstChunk}${secondChunk}`
 }
 
-export function isUUID(uuid: string) {
+export function isUUID(uuid = '') {
+  if (!uuid) {
+    return false
+  }
+
   const parts = uuid.split('-')
+
+  if (parts.length !== 5) {
+    return false
+  }
+
   const firstChunk = parts[0].length === 8
   const secondChunk = parts[1].length === 4
   const thirdChunk = parts[2].length === 4

@@ -25,7 +25,7 @@ const Page: FC<Props> = ({ site, siteTitle }) => {
     stage: ''
   }
 
-  if (isUUID(params[0])) {
+  if (params.length > 0 && isUUID(params[0])) {
     const appId = params[0]
     const stage = params[1]
 

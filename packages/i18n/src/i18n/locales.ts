@@ -45,51 +45,51 @@ export const currentLocales: any = {
     name: '日本語'
   },
   'de-de': {
-    lang: 'de-DE',
+    lang: 'de-de',
     name: 'Deutsch'
   },
   'en-gb': {
-    lang: 'en-GB',
+    lang: 'en-gb',
     name: 'English (UK)'
   },
   'en-us': {
-    lang: 'en-US',
+    lang: 'en-us',
     name: 'English (US)'
   },
   'es-mx': {
-    lang: 'es-MX',
+    lang: 'es-mx',
     name: 'Español (MX)'
   },
   'fr-fr': {
-    lang: 'fr-FR',
+    lang: 'fr-fr',
     name: 'Français'
   },
   'it-it': {
-    lang: 'it-IT',
+    lang: 'it-it',
     name: 'Italiano'
   },
   'ja-jp': {
-    lang: 'ja-JP',
+    lang: 'ja-jp',
     name: '日本語'
   },
   'ko-kr': {
-    lang: 'ko-KR',
+    lang: 'ko-kr',
     name: '한국어'
   },
   'pt-br': {
-    lang: 'pt-BR',
+    lang: 'pt-br',
     name: 'Português (BR)'
   },
   'pt-pt': {
-    lang: 'pt-PT',
+    lang: 'pt-pt',
     name: 'Português (PT)'
   },
   'ru-ru': {
-    lang: 'ru-RU',
+    lang: 'ru-ru',
     name: 'Русский'
   },
   'zh-cn': {
-    lang: 'zh-CN',
+    lang: 'zh-cn',
     name: '中文（简体）'
   }
 }

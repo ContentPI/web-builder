@@ -63,7 +63,7 @@ type Props = {
 }
 
 const Switcher: FC<Props> = ({ site, routeParams, props = {}, siteTitle }) => {
-  const { page, urlParams = [], queryParams = {}, appId, stage } = routeParams
+  const { page, urlParams = [], queryParams = {}, appId } = routeParams
   const [section = 'index', ...urlMoreParams] = urlParams
   const mergedParams = {
     urlParams: urlMoreParams,
