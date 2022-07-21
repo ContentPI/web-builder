@@ -11,6 +11,7 @@ type Event = {
   endDate: string
   title: string
   color?: string
+  data?: any
 }
 
 type Props = {

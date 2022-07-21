@@ -6,6 +6,7 @@ import React, { FC, useEffect, useState } from 'react'
 import ApolloConnector from '~/components/ApolloConnector'
 import DashboardLayout from '~/components/Dashboard/Layout'
 import CreateReservationModal from '../../../components/Modals/CreateReservationModal'
+import EditReservationModal from '../../../components/Modals/EditReservationModal'
 import GET_RESERVATIONS_AND_GUESTS_QUERY from './getReservationsAndGuests.query'
 
 const Reservations: FC<any> = ({ data }) => {
@@ -14,7 +15,8 @@ const Reservations: FC<any> = ({ data }) => {
   const [reservationType, setReservationType] = useState('stone')
   const [events, setEvents] = useState<any>([])
   const [openCreateReservationModal, setOpenCreateReservationModal] = useState(false)
-  const [selectedDate, setSelectedDate] = useState('')
+  const [openEditReservationModal, setOpenEditReservationModal] = useState(false)
+  const [selectedDate, setSelectedDate] = useState<any>()
 
   const { t } = useI18n()
 
@@ -27,9 +29,14 @@ const Reservations: FC<any> = ({ data }) => {
   }
 
   const handleDateClick = (date: any) => {
+    console.log('DAT===', date)
     if (is.String(date)) {
       setSelectedDate(date)
       setOpenCreateReservationModal(true)
+    } else {
+      const [reservation] = date
+      setSelectedDate(reservation)
+      setOpenEditReservationModal(true)
     }
   }
 
@@ -51,8 +58,9 @@ const Reservations: FC<any> = ({ data }) => {
           guests: guestCount,
           crib
         } = reservation
-        const guestName =
-          guests && guests.find((guest: any) => guest.googleContactId === googleContactId).fullName
+        const selectedGuest =
+          guests && guests.find((guest: any) => guest.googleContactId === googleContactId)
+        const guestName = selectedGuest.fullName
         const hasDeposit = deposit ? '- DEP -' : '-'
         const cost = `$${reservationCost} - `
         const people = `${guestCount}A `
@@ -61,7 +69,8 @@ const Reservations: FC<any> = ({ data }) => {
         newEvents.push({
           startDate: startDate.split('T')[0],
           endDate: endDate.split('T')[0],
-          title: `${guestName} ${hasDeposit} ${cost} ${people} ${hasCrib}`
+          title: `${guestName} ${hasDeposit} ${cost} ${people} ${hasCrib}`,
+          data: reservation
         })
       })
 
@@ -86,6 +95,14 @@ const Reservations: FC<any> = ({ data }) => {
         isOpen={openCreateReservationModal}
         onClose={onClose}
         label={t('newReservation')}
+        data={{ guests, events, selectedDate }}
+        type={reservationType}
+      />
+
+      <EditReservationModal
+        isOpen={openEditReservationModal}
+        onClose={onClose}
+        label={t('editReservation')}
         data={{ guests, events, selectedDate }}
         type={reservationType}
       />
