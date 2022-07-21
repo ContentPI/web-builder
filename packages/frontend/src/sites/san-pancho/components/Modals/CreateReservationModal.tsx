@@ -102,7 +102,7 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
 
         // Transforming values before submit them...
         variables.guests = Number(values.guests)
-        variables.nights = Number(values.nights)
+        variables.nights = Number(values.nights) - 1
         variables.freeNights = Number(values.freeNights)
         variables.pendingAmount = Number(
           values.pendingAmount.toString().replace('$', '').replace(',', '') || 0
@@ -327,7 +327,11 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
             {t('cancel')}
           </ModalBtn>
           &nbsp;
-          <ModalBtn onClick={handleSubmit} isLoading={loading} loadingText="Creando Reservación...">
+          <ModalBtn
+            onClick={handleSubmit}
+            isLoading={loading}
+            loadingText={t('creatingReservation')}
+          >
             {t('createReservation')}
           </ModalBtn>
         </div>

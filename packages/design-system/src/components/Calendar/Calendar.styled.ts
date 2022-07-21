@@ -95,6 +95,7 @@ export namespace CSS {
         margin-left: -5px;
         text-indent: 5px;
         margin-right: 5px;
+        padding-right: 8px;
       }
 
       .past {

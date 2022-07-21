@@ -359,6 +359,14 @@ const translations: Record<string, Record<string, string>> = {
     'it-it': 'Crea Prenotazione',
     'ja-jp': '予約の作成'
   },
+  creatingReservation: {
+    ar: 'إنشاء الحجز',
+    'en-us': 'Creating Reservation',
+    'es-mx': 'Creando Reservación',
+    'fr-fr': "Création d'une réservation",
+    'it-it': 'Creazione di Prenotazione',
+    'ja-jp': '予約の作成'
+  },
   noReservations: {
     ar: 'لا توجد حجوزات ، قم بإنشاء واحد لرؤية التقويم',
     'en-us': 'There are no reservations, create one to see the calendar',
@@ -441,11 +449,11 @@ const translations: Record<string, Record<string, string>> = {
   },
   paidNights: {
     ar: 'ليالي مدفوعة الأجر',
-    'en-us': 'Departure date',
-    'es-mx': 'Fecha de salida',
+    'en-us': 'Paid nights',
+    'es-mx': 'Noches pagadas',
     'fr-fr': 'Nuits payées',
     'it-it': 'Notti pagate',
-    'ja-jp': '有料宿泊'
+    'ja-jp': '有料の夜'
   },
   freeNights: {
     ar: 'ليال مجانية',
