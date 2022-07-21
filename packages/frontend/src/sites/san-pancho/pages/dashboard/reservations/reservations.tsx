@@ -86,7 +86,7 @@ const Reservations: FC<any> = ({ data }) => {
         isOpen={openCreateReservationModal}
         onClose={onClose}
         label={t('newReservation')}
-        data={{ guests, selectedDate }}
+        data={{ guests, events, selectedDate }}
         type={reservationType}
       />
     </>

@@ -25,7 +25,7 @@ type Props = {
 
 const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType }) => {
   const { t } = useI18n()
-  const { selectedDate, guests } = data
+  const { selectedDate, guests, events } = data
 
   const Required = <Badge color="danger">{t('required')}</Badge>
 
@@ -252,14 +252,14 @@ const Modal: FC<Props> = ({ isOpen, label, onClose, data, type: reservationType 
               <div>
                 {t('entryDate')} {required.startDate && Required}
               </div>
-              <DayPicker events={[]} defaultValue={selectedDate} onClick={setStartDate} />
+              <DayPicker events={events} defaultValue={selectedDate} onClick={setStartDate} />
             </div>
 
             <div>
               <div>
                 {t('departureDate')} {required.endDate && Required}
               </div>
-              <DayPicker events={[]} onClick={setEndDate} disabled={!values.startDate} t={t} />
+              <DayPicker events={events} onClick={setEndDate} disabled={!values.startDate} t={t} />
             </div>
           </div>
 
